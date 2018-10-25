@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.structure;
+package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+import de.fraunhofer.scai.bio.types.text.doc.structure.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * A self-contained unit of discourse that deals with a particular point or
@@ -30,44 +34,30 @@ public class Paragraph implements Serializable {
      */
     private static final long serialVersionUID = -8095267361703765778L;
 
-    private TextElement paragraphText;
-    private List<Sentence> paragraphSentences;
 
-    /**
-     * @return the paragraphText
-     */
-    public TextElement getParagraphText() {
-	return paragraphText;
-    }
-
-    /**
-     * @param paragraphText the paragraphText to set
-     */
-    public void setParagraphText(TextElement paragraphText) {
-	this.paragraphText = paragraphText;
-    }
+    private List<StructureElement> structureElements;
 
     /**
      * @return the paragraphSentences
      */
-    public List<Sentence> getParagraphSentences() {
-	return paragraphSentences;
+    public List<StructureElement> geStructureElements() {
+	return structureElements;
     }
 
     /**
      * @param paragraphSentence the {@link Sentence} to set
      */
-    public void addParagraphSentence(Sentence paragraphSentence) {
-	if (this.paragraphSentences == null)
-	    this.paragraphSentences = new ArrayList<Sentence>();
-	this.paragraphSentences.add(paragraphSentence);
+    public void addStructureElement(StructureElement structureElement) {
+	if (this.structureElements == null)
+	    this.structureElements = new ArrayList<StructureElement>();
+	this.structureElements.add(structureElement);
     }
     
     /**
      * @param paragraphSentences the paragraphSentences to set
      */
-    public void setParagraphSentences(List<Sentence> paragraphSentences) {
-	this.paragraphSentences = paragraphSentences;
+    public void setStructureElements(List<StructureElement> structureElements) {
+	this.structureElements = structureElements;
     }
     
     

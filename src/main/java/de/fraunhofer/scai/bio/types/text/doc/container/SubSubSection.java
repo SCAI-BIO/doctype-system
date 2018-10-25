@@ -19,7 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Paragraph;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**

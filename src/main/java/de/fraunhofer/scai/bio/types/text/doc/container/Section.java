@@ -19,7 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Paragraph;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
@@ -34,7 +33,6 @@ public class Section implements Serializable {
     private List<SubSection> subSections;
     private TextElement sectionRhetorical;
     private TextElement sectionTitle;
-    private TextElement text;
     
     private List<Paragraph> paragraphs;
     
@@ -87,17 +85,6 @@ public class Section implements Serializable {
      */
     public void setSubSections(List<SubSection> subSections) {
 	this.subSections = subSections;
-    }
-
-    /**
-     * @return the text
-     */
-    public TextElement getText() {
-        return text;
-    }
-
-    public void setText(TextElement textElement) {
-	this.text = textElement;
     }
 
     /**

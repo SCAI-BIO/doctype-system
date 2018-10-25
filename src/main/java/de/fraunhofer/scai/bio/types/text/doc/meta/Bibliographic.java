@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+
 /**
  * Bibliographic informations about the document itself. Like titleText, author,
  * etc.
@@ -29,7 +31,7 @@ public class Bibliographic implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 7449243668495438139L;
-    private Abstract documentAbstract;
+    private Section documentAbstract;
     private List<Author> authors;
     private Date pubDate;
     private List<License> licenses;
@@ -83,7 +85,7 @@ public class Bibliographic implements Serializable {
     /**
      * @return the document {@link Abstract}
      */
-    public Abstract getDocumentAbstract() {
+    public Section getDocumentAbstract() {
 	return documentAbstract;
     }
 
@@ -156,7 +158,7 @@ public class Bibliographic implements Serializable {
     /**
      * @param documentAbstract the document {@link Abstract} to set
      */
-    public void setDocumentAbstract(Abstract documentAbstract) {
+    public void setDocumentAbstract(Section documentAbstract) {
 	this.documentAbstract = documentAbstract;
     }
 
