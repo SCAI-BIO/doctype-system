@@ -38,32 +38,19 @@ public class FrontMatter implements Serializable {
     private static final long serialVersionUID = -6851482782475430729L;
 
     private TextElement titleText;
-    private MetaElement metaElement;
+
     /**
      * @return the titleText
      */
     public TextElement getTitleText() {
 	return titleText;
     }
+
     /**
      * @param titleText the titleText to set
      */
     public void setTitleText(TextElement titleText) {
 	this.titleText = titleText;
     }
-    /**
-     * @return the metaElement
-     */
-    public MetaElement getMetaElement() {
-	return metaElement;
-    }
-    /**
-     * @param metaElement the metaElement to set
-     */
-    public void setMetaElement(MetaElement metaElement) {
-	this.metaElement = metaElement;
-    }
-    
-    
 
 }
