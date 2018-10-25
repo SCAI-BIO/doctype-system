@@ -33,7 +33,6 @@ public class SubSection implements Serializable {
     private TextElement subSectionTitle;
     private TextElement subSectionRhetorical;
     private List<SubSubSection> subSubSections;
-    private List<Paragraph> paragraphs;
 
     /**
      * @return the title
@@ -84,29 +83,5 @@ public class SubSection implements Serializable {
      */
     public void setSubSubSections(List<SubSubSection> subSubSections) {
 	this.subSubSections = subSubSections;
-    }
-    
-
-    /**
-     * @return the paragraphs
-     */
-    public List<Paragraph> getParagraphs() {
-	return paragraphs;
-    }
-
-    /**
-     * @param paragraph the {@link Paragraph} to set
-     */
-    public void addParagraph(Paragraph paragraph) {
-	if (this.paragraphs == null)
-	    this.paragraphs = new ArrayList<Paragraph>();
-	this.paragraphs.add(paragraph);
-    }
-    
-    /**
-     * @param paragraphs the paragraphs to set
-     */
-    public void setParagraphs(List<Paragraph> paragraphs) {
-	this.paragraphs = paragraphs;
     }
 }

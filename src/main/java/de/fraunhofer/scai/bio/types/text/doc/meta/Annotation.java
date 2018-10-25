@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.structure;
+package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 /**
  * @author klein
@@ -25,53 +25,77 @@ public class Annotation {
     private int endOffset;
     private String annotationType;
     private String annotationText;
+
+    private Provenance provenance;
+    
+    /**
+     * @return the provenance
+     */
+    public Provenance getProvenance() {
+        return provenance;
+    }
+
+    /**
+     * @param provenance the provenance to set
+     */
+    public void setProvenance(Provenance provenance) {
+        this.provenance = provenance;
+    }
+
     /**
      * @return the startOffset
      */
     public int getStartOffset() {
-        return startOffset;
+	return startOffset;
     }
+
     /**
      * @param startOffset the startOffset to set
      */
     public void setStartOffset(int startOffset) {
-        this.startOffset = startOffset;
+	this.startOffset = startOffset;
     }
+
     /**
      * @return the endOffset
      */
     public int getEndOffset() {
-        return endOffset;
+	return endOffset;
     }
+
     /**
      * @param endOffset the endOffset to set
      */
     public void setEndOffset(int endOffset) {
-        this.endOffset = endOffset;
+	this.endOffset = endOffset;
     }
+
     /**
      * @return the annotationType
      */
     public String getAnnotationType() {
-        return annotationType;
+	return annotationType;
     }
+
     /**
      * @param annotationType the annotationType to set
      */
     public void setAnnotationType(String annotationType) {
-        this.annotationType = annotationType;
+	this.annotationType = annotationType;
     }
+
     /**
      * @return the annotationText
      */
     public String getAnnotationText() {
-        return annotationText;
+	return annotationText;
     }
+
     /**
      * @param annotationText the annotationText to set
      */
     public void setAnnotationText(String annotationText) {
-        this.annotationText = annotationText;
+	this.annotationText = annotationText;
     }
-    
+
 }

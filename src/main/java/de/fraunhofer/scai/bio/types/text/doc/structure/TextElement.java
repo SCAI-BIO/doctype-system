@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+
 /** 
  *  */
 public class TextElement implements Serializable {
@@ -27,7 +29,6 @@ public class TextElement implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -9172199956790819065L;
-    private List<Annotation> annotations;    
     
     /**
      * The text (plain text without any other object mapping).
@@ -46,29 +47,6 @@ public class TextElement implements Serializable {
      */
     public void setText(String text) {
 	this.text = text;
-    }
-
-    /**
-     * @return the annotations
-     */
-    public List<Annotation> getAnnotations() {
-	return annotations;
-    }
-
-    /**
-     * @param annotation the annotation to add
-     */
-    public void addAnnotation(Annotation annotation) {
-	if (this.annotations == null)
-	    this.annotations = new ArrayList<Annotation>();
-	this.annotations.add(annotation);
-    }
-    
-    /**
-     * @param annotations the annotations to set
-     */
-    public void setAnnotations(List<Annotation> annotations) {
-	this.annotations = annotations;
     }
 
 }

@@ -34,8 +34,6 @@ public class Section implements Serializable {
     private TextElement sectionRhetorical;
     private TextElement sectionTitle;
     
-    private List<Paragraph> paragraphs;
-    
     /**
      * @return the rhetorical
      */
@@ -87,26 +85,4 @@ public class Section implements Serializable {
 	this.subSections = subSections;
     }
 
-    /**
-     * @return the paragraphs
-     */
-    public List<Paragraph> getParagraphs() {
-	return paragraphs;
-    }
-
-    /**
-     * @param paragraph the {@link Paragraph} to set
-     */
-    public void addParagraph(Paragraph paragraph) {
-	if (this.paragraphs == null)
-	    this.paragraphs = new ArrayList<Paragraph>();
-	this.paragraphs.add(paragraph);
-    }
-    
-    /**
-     * @param paragraphs the paragraphs to set
-     */
-    public void setParagraphs(List<Paragraph> paragraphs) {
-	this.paragraphs = paragraphs;
-    }
 }

@@ -3,9 +3,14 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+
 /**
  * @author tadams
- *
+ * Only set 1 field!
  */
 public class StructureElement {
 
@@ -21,6 +26,8 @@ public class StructureElement {
     private Sentence sentence;
     private Table table;
     private TextElement textElement;
+    
+    private List<Annotation> annotations;    
     
     /**
      * 
@@ -196,5 +203,29 @@ public class StructureElement {
     public void setTextElement(TextElement textElement) {
         this.textElement = textElement;
     }
+
+    /**
+     * @return the annotations
+     */
+    public List<Annotation> getAnnotations() {
+	return annotations;
+    }
+
+    /**
+     * @param annotation the annotation to add
+     */
+    public void addAnnotation(Annotation annotation) {
+	if (this.annotations == null)
+	    this.annotations = new ArrayList<Annotation>();
+	this.annotations.add(annotation);
+    }
+    
+    /**
+     * @param annotations the annotations to set
+     */
+    public void setAnnotations(List<Annotation> annotations) {
+	this.annotations = annotations;
+    }
+
 
 }
