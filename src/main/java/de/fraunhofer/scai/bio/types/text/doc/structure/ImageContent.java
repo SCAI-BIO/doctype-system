@@ -1,5 +1,5 @@
 /* First created by JCasGen Mon Jul 16 13:21:36 CEST 2012 */
-package de.fraunhofer.scai.bio.types.text.documentelement.structure;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 import java.util.List;

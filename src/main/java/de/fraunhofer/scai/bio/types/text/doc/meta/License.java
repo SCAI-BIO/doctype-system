@@ -1,4 +1,4 @@
-package de.fraunhofer.scai.bio.types.text.documentelement.meta;
+package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 

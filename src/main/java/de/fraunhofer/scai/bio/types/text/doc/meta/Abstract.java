@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement.meta;
+package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.documentelement.container.Section;
-import de.fraunhofer.scai.bio.types.text.documentelement.structure.TextElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * Abstract of a document.

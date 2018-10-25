@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement.structure;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
-import de.fraunhofer.scai.bio.types.text.documentelement.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
 
 /**
  * A quotation block which cites another document.

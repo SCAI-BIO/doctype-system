@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement;
+package de.fraunhofer.scai.bio.types.text.doc;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-import de.fraunhofer.scai.bio.types.text.documentelement.container.BackMatter;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.BodyMatter;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.FrontMatter;
-import de.fraunhofer.scai.bio.types.text.documentelement.meta.MetaElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
+import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 
 /**
  * Document Elements are the scaffold of every document. Every document element

@@ -1,4 +1,4 @@
-package de.fraunhofer.scai.bio.types.text.documentelement.structure;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 

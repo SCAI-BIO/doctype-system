@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement.structure;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import de.fraunhofer.scai.bio.types.text.documentelement.container.Chapter;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.Part;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.Section;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.SubSection;
-import de.fraunhofer.scai.bio.types.text.documentelement.container.SubSubSection;
+import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Part;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.container.SubSection;
+import de.fraunhofer.scai.bio.types.text.doc.container.SubSubSection;
 
 /**
  * Specifies the document outline. Examples are chapters, sections, and so on.

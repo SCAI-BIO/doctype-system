@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement.meta;
+package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
-import de.fraunhofer.scai.bio.types.text.documentelement.structure.TextElement;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * Title of a document. It can also contain a subtitle.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.documentelement.meta;
+package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
