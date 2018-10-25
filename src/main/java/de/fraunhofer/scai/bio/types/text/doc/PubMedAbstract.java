@@ -22,6 +22,7 @@ import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Provenance;
 
 /**
  * Document Elements are the scaffold of every document. Every document element
@@ -37,9 +38,24 @@ public class PubMedAbstract implements Serializable {
      */
     private static final long serialVersionUID = 8358171049979076895L;
     private MetaElement metaElement;
+    private Provenance provenance;
 
     private UUID uuid = UUID.randomUUID();
     
+    /**
+     * @return the provenance
+     */
+    public Provenance getProvenance() {
+        return provenance;
+    }
+
+    /**
+     * @param provenance the provenance to set
+     */
+    public void setProvenance(Provenance provenance) {
+        this.provenance = provenance;
+    }
+
     /**
      * Default constructor.
      */
