@@ -32,7 +32,7 @@ public class Bibliographic implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 7449243668495438139L;
-    private Section documentAbstract;
+    private Abstract documentAbstract;
     private List<Author> authors;
     private Date pubDate;
     private List<License> licenses;
@@ -79,7 +79,7 @@ public class Bibliographic implements Serializable {
     /**
      * @return the document {@link Abstract}
      */
-    public Section getDocumentAbstract() {
+    public Abstract getDocumentAbstract() {
 	return documentAbstract;
     }
 
@@ -145,7 +145,7 @@ public class Bibliographic implements Serializable {
     /**
      * @param documentAbstract the document {@link Abstract} to set
      */
-    public void setDocumentAbstract(Section documentAbstract) {
+    public void setDocumentAbstract(Abstract documentAbstract) {
 	this.documentAbstract = documentAbstract;
     }
 

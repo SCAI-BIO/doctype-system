@@ -16,8 +16,10 @@
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 
 /**
  * Abstract of a document.
@@ -28,20 +30,28 @@ public class Abstract implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 3867798877915368582L;
-    private TextElement abstractText;
+    private List<Section> abstractSections;
+    /**
+     * @return the abstractSections
+     */
+    public List<Section> getAbstractSections() {
+	return abstractSections;
+    }
     
     /**
-     * @return the abstractText
+     * @param abstractSections the abstractSections to set
      */
-    public TextElement getAbstractText() {
-	return abstractText;
+    public void addAbstractSection(Section abstractSection) {
+	if (this.abstractSections == null)
+	    this.abstractSections = new ArrayList<Section>();
+	this.abstractSections.add(abstractSection);
     }
-
+    
     /**
-     * @param abstractText the abstractText to set
+     * @param abstractSections the abstractSections to set
      */
-    public void setAbstractText(TextElement abstractText) {
-	this.abstractText = abstractText;
+    public void setAbstractSections(List<Section> abstractSections) {
+	this.abstractSections = abstractSections;
     }
 
 }
