@@ -15,6 +15,7 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
@@ -44,8 +45,12 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  *         of how the data was obtained or how it was modified from the original
  *         data set or sets.
  */
-public class Provenance {
+public class Provenance implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -2419659801198983422L;
     License license;
     TextElement version;
     TextElement source; // file, database, ...

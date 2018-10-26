@@ -3,6 +3,7 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,12 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
  * @author tadams
  * Only set 1 field!
  */
-public class StructureElement {
+public class StructureElement implements Serializable {
 
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = -7490022742872925687L;
     private CaptionedBox captionedBox;
     private Code code;
     private DataTable dataTable;

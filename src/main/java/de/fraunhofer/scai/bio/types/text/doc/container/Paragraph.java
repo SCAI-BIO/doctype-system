@@ -21,7 +21,6 @@ import java.util.List;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.StructureElement;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * A self-contained unit of discourse that deals with a particular point or
@@ -33,7 +32,6 @@ public class Paragraph implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -8095267361703765778L;
-
 
     private List<StructureElement> structureElements;
 

@@ -16,10 +16,6 @@
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
 /** 
  *  */

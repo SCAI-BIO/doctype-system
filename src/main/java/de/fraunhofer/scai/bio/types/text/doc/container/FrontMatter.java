@@ -17,7 +17,6 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**

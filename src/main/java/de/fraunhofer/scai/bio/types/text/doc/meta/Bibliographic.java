@@ -19,6 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
@@ -31,14 +32,14 @@ public class Bibliographic implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 7449243668495438139L;
-    private TextElement documentAbstract;
+    private Section documentAbstract;
     private List<Author> authors;
     private Date pubDate;
     private List<License> licenses;
     private Title title;
     private TextElement language;
     private TextElement source;
-    private TextElement issn;
+    private List<TextElement> issns;
 
     /**
      * @param author the {@link Author} to add to the {@link List} of authors
@@ -78,15 +79,15 @@ public class Bibliographic implements Serializable {
     /**
      * @return the document {@link Abstract}
      */
-    public TextElement getDocumentAbstract() {
+    public Section getDocumentAbstract() {
 	return documentAbstract;
     }
 
     /**
      * @return the issn
      */
-    public TextElement getIssn() {
-	return issn;
+    public List<TextElement> getIssn() {
+	return issns;
     }
 
     /**
@@ -144,15 +145,24 @@ public class Bibliographic implements Serializable {
     /**
      * @param documentAbstract the document {@link Abstract} to set
      */
-    public void setDocumentAbstract(TextElement documentAbstract) {
+    public void setDocumentAbstract(Section documentAbstract) {
 	this.documentAbstract = documentAbstract;
     }
 
     /**
      * @param issn the issn to set
      */
-    public void setIssn(TextElement issn) {
-	this.issn = issn;
+    public void addIssn(TextElement issn) {
+	if (this.issns == null)
+	    this.issns = new ArrayList<TextElement>();
+	this.issns.add(issn);
+    }
+    
+    /**
+     * @param issn the issn to set
+     */
+    public void setIssns(List<TextElement> issns) {
+	this.issns = issns;
     }
 
     public void setLanguage(TextElement language) {

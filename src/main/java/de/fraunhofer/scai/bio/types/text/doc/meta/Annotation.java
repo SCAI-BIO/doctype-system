@@ -15,14 +15,20 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author klein
  *
  */
-public class Annotation {
+public class Annotation implements Serializable {
 
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = -7162485139551328806L;
     private int startOffset;
     private int endOffset;
     private TextElement annotationType;
