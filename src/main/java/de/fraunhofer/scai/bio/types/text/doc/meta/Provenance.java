@@ -17,7 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.util.Date;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.License;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author marc
@@ -47,22 +47,18 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.License;
 public class Provenance {
 
     License license;
-    String version;
-    String source; // file, database, ...
+    TextElement version;
+    TextElement source; // file, database, ...
     Date date;
-    String collection; // eg. a collection of documents
+    TextElement collection; // eg. a collection of documents
 
     /**
      * constructor
      */
     public Provenance() {
-	version = "";
-	source = "";
-	date = new Date();
-	collection = "";
     }
 
-    public String getCollection() {
+    public TextElement getCollection() {
 	return collection;
     }
 
@@ -74,16 +70,16 @@ public class Provenance {
 	return license;
     }
 
-    public String getSource() {
+    public TextElement getSource() {
 	return source;
     }
 
-    public String getVersion() {
+    public TextElement getVersion() {
 	return version;
     }
 
 
-    public void setCollection(String corpus) {
+    public void setCollection(TextElement corpus) {
 	this.collection = corpus;
     }
 
@@ -95,11 +91,11 @@ public class Provenance {
 	this.license = license;
     }
 
-    public void setSource(String source) {
+    public void setSource(TextElement source) {
 	this.source = source;
     }
 
-    public void setVersion(String version) {
+    public void setVersion(TextElement version) {
 	this.version = version;
     }
 }

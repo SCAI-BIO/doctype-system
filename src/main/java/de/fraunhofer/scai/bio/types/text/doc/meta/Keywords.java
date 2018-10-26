@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 /**
  * @author klein
  *
@@ -29,8 +31,8 @@ public class Keywords implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 6068148947394926182L;
-    private String rhetorical;
-    private List<String> keywordList;
+    private TextElement rhetorical;
+    private List<TextElement> keywordList;
 
     public Keywords() {
 	// TODO Auto-generated constructor stub
@@ -41,37 +43,37 @@ public class Keywords implements Serializable {
      * 
      * @param keyword the keyword to add
      */
-    public void addKeyword(String keyword) {
+    public void addKeyword(TextElement keyword) {
 	if (this.keywordList == null)
-	    this.keywordList = new ArrayList<String>();
+	    this.keywordList = new ArrayList<TextElement>();
 	this.keywordList.add(keyword);
     }
 
     /**
      * @return the {@link List} of {@link Keywords}
      */
-    public List<String> getKeywordList() {
+    public List<TextElement> getKeywordList() {
 	return keywordList;
     }
 
     /**
      * @return the rhetorical
      */
-    public String getRhetorical() {
+    public TextElement getRhetorical() {
 	return rhetorical;
     }
 
     /**
      * @param keywordList the {@link List} of {@link Keywords} to set
      */
-    public void setKeywordList(List<String> keywordList) {
+    public void setKeywordList(List<TextElement> keywordList) {
 	this.keywordList = keywordList;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
-    public void setRhetorical(String rhetorical) {
+    public void setRhetorical(TextElement rhetorical) {
 	this.rhetorical = rhetorical;
     }
 }

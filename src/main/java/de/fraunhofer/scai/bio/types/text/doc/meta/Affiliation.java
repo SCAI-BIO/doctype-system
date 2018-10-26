@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 /**
  * TODO implement/enhance this class (organization, address, ...)
  * @author klein
@@ -31,20 +33,20 @@ public class Affiliation implements Serializable {
      */
     private static final long serialVersionUID = -3254832719650327389L;
 
-    private String organization;
+    private TextElement organization;
     private List<String> affiliationInfos;
 
     /**
      * @return the organization
      */
-    public String getOrganization() {
+    public TextElement getOrganization() {
 	return organization;
     }
 
     /**
      * @param organization the organization to set
      */
-    public void setOrganization(String organization) {
+    public void setOrganization(TextElement organization) {
 	this.organization = organization;
     }
 

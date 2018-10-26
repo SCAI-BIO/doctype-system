@@ -24,12 +24,11 @@ import java.util.List;
  * document. Synonyms are references or list of literature.
  */
 public class Bibliography implements Serializable {
-	
+
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = 3505381016659827384L;
-    private Reference reference;
     private List<Reference> references;
 
     // *--------------*
@@ -47,11 +46,7 @@ public class Bibliography implements Serializable {
 	references.add(reference);
     }
 
-    public Reference getReference() {
-		return reference;
-	}
-
-	/**
+    /**
      * Getter for {@link Reference}s.
      * 
      * 
@@ -59,10 +54,6 @@ public class Bibliography implements Serializable {
      */
     public List<Reference> getReferences() {
 	return references;
-    }
-
-    public void setReference(Reference reference) {
-	this.reference = reference;
     }
 
     /**

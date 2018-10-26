@@ -17,6 +17,8 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 /**
  * @author klein
  *
@@ -27,10 +29,10 @@ public class Person implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -1899080439065479768L;
-    private String surname;
-    private String forename;
+    private TextElement surname;
+    private TextElement forename;
     private Affiliation affiliation;
-    private String degree;
+    private TextElement degree;
 
     /**
      * getter for affiliation - gets Affiliation of the author. i.e. University of
@@ -48,7 +50,7 @@ public class Person implements Serializable {
      * 
      * @return the degree of the {@link Person}
      */
-    public String getDegree() {
+    public TextElement getDegree() {
 	return degree;
     }
 
@@ -57,7 +59,7 @@ public class Person implements Serializable {
      * 
      * @return the forename of the {@link Person}
      */
-    public String getForename() {
+    public TextElement getForename() {
 	return forename;
     }
 
@@ -66,7 +68,7 @@ public class Person implements Serializable {
      * 
      * @return the surname of the {@link Person}
      */
-    public String getSurname() {
+    public TextElement getSurname() {
 	return surname;
     }
 
@@ -86,7 +88,7 @@ public class Person implements Serializable {
      * 
      * @param degree of the {@link Person} to set
      */
-    public void setDegree(String degree) {
+    public void setDegree(TextElement degree) {
 	this.degree = degree;
     }
 
@@ -95,7 +97,7 @@ public class Person implements Serializable {
      * 
      * @param forename of the {@link Person} to set
      */
-    public void setForename(String forename) {
+    public void setForename(TextElement forename) {
 	this.forename = forename;
     }
 
@@ -104,7 +106,7 @@ public class Person implements Serializable {
      * 
      * @param surname of the {@link Person} to set
      */
-    public void setSurname(String surname) {
+    public void setSurname(TextElement surname) {
 	this.surname = surname;
     }
 }

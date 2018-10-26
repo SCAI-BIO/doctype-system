@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * Bibliographic informations about the document itself. Like titleText, author,
@@ -31,15 +31,14 @@ public class Bibliographic implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 7449243668495438139L;
-    private Section documentAbstract;
+    private TextElement documentAbstract;
     private List<Author> authors;
     private Date pubDate;
     private List<License> licenses;
     private Title title;
-    private List<Title> subTitles;
-    private String language;
-    private String source;
-    private String issn;
+    private TextElement language;
+    private TextElement source;
+    private TextElement issn;
 
     /**
      * @param author the {@link Author} to add to the {@link List} of authors
@@ -57,12 +56,6 @@ public class Bibliographic implements Serializable {
 	if (this.licenses == null)
 	    this.licenses = new ArrayList<License>();
 	this.licenses.add(license);
-    }
-
-    public void addSubTitle(Title subTitle) {
-	if (this.subTitles == null)
-	    this.subTitles = new ArrayList<Title>();
-	this.subTitles.add(subTitle);
     }
 
     /**
@@ -85,21 +78,21 @@ public class Bibliographic implements Serializable {
     /**
      * @return the document {@link Abstract}
      */
-    public Section getDocumentAbstract() {
+    public TextElement getDocumentAbstract() {
 	return documentAbstract;
     }
 
     /**
      * @return the issn
      */
-    public String getIssn() {
+    public TextElement getIssn() {
 	return issn;
     }
 
     /**
      * @return the language
      */
-    public String getLanguage() {
+    public TextElement getLanguage() {
 	return language;
     }
 
@@ -130,15 +123,8 @@ public class Bibliographic implements Serializable {
     /**
      * @return the source
      */
-    public String getSource() {
+    public TextElement getSource() {
 	return source;
-    }
-
-    /**
-     * @return the sub {@link Title}s
-     */
-    public List<Title> getSubTitles() {
-	return subTitles;
     }
 
     /**
@@ -158,18 +144,18 @@ public class Bibliographic implements Serializable {
     /**
      * @param documentAbstract the document {@link Abstract} to set
      */
-    public void setDocumentAbstract(Section documentAbstract) {
+    public void setDocumentAbstract(TextElement documentAbstract) {
 	this.documentAbstract = documentAbstract;
     }
 
     /**
      * @param issn the issn to set
      */
-    public void setIssn(String issn) {
+    public void setIssn(TextElement issn) {
 	this.issn = issn;
     }
 
-    public void setLanguage(String language) {
+    public void setLanguage(TextElement language) {
 	this.language = language;
     }
 
@@ -187,16 +173,9 @@ public class Bibliographic implements Serializable {
 	this.pubDate = pubDate;
     }
 
-    public void setSource(String source) {
+    public void setSource(TextElement source) {
 	this.source = source;
 
-    }
-
-    /**
-     * @param titles the {@link List} of {@link Title}s to set
-     */
-    public void setSubTitles(List<Title> titles) {
-	this.subTitles = titles;
     }
 
     /**

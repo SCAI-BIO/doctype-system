@@ -2,14 +2,16 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 public class License implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = -719683891725297487L;
-    private String licenseName;
-    private String licenseURL;
+    private TextElement licenseName;
+    private TextElement licenseURL;
     private Date validUntil;
     private Person rightsHolder;
 
@@ -18,7 +20,7 @@ public class License implements Serializable {
      * 
      * @return value of the feature
      */
-    public String getLicenseName() {
+    public TextElement getLicenseName() {
 	return licenseName;
     }
 
@@ -30,7 +32,7 @@ public class License implements Serializable {
      * 
      * @return the {@link License} URL
      */
-    public String getLicenseURL() {
+    public TextElement getLicenseURL() {
 	return licenseURL;
     }
 
@@ -57,7 +59,7 @@ public class License implements Serializable {
      * 
      * @param licenseName value to set into the feature
      */
-    public void setLicenseName(String licenseName) {
+    public void setLicenseName(TextElement licenseName) {
 	this.licenseName = licenseName;
     }
 
@@ -66,7 +68,7 @@ public class License implements Serializable {
      * 
      * @param licenseURL to set into the feature
      */
-    public void setLicenseURL(String licenseURL) {
+    public void setLicenseURL(TextElement licenseURL) {
 	this.licenseURL = licenseURL;
     }
 

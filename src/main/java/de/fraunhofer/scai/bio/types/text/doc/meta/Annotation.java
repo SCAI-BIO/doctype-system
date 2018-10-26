@@ -15,6 +15,8 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 /**
  * @author klein
  *
@@ -23,8 +25,8 @@ public class Annotation {
 
     private int startOffset;
     private int endOffset;
-    private String annotationType;
-    private String annotationText;
+    private TextElement annotationType;
+    private TextElement annotationText;
 
     private Provenance provenance;
     
@@ -73,28 +75,28 @@ public class Annotation {
     /**
      * @return the annotationType
      */
-    public String getAnnotationType() {
+    public TextElement getAnnotationType() {
 	return annotationType;
     }
 
     /**
      * @param annotationType the annotationType to set
      */
-    public void setAnnotationType(String annotationType) {
+    public void setAnnotationType(TextElement annotationType) {
 	this.annotationType = annotationType;
     }
 
     /**
      * @return the annotationText
      */
-    public String getAnnotationText() {
+    public TextElement getAnnotationText() {
 	return annotationText;
     }
 
     /**
      * @param annotationText the annotationText to set
      */
-    public void setAnnotationText(String annotationText) {
+    public void setAnnotationText(TextElement annotationText) {
 	this.annotationText = annotationText;
     }
 

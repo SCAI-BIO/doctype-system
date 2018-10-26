@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 /**
  * Reference to cited literature.
  */
@@ -31,8 +33,8 @@ public class Reference implements Serializable {
     private static final long serialVersionUID = 4484585069783542995L;
     private List<Author> authors;
     private Date date;
-    private String referenceDoi;
-    private String isbn;
+    private TextElement referenceDoi;
+    private TextElement isbn;
     private Title referenceTitle;
 
     /**
@@ -76,7 +78,7 @@ public class Reference implements Serializable {
      * 
      * @return the Digital Object Identifier of the {@link Reference}
      */
-    public String getDoi() {
+    public TextElement getDoi() {
 	return referenceDoi;
     }
 
@@ -87,7 +89,7 @@ public class Reference implements Serializable {
      * 
      * @return the ISBN of the {@link Reference}
      */
-    public String getIsbn() {
+    public TextElement getIsbn() {
 	return isbn;
     }
 
@@ -127,7 +129,7 @@ public class Reference implements Serializable {
      * 
      * @param doi the Digital Object Identifier of the {@link Reference}
      */
-    public void setDoi(String doi) {
+    public void setDoi(TextElement doi) {
 	this.referenceDoi = doi;
     }
 
@@ -138,7 +140,7 @@ public class Reference implements Serializable {
      * 
      * @param isbn the ISBN of the {@link Reference} to set
      */
-    public void setIsbn(String isbn) {
+    public void setIsbn(TextElement isbn) {
 	this.isbn = isbn;
     }
 
