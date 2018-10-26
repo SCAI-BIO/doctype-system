@@ -30,9 +30,10 @@ public class Section implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -2516877768148991422L;
-    private List<SubSection> subSections;
     private TextElement sectionRhetorical;
     private TextElement sectionTitle;
+    private List<Paragraph> paragraphs;
+    private int depth = 0;
     
     /**
      * @return the rhetorical
@@ -62,27 +63,37 @@ public class Section implements Serializable {
         this.sectionTitle = sectionTitle;
     }
 
-    /**
-     * @return the subSections
-     */
-    public List<SubSection> getSubSections() {
-	return subSections;
+    public List<Paragraph> getParagraphs() {
+	return paragraphs;
     }
 
     /**
-     * @param subSections the subSections to set
+     * @param paragraph the {@link Paragraph} to set
      */
-    public void addSubSection(SubSection subSection) {
-	if (this.subSections == null)
-	    this.subSections = new ArrayList<SubSection>();
-	this.subSections.add(subSection);
-    }
-    
-    /**
-     * @param subSections the subSections to set
-     */
-    public void setSubSections(List<SubSection> subSections) {
-	this.subSections = subSections;
+    public void addParagraph(Paragraph paragraph) {
+	if (this.paragraphs == null)
+	    this.paragraphs = new ArrayList<Paragraph>();
+	this.paragraphs.add(paragraph);
     }
 
+    /**
+     * @param paragraphs the paragraphs to set
+     */
+    public void setParagraphs(List<Paragraph> paragraphs) {
+	this.paragraphs = paragraphs;
+    }
+
+    /**
+     * @return the depth
+     */
+    public int getDepth() {
+	return depth;
+    }
+
+    /**
+     * @param depth the depth to set
+     */
+    public void setDepth(int depth) {
+	this.depth = depth;
+    }
 }

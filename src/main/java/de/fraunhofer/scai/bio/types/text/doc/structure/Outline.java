@@ -20,12 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
-import de.fraunhofer.scai.bio.types.text.doc.container.Part;
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
-import de.fraunhofer.scai.bio.types.text.doc.container.SubSection;
-import de.fraunhofer.scai.bio.types.text.doc.container.SubSubSection;
-
 /**
  * Specifies the document outline. Examples are chapters, sections, and so on.
  * The outline-order of common (large) books is Part, Chapter, Section,
@@ -45,11 +39,9 @@ public class Outline implements Serializable {
     List<String> numbering;
     String rhetorical;
 
-    private List<Part> parts;
-    private Map<Part, List<Chapter>> chapters;
-    private Map<Chapter, List<Section>> sections;
-    private Map<Section, List<SubSection>> subSections;
-    private Map<SubSection, List<SubSubSection>> subSubSections;
+    private List<String> parts;
+    private Map<String, List<String>> chapters;
+    private Map<String, List<String>> sections;
 
     /**
      * 
@@ -64,7 +56,7 @@ public class Outline implements Serializable {
     /**
      * @return the chapters
      */
-    public Map<Part, List<Chapter>> getChapters() {
+    public Map<String, List<String>> getChapters() {
 	return chapters;
     }
 
@@ -82,7 +74,7 @@ public class Outline implements Serializable {
     /**
      * @return the parts
      */
-    public List<Part> getParts() {
+    public List<String> getParts() {
 	return parts;
     }
 
@@ -99,23 +91,10 @@ public class Outline implements Serializable {
     /**
      * @return the sections
      */
-    public Map<Chapter, List<Section>> getSections() {
+    public Map<String, List<String>> getSections() {
 	return sections;
     }
 
-    /**
-     * @return the subSections
-     */
-    public Map<Section, List<SubSection>> getSubSections() {
-	return subSections;
-    }
-
-    /**
-     * @return the subSubSections
-     */
-    public Map<SubSection, List<SubSubSection>> getSubSubSections() {
-	return subSubSections;
-    }
 
     /**
      * @return the titleText
@@ -127,7 +106,7 @@ public class Outline implements Serializable {
     /**
      * @param chapters the chapters to set
      */
-    public void setChapters(Map<Part, List<Chapter>> chapters) {
+    public void setChapters(Map<String, List<String>> chapters) {
 	this.chapters = chapters;
     }
 
@@ -144,7 +123,7 @@ public class Outline implements Serializable {
     /**
      * @param parts the parts to set
      */
-    public void setParts(List<Part> parts) {
+    public void setParts(List<String> parts) {
 	this.parts = parts;
     }
 
@@ -161,23 +140,10 @@ public class Outline implements Serializable {
     /**
      * @param sections the sections to set
      */
-    public void setSections(Map<Chapter, List<Section>> sections) {
+    public void setSections(Map<String, List<String>> sections) {
 	this.sections = sections;
     }
 
-    /**
-     * @param subSections the subSections to set
-     */
-    public void setSubSections(Map<Section, List<SubSection>> subSections) {
-	this.subSections = subSections;
-    }
-
-    /**
-     * @param subSubSections the subSubSections to set
-     */
-    public void setSubSubSections(Map<SubSection, List<SubSubSection>> subSubSections) {
-	this.subSubSections = subSubSections;
-    }
 
     /**
      * @param titleText the titleText to set

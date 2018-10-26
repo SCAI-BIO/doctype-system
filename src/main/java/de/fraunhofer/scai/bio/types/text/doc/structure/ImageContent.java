@@ -2,7 +2,6 @@
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
-import java.util.List;
 
 /** 
  * 
@@ -19,7 +18,7 @@ public class ImageContent implements Serializable {
     float compressionLevel;
     int bitDepth;
     String colorModel;
-    List<?> contents;
+    byte[] content;
 
     /**
      * getter for bitDepth - gets
@@ -56,8 +55,8 @@ public class ImageContent implements Serializable {
      * 
      * @return the contents
      */
-    public List<?> getContents() {
-	return contents;
+    public byte[] getContent() {
+	return content;
     }
 
     // *--------------*
@@ -122,8 +121,8 @@ public class ImageContent implements Serializable {
      * 
      * @param contents the contents
      */
-    public void setContents(List<?> contents) {
-	this.contents = contents;
+    public void setContent(byte[] content) {
+	this.content = content;
     }
 
     /**

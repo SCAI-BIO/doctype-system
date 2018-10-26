@@ -1,13 +1,24 @@
 /**
  * 
  */
-package de.fraunhofer.scai.bio.types.text.doc.structure;
+package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.structure.CaptionedBox;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Code;
+import de.fraunhofer.scai.bio.types.text.doc.structure.DataTable;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Formula;
+import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Outline;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Quotation;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Table;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author tadams
@@ -25,7 +36,6 @@ public class StructureElement implements Serializable {
     private Figure figure;
     private Formula formula;
     private ImageContent imageContent;
-    private ItemsList itemsList;
     private Outline outline;
     private Quotation quotation;
     private Sentence sentence;
@@ -123,20 +133,6 @@ public class StructureElement implements Serializable {
      */
     public void setImageContent(ImageContent imageContent) {
         this.imageContent = imageContent;
-    }
-
-    /**
-     * @return the itemsList
-     */
-    public ItemsList getItemsList() {
-        return itemsList;
-    }
-
-    /**
-     * @param itemsList the itemsList to set
-     */
-    public void setItemsList(ItemsList itemsList) {
-        this.itemsList = itemsList;
     }
 
     /**

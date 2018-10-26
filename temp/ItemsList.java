@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.structure;
+package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * An enumeration of items.
@@ -28,14 +30,14 @@ public class ItemsList implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 3151038534425542434L;
-    private List<String> items;
+    private List<TextElement> items;
 
     /**
      * getter for items - gets Items of the list. Every item is a text string.
      * 
      * @return value of the feature
      */
-    public java.util.List<String> getItems() {
+    public java.util.List<TextElement> getItems() {
 	return this.items;
     }
     

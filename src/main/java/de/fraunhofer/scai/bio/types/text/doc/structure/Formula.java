@@ -28,4 +28,20 @@ public class Formula implements Serializable {
      */
     private static final long serialVersionUID = -226821519360592861L;
 
+    private String formula;
+
+    /**
+     * @return the formula
+     */
+    public String getFormula() {
+	return formula;
+    }
+
+    /**
+     * @param formula the formula to set
+     */
+    public void setFormula(String formula) {
+	this.formula = formula;
+    }
+    
 }

@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-import de.fraunhofer.scai.bio.types.text.doc.structure.StructureElement;
 
 /**
  * A self-contained unit of discourse that deals with a particular point or

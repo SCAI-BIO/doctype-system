@@ -29,4 +29,21 @@ public class Code implements Serializable {
      */
     private static final long serialVersionUID = -871863145178162566L;
 
+    private String code;
+
+    /**
+     * @return the code
+     */
+    public String getCode() {
+	return code;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(String code) {
+	this.code = code;
+    }
+    
+    
 }
