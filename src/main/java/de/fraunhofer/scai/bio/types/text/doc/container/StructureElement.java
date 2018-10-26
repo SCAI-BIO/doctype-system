@@ -43,13 +43,6 @@ public class StructureElement implements Serializable {
     private TextElement textElement;
     
     private List<Annotation> annotations;    
-    
-    /**
-     * 
-     */
-    public StructureElement() {
-	// TODO Auto-generated constructor stub
-    }
 
     /**
      * @return the captionedBox

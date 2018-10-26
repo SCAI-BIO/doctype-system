@@ -25,19 +25,20 @@ import de.fraunhofer.scai.bio.types.text.doc.container.Section;
  * Abstract of a document.
  */
 public class Abstract implements Serializable {
-    
+
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = 3867798877915368582L;
     private List<Section> abstractSections;
+
     /**
      * @return the abstractSections
      */
     public List<Section> getAbstractSections() {
 	return abstractSections;
     }
-    
+
     /**
      * @param abstractSections the abstractSections to set
      */
@@ -46,7 +47,7 @@ public class Abstract implements Serializable {
 	    this.abstractSections = new ArrayList<Section>();
 	this.abstractSections.add(abstractSection);
     }
-    
+
     /**
      * @param abstractSections the abstractSections to set
      */
