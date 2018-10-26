@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.meta;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.License;
 
 /**
  * @author marc
@@ -51,11 +51,11 @@ public class Provenance implements Serializable {
      * 
      */
     private static final long serialVersionUID = -2419659801198983422L;
-    License license;
-    TextElement version;
-    TextElement source; // file, database, ...
+    String license;
+    String version;
+    String source; // file, database, ...
     Date date;
-    TextElement collection; // eg. a collection of documents
+    String collection; // eg. a collection of documents
 
     /**
      * constructor
@@ -63,7 +63,7 @@ public class Provenance implements Serializable {
     public Provenance() {
     }
 
-    public TextElement getCollection() {
+    public String getCollection() {
 	return collection;
     }
 
@@ -71,20 +71,20 @@ public class Provenance implements Serializable {
 	return date;
     }
 
-    public License getLicense() {
+    public String getLicense() {
 	return license;
     }
 
-    public TextElement getSource() {
+    public String getSource() {
 	return source;
     }
 
-    public TextElement getVersion() {
+    public String getVersion() {
 	return version;
     }
 
 
-    public void setCollection(TextElement corpus) {
+    public void setCollection(String corpus) {
 	this.collection = corpus;
     }
 
@@ -92,15 +92,15 @@ public class Provenance implements Serializable {
 	this.date = date;
     }
 
-    public void setLicense(License license) {
+    public void setLicense(String license) {
 	this.license = license;
     }
 
-    public void setSource(TextElement source) {
+    public void setSource(String source) {
 	this.source = source;
     }
 
-    public void setVersion(TextElement version) {
+    public void setVersion(String version) {
 	this.version = version;
     }
 }
