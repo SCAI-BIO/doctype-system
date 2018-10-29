@@ -15,16 +15,21 @@
  */
 package de.fraunhofer.scai.bio;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
 
 /**
@@ -41,12 +46,16 @@ public class Document {
 
     private Provenance provenance;
     private DocumentElement documentElement;
+    
+    @JsonIgnore
+    private Map<String, StructureElement> structureElementIndex;	// a quick access to all StructureElments and their Annotations
 
     /**
      * constructor
      */
     public Document() {
 	this.provenance = new Provenance();
+	this.setStructureElementIndex(new TreeMap<String, StructureElement>());
     }
 
     /**********************************************************************
@@ -112,5 +121,18 @@ public class Document {
 	    return null;
 	}
     }
+
+		public Map<String, StructureElement> getStructureElementIndex() {
+			return structureElementIndex;
+		}
+
+		public void setStructureElementIndex(Map<String, StructureElement> structureElementIndex) {
+			this.structureElementIndex = structureElementIndex;
+		}
+
+
+		public void addToStructureElementIndex(String key, StructureElement structureElement) {
+			this.structureElementIndex.put(key, structureElement);
+		}
 
 }
