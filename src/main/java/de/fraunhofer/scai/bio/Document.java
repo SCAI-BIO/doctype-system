@@ -15,9 +15,6 @@
  */
 package de.fraunhofer.scai.bio;
 
-import java.util.List;
-import java.util.UUID;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -42,16 +39,13 @@ public class Document {
 
     protected static Logger logger = LoggerFactory.getLogger(Document.class);
 
-    String identifier;
     private Provenance provenance;
     private DocumentElement documentElement;
-    List<String> documentType;
 
     /**
      * constructor
      */
     public Document() {
-	this.identifier = UUID.randomUUID().toString();
 	this.provenance = new Provenance();
     }
 
@@ -63,16 +57,8 @@ public class Document {
 	return documentElement;
     }
 
-    public String getIdentifier() {
-	return identifier;
-    }
-
     public Provenance getProvenance() {
 	return provenance;
-    }
-
-    public void setIdentifier(String identifier) {
-	this.identifier = identifier;
     }
 
     public void setProvenance(Provenance provenance) {
