@@ -19,9 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 /**
  * Bibliographic informations about the document itself. Like titleText, author,
  * etc.
@@ -37,9 +34,9 @@ public class Bibliographic implements Serializable {
     private Date pubDate;
     private List<License> licenses;
     private Title title;
-    private TextElement language;
-    private TextElement source;
-    private List<TextElement> issns;
+    private String language;
+    private String source;
+    private List<String> issns;
 
     /**
      * @param author the {@link Author} to add to the {@link List} of authors
@@ -86,14 +83,14 @@ public class Bibliographic implements Serializable {
     /**
      * @return the issn
      */
-    public List<TextElement> getIssn() {
+    public List<String> getIssn() {
 	return issns;
     }
 
     /**
      * @return the language
      */
-    public TextElement getLanguage() {
+    public String getLanguage() {
 	return language;
     }
 
@@ -124,7 +121,7 @@ public class Bibliographic implements Serializable {
     /**
      * @return the source
      */
-    public TextElement getSource() {
+    public String getSource() {
 	return source;
     }
 
@@ -152,20 +149,20 @@ public class Bibliographic implements Serializable {
     /**
      * @param issn the issn to set
      */
-    public void addIssn(TextElement issn) {
+    public void addIssn(String issn) {
 	if (this.issns == null)
-	    this.issns = new ArrayList<TextElement>();
+	    this.issns = new ArrayList<String>();
 	this.issns.add(issn);
     }
     
     /**
      * @param issn the issn to set
      */
-    public void setIssns(List<TextElement> issns) {
+    public void setIssns(List<String> issns) {
 	this.issns = issns;
     }
 
-    public void setLanguage(TextElement language) {
+    public void setLanguage(String language) {
 	this.language = language;
     }
 
@@ -183,7 +180,7 @@ public class Bibliographic implements Serializable {
 	this.pubDate = pubDate;
     }
 
-    public void setSource(TextElement source) {
+    public void setSource(String source) {
 	this.source = source;
 
     }
