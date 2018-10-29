@@ -33,14 +33,14 @@ public class Paragraph implements Serializable {
     private List<StructureElement> structureElements;
 
     /**
-     * @return the {@link List} of {@link StructureElement}s
+     * @return the structureElements
      */
-    public List<StructureElement> geStructureElements() {
+    public List<StructureElement> getStructureElements() {
 	return structureElements;
     }
 
     /**
-     * @param structureElement the {@link StructureElement} to set
+     * @param structureElements the structureElements to set
      */
     public void addStructureElement(StructureElement structureElement) {
 	if (this.structureElements == null)
@@ -49,7 +49,7 @@ public class Paragraph implements Serializable {
     }
     
     /**
-     * @param structureElements the {@link List} of {@link StructureElement}s to set
+     * @param structureElements the structureElements to set
      */
     public void setStructureElements(List<StructureElement> structureElements) {
 	this.structureElements = structureElements;

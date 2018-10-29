@@ -21,8 +21,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Table;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
- * @author tadams
- * Only set 1 field!
+ * @author tadams Only set 1 field!
  */
 public class StructureElement implements Serializable {
 
@@ -41,161 +40,161 @@ public class StructureElement implements Serializable {
     private Sentence sentence;
     private Table table;
     private TextElement textElement;
-    
-    private List<Annotation> annotations;    
+
+    private List<Annotation> annotations;
 
     /**
      * @return the captionedBox
      */
     public CaptionedBox getCaptionedBox() {
-        return captionedBox;
+	return captionedBox;
     }
 
     /**
      * @param captionedBox the captionedBox to set
      */
     public void setCaptionedBox(CaptionedBox captionedBox) {
-        this.captionedBox = captionedBox;
+	this.captionedBox = captionedBox;
     }
 
     /**
      * @return the code
      */
     public Code getCode() {
-        return code;
+	return code;
     }
 
     /**
      * @param code the code to set
      */
     public void setCode(Code code) {
-        this.code = code;
+	this.code = code;
     }
 
     /**
      * @return the dataTable
      */
     public DataTable getDataTable() {
-        return dataTable;
+	return dataTable;
     }
 
     /**
      * @param dataTable the dataTable to set
      */
     public void setDataTable(DataTable dataTable) {
-        this.dataTable = dataTable;
+	this.dataTable = dataTable;
     }
 
     /**
      * @return the figure
      */
     public Figure getFigure() {
-        return figure;
+	return figure;
     }
 
     /**
      * @param figure the figure to set
      */
     public void setFigure(Figure figure) {
-        this.figure = figure;
+	this.figure = figure;
     }
 
     /**
      * @return the formula
      */
     public Formula getFormula() {
-        return formula;
+	return formula;
     }
 
     /**
      * @param formula the formula to set
      */
     public void setFormula(Formula formula) {
-        this.formula = formula;
+	this.formula = formula;
     }
 
     /**
      * @return the imageContent
      */
     public ImageContent getImageContent() {
-        return imageContent;
+	return imageContent;
     }
 
     /**
      * @param imageContent the imageContent to set
      */
     public void setImageContent(ImageContent imageContent) {
-        this.imageContent = imageContent;
+	this.imageContent = imageContent;
     }
 
     /**
      * @return the outline
      */
     public Outline getOutline() {
-        return outline;
+	return outline;
     }
 
     /**
      * @param outline the outline to set
      */
     public void setOutline(Outline outline) {
-        this.outline = outline;
+	this.outline = outline;
     }
 
     /**
      * @return the quotation
      */
     public Quotation getQuotation() {
-        return quotation;
+	return quotation;
     }
 
     /**
      * @param quotation the quotation to set
      */
     public void setQuotation(Quotation quotation) {
-        this.quotation = quotation;
+	this.quotation = quotation;
     }
 
     /**
      * @return the sentence
      */
     public Sentence getSentence() {
-        return sentence;
+	return sentence;
     }
 
     /**
      * @param sentence the sentence to set
      */
     public void setSentence(Sentence sentence) {
-        this.sentence = sentence;
+	this.sentence = sentence;
     }
 
     /**
      * @return the table
      */
     public Table getTable() {
-        return table;
+	return table;
     }
 
     /**
      * @param table the table to set
      */
     public void setTable(Table table) {
-        this.table = table;
+	this.table = table;
     }
 
     /**
      * @return the textElement
      */
     public TextElement getTextElement() {
-        return textElement;
+	return textElement;
     }
 
     /**
      * @param textElement the textElement to set
      */
     public void setTextElement(TextElement textElement) {
-        this.textElement = textElement;
+	this.textElement = textElement;
     }
 
     /**
@@ -213,7 +212,7 @@ public class StructureElement implements Serializable {
 	    this.annotations = new ArrayList<Annotation>();
 	this.annotations.add(annotation);
     }
-    
+
     /**
      * @param annotations the annotations to set
      */
@@ -221,25 +220,36 @@ public class StructureElement implements Serializable {
 	this.annotations = annotations;
     }
 
-		/**
-		 * go through all fields and extract from the non-empty one the text
-		 * @return <code>String</code>
-		 */
-		public String getText() {
-			if(captionedBox != null) return captionedBox.toString();
-			if(code != null) return code.toString();
-			if(dataTable != null) return dataTable.toString();
-	    if(figure != null) return figure.toString();
-	    if(formula != null) return formula.toString();
-	    if(imageContent != null) return imageContent.toString();
-	    if(outline != null) return outline.toString();
-	    if(quotation != null) return quotation.toString();
-	    if(sentence != null) return sentence.toString();
-	    if(table != null) return table.toString();
-	    if(textElement != null) return textElement.toString();
-			
-			return null;
-		}
+    /**
+     * go through all fields and extract from the non-empty one the text
+     * 
+     * @return <code>String</code>
+     */
+    public String getText() {
+	if (captionedBox != null)
+	    return captionedBox.toString();
+	if (code != null)
+	    return code.toString();
+	if (dataTable != null)
+	    return dataTable.toString();
+	if (figure != null)
+	    return figure.toString();
+	if (formula != null)
+	    return formula.toString();
+	if (imageContent != null)
+	    return imageContent.toString();
+	if (outline != null)
+	    return outline.toString();
+	if (quotation != null)
+	    return quotation.toString();
+	if (sentence != null)
+	    return sentence.toString();
+	if (table != null)
+	    return table.toString();
+	if (textElement != null)
+	    return textElement.toString();
 
+	return null;
+    }
 
 }

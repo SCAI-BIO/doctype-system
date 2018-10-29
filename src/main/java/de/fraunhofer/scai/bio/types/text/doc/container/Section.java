@@ -34,33 +34,33 @@ public class Section implements Serializable {
     private TextElement sectionTitle;
     private List<Paragraph> paragraphs;
     private int depth = 0;
-    
+
     /**
      * @return the rhetorical
      */
     public TextElement getRhetorical() {
-        return sectionRhetorical;
+	return sectionRhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
     public void setRhetorical(TextElement sectionRhetorical) {
-        this.sectionRhetorical = sectionRhetorical;
+	this.sectionRhetorical = sectionRhetorical;
     }
 
     /**
      * @return the sectionTitle
      */
     public TextElement getTitle() {
-        return sectionTitle;
+	return sectionTitle;
     }
 
     /**
      * @param sectionTitle the sectionTitle to set
      */
     public void setTitle(TextElement sectionTitle) {
-        this.sectionTitle = sectionTitle;
+	this.sectionTitle = sectionTitle;
     }
 
     public List<Paragraph> getParagraphs() {
@@ -96,4 +96,5 @@ public class Section implements Serializable {
     public void setDepth(int depth) {
 	this.depth = depth;
     }
+
 }
