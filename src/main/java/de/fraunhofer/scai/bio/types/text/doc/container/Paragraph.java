@@ -19,8 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-
 /**
  * A self-contained unit of discourse that deals with a particular point or
  * idea. (DoCO)
@@ -35,14 +33,14 @@ public class Paragraph implements Serializable {
     private List<StructureElement> structureElements;
 
     /**
-     * @return the paragraphSentences
+     * @return the {@link List} od {@link StructureElement}s
      */
     public List<StructureElement> geStructureElements() {
 	return structureElements;
     }
 
     /**
-     * @param paragraphSentence the {@link Sentence} to set
+     * @param structureElement the {@link StructureElement} to set
      */
     public void addStructureElement(StructureElement structureElement) {
 	if (this.structureElements == null)
@@ -51,7 +49,7 @@ public class Paragraph implements Serializable {
     }
     
     /**
-     * @param paragraphSentences the paragraphSentences to set
+     * @param structureElements the {@link StructureElement}s to set
      */
     public void setStructureElements(List<StructureElement> structureElements) {
 	this.structureElements = structureElements;
