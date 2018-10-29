@@ -1,0 +1,136 @@
+{
+  "provenance" : {
+    "license" : null,
+    "version" : null,
+    "source" : "/home/klein/temp/testcorpus",
+    "date" : 1540816590723,
+    "collection" : "testJK"
+  },
+  "documentElement" : {
+    "metaElement" : {
+      "bibliographic" : {
+        "documentAbstract" : {
+          "abstractSections" : [ {
+            "paragraphs" : [ {
+              "structureElements" : [ {
+                "captionedBox" : null,
+                "code" : null,
+                "dataTable" : null,
+                "figure" : null,
+                "formula" : null,
+                "imageContent" : null,
+                "outline" : null,
+                "quotation" : null,
+                "sentence" : null,
+                "table" : null,
+                "textElement" : {
+                  "text" : "[No abstract available]"
+                },
+                "annotations" : null,
+                "text" : "[No abstract available]"
+              } ]
+            } ],
+            "depth" : 0,
+            "rhetorical" : {
+              "text" : "no abstract available"
+            },
+            "title" : null
+          } ]
+        },
+        "authors" : [ {
+          "author" : {
+            "surname" : {
+              "text" : "Williams"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Cao"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Tsujishima"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : null
+            },
+            "degree" : null
+          }
+        } ],
+        "pubDate" : {
+          "day" : 17,
+          "month" : 7,
+          "year" : 2000,
+          "date" : 966512196474
+        },
+        "licenses" : null,
+        "title" : {
+          "titleText" : {
+            "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
+          },
+          "subtitleText" : null
+        },
+        "language" : {
+          "text" : "eng"
+        },
+        "source" : {
+          "text" : "Angewandte Chemie (International ed. in English). 2000 Aug;39(14):2540-2544. "
+        },
+        "issn" : [ {
+          "text" : "1521-3773"
+        } ],
+        "license" : null,
+        "author" : {
+          "author" : {
+            "surname" : {
+              "text" : "Williams"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
+            },
+            "degree" : null
+          }
+        }
+      },
+      "bibliography" : null,
+      "keywords" : null,
+      "concept" : {
+        "altLabel" : null,
+        "hiddenLabel" : null,
+        "identifier" : "10941129",
+        "identifierSource" : "http://www.ncbi.nlm.nih.gov/pubmed/",
+        "identifierWithSource" : null,
+        "altLabels" : [ "PII:10.1002/1521-3773(20000717)39:14<2540::AID-ANIE2540>3.0.CO;2-R" ],
+        "hiddenLabels" : null,
+        "prefLabel" : "PMID:10941129.1"
+      }
+    },
+    "backMatter" : null,
+    "bodyMatter" : null,
+    "frontMatter" : {
+      "titleText" : {
+        "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
+      }
+    }
+  },
+  "docType" : null
+}
