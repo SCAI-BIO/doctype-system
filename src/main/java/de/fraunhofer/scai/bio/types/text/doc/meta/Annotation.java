@@ -18,7 +18,6 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 import java.io.Serializable;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author klein
@@ -32,8 +31,8 @@ public class Annotation implements Serializable {
     private static final long serialVersionUID = -7162485139551328806L;
     private int startOffset;
     private int endOffset;
-    private TextElement annotationType;
-    private TextElement annotationText;
+    private String annotationType;
+    private String annotationText;
 
     private Provenance provenance;
     
@@ -82,28 +81,28 @@ public class Annotation implements Serializable {
     /**
      * @return the annotationType
      */
-    public TextElement getAnnotationType() {
+    public String getAnnotationType() {
 	return annotationType;
     }
 
     /**
      * @param annotationType the annotationType to set
      */
-    public void setAnnotationType(TextElement annotationType) {
+    public void setAnnotationType(String annotationType) {
 	this.annotationType = annotationType;
     }
 
     /**
      * @return the annotationText
      */
-    public TextElement getAnnotationText() {
+    public String getAnnotationText() {
 	return annotationText;
     }
 
     /**
      * @param annotationText the annotationText to set
      */
-    public void setAnnotationText(TextElement annotationText) {
+    public void setAnnotationText(String annotationText) {
 	this.annotationText = annotationText;
     }
 
