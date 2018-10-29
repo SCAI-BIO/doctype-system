@@ -19,8 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 /**
  * @author klein
  *
@@ -31,24 +29,24 @@ public class Concept implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 7443533790762224432L;
-    private TextElement preferredLabel;
-    private TextElement altLabel;
-    private TextElement hiddenLabel;
-    private TextElement identifier;
+    private String preferredLabel;
+    private String altLabel;
+    private String hiddenLabel;
+    private String identifier;
 
-    private TextElement identifierSource;
+    private String identifierSource;
 
-    private TextElement[] identifierWithSource;
-    private List<TextElement> altLabels;
-    private List<TextElement> hiddenLabels;
+    private String[] identifierWithSource;
+    private List<String> altLabels;
+    private List<String> hiddenLabels;
 
     /**
      * 
      * @param altLabel the alternate label to set
      */
-    public void addAltLabel(TextElement altLabel) {
+    public void addAltLabel(String altLabel) {
 	if (altLabels == null)
-	    altLabels = new ArrayList<TextElement>();
+	    altLabels = new ArrayList<String>();
 	altLabels.add(altLabel);
     }
 
@@ -58,45 +56,45 @@ public class Concept implements Serializable {
      * @param index       index
      * @param hiddenLabel hidden label
      */
-    public void addHiddenLabel(int index, TextElement hiddenLabel) {
+    public void addHiddenLabel(int index, String hiddenLabel) {
 	if (this.hiddenLabels == null)
-	    this.hiddenLabels = new ArrayList<TextElement>();
+	    this.hiddenLabels = new ArrayList<String>();
 	this.hiddenLabels.add(hiddenLabel);
     }
     
-    public TextElement getAltLabel() {
+    public String getAltLabel() {
 	return this.altLabel;
     }
 
-    public List<TextElement> getAltLabels() {
+    public List<String> getAltLabels() {
 	return this.altLabels;
     }
 
-    public TextElement getHiddenLabel() {
+    public String getHiddenLabel() {
 	return this.hiddenLabel;
     }
 
-    public List<TextElement> getHiddenLabels() {
+    public List<String> getHiddenLabels() {
 	return this.hiddenLabels;
     }
 
-    public TextElement getIdentifier() {
+    public String getIdentifier() {
 	return this.identifier;
     }
 
-    public TextElement getIdentifierSource() {
+    public String getIdentifierSource() {
 	return this.identifierSource;
     }
 
-    public TextElement[] getIdentifierWithSource() {
+    public String[] getIdentifierWithSource() {
 	return this.identifierWithSource;
     }
 
-    public TextElement getPrefLabel() {
+    public String getPrefLabel() {
 	return this.preferredLabel;
     }
 
-    public void setAltLabel(TextElement altlabel) {
+    public void setAltLabel(String altlabel) {
 	this.altLabel = altlabel;
     }
 
@@ -105,11 +103,11 @@ public class Concept implements Serializable {
      * 
      * @param altLabels the {@link List} of Labels.
      */
-    public void setAltLabels(List<TextElement> altLabels) {
+    public void setAltLabels(List<String> altLabels) {
 	this.altLabels = altLabels;
     }
 
-    public void setHiddenLabel(TextElement hiddenlabel) {
+    public void setHiddenLabel(String hiddenlabel) {
 	this.hiddenLabel = hiddenlabel;
     }
 
@@ -117,23 +115,23 @@ public class Concept implements Serializable {
      * 
      * @param hiddenLabels the {@link List} of hidden labels to set
      */
-    public void setHiddenLabels(List<TextElement> hiddenLabels) {
+    public void setHiddenLabels(List<String> hiddenLabels) {
 	this.hiddenLabels = hiddenLabels;
     }
 
-    public void setIdentifier(TextElement identifier) {
+    public void setIdentifier(String identifier) {
 	this.identifier = identifier;
     }
 
-    public void setIdentifierSource(TextElement identifierSource) {
+    public void setIdentifierSource(String identifierSource) {
 	this.identifierSource = identifierSource;
     }
 
-    public void setIdentifierWithSource(TextElement[] identifierwithsource) {
+    public void setIdentifierWithSource(String[] identifierwithsource) {
 	this.identifierWithSource = identifierwithsource;
     }
 
-    public void setPrefLabel(TextElement label) {
+    public void setPrefLabel(String label) {
 	this.preferredLabel = label;
     }
 
