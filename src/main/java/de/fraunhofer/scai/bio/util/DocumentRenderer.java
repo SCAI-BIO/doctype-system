@@ -15,7 +15,6 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -43,7 +42,7 @@ public class DocumentRenderer {
      * @param doc <code>Document</code>
      * @return String of conent words seperated by blanks 
      */
-    public String renderTextContents(Document doc) {
+    public static String renderTextContents(Document doc) {
 
 	StringBuilder sb = new StringBuilder();
 	HashSet<String> contents = new HashSet<String>();	
