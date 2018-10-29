@@ -3,7 +3,7 @@
     "license" : null,
     "version" : null,
     "source" : "/home/klein/temp/testcorpus",
-    "date" : 1540816217524,
+    "date" : 1540816590723,
     "collection" : "testJK"
   },
   "documentElement" : {
@@ -24,15 +24,15 @@
                 "sentence" : null,
                 "table" : null,
                 "textElement" : {
-                  "text" : "The secretory granules of neuroendocrine cells, which function as an inositol (1,4,5)-trisphosphate-sensitive intracellular Ca2+ store, contain both the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel and the high-capacity low-affinity Ca2+ storage proteins, chromogranins A and B. Chromogranins A and B, which exist in approximately 2 mm range in the secretory granules, can bind 50-100 mol of Ca2+/mol with dissociation constants of 2-4 mm. These proteins interact directly with the inositol (1,4,5)-trisphosphate receptor/ Ca2+ channel at the intragranular pH 5.5, not only changing the conformation of the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel but also modulating the channel activity. Given the homo- and heterotetrameric existence of both the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel and chromogranins A and B, these tetrameric proteins appear to interact, thus controlling the intracellular Ca2+ concentration."
+                  "text" : "[No abstract available]"
                 },
                 "annotations" : null,
-                "text" : "The secretory granules of neuroendocrine cells, which function as an inositol (1,4,5)-trisphosphate-sensitive intracellular Ca2+ store, contain both the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel and the high-capacity low-affinity Ca2+ storage proteins, chromogranins A and B. Chromogranins A and B, which exist in approximately 2 mm range in the secretory granules, can bind 50-100 mol of Ca2+/mol with dissociation constants of 2-4 mm. These proteins interact directly with the inositol (1,4,5)-trisphosphate receptor/ Ca2+ channel at the intragranular pH 5.5, not only changing the conformation of the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel but also modulating the channel activity. Given the homo- and heterotetrameric existence of both the inositol (1,4,5)-trisphosphate receptor/Ca2+ channel and chromogranins A and B, these tetrameric proteins appear to interact, thus controlling the intracellular Ca2+ concentration."
+                "text" : "[No abstract available]"
               } ]
             } ],
             "depth" : 0,
             "rhetorical" : {
-              "text" : "abstract available"
+              "text" : "no abstract available"
             },
             "title" : null
           } ]
@@ -40,28 +40,50 @@
         "authors" : [ {
           "author" : {
             "surname" : {
-              "text" : "Yoo"
+              "text" : "Williams"
             },
-            "forename" : {
-              "text" : "S H"
-            },
+            "forename" : null,
             "affiliation" : {
               "organization" : null,
-              "affiliationInfo" : [ "National Creative Research Initiative Center for Secretory Granule Research, Biomedical Research Center, Korea Advanced Institute of Science and Technology, Yu Sung Gu, Dae Jeon, 305-701, Korea." ]
+              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Cao"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Tsujishima"
+            },
+            "forename" : null,
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfo" : null
             },
             "degree" : null
           }
         } ],
         "pubDate" : {
-          "day" : 0,
-          "month" : 9,
+          "day" : 17,
+          "month" : 7,
           "year" : 2000,
-          "date" : 970313423033
+          "date" : 966512196474
         },
         "licenses" : null,
         "title" : {
           "titleText" : {
-            "text" : "Coupling of the IP3 receptor/Ca2+ channel with Ca2+ storage proteins chromogranins A and B in secretory granules."
+            "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
           },
           "subtitleText" : null
         },
@@ -69,105 +91,46 @@
           "text" : "eng"
         },
         "source" : {
-          "text" : "Trends in neurosciences. 2000 Sep;23(9):424-8. "
+          "text" : "Angewandte Chemie (International ed. in English). 2000 Aug;39(14):2540-2544. "
         },
-        "license" : null,
         "issn" : [ {
-          "text" : "0166-2236"
+          "text" : "1521-3773"
         } ],
+        "license" : null,
         "author" : {
           "author" : {
             "surname" : {
-              "text" : "Yoo"
+              "text" : "Williams"
             },
-            "forename" : {
-              "text" : "S H"
-            },
+            "forename" : null,
             "affiliation" : {
               "organization" : null,
-              "affiliationInfo" : [ "National Creative Research Initiative Center for Secretory Granule Research, Biomedical Research Center, Korea Advanced Institute of Science and Technology, Yu Sung Gu, Dae Jeon, 305-701, Korea." ]
+              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
             },
             "degree" : null
           }
         }
       },
       "bibliography" : null,
-      "keywords" : [ {
-        "rhetorical" : {
-          "text" : "Keywords"
-        },
-        "keywordList" : [ {
-          "text" : "Animals"
-        }, {
-          "text" : "Calcium Channels"
-        }, {
-          "text" : "Calcium Channels/metabolism"
-        }, {
-          "text" : "Chromogranin A"
-        }, {
-          "text" : "Chromogranins"
-        }, {
-          "text" : "Chromogranins/metabolism"
-        }, {
-          "text" : "Cytoplasmic Granules"
-        }, {
-          "text" : "Cytoplasmic Granules/metabolism"
-        }, {
-          "text" : "Inositol 1,4,5-Trisphosphate Receptors"
-        }, {
-          "text" : "Neurosecretory Systems"
-        }, {
-          "text" : "Neurosecretory Systems/cytology"
-        }, {
-          "text" : "Neurosecretory Systems"
-        }, {
-          "text" : "Neurosecretory Systems/metabolism"
-        }, {
-          "text" : "Receptors, Cytoplasmic and Nuclear"
-        }, {
-          "text" : "Receptors, Cytoplasmic and Nuclear/metabolism"
-        } ]
-      }, {
-        "rhetorical" : {
-          "text" : "Keywords"
-        },
-        "keywordList" : [ {
-          "text" : "Calcium Channels"
-        }, {
-          "text" : "Chromogranin A"
-        }, {
-          "text" : "Chromogranins"
-        }, {
-          "text" : "Inositol 1,4,5-Trisphosphate Receptors"
-        }, {
-          "text" : "Receptors, Cytoplasmic and Nuclear"
-        } ]
-      } ],
+      "keywords" : null,
       "concept" : {
         "altLabel" : null,
         "hiddenLabel" : null,
-        "identifier" : {
-          "text" : "10941192"
-        },
-        "identifierSource" : {
-          "text" : "http://www.ncbi.nlm.nih.gov/pubmed/"
-        },
+        "identifier" : "10941129",
+        "identifierSource" : "http://www.ncbi.nlm.nih.gov/pubmed/",
         "identifierWithSource" : null,
-        "altLabels" : [ {
-          "text" : "PII:S0166-2236(00)01621-0"
-        } ],
+        "altLabels" : [ "PII:10.1002/1521-3773(20000717)39:14<2540::AID-ANIE2540>3.0.CO;2-R" ],
         "hiddenLabels" : null,
-        "prefLabel" : {
-          "text" : "PMID:10941192.1"
-        }
+        "prefLabel" : "PMID:10941129.1"
       }
     },
     "backMatter" : null,
     "bodyMatter" : null,
     "frontMatter" : {
       "titleText" : {
-        "text" : "Coupling of the IP3 receptor/Ca2+ channel with Ca2+ storage proteins chromogranins A and B in secretory granules."
+        "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
       }
     }
-  }
+  },
+  "docType" : null
 }
