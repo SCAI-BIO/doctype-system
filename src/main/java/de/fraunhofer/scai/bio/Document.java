@@ -46,6 +46,7 @@ public class Document {
 
     private Provenance provenance;
     private DocumentElement documentElement;
+    private String docType;
     
     @JsonIgnore
     private Map<String, StructureElement> structureElementIndex;	// a quick access to all StructureElments and their Annotations
@@ -76,6 +77,14 @@ public class Document {
 
     public void setDocumentElement(DocumentElement documentElement) {
 	this.documentElement = documentElement;
+    }
+
+    public String getDocType() {
+	return docType;
+    }
+
+    public void setDocType(String docType) {
+	this.docType = docType;
     }
 
     /**
