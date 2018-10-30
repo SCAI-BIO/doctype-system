@@ -47,9 +47,10 @@ public class Document {
     private Provenance provenance;
     private DocumentElement documentElement;
     private String docType;
-    
+
     @JsonIgnore
-    private Map<String, StructureElement> structureElementIndex;	// a quick access to all StructureElments and their Annotations
+    private Map<String, StructureElement> structureElementIndex; // a quick access to all StructureElments and their
+								 // Annotations
 
     /**
      * constructor
@@ -120,8 +121,8 @@ public class Document {
 	// Convert object to JSON string
 	try {
 	    ObjectMapper myObjectMapper = new ObjectMapper();
-	    
-	    myObjectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+
+//	    myObjectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 	    return myObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
 
 	} catch (JsonProcessingException e) {
@@ -131,17 +132,16 @@ public class Document {
 	}
     }
 
-		public Map<String, StructureElement> getStructureElementIndex() {
-			return structureElementIndex;
-		}
+    public Map<String, StructureElement> getStructureElementIndex() {
+	return structureElementIndex;
+    }
 
-		public void setStructureElementIndex(Map<String, StructureElement> structureElementIndex) {
-			this.structureElementIndex = structureElementIndex;
-		}
+    public void setStructureElementIndex(Map<String, StructureElement> structureElementIndex) {
+	this.structureElementIndex = structureElementIndex;
+    }
 
-
-		public void addToStructureElementIndex(String key, StructureElement structureElement) {
-			this.structureElementIndex.put(key, structureElement);
-		}
+    public void addToStructureElementIndex(String key, StructureElement structureElement) {
+	this.structureElementIndex.put(key, structureElement);
+    }
 
 }

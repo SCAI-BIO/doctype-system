@@ -59,16 +59,6 @@ public class Bibliographic implements Serializable {
     }
 
     /**
-     * @return the first {@link Author} of list
-     */
-    public Author getAuthor() {
-	if (this.authors != null && !this.authors.isEmpty()) {
-	    return this.authors.get(0);
-	}
-	return null;
-    }
-
-    /**
      * @return the {@link List} of {@link Author}s
      */
     public List<Author> getAuthors() {
@@ -85,7 +75,7 @@ public class Bibliographic implements Serializable {
     /**
      * @return the issn
      */
-    public List<TextElement> getIssn() {
+    public List<TextElement> getIssns() {
 	return issns;
     }
 
@@ -94,16 +84,6 @@ public class Bibliographic implements Serializable {
      */
     public TextElement getLanguage() {
 	return language;
-    }
-
-    /**
-     * @return the first {@link License} of list
-     */
-    public License getLicense() {
-	if (this.licenses != null && !this.licenses.isEmpty()) {
-	    return this.licenses.get(0);
-	}
-	return null;
     }
 
     /**

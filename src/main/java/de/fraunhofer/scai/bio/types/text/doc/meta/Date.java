@@ -31,6 +31,7 @@ public class Date implements Serializable {
     private int day;
     private int month;
     private int year;
+    private Calendar date;
     
     /**
      * Default constructor.
@@ -44,11 +45,15 @@ public class Date implements Serializable {
      * @return the {@link Calendar} object of the {@link Date}.
      */
     public Calendar getDate() {
-	Calendar calendar = Calendar.getInstance();
-	calendar.set(getYear(), getMonth(), getDay());
-	return calendar;
+	date = Calendar.getInstance();
+	date.set(getYear(), getMonth(), getDay());
+	return this.date;
     }
 
+    public void setDate(int day, int month, int year) {
+	this.date.set(day, month, day);
+    }
+    
     /**
      * getter for day - gets Restricted: 1-31
      * 
@@ -82,7 +87,7 @@ public class Date implements Serializable {
      * @param day value to set to {@link Date}
      */
     public void setDay(int day) {
-	if (day < 1 || day > 31)
+	if (day != 0 && (day < 1 || day > 31))
 	    throw new IllegalArgumentException("Argument 'day' must be between '1' and '31' but was " + day + "!");
 	this.day = day;
     }
@@ -93,7 +98,7 @@ public class Date implements Serializable {
      * @param month value to set to {@link Date}
      */
     public void setMonth(int month) {
-	if (month < 1 || month > 12)
+	if (month != 0 && (month < 1 || month > 12))
 	    throw new IllegalArgumentException("Argument 'month' must be between '1' and '12' but was " + month + "!");
 	this.month = month;
     }
@@ -104,7 +109,7 @@ public class Date implements Serializable {
      * @param year to set to {@link Date}
      */
     public void setYear(int year) {
-	if (year < 1 || year > 2050)
+	if (year != 0 && (year < 1 || year > 2050))
 	    throw new IllegalArgumentException("Argument 'year' must be between '0' and '" + Calendar.getInstance().get(Calendar.YEAR) + "' but was " + year + "!");
 	this.year = year;
     }

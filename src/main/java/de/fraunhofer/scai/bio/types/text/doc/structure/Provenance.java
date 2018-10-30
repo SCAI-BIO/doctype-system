@@ -52,7 +52,7 @@ public class Provenance implements Serializable {
      */
     private static final long serialVersionUID = -2419659801198983422L;
     String license;
-    String version;
+    String version = "1.0";
     String source; // file, database, ...
     Date date;
     String collection; // eg. a collection of documents
