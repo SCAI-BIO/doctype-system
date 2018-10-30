@@ -53,7 +53,7 @@ public class Affiliation implements Serializable {
     /**
      * @return the affiliationInfo
      */
-    public List<String> getAffiliationInfo() {
+    public List<String> getAffiliationInfos() {
 	return affiliationInfos;
     }
 
