@@ -49,7 +49,7 @@ public class DocumentRenderer {
 	Map<String, StructureElement> index = doc.getStructureElementIndex();
 	
 	for (StructureElement se : index.values()) {
-	    Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
+	    Matcher unwantedMatcher = PUNCTUATION.matcher(getText(se));
 	    contents.add(unwantedMatcher.replaceAll(""));
 	    for (Annotation anno : se.getAnnotations()) {
 		contents.add(anno.getAnnotationText());
@@ -61,4 +61,35 @@ public class DocumentRenderer {
 	return sb.toString();
     }
 
+    /**
+     * go through all fields and extract from the non-empty one the text
+     * 
+     * @return <code>String</code>
+     */
+    public static String getText(StructureElement se) {
+	if (se.getCaptionedBox() != null)
+	    return se.getCaptionedBox().toString();
+	if (se.getCode() != null)
+	    return se.getCode().toString();
+	if (se.getDataTable() != null)
+	    return se.getDataTable().toString();
+	if (se.getFigure() != null)
+	    return se.getFigure().toString();
+	if (se.getFormula() != null)
+	    return se.getFormula().toString();
+	if (se.getImageContent() != null)
+	    return se.getImageContent().toString();
+	if (se.getOutline() != null)
+	    return se.getOutline().toString();
+	if (se.getQuotation() != null)
+	    return se.getQuotation().toString();
+	if (se.getSentence() != null)
+	    return se.getSentence().toString();
+	if (se.getTable() != null)
+	    return se.getTable().toString();
+	if (se.getTextElement() != null)
+	    return se.getTextElement().toString();
+
+	return null;
+    }
 }
