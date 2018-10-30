@@ -16,13 +16,20 @@
 package de.fraunhofer.scai.bio.util;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.fraunhofer.scai.bio.Document;
+import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 
 /**
  * @author tadams
@@ -32,7 +39,7 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
  *
  */
 public class DocumentRenderer {
-    
+
     private static final Pattern PUNCTUATION = Pattern.compile("[.!?\\;]");
 
     /**
@@ -40,24 +47,46 @@ public class DocumentRenderer {
      * plain text list seperated by blanks. Used for indexiatin in Solr.
      * 
      * @param doc <code>Document</code>
-     * @return String of conent words seperated by blanks 
+     * @return String of conent words seperated by blanks
      */
     public static String renderTextContents(Document doc) {
 
 	StringBuilder sb = new StringBuilder();
-	HashSet<String> contents = new HashSet<String>();	
+	HashSet<String> contents = new HashSet<String>();
 	Map<String, StructureElement> index = doc.getStructureElementIndex();
-	
+
 	for (StructureElement se : index.values()) {
 	    Matcher unwantedMatcher = PUNCTUATION.matcher(getText(se));
 	    contents.add(unwantedMatcher.replaceAll(""));
 	    for (Annotation anno : se.getAnnotations()) {
 		contents.add(anno.getAnnotationText());
-	    }    
-	}	
-	for(String word : contents) {
+	    }
+	}
+	for (String word : contents) {
 	    sb.append(word + " ");
-	}	
+	}
+	return sb.toString();
+    }
+
+    /**
+     * Get the <code>Document</code> {@link Abstract} in plain text format 
+     * 
+     * @param doc input <code>Document</code>
+     * @return Abstract String
+     */
+    public static String getDocumentAbstract(Document doc) {	
+	StringBuilder sb = new StringBuilder();
+	Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
+	List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
+	for(Section section : abstractSections) {
+	    List<Paragraph> paragraphs = section.getParagraphs();
+	    	for (Paragraph para : paragraphs) {
+	    	    List<StructureElement> structureElements = para.getStructureElements();
+	    	    for (StructureElement se : structureElements) {
+			sb.append(getText(se));
+		    }
+		}
+	    }
 	return sb.toString();
     }
 
