@@ -15,6 +15,7 @@
  */
 package de.fraunhofer.scai.bio;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -26,7 +27,6 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
@@ -38,9 +38,16 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
  *
  *         central datastructure of our DMS
  */
-public class Document {
+public class Document implements Serializable {
+
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 6925727369522653362L;
 
     public static final int ABSTRACT_LENGTH = 250;
+
+    public static final String PUBMED_ABSTRACT = "PUBMED_ABSTRACT";
 
     protected static Logger logger = LoggerFactory.getLogger(Document.class);
 
