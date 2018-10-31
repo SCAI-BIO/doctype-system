@@ -40,6 +40,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
 public class Document {
 
     public static final int ABSTRACT_LENGTH = 250;
+    public static final String PUBMED_ABSTRACT = "PUBMED_ABSTRACT";
 
     protected static Logger logger = LoggerFactory.getLogger(Document.class);
 
