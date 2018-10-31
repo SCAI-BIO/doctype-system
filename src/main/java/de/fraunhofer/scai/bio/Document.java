@@ -117,13 +117,8 @@ public class Document implements Serializable {
      * programming logic
      */
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
+    
+    public String toJsonString() {
 
 	// Convert object to JSON string
 	try {
