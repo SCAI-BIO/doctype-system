@@ -18,7 +18,6 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Formula;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Outline;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Quotation;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Table;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 

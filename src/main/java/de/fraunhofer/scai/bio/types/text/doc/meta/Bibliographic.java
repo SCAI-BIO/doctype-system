@@ -40,6 +40,8 @@ public class Bibliographic implements Serializable {
     private TextElement source;
     private List<TextElement> issns;
 
+    private List<TextElement> publicationTypes;
+    
     /**
      * @param author the {@link Author} to add to the {@link List} of authors
      */
@@ -172,6 +174,29 @@ public class Bibliographic implements Serializable {
      */
     public void setTitle(Title title) {
 	this.title = title;
+    }
+
+    /**
+     * @return the publicationTypes
+     */
+    public List<TextElement> getPublicationTypes() {
+	return publicationTypes;
+    }
+
+    /**
+     * @param publicationTypes the publicationTypes to set
+     */
+    public void addPublicationType(TextElement publicationType) {
+	if (this.publicationTypes == null)
+	    this.publicationTypes = new ArrayList<TextElement>();
+	this.publicationTypes.add(publicationType);
+    }
+    
+    /**
+     * @param publicationTypes the publicationTypes to set
+     */
+    public void setPublicationTypes(List<TextElement> publicationTypes) {
+	this.publicationTypes = publicationTypes;
     }
 
 }
