@@ -152,4 +152,14 @@ public class Outline implements Serializable {
 	this.titleText = titleText;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	StringBuilder sb = new StringBuilder(titleText);
+    	sb.append("\n");
+    	for(String number : numbering) { sb.append(number); sb.append("\n"); }
+    	return sb.toString();
+    }
+
 }

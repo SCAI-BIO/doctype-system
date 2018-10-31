@@ -77,5 +77,13 @@ public class Table implements Serializable {
     public void setTitle(String title) {
 	this.title = title;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return String.format("%s\n%s\n%s", title, text, caption);
+    }
+
 
 }

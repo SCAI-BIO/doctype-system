@@ -89,4 +89,12 @@ public class CaptionedBox implements Serializable {
     public void setTitle(String title) {
 	this.title = title;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return String.format("%d\t%s\n%s", numbering, title, caption);
+    }
+
 }

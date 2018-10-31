@@ -143,7 +143,7 @@ public class StructureElement implements Serializable {
 
     /**
      * @return the quotation
-     */
+     */ 
     public Quotation getQuotation() {
 	return quotation;
     }
@@ -219,5 +219,20 @@ public class StructureElement implements Serializable {
     public void setAnnotations(List<Annotation> annotations) {
 	this.annotations = annotations;
     }
+
+		public String getText() {
+			if(captionedBox != null)return captionedBox.toString();
+			if(code != null) 				return code.toString();
+			if(dataTable != null)		return dataTable.toString();
+			if(figure != null) 			return figure.toString();
+			if(formula != null) 		return formula.toString();
+			if(imageContent != null)return imageContent.toString();
+			if(outline != null) 		return outline.toString();
+			if(quotation != null) 	return quotation.toString();
+			if(sentence != null) 		return sentence.toString();
+			if(table != null) 			return table.toString();
+			if(textElement != null) return textElement.toString();
+			return null;
+		}
 
 }

@@ -92,4 +92,12 @@ public class Figure implements Serializable {
     public void setImage(ImageContent v) {
 	this.imageContent = v;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return String.format("%s\n%s\n%s", title, imageContent.toString(), caption);
+    }
+
 }
