@@ -71,4 +71,12 @@ public class Page implements Serializable {
     public void setPageNumber(int pageNumber) {
 	this.pageNumber = pageNumber;
     }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return String.format("%d\t%s", pageNumber, layout);
+    }
+
 }

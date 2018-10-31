@@ -68,4 +68,12 @@ public class DataTable implements Serializable {
     public void setVersion(String version) {
 	this.version = version;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return String.format("%s (%s)\n%s", identifier, version, content);
+    }
+
 }

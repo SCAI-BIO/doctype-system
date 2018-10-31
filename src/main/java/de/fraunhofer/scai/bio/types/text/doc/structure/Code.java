@@ -45,5 +45,11 @@ public class Code implements Serializable {
 	this.code = code;
     }
     
-    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return code;
+    }
+
 }

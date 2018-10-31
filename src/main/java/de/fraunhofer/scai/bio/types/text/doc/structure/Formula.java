@@ -44,4 +44,10 @@ public class Formula implements Serializable {
 	this.formula = formula;
     }
     
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return formula;
+    }
 }

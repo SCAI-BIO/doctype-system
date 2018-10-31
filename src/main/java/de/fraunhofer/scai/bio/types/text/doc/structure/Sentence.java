@@ -42,4 +42,11 @@ public class Sentence implements Serializable {
     public void setText(TextElement sentenceText) {
 	this.sentenceText = sentenceText;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    public String toString() {
+    	return sentenceText.toString();
+    }
 }
