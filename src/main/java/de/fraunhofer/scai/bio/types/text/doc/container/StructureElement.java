@@ -18,6 +18,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Formula;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Outline;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Quotation;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Table;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -38,6 +39,7 @@ public class StructureElement implements Serializable {
     private ImageContent imageContent;
     private Outline outline;
     private Quotation quotation;
+    private Sentence sentence;
     private Table table;
     private TextElement textElement;
 
@@ -143,7 +145,7 @@ public class StructureElement implements Serializable {
 
     /**
      * @return the quotation
-     */
+     */ 
     public Quotation getQuotation() {
 	return quotation;
     }
@@ -153,6 +155,20 @@ public class StructureElement implements Serializable {
      */
     public void setQuotation(Quotation quotation) {
 	this.quotation = quotation;
+    }
+
+    /**
+     * @return the sentence
+     */
+    public Sentence getSentence() {
+	return sentence;
+    }
+
+    /**
+     * @param sentence the sentence to set
+     */
+    public void setSentence(Sentence sentence) {
+	this.sentence = sentence;
     }
 
     /**
@@ -205,5 +221,26 @@ public class StructureElement implements Serializable {
     public void setAnnotations(List<Annotation> annotations) {
 	this.annotations = annotations;
     }
+
+    /**
+     * fetches a String representation of the data in this element
+     * TODO add new fields if they are included in the class
+     * @return <code>String</code>
+     */
+    @JsonIgnore
+		public String getText() {
+			if(captionedBox != null)return captionedBox.toString();
+			if(code != null) 				return code.toString();
+			if(dataTable != null)		return dataTable.toString();
+			if(figure != null) 			return figure.toString();
+			if(formula != null) 		return formula.toString();
+			if(imageContent != null)return imageContent.toString();
+			if(outline != null) 		return outline.toString();
+			if(quotation != null) 	return quotation.toString();
+			if(sentence != null) 		return sentence.toString();
+			if(table != null) 			return table.toString();
+			if(textElement != null) return textElement.toString();
+			return null;
+		}
 
 }

@@ -16,6 +16,7 @@
 package de.fraunhofer.scai.bio.util;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -28,6 +29,7 @@ import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 
 /**
  * @author tadams
@@ -110,6 +112,8 @@ public class DocumentRenderer {
 	    return se.getOutline().toString();
 	if (se.getQuotation() != null)
 	    return se.getQuotation().toString();
+	if (se.getSentence() != null)
+	    return se.getSentence().toString();
 	if (se.getTable() != null)
 	    return se.getTable().toString();
 	if (se.getTextElement() != null)
