@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.structure.CaptionedBox;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Code;
@@ -220,6 +222,12 @@ public class StructureElement implements Serializable {
 	this.annotations = annotations;
     }
 
+    /**
+     * fetches a String representation of the data in this element
+     * TODO add new fields if they are included in the class
+     * @return <code>String</code>
+     */
+    @JsonIgnore
 		public String getText() {
 			if(captionedBox != null)return captionedBox.toString();
 			if(code != null) 				return code.toString();
