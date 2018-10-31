@@ -26,7 +26,6 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
