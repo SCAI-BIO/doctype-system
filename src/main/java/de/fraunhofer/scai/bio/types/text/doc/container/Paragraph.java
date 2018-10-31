@@ -30,6 +30,7 @@ public class Paragraph implements Serializable {
      */
     private static final long serialVersionUID = -8095267361703765778L;
 
+    private List<Sentence> sentences;
     private List<StructureElement> structureElements;
 
     /**
@@ -47,13 +48,35 @@ public class Paragraph implements Serializable {
 	    this.structureElements = new ArrayList<StructureElement>();
 	this.structureElements.add(structureElement);
     }
-    
+
     /**
      * @param structureElements the structureElements to set
      */
     public void setStructureElements(List<StructureElement> structureElements) {
 	this.structureElements = structureElements;
     }
-    
-    
+
+    /**
+     * @return the sentences
+     */
+    public List<Sentence> getSentences() {
+	return sentences;
+    }
+
+    /**
+     * @param sentences the sentences to set
+     */
+    public void addSentence(Sentence sentence) {
+	if (this.sentences == null)
+	    this.sentences = new ArrayList<Sentence>();
+	this.sentences.add(sentence);
+    }
+
+    /**
+     * @param sentences the sentences to set
+     */
+    public void setSentences(List<Sentence> sentences) {
+	this.sentences = sentences;
+    }
+
 }

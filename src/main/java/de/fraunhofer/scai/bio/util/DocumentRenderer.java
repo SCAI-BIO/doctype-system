@@ -112,8 +112,6 @@ public class DocumentRenderer {
 	    return se.getOutline().toString();
 	if (se.getQuotation() != null)
 	    return se.getQuotation().toString();
-	if (se.getSentence() != null)
-	    return se.getSentence().toString();
 	if (se.getTable() != null)
 	    return se.getTable().toString();
 	if (se.getTextElement() != null)
