@@ -16,7 +16,6 @@
 package de.fraunhofer.scai.bio.types.text.doc;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
@@ -37,8 +36,6 @@ public class DocumentElement implements Serializable {
      */
     private static final long serialVersionUID = 8358171049979076895L;
     private MetaElement metaElement;
-
-    private UUID uuid = UUID.randomUUID();
 
     private BackMatter backMatter;
     private BodyMatter bodyMatter;

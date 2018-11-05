@@ -17,6 +17,7 @@ package de.fraunhofer.scai.bio;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.UUID;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -28,7 +29,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author marc
@@ -48,7 +49,7 @@ public class Document {
     private String docType;
 
     @JsonIgnore
-    private Map<String, StructureElement> structureElementIndex; // a quick access to all StructureElments and their
+    private Map<UUID, TextElement> textElementIndex; // a quick access to all TextElements and their
 								 // Annotations
 
     /**
@@ -56,7 +57,7 @@ public class Document {
      */
     public Document() {
 	this.provenance = new Provenance();
-	this.setStructureElementIndex(new TreeMap<String, StructureElement>());
+	this.setTextElementIndex(new TreeMap<UUID, TextElement>());
     }
 
     /**********************************************************************
@@ -148,16 +149,16 @@ public class Document {
      * 
      * @return the index of the {@link StructureElement}s
      */
-    public Map<String, StructureElement> getStructureElementIndex() {
-	return structureElementIndex;
+    public Map<UUID, TextElement> getTextElementIndex() {
+	return textElementIndex;
     }
 
     /**
      * 
      * @param structureElementIndex the index of the {@link StructureElement}s
      */
-    public void setStructureElementIndex(Map<String, StructureElement> structureElementIndex) {
-	this.structureElementIndex = structureElementIndex;
+    public void setTextElementIndex(Map<UUID, TextElement> textElementIndex) {
+	this.textElementIndex = textElementIndex;
     }
 
     /**
@@ -165,8 +166,8 @@ public class Document {
      * @param key The key of the {@link StructureElement}
      * @param structureElement the {@link StructureElement}
      */
-    public void addToStructureElementIndex(String key, StructureElement structureElement) {
-	this.structureElementIndex.put(key, structureElement);
+    public void addToTextElementIndex(UUID key, TextElement structureElement) {
+	this.textElementIndex.put(key, structureElement);
     }
 
 }
