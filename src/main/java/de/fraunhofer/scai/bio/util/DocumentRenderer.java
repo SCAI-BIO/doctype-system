@@ -58,7 +58,7 @@ public class DocumentRenderer {
 	for (StructureElement se : index.values()) {
 	    Matcher unwantedMatcher = PUNCTUATION.matcher(getText(se));
 	    contents.add(unwantedMatcher.replaceAll(""));
-//	    
+//	    FIXME
 //	    for (Annotation anno : se.getAnnotations()) {
 //		contents.add(anno.getAnnotationText());
 //	    }
