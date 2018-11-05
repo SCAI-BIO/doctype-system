@@ -35,9 +35,9 @@ public class Outline implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -4868157788079288706L;
-    TextElement titleText;
-    List<String> numbering;
-    TextElement rhetorical;
+    private TextElement titleText;
+    private List<String> numbering;
+    private TextElement rhetorical;
 
     private List<String> parts;
     private Map<String, List<String>> chapters;

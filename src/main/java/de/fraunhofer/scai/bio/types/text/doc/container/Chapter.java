@@ -31,7 +31,7 @@ public class Chapter implements Serializable {
     private List<Section> sections;
 
     /**
-     * @param section the {@link Section} to set
+     * @param section the {@link Section} to add
      */
     public void addSection(Section section) {
 	if (this.sections == null) {
@@ -41,14 +41,14 @@ public class Chapter implements Serializable {
     }
 
     /**
-     * @return the sections
+     * @return the {@link Section}s
      */
     public List<Section> getSections() {
 	return sections;
     }
 
     /**
-     * @param sections the sections to set
+     * @param sections the {@link List} of {@link Section}s to set
      */
     public void setSections(List<Section> sections) {
 	this.sections = sections;

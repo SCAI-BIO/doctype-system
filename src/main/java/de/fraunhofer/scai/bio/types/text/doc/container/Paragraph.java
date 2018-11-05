@@ -43,7 +43,7 @@ public class Paragraph implements Serializable {
     }
 
     /**
-     * @param structureElements the structureElements to set
+     * @param structureElement the {@link StructureElement} to add
      */
     public void addStructureElement(StructureElement structureElement) {
 	if (this.structureElements == null)
@@ -52,21 +52,21 @@ public class Paragraph implements Serializable {
     }
 
     /**
-     * @param structureElements the structureElements to set
+     * @param structureElements the {@link StructureElement}s to set
      */
     public void setStructureElements(List<StructureElement> structureElements) {
 	this.structureElements = structureElements;
     }
 
     /**
-     * @return the sentences
+     * @return the {@link Sentence}s
      */
     public List<Sentence> getSentences() {
 	return sentences;
     }
 
     /**
-     * @param sentences the sentences to set
+     * @param sentences the {@link Sentence} to add
      */
     public void addSentence(Sentence sentence) {
 	if (this.sentences == null)
@@ -75,7 +75,7 @@ public class Paragraph implements Serializable {
     }
 
     /**
-     * @param sentences the sentences to set
+     * @param sentences the {@link Sentence}s to set
      */
     public void setSentences(List<Sentence> sentences) {
 	this.sentences = sentences;

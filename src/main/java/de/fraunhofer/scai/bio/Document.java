@@ -34,7 +34,7 @@ import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
  * @author marc
  * @author klein
  *
- *         central datastructure of our DMS
+ * Central datastructure of our DMS
  */
 public class Document {
 
@@ -52,7 +52,7 @@ public class Document {
 								 // Annotations
 
     /**
-     * constructor
+     * Constructor.
      */
     public Document() {
 	this.provenance = new Provenance();
@@ -63,22 +63,42 @@ public class Document {
      * getter and setter
      **********************************************************************/
 
+    /**
+     * 
+     * @return the {@link DocumentElement}
+     */
     public DocumentElement getDocumentElement() {
 	return documentElement;
     }
 
+    /**
+     * 
+     * @return the {@link Provenance}
+     */
     public Provenance getProvenance() {
 	return provenance;
     }
 
+    /**
+     * Sets the {@link Provenance}
+     * @param provenance the {@link Provenance}
+     */
     public void setProvenance(Provenance provenance) {
 	this.provenance = provenance;
     }
 
+    /**
+     * Sets the {@link DocumentElement}
+     * @param documentElement the {@link DocumentElement}
+     */
     public void setDocumentElement(DocumentElement documentElement) {
 	this.documentElement = documentElement;
     }
 
+    /**
+     * Returns the content type of the document, e.g. PubMedAbstract, PubMedArticle, UserDocument, ...
+     * @return docType the type 
+     */
     public String getDocType() {
 	return docType;
     }
@@ -108,8 +128,6 @@ public class Document {
     /**
      * programming logic
      */
-
-    
     public String toJsonString() {
 
 	// Convert object to JSON string
@@ -126,14 +144,27 @@ public class Document {
 	}
     }
 
+    /**
+     * 
+     * @return the index of the {@link StructureElement}s
+     */
     public Map<String, StructureElement> getStructureElementIndex() {
 	return structureElementIndex;
     }
 
+    /**
+     * 
+     * @param structureElementIndex the index of the {@link StructureElement}s
+     */
     public void setStructureElementIndex(Map<String, StructureElement> structureElementIndex) {
 	this.structureElementIndex = structureElementIndex;
     }
 
+    /**
+     * Adds a {@link StructureElement} to the index
+     * @param key The key of the {@link StructureElement}
+     * @param structureElement the {@link StructureElement}
+     */
     public void addToStructureElementIndex(String key, StructureElement structureElement) {
 	this.structureElementIndex.put(key, structureElement);
     }

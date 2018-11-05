@@ -27,8 +27,8 @@ public class Page implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 8710743034102291637L;
-    int pageNumber;
-    TextElement layout;
+    private int pageNumber;
+    private TextElement layout;
 
     /**
      * getter for layout - specifies the page layout. Examples: 2-column, titlepage

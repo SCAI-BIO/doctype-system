@@ -37,14 +37,14 @@ public class Annotation implements Serializable {
     private Provenance provenance;
     
     /**
-     * @return the provenance
+     * @return the {@link Provenance}
      */
     public Provenance getProvenance() {
         return provenance;
     }
 
     /**
-     * @param provenance the provenance to set
+     * @param provenance the {@link Provenance} to set
      */
     public void setProvenance(Provenance provenance) {
         this.provenance = provenance;

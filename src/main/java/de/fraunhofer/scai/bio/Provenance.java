@@ -46,14 +46,14 @@ import java.util.Date;
 public class Provenance implements Serializable {
 
     /**
-     * 
+     * serialVersionUID
      */
     private static final long serialVersionUID = -2419659801198983422L;
-    String license;
-    String version = "1.0";
-    String source; // file, database, ...
-    Date date;
-    String collection; // eg. a collection of documents
+    private String license;
+    private String version = "1.0";
+    private String source; // file, database, ...
+    private Date date;
+    private String collection; // eg. a collection of documents
 
     /**
      * constructor
@@ -61,43 +61,82 @@ public class Provenance implements Serializable {
     public Provenance() {
     }
 
+    /**
+     * 
+     * @return the collection the Document is stored
+     */
     public String getCollection() {
 	return collection;
     }
 
+    /**
+     * 
+     * @return the {@link Date} this {@link Document} was generated
+     */
     public Date getDate() {
 	return date;
     }
 
+    /**
+     * 
+     * @return the License of the {@link Document}
+     */
     public String getLicense() {
 	return license;
     }
 
+    /**
+     * 
+     * @return the source of the {@link Document}
+     */
     public String getSource() {
 	return source;
     }
 
+    /**
+     * 
+     * @return the version of the {@link Document}
+     */
     public String getVersion() {
 	return version;
     }
 
-
+    /**
+     * The corpus/collection the {@link Document} belongs to
+     * @param corpus the corpus/collection
+     */
     public void setCollection(String corpus) {
 	this.collection = corpus;
     }
 
+    /**
+     * Sets the generation {@link Date} 
+     * @param date the {@link Date} this {@link Document} was generated
+     */
     public void setDate(Date date) {
 	this.date = date;
     }
 
+    /**
+     * Sets the liccense string.
+     * @param license the license string
+     */
     public void setLicense(String license) {
 	this.license = license;
     }
 
+    /**
+     * Sets the source 
+     * @param source the source string
+     */
     public void setSource(String source) {
 	this.source = source;
     }
-
+    
+    /**
+     * Sets the version string
+     * @param version the version string
+     */
     public void setVersion(String version) {
 	this.version = version;
     }

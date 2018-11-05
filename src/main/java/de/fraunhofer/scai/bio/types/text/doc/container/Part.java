@@ -34,7 +34,7 @@ public class Part implements Serializable {
     private List<Page> pages;
 
     /**
-     * @param chapters the chapters to set
+     * @param chapter the {@link Chapter} to add
      */
     public void addChapter(Chapter chapter) {
 	if (this.chapters == null)
@@ -43,28 +43,28 @@ public class Part implements Serializable {
     }
 
     /**
-     * @return the chapters
+     * @return the {@link Chapter}s
      */
     public List<Chapter> getChapters() {
 	return chapters;
     }
 
     /**
-     * @return the pages
+     * @return the {@link Page}s
      */
     public List<Page> getPages() {
 	return pages;
     }
 
     /**
-     * @param chapters the chapters to set
+     * @param chapters the {@link Chapter}s to set
      */
     public void setChapters(List<Chapter> chapters) {
 	this.chapters = chapters;
     }
 
     /**
-     * @param pages the pages to set
+     * @param pages the {@link Page}s to set
      */
     public void setPages(List<Page> pages) {
 	this.pages = pages;

@@ -39,7 +39,7 @@ public class FrontMatter implements Serializable {
     private TextElement titleText;
 
     /**
-     * @return the titleText
+     * @return the titleText 
      */
     public TextElement getTitleText() {
 	return titleText;

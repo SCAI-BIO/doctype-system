@@ -63,12 +63,16 @@ public class Section implements Serializable {
 	this.sectionTitle = sectionTitle;
     }
 
+    /**
+     * 
+     * @return the {@link Paragraph}s
+     */
     public List<Paragraph> getParagraphs() {
 	return paragraphs;
     }
 
     /**
-     * @param paragraph the {@link Paragraph} to set
+     * @param paragraph the {@link Paragraph} to add
      */
     public void addParagraph(Paragraph paragraph) {
 	if (this.paragraphs == null)
@@ -77,7 +81,7 @@ public class Section implements Serializable {
     }
 
     /**
-     * @param paragraphs the paragraphs to set
+     * @param paragraphs the {@link Paragraph}s to set
      */
     public void setParagraphs(List<Paragraph> paragraphs) {
 	this.paragraphs = paragraphs;

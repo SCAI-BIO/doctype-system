@@ -28,7 +28,7 @@ public class Quotation implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -8147702454907782570L;
-    Reference reference;
+    private Reference reference;
 
     /**
      * getter for reference - gets

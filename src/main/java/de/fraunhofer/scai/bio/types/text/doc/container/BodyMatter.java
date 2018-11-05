@@ -45,7 +45,7 @@ public class BodyMatter implements Serializable {
     }
 
     /**
-     * @param section the section to set
+     * @param section the {@link Section} to set
      */
     public void addSection(Section section) {
 	if (sections == null)
@@ -54,21 +54,21 @@ public class BodyMatter implements Serializable {
     }
 
     /**
-     * @param section the section to set
+     * @param sections the {@link List} of {@link Section}s to set
      */
     public void setSections(List<Section> sections) {
 	this.sections = sections;
     }
 
     /**
-     * @return the chapter
+     * @return the {@link List} of {@link Chapter}s
      */
     public List<Chapter> getChapter() {
 	return chapters;
     }
 
     /**
-     * @param chapter the chapter to set
+     * @param chapter the {@link Chapter} to add
      */
     public void addChapter(Chapter chapter) {
 	if (chapters == null)
@@ -77,21 +77,21 @@ public class BodyMatter implements Serializable {
     }
     
     /**
-     * @param chapter the chapter to set
+     * @param chapters the {@link List} of {@link Chapter}s to set
      */
     public void setChapters(List<Chapter> chapters) {
 	this.chapters = chapters;
     }
 
     /**
-     * @return the docAbstract
+     * @return the document {@link Abstract}
      */
     public Abstract getDocAbstract() {
 	return docAbstract;
     }
 
     /**
-     * @param docAbstract the docAbstract to set
+     * @param docAbstract the document {@link Abstract} to set
      */
     public void setDocAbstract(Abstract docAbstract) {
 	this.docAbstract = docAbstract;

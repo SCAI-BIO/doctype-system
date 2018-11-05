@@ -58,7 +58,7 @@ public class Affiliation implements Serializable {
     }
 
     /**
-     * @param affiliationInfo the affiliationInfo to set
+     * @param affiliationInfo the affiliationInfo to add
      */
     public void addAffiliationInfo(String affiliationInfo) {
 	if (this.affiliationInfos == null)

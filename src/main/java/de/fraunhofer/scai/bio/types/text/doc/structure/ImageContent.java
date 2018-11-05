@@ -12,13 +12,13 @@ public class ImageContent implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -1909910975893097612L;
-    int height;
-    int width;
-    String encoding;
-    float compressionLevel;
-    int bitDepth;
-    String colorModel;
-    byte[] content;
+    private int height;
+    private int width;
+    private String encoding;
+    private float compressionLevel;
+    private int bitDepth;
+    private String colorModel;
+    private byte[] content;
 
     /**
      * getter for bitDepth - gets

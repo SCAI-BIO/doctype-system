@@ -28,9 +28,9 @@ public class CaptionedBox implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -3952148080008882699L;
-    TextElement title;
-    int numbering;
-    TextElement caption;
+    private TextElement title;
+    private int numbering;
+    private TextElement caption;
 
     /**
      * getter for caption - gets All captioned boxes have captions describing the

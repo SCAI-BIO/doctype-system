@@ -32,7 +32,7 @@ public class Author implements Serializable {
      * getter for author - gets
      * 
      * 
-     * @return author
+     * @return author The {@link Person}
      */
     public Person getAuthor() {
 	return this.author;
@@ -42,7 +42,7 @@ public class Author implements Serializable {
      * setter for author - sets
      * 
      * 
-     * @param author value to set into the feature
+     * @param author the {@link Person} to set
      */
     public void setAuthor(Person author) {
 	this.author = author;

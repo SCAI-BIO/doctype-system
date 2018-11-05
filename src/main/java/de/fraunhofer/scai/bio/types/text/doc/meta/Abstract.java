@@ -40,7 +40,7 @@ public class Abstract implements Serializable {
     }
 
     /**
-     * @param abstractSections the abstractSections to set
+     * @param abstractSection the abstract {@link Section} to add
      */
     public void addAbstractSection(Section abstractSection) {
 	if (this.abstractSections == null)
@@ -49,7 +49,7 @@ public class Abstract implements Serializable {
     }
 
     /**
-     * @param abstractSections the abstractSections to set
+     * @param abstractSections the abstract {@link Section}s to set
      */
     public void setAbstractSections(List<Section> abstractSections) {
 	this.abstractSections = abstractSections;
