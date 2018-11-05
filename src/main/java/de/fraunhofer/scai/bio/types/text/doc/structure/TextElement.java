@@ -18,6 +18,7 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
@@ -34,7 +35,9 @@ public class TextElement implements Serializable {
      * The text (plain text without any other object mapping).
      */
     private String text;
-
+    
+    private UUID uuid = UUID.randomUUID();
+    
     private List<Annotation> annotations;
 
     /**
@@ -72,6 +75,13 @@ public class TextElement implements Serializable {
      */
     public void setAnnotations(List<Annotation> annotations) {
 	this.annotations = annotations;
+    }
+
+    /**
+     * @return the uuid
+     */
+    public UUID getUuid() {
+	return uuid;
     }
 
     /* (non-Javadoc)
