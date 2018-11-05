@@ -36,7 +36,7 @@ public class TextElement implements Serializable {
      */
     private String text;
     
-    private UUID uuid = UUID.randomUUID();
+    private UUID uuid;
     
     private List<Annotation> annotations;
 
@@ -81,7 +81,16 @@ public class TextElement implements Serializable {
      * @return the uuid
      */
     public UUID getUuid() {
-	return uuid;
+	if (this.uuid == null)
+	    setUuid();
+	return this.uuid;
+    }
+
+    /**
+     * Creates a new {@link UUID}.
+     */
+    public void setUuid() {
+        this.uuid = UUID.randomUUID();
     }
 
     /* (non-Javadoc)
