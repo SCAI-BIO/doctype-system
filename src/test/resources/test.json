@@ -1,9 +1,9 @@
 {
   "provenance" : {
     "license" : null,
-    "version" : null,
+    "version" : "1.0",
     "source" : "/home/klein/temp/testcorpus",
-    "date" : 1540816590723,
+    "date" : 1541426062702,
     "collection" : "testJK"
   },
   "documentElement" : {
@@ -12,125 +12,391 @@
         "documentAbstract" : {
           "abstractSections" : [ {
             "paragraphs" : [ {
-              "structureElements" : [ {
-                "captionedBox" : null,
-                "code" : null,
-                "dataTable" : null,
-                "figure" : null,
-                "formula" : null,
-                "imageContent" : null,
-                "outline" : null,
-                "quotation" : null,
-                "sentence" : null,
-                "table" : null,
-                "textElement" : {
-                  "text" : "[No abstract available]"
-                },
-                "annotations" : null,
-                "text" : "[No abstract available]"
-              } ]
+              "sentences" : [ {
+                "text" : {
+                  "text" : "A series of 3-amino-1-(5,6,7,8-tetrahydronaphthoxy)-2-propanols was synthesized and investigated for beta-adrenergic blocking activity and direct myocardial depressant action.",
+                  "uuid" : "eeba6fc9-879a-48c3-b6bd-6c561452a764",
+                  "annotations" : null
+                }
+              }, {
+                "text" : {
+                  "text" : "The cis- and trans-diols 12--15 were found to retain the beta-blocking potency of propranolol but to lack its myocardial depressant action.",
+                  "uuid" : "6aa60982-7ea3-4a41-9e3e-7de5d055b69e",
+                  "annotations" : null
+                }
+              }, {
+                "text" : {
+                  "text" : "Compound 15 (nadolol) is currently undergoing extensive clinical evaluation as a potential antianginal, antiarrhythmic, and antihypertensive agent.",
+                  "uuid" : "a0a0126b-0a10-45e3-a949-2c5a3a0d5b50",
+                  "annotations" : null
+                }
+              } ],
+              "structureElements" : null
             } ],
             "depth" : 0,
+            "title" : null,
             "rhetorical" : {
-              "text" : "no abstract available"
-            },
-            "title" : null
+              "text" : "Abstract",
+              "uuid" : "ef100b72-48ed-4550-aa33-6cd0c7d8cb31",
+              "annotations" : null
+            }
           } ]
         },
         "authors" : [ {
           "author" : {
             "surname" : {
-              "text" : "Williams"
+              "text" : "Condon",
+              "uuid" : "d74fce1c-95cd-466c-8aec-8c3202a245c7",
+              "annotations" : null
             },
-            "forename" : null,
+            "forename" : {
+              "text" : "M E",
+              "uuid" : "29fc4fd9-b54f-478e-947f-75cdc7fd8d6c",
+              "annotations" : null
+            },
             "affiliation" : {
               "organization" : null,
-              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
+              "affiliationInfos" : null
             },
             "degree" : null
           }
         }, {
           "author" : {
             "surname" : {
-              "text" : "Cao"
+              "text" : "Cimarusti",
+              "uuid" : "fa374330-2b08-49c4-963f-04f68856663a",
+              "annotations" : null
             },
-            "forename" : null,
+            "forename" : {
+              "text" : "C M",
+              "uuid" : "f183f9d4-404a-400a-a7ac-cb919744b225",
+              "annotations" : null
+            },
             "affiliation" : {
               "organization" : null,
-              "affiliationInfo" : null
+              "affiliationInfos" : null
             },
             "degree" : null
           }
         }, {
           "author" : {
             "surname" : {
-              "text" : "Tsujishima"
+              "text" : "Fox",
+              "uuid" : "84d65790-8cc2-416d-bec6-00bface4014b",
+              "annotations" : null
             },
-            "forename" : null,
+            "forename" : {
+              "text" : "R",
+              "uuid" : "8a599b90-5fc3-46f8-9ef7-4f4ab8d3d994",
+              "annotations" : null
+            },
             "affiliation" : {
               "organization" : null,
-              "affiliationInfo" : null
+              "affiliationInfos" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Narayanan",
+              "uuid" : "451ffd14-245f-4dc6-a171-d62f0b5d9723",
+              "annotations" : null
+            },
+            "forename" : {
+              "text" : "V L",
+              "uuid" : "58380002-5c27-4db8-bab1-00a735164dfe",
+              "annotations" : null
+            },
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfos" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Reid",
+              "uuid" : "d30a1ddc-f4d8-49c3-895e-ce45b80f199f",
+              "annotations" : null
+            },
+            "forename" : {
+              "text" : "J",
+              "uuid" : "d3fc004b-762d-4640-88c6-d9cd7b9d8260",
+              "annotations" : null
+            },
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfos" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Sundeen",
+              "uuid" : "0b0b354c-a229-4420-b390-9b006f2665c6",
+              "annotations" : null
+            },
+            "forename" : {
+              "text" : "J E",
+              "uuid" : "2130cc63-8abb-4dcc-ac87-c486085c82f1",
+              "annotations" : null
+            },
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfos" : null
+            },
+            "degree" : null
+          }
+        }, {
+          "author" : {
+            "surname" : {
+              "text" : "Hauck",
+              "uuid" : "67ee5e77-c22c-44d6-845b-004fd853e4eb",
+              "annotations" : null
+            },
+            "forename" : {
+              "text" : "F P",
+              "uuid" : "b2c1c369-c57f-44f8-86c7-20cbe8f3e795",
+              "annotations" : null
+            },
+            "affiliation" : {
+              "organization" : null,
+              "affiliationInfos" : null
             },
             "degree" : null
           }
         } ],
         "pubDate" : {
-          "day" : 17,
-          "month" : 7,
-          "year" : 2000,
-          "date" : 966512196474
+          "day" : 0,
+          "month" : 9,
+          "year" : 1978,
+          "date" : 276011668531
         },
         "licenses" : null,
         "title" : {
           "titleText" : {
-            "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
+            "text" : "Nondepressant beta-adrenergic blocking agents. 1. Substituted 3-amino-1-(5,6,7,8-tetrahydro-1-naphthoxy)-2-propanols.",
+            "uuid" : "2d6940a0-7ac7-4d04-8695-f3c7a44a3235",
+            "annotations" : null
           },
           "subtitleText" : null
         },
         "language" : {
-          "text" : "eng"
+          "text" : "eng",
+          "uuid" : "d5d14201-36bf-485d-8256-6077a62dfaa6",
+          "annotations" : null
         },
         "source" : {
-          "text" : "Angewandte Chemie (International ed. in English). 2000 Aug;39(14):2540-2544. "
+          "text" : "Journal of medicinal chemistry. 1978 Sep;21(9):913-22. ",
+          "uuid" : "3ae9d2bc-a155-4039-a112-f6e578420dfd",
+          "annotations" : null
         },
-        "issn" : [ {
-          "text" : "1521-3773"
+        "issns" : [ {
+          "text" : "0022-2623",
+          "uuid" : "f85de464-3d83-428f-8739-3d8071e9340f",
+          "annotations" : null
         } ],
-        "license" : null,
-        "author" : {
-          "author" : {
-            "surname" : {
-              "text" : "Williams"
-            },
-            "forename" : null,
-            "affiliation" : {
-              "organization" : null,
-              "affiliationInfo" : [ "Department of Chemistry Colorado State University Fort Collins, CO 80523 (USA)." ]
-            },
-            "degree" : null
+        "publicationTypes" : [ {
+          "identifier" : {
+            "text" : "D016428",
+            "uuid" : "a3b49ff2-6a6f-4a73-9116-3db762dda1e0",
+            "annotations" : null
+          },
+          "publicationType" : {
+            "text" : "Journal Article",
+            "uuid" : "b6771fac-3253-420c-8cf4-961cc89b8185",
+            "annotations" : null
           }
-        }
+        } ]
       },
       "bibliography" : null,
-      "keywords" : null,
+      "keywords" : [ {
+        "rhetorical" : {
+          "text" : "Keywords",
+          "uuid" : "20df30b6-f81f-44be-aabc-40b1a6f4ba8b",
+          "annotations" : null
+        },
+        "keywordList" : [ {
+          "text" : "Adrenergic beta-Antagonists",
+          "uuid" : "44f91e56-0c02-444c-a641-bbb32e39a957",
+          "annotations" : null
+        }, {
+          "text" : "Adrenergic beta-Antagonists/chemical synthesis",
+          "uuid" : "0c36b160-292f-48ff-9e49-bd1ca4b77316",
+          "annotations" : null
+        }, {
+          "text" : "Adrenergic beta-Antagonists",
+          "uuid" : "ec61aee5-4166-40ed-9df2-d1f3e4412173",
+          "annotations" : null
+        }, {
+          "text" : "Adrenergic beta-Antagonists/pharmacology",
+          "uuid" : "0d8ad563-aa33-4e1d-baaf-44685405178d",
+          "annotations" : null
+        }, {
+          "text" : "Animals",
+          "uuid" : "5cc0b611-544d-4366-b4e8-98b0edc79751",
+          "annotations" : null
+        }, {
+          "text" : "Cats",
+          "uuid" : "47f4ef0b-11f7-489b-80c1-7506261bd41e",
+          "annotations" : null
+        }, {
+          "text" : "Epoxy Compounds",
+          "uuid" : "60105669-d78a-42d2-8289-7cb32108feb5",
+          "annotations" : null
+        }, {
+          "text" : "Guinea Pigs",
+          "uuid" : "3e697b04-04ce-43a7-8722-461ba071ba6c",
+          "annotations" : null
+        }, {
+          "text" : "In Vitro Techniques",
+          "uuid" : "f9db6215-dbfc-4424-9852-f9e59430d276",
+          "annotations" : null
+        }, {
+          "text" : "Isoproterenol",
+          "uuid" : "4c1e36ad-5cbe-4d29-ab69-716c89786864",
+          "annotations" : null
+        }, {
+          "text" : "Isoproterenol/antagonists & inhibitors",
+          "uuid" : "3b5522b9-63cc-4178-bd2f-168ca7ce1e4a",
+          "annotations" : null
+        }, {
+          "text" : "Methods",
+          "uuid" : "6db8b2d6-c900-4e15-b941-1b48309d1afd",
+          "annotations" : null
+        }, {
+          "text" : "Myocardial Contraction",
+          "uuid" : "944222d5-06d0-4b65-8d14-473035aab660",
+          "annotations" : null
+        }, {
+          "text" : "Myocardial Contraction/drug effects",
+          "uuid" : "13d23cc7-46e3-4773-8fd9-0ebfe7a0e8fd",
+          "annotations" : null
+        }, {
+          "text" : "Phenols",
+          "uuid" : "c0dc30e8-8952-4b4e-befd-cd63c7352999",
+          "annotations" : null
+        }, {
+          "text" : "Propanolamines",
+          "uuid" : "a16a4387-6fa6-4f72-bab7-e3b1e9f4a575",
+          "annotations" : null
+        }, {
+          "text" : "Propanolamines/chemical synthesis",
+          "uuid" : "0e009b2e-ce16-475e-9d1e-86178abc52b8",
+          "annotations" : null
+        }, {
+          "text" : "Propanolamines",
+          "uuid" : "afb19157-a830-4d55-8202-d301f2b513f9",
+          "annotations" : null
+        }, {
+          "text" : "Propanolamines/pharmacology",
+          "uuid" : "99974989-8b95-41ed-99d1-9378a91eb168",
+          "annotations" : null
+        }, {
+          "text" : "Rats",
+          "uuid" : "74b37d17-e362-4457-a26b-0da566d75734",
+          "annotations" : null
+        }, {
+          "text" : "Structure-Activity Relationship",
+          "uuid" : "6b705a2c-125a-4272-9321-d775c2baf7c8",
+          "annotations" : null
+        } ]
+      }, {
+        "rhetorical" : {
+          "text" : "Keywords",
+          "uuid" : "eee7149a-78a2-4246-a3c6-2a8eedeaa1c4",
+          "annotations" : null
+        },
+        "keywordList" : [ {
+          "text" : "Adrenergic beta-Antagonists",
+          "uuid" : "f143b9be-a39f-40f7-b3f4-56b0dfeadf43",
+          "annotations" : null
+        }, {
+          "text" : "Epoxy Compounds",
+          "uuid" : "9364acde-5113-48f9-803e-0f65b724b918",
+          "annotations" : null
+        }, {
+          "text" : "Phenols",
+          "uuid" : "ca0306b1-dad1-4d80-893c-ecdf962aee46",
+          "annotations" : null
+        }, {
+          "text" : "Propanolamines",
+          "uuid" : "bcd4b16e-0fc6-4ffc-894c-193f85b9e9d7",
+          "annotations" : null
+        }, {
+          "text" : "Isoproterenol",
+          "uuid" : "38747b5d-a3db-4248-ac08-46c723c4c751",
+          "annotations" : null
+        } ]
+      } ],
       "concept" : {
         "altLabel" : null,
         "hiddenLabel" : null,
-        "identifier" : "10941129",
-        "identifierSource" : "http://www.ncbi.nlm.nih.gov/pubmed/",
+        "identifier" : {
+          "text" : "31485",
+          "uuid" : "2e751d7f-8f2c-4f42-a5c9-5399d95549cb",
+          "annotations" : null
+        },
+        "identifierSource" : {
+          "text" : "http://www.ncbi.nlm.nih.gov/pubmed/",
+          "uuid" : "98494c20-fa6d-452c-90f3-05733038cee7",
+          "annotations" : null
+        },
         "identifierWithSource" : null,
-        "altLabels" : [ "PII:10.1002/1521-3773(20000717)39:14<2540::AID-ANIE2540>3.0.CO;2-R" ],
+        "altLabels" : [ ],
         "hiddenLabels" : null,
-        "prefLabel" : "PMID:10941129.1"
+        "prefLabel" : {
+          "text" : "PMID:31485.1",
+          "uuid" : "902f6b31-db14-4d3e-9308-d4d66537ef50",
+          "annotations" : null
+        }
       }
     },
     "backMatter" : null,
     "bodyMatter" : null,
     "frontMatter" : {
       "titleText" : {
-        "text" : "Asymmetric, Stereocontrolled Total Synthesis of Paraherquamide A This work was supported by the NIH (Grant CA 70375). The Japanese Society for the Promotion of Science (JSPS) is acknowledged for providing support to H.T. Mass spectra were obtained on instruments supported by the NIH Shared Instrumentation Grant (GM 49631). We also wish to thank Dr. Timothy Blizzard (Merck & Co.) for providing an authentic sample of natural paraherquamide A. We also wish to acknowledge Dr. Byung H. Lee (Pharmacia-Upjohn Co.) for providing NMR spectra and an authentic specimen of 14-oxoparaherquamide B. We also wish to thank Dr. Alfredo Vazquez for assistance with purification and characterization of synthetic paraherquamide A."
+        "text" : "Nondepressant beta-adrenergic blocking agents. 1. Substituted 3-amino-1-(5,6,7,8-tetrahydro-1-naphthoxy)-2-propanols.",
+        "uuid" : "2d6940a0-7ac7-4d04-8695-f3c7a44a3235",
+        "annotations" : null
+      },
+      "documentAbstract" : {
+        "abstractSections" : [ {
+          "paragraphs" : [ {
+            "sentences" : [ {
+              "text" : {
+                "text" : "A series of 3-amino-1-(5,6,7,8-tetrahydronaphthoxy)-2-propanols was synthesized and investigated for beta-adrenergic blocking activity and direct myocardial depressant action.",
+                "uuid" : "eeba6fc9-879a-48c3-b6bd-6c561452a764",
+                "annotations" : null
+              }
+            }, {
+              "text" : {
+                "text" : "The cis- and trans-diols 12--15 were found to retain the beta-blocking potency of propranolol but to lack its myocardial depressant action.",
+                "uuid" : "6aa60982-7ea3-4a41-9e3e-7de5d055b69e",
+                "annotations" : null
+              }
+            }, {
+              "text" : {
+                "text" : "Compound 15 (nadolol) is currently undergoing extensive clinical evaluation as a potential antianginal, antiarrhythmic, and antihypertensive agent.",
+                "uuid" : "a0a0126b-0a10-45e3-a949-2c5a3a0d5b50",
+                "annotations" : null
+              }
+            } ],
+            "structureElements" : null
+          } ],
+          "depth" : 0,
+          "title" : null,
+          "rhetorical" : {
+            "text" : "Abstract",
+            "uuid" : "ef100b72-48ed-4550-aa33-6cd0c7d8cb31",
+            "annotations" : null
+          }
+        } ]
       }
     }
   },
-  "docType" : null
+  "docType" : "PUBMED_ABSTRACT"
 }
