@@ -16,7 +16,6 @@
 package de.fraunhofer.scai.bio.util;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -27,9 +26,8 @@ import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
 import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 
 /**
  * @author tadams
@@ -70,24 +68,32 @@ public class DocumentRenderer {
     }
 
     /**
-     * Get the <code>Document</code> {@link Abstract} in plain text format 
+     * Get the <code>Document</code> {@link Abstract} in plain text format
      * 
      * @param doc input <code>Document</code>
      * @return Abstract String
      */
-    public static String getDocumentAbstract(Document doc) {	
+    public static String getDocumentAbstract(Document doc) {
 	StringBuilder sb = new StringBuilder();
 	Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
 	List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
-	for(Section section : abstractSections) {
+	for (Section section : abstractSections) {
 	    List<Paragraph> paragraphs = section.getParagraphs();
-	    	for (Paragraph para : paragraphs) {
-	    	    List<StructureElement> structureElements = para.getStructureElements();
-	    	    for (StructureElement se : structureElements) {
+	    for (Paragraph para : paragraphs) {
+		// either a sentence or a structure element is set
+		if (para.getSentences() != null) {
+		    List<Sentence> sentences = para.getSentences();
+		    for (Sentence sentence : sentences) {
+			sb.append(sentence.getText().getText());
+		    }
+		} else {
+		    List<StructureElement> structureElements = para.getStructureElements();
+		    for (StructureElement se : structureElements) {
 			sb.append(getText(se));
 		    }
 		}
 	    }
+	}
 	return sb.toString();
     }
 
