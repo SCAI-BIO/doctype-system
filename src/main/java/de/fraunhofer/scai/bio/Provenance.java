@@ -18,8 +18,6 @@ package de.fraunhofer.scai.bio;
 import java.io.Serializable;
 import java.util.Date;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.License;
-
 /**
  * @author marc
  *
