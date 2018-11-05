@@ -7,8 +7,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.structure.CaptionedBox;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Code;
@@ -18,6 +16,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.Formula;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Outline;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Quotation;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Table;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -40,7 +39,8 @@ public class StructureElement implements Serializable {
     private Quotation quotation;
     private Table table;
     private TextElement textElement;
-
+    private Sentence sentence;
+    
     private List<Annotation> annotations;
 
     /**
@@ -207,23 +207,17 @@ public class StructureElement implements Serializable {
     }
 
     /**
-     * fetches a String representation of the data in this element
-     * TODO add new fields if they are included in the class
-     * @return <code>String</code>
+     * @return the sentence
      */
-    @JsonIgnore
-		public String getText() {
-			if(captionedBox != null)return captionedBox.toString();
-			if(code != null) 				return code.toString();
-			if(dataTable != null)		return dataTable.toString();
-			if(figure != null) 			return figure.toString();
-			if(formula != null) 		return formula.toString();
-			if(imageContent != null)return imageContent.toString();
-			if(outline != null) 		return outline.toString();
-			if(quotation != null) 	return quotation.toString();
-			if(table != null) 			return table.toString();
-			if(textElement != null) return textElement.toString();
-			return null;
-		}
+    public Sentence getSentence() {
+	return sentence;
+    }
+    
+    /**
+     * @param sentence the sentence to set
+     */
+    public void setSentence(Sentence sentence) {
+	this.sentence = sentence;
+    }
 
 }

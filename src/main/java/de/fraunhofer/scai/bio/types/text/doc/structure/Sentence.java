@@ -13,11 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.container;
+package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author klein
@@ -29,26 +27,20 @@ public class Sentence implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -2995499511215948320L;
-    private TextElement sentenceText;
+    private String sentenceText;
 
     /**
      * @return the sentenceText
      */
-    public TextElement getText() {
+    public String getText() {
 	return sentenceText;
     }
 
     /**
      * @param sentenceText the text to set
      */
-    public void setText(TextElement sentenceText) {
+    public void setText(String sentenceText) {
 	this.sentenceText = sentenceText;
     }
     
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-    	return sentenceText.toString();
-    }
 }
