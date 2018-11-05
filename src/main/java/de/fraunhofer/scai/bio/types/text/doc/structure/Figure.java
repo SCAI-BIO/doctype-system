@@ -27,49 +27,49 @@ public class Figure implements Serializable {
      */
     private static final long serialVersionUID = -4281623493434656899L;
 
-    private String rhetorical;
-    private String title;
-    private String caption;
+    private TextElement rhetorical;
+    private TextElement title;
+    private TextElement caption;
     private ImageContent imageContent;
 
     /**
      * @return the rhetorical
      */
-    public String getRhetorical() {
+    public TextElement getRhetorical() {
         return rhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
-    public void setRhetorical(String rhetorical) {
+    public void setRhetorical(TextElement rhetorical) {
         this.rhetorical = rhetorical;
     }
 
     /**
      * @return the title
      */
-    public String getTitle() {
+    public TextElement getTitle() {
         return title;
     }
 
     /**
      * @param title the title to set
      */
-    public void setTitle(String title) {
+    public void setTitle(TextElement title) {
         this.title = title;
     }
     /**
      * @return the caption
      */
-    public String getCaption() {
+    public TextElement getCaption() {
 	return caption;
     }
 
     /**
      * @param caption the caption to set
      */
-    public void setCaption(String caption) {
+    public void setCaption(TextElement caption) {
 	this.caption = caption;
     }
 
@@ -92,12 +92,12 @@ public class Figure implements Serializable {
     public void setImage(ImageContent v) {
 	this.imageContent = v;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%s\n%s\n%s", title, imageContent.toString(), caption);
+    	return String.format("%s\n%s\n%s", title.getText(), imageContent.toString(), caption.getText());
     }
 
 }

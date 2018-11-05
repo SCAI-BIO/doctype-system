@@ -28,26 +28,26 @@ public class Formula implements Serializable {
      */
     private static final long serialVersionUID = -226821519360592861L;
 
-    private String formula;
+    private TextElement formula;
 
     /**
      * @return the formula
      */
-    public String getFormula() {
+    public TextElement getFormula() {
 	return formula;
     }
 
     /**
      * @param formula the formula to set
      */
-    public void setFormula(String formula) {
+    public void setFormula(TextElement formula) {
 	this.formula = formula;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return formula;
+    	return formula.getText();
     }
 }

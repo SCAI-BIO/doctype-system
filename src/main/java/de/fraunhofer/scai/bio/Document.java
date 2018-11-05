@@ -29,7 +29,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
 
 /**
  * @author marc

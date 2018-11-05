@@ -28,9 +28,9 @@ public class CaptionedBox implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -3952148080008882699L;
-    String title;
+    TextElement title;
     int numbering;
-    String caption;
+    TextElement caption;
 
     /**
      * getter for caption - gets All captioned boxes have captions describing the
@@ -38,7 +38,7 @@ public class CaptionedBox implements Serializable {
      * 
      * @return caption of the {@link CaptionedBox}
      */
-    public String getCaption() {
+    public TextElement getCaption() {
 	return this.caption;
     }
 
@@ -57,7 +57,7 @@ public class CaptionedBox implements Serializable {
      * 
      * @return the title of the {@link CaptionedBox}
      */
-    public String getTitle() {
+    public TextElement getTitle() {
 	return this.title;
     }
 
@@ -67,7 +67,7 @@ public class CaptionedBox implements Serializable {
      * 
      * @param caption of the {@link CaptionedBox} to set
      */
-    public void setCaption(String caption) {
+    public void setCaption(TextElement caption) {
 	this.caption = caption;
     }
 
@@ -86,7 +86,7 @@ public class CaptionedBox implements Serializable {
      * 
      * @param title of the {@link CaptionedBox}
      */
-    public void setTitle(String title) {
+    public void setTitle(TextElement title) {
 	this.title = title;
     }
     
@@ -94,7 +94,8 @@ public class CaptionedBox implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%d\t%s\n%s", numbering, title, caption);
+	return String.format("%d\t%s\n%s", numbering, title.getText(), caption.getText());
     }
 
 }
+

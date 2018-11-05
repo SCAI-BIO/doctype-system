@@ -28,7 +28,7 @@ public class Page implements Serializable {
      */
     private static final long serialVersionUID = 8710743034102291637L;
     int pageNumber;
-    String layout;
+    TextElement layout;
 
     /**
      * getter for layout - specifies the page layout. Examples: 2-column, titlepage
@@ -37,7 +37,7 @@ public class Page implements Serializable {
      * 
      * @return layout of the feature
      */
-    public String getLayout() {
+    public TextElement getLayout() {
 	return this.layout;
     }
 
@@ -58,7 +58,7 @@ public class Page implements Serializable {
      * 
      * @param layout value to set into the feature
      */
-    public void setLayout(String layout) {
+    public void setLayout(TextElement layout) {
 	this.layout = layout;
     }
 
@@ -76,7 +76,7 @@ public class Page implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%d\t%s", pageNumber, layout);
+    	return String.format("%d\t%s", pageNumber, layout.getText());
     }
 
 }

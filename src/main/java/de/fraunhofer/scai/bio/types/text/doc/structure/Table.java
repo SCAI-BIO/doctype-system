@@ -26,63 +26,63 @@ public class Table implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = 6457211594148660263L;
-    private String caption;
-    private String title;
-    private String text;
-    private String rhetorical;
+    private TextElement caption;
+    private TextElement title;
+    private TextElement text;
+    private TextElement rhetorical;
 
     /**
      * @return the caption
      */
-    public String getCaption() {
+    public TextElement getCaption() {
 	return caption;
     }
 
     /**
      * @return the text
      */
-    public String getText() {
+    public TextElement getText() {
 	return text;
     }
 
     /**
      * @return the title
      */
-    public String getTitle() {
+    public TextElement getTitle() {
 	return title;
     }
 
     /**
      * @return the rhetorical
      */
-    public String getRhetorical() {
+    public TextElement getRhetorical() {
         return rhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
-    public void setRhetorical(String rhetorical) {
+    public void setRhetorical(TextElement rhetorical) {
         this.rhetorical = rhetorical;
     }
 
-    public void setCaption(String caption) {
+    public void setCaption(TextElement caption) {
 	this.caption = caption;
     }
 
-    public void setText(String text) {
+    public void setText(TextElement text) {
 	this.text = text;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(TextElement title) {
 	this.title = title;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%s\n%s\n%s", title, text, caption);
+    	return String.format("%s\n%s\n%s", title.getText(), text.getText(), caption.getText());
     }
 
 

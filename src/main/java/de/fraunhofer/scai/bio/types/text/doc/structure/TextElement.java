@@ -16,6 +16,10 @@
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
 /** 
  *  */
@@ -31,6 +35,8 @@ public class TextElement implements Serializable {
      */
     private String text;
 
+    private List<Annotation> annotations;
+
     /**
      * @return the text
      */
@@ -43,6 +49,29 @@ public class TextElement implements Serializable {
      */
     public void setText(String text) {
 	this.text = text;
+    }
+    
+    /**
+     * @return the annotations
+     */
+    public List<Annotation> getAnnotations() {
+	return annotations;
+    }
+
+    /**
+     * @param annotation the annotation to add
+     */
+    public void addAnnotation(Annotation annotation) {
+	if (this.annotations == null)
+	    this.annotations = new ArrayList<Annotation>();
+	this.annotations.add(annotation);
+    }
+
+    /**
+     * @param annotations the annotations to set
+     */
+    public void setAnnotations(List<Annotation> annotations) {
+	this.annotations = annotations;
     }
 
     /* (non-Javadoc)

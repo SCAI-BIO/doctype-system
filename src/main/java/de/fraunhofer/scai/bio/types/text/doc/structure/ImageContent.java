@@ -151,7 +151,7 @@ public class ImageContent implements Serializable {
     public void setWidth(int width) {
 	this.width = width;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */

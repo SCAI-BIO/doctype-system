@@ -29,27 +29,27 @@ public class Code implements Serializable {
      */
     private static final long serialVersionUID = -871863145178162566L;
 
-    private String code;
+    private TextElement code;
 
     /**
      * @return the code
      */
-    public String getCode() {
+    public TextElement getCode() {
 	return code;
     }
 
     /**
      * @param code the code to set
      */
-    public void setCode(String code) {
+    public void setCode(TextElement code) {
 	this.code = code;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return code;
+    	return code.getText();
     }
 
 }

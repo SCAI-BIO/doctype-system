@@ -17,7 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Provenance;
+import de.fraunhofer.scai.bio.Provenance;
 
 /**
  * @author klein

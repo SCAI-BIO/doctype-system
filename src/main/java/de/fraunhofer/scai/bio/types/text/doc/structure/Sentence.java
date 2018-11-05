@@ -27,20 +27,20 @@ public class Sentence implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -2995499511215948320L;
-    private String sentenceText;
+    private TextElement sentenceText;
 
     /**
      * @return the sentenceText
      */
-    public String getText() {
+    public TextElement getText() {
 	return sentenceText;
     }
 
     /**
      * @param sentenceText the text to set
      */
-    public void setText(String sentenceText) {
+    public void setText(TextElement sentenceText) {
 	this.sentenceText = sentenceText;
     }
-    
+
 }

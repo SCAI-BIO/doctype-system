@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.fraunhofer.scai.bio.types.text.doc.structure;
+package de.fraunhofer.scai.bio;
 
 import java.io.Serializable;
 import java.util.Date;

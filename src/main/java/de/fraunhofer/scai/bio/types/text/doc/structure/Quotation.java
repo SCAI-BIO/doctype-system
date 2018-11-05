@@ -47,7 +47,7 @@ public class Quotation implements Serializable {
     public void setReference(Reference v) {
 	this.reference = v;
     }
-    
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */

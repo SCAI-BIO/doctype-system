@@ -35,9 +35,9 @@ public class Outline implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -4868157788079288706L;
-    String titleText;
+    TextElement titleText;
     List<String> numbering;
-    String rhetorical;
+    TextElement rhetorical;
 
     private List<String> parts;
     private Map<String, List<String>> chapters;
@@ -84,7 +84,7 @@ public class Outline implements Serializable {
      * 
      * @return rhetorical of the feature
      */
-    public String getRhetorical() {
+    public TextElement getRhetorical() {
 	return this.rhetorical;
     }
 
@@ -99,7 +99,7 @@ public class Outline implements Serializable {
     /**
      * @return the titleText
      */
-    public String getTitleText() {
+    public TextElement getTitleText() {
 	return titleText;
     }
 
@@ -133,7 +133,7 @@ public class Outline implements Serializable {
      * 
      * @param rhetorical value to set into the feature
      */
-    public void setRhetorical(String rhetorical) {
+    public void setRhetorical(TextElement rhetorical) {
 	this.rhetorical = rhetorical;
     }
 
@@ -148,7 +148,7 @@ public class Outline implements Serializable {
     /**
      * @param titleText the titleText to set
      */
-    public void setTitleText(String titleText) {
+    public void setTitleText(TextElement titleText) {
 	this.titleText = titleText;
     }
 
@@ -156,7 +156,7 @@ public class Outline implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	StringBuilder sb = new StringBuilder(titleText);
+    	StringBuilder sb = new StringBuilder(titleText.getText());
     	sb.append("\n");
     	for(String number : numbering) { sb.append(number); sb.append("\n"); }
     	return sb.toString();

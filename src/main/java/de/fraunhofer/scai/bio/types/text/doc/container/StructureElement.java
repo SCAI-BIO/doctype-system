@@ -41,8 +41,6 @@ public class StructureElement implements Serializable {
     private TextElement textElement;
     private Sentence sentence;
     
-    private List<Annotation> annotations;
-
     /**
      * @return the captionedBox
      */
@@ -181,29 +179,6 @@ public class StructureElement implements Serializable {
      */
     public void setTextElement(TextElement textElement) {
 	this.textElement = textElement;
-    }
-
-    /**
-     * @return the annotations
-     */
-    public List<Annotation> getAnnotations() {
-	return annotations;
-    }
-
-    /**
-     * @param annotation the annotation to add
-     */
-    public void addAnnotation(Annotation annotation) {
-	if (this.annotations == null)
-	    this.annotations = new ArrayList<Annotation>();
-	this.annotations.add(annotation);
-    }
-
-    /**
-     * @param annotations the annotations to set
-     */
-    public void setAnnotations(List<Annotation> annotations) {
-	this.annotations = annotations;
     }
 
     /**
