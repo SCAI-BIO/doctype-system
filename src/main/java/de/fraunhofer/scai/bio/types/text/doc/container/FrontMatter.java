@@ -17,6 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
@@ -37,6 +38,7 @@ public class FrontMatter implements Serializable {
     private static final long serialVersionUID = -6851482782475430729L;
 
     private TextElement titleText;
+    private Abstract documentAbstract;
 
     /**
      * @return the titleText 
@@ -50,6 +52,20 @@ public class FrontMatter implements Serializable {
      */
     public void setTitleText(TextElement titleText) {
 	this.titleText = titleText;
+    }
+
+    /**
+     * @return the documentAbstract
+     */
+    public Abstract getDocumentAbstract() {
+	return documentAbstract;
+    }
+
+    /**
+     * @param documentAbstract the documentAbstract to set
+     */
+    public void setDocumentAbstract(Abstract documentAbstract) {
+	this.documentAbstract = documentAbstract;
     }
 
 }
