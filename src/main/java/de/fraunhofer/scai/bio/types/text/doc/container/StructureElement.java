@@ -165,7 +165,7 @@ public class StructureElement implements Serializable {
     }
 
     /**
-     * @return the {@link TextElement}
+     * @return the {@link StructureElement}
      */
     public TextElement getTextElement() {
 	return textElement;

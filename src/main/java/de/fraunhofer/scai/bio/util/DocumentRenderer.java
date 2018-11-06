@@ -19,7 +19,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +36,7 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
@@ -54,14 +54,16 @@ public class DocumentRenderer {
      * Assemble all document contents which can be written as String, return them as
      * plain text list separated by blanks. Used for indexing in Solr.
      * 
-     * @param doc <code>Document</code>
+     * @param document {@link Document}
      * @return String of content words separated by blanks
      */
-    public static String renderTextContents(Document doc) {
+    public static String renderTextContents(Document document) {
 
     	StringBuilder sb = new StringBuilder();
     	HashSet<String> contents = new HashSet<String>();
-    	Map<UUID, TextElement> index = doc.getTextElementIndex();
+    	
+    	Map<String, TextElement> index = getFrontMatterTextElements(document);
+    	index.putAll(getBodyMatterTextElements(document));
 
     	for (TextElement se : index.values()) {
     		Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
@@ -82,24 +84,32 @@ public class DocumentRenderer {
     }
 
     /**
-     * Get the <code>Document</code> {@link Abstract} in plain text format 
+     * Get the <code>Document</code> {@link Abstract} in plain text format
      * 
      * @param doc input <code>Document</code>
      * @return Abstract String
      */
-    public static String getDocumentAbstract(Document doc) {	
+    public static String getDocumentAbstract(Document doc) {
 	StringBuilder sb = new StringBuilder();
 	Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
 	List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
-	for(Section section : abstractSections) {
+	for (Section section : abstractSections) {
 	    List<Paragraph> paragraphs = section.getParagraphs();
-	    	for (Paragraph para : paragraphs) {
-	    	    List<StructureElement> structureElements = para.getStructureElements();
-	    	    for (StructureElement se : structureElements) {
+	    for (Paragraph para : paragraphs) {
+		// either a sentence or a structure element is set
+		if (para.getSentences() != null) {
+		    List<Sentence> sentences = para.getSentences();
+		    for (Sentence sentence : sentences) {
+			sb.append(sentence.getText().getText());
+		    }
+		} else {
+		    List<StructureElement> structureElements = para.getStructureElements();
+		    for (StructureElement se : structureElements) {
 			sb.append(getText(se));
 		    }
 		}
 	    }
+	}
 	return sb.toString();
     }
 
@@ -134,8 +144,8 @@ public class DocumentRenderer {
     }
     
 
-    public static Map<UUID, TextElement> getDocumentTextElements(Document document) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getDocumentTextElements(Document document) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	elements.putAll(getMetaElementTextElements(document));
 
@@ -146,8 +156,8 @@ public class DocumentRenderer {
     	return elements;
     }
 
-    public static Map<UUID, TextElement> getMetaElementTextElements(Document document) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getMetaElementTextElements(Document document) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	// TODO
     	return elements;
@@ -155,11 +165,11 @@ public class DocumentRenderer {
 
 		/**
      * 
-     * @param document<code>Document</code>
+     * @param document {@link Document}
      * @return
      */
-    public static Map<UUID, TextElement> getFrontMatterTextElements(Document document) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getFrontMatterTextElements(Document document) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	DocumentElement de = document.getDocumentElement();
 
@@ -167,7 +177,7 @@ public class DocumentRenderer {
     		
     		FrontMatter fm = de.getFrontMatter();
     		if(fm != null) {
-    			elements.put(fm.getTitleText().getUuid(), fm.getTitleText());
+    			addTextElement(elements, fm.getTitleText(), "FrontMatterTitle");
 
     			Abstract abstr = fm.getDocumentAbstract();
     			if(abstr != null) {
@@ -181,11 +191,11 @@ public class DocumentRenderer {
 
     /**
      * 
-     * @param document<code>Document</code>
+     * @param document {@link Document}
      * @return
      */
-    public static Map<UUID, TextElement> getBodyMatterTextElements(Document document) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getBodyMatterTextElements(Document document) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	DocumentElement de = document.getDocumentElement();
 
@@ -201,8 +211,8 @@ public class DocumentRenderer {
     	return elements;
     }
 
-    public static Map<UUID, TextElement> getChapterTextElements(List<Chapter> chapters) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getChapterTextElements(List<Chapter> chapters) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
     	
     	if(chapters != null) {
     		for(Chapter chapter : chapters) {
@@ -213,13 +223,13 @@ public class DocumentRenderer {
 			return elements;
 		}
 
-    public static Map<UUID, TextElement> getSectionsTextElements(List<Section> sections) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getSectionsTextElements(List<Section> sections) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
     	
     	if(sections != null) {
     		for(Section sec : sections) {
     			if(sec.getTitle() != null) {
-    				elements.put(sec.getTitle().getUuid(), sec.getTitle());
+    				addTextElement(elements, sec.getTitle(), "SectionTitle"+sec.getDepth());
     			}
     			elements.putAll( getParagraphsTextElements(sec.getParagraphs()) );
     		}
@@ -228,8 +238,8 @@ public class DocumentRenderer {
 			return elements;
 		}
 
-    public static Map<UUID, TextElement> getParagraphsTextElements(List<Paragraph> paragraphs) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getParagraphsTextElements(List<Paragraph> paragraphs) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
     	
     	if(paragraphs != null) {
     		for(Paragraph par : paragraphs) {
@@ -240,41 +250,41 @@ public class DocumentRenderer {
 			return elements;
 		}
 
-    public static Map<UUID, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
     
     	if(structureElements != null) {
     		for(StructureElement sel : structureElements) {
     			if (sel.getCaptionedBox() != null) {
-    				elements.put(sel.getCaptionedBox().getTitle().getUuid(), sel.getCaptionedBox().getTitle());
-    				elements.put(sel.getCaptionedBox().getCaption().getUuid(), sel.getCaptionedBox().getCaption());
+    				addTextElement(elements, sel.getCaptionedBox().getTitle(), "CaptionedBoxTitle");
+    				addTextElement(elements, sel.getCaptionedBox().getCaption(), "CaptionedBoxCaption");
     				
     			} else if (sel.getCode() != null) {
-    				elements.put(sel.getCode().getCode().getUuid(), sel.getCode().getCode());
+    				addTextElement(elements, sel.getCode().getCode(), "Code");
     				
     			} else if (sel.getDataTable() != null) {
-    				elements.put(sel.getDataTable().getContent().getUuid(), sel.getDataTable().getContent());
+    				addTextElement(elements, sel.getDataTable().getContent(), "DataTableContent");
     				
     			} else if (sel.getFigure() != null) {
-    				elements.put(sel.getFigure().getTitle().getUuid(), sel.getFigure().getTitle());
-    				elements.put(sel.getFigure().getCaption().getUuid(), sel.getFigure().getCaption());
+    				addTextElement(elements, sel.getFigure().getTitle(), "FigureTitle");
+    				addTextElement(elements, sel.getFigure().getCaption(), "FigureCaption");
     				
     			} else if (sel.getFormula() != null) {
-    				elements.put(sel.getFormula().getFormula().getUuid(), sel.getFormula().getFormula());
+    				addTextElement(elements, sel.getFormula().getFormula(), "Formula");
     				
     			} else if (sel.getOutline() != null) {
-    				elements.put(sel.getOutline().getTitleText().getUuid(), sel.getOutline().getTitleText());
+    				addTextElement(elements, sel.getOutline().getTitleText(), "OutlineTitleText");
     				
     			} else if (sel.getQuotation() != null) {
     				elements.putAll( getReferenceTextElements(sel.getQuotation().getReference()) );
     				
     			} else if (sel.getTable() != null) {
-    				elements.put(sel.getTable().getTitle().getUuid(), sel.getTable().getTitle());
-    				elements.put(sel.getTable().getText().getUuid(), sel.getTable().getText());
-    				elements.put(sel.getTable().getCaption().getUuid(), sel.getTable().getCaption());
+    				addTextElement(elements, sel.getTable().getTitle(), "TableTitle");
+    				addTextElement(elements, sel.getTable().getText(), "TableText");
+    				addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
     				
     			} else if (sel.getTextElement() != null)
-    				elements.put(sel.getTextElement().getUuid(), sel.getTextElement());
+    				addTextElement(elements, sel.getTextElement(), "TextElement");
     		}
     	}
     	
@@ -287,8 +297,8 @@ public class DocumentRenderer {
      * @param document {@link Document}
      * @return
      */
-    public static Map<UUID, TextElement> getBackMatterTextElements(Document document) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getBackMatterTextElements(Document document) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	DocumentElement de = document.getDocumentElement();
     	
@@ -309,16 +319,16 @@ public class DocumentRenderer {
     	return elements;
     }
 
-    public static Map<UUID, TextElement> getReferenceTextElements(Reference reference) {
-    	Map<UUID, TextElement> elements = new TreeMap<UUID, TextElement>();
+    public static Map<String, TextElement> getReferenceTextElements(Reference reference) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
     	if(reference != null) {
     		if(reference.getTitle() != null) {
     			if(reference.getTitle().getTitleText() != null) {
-    				elements.put(reference.getTitle().getTitleText().getUuid(), reference.getTitle().getTitleText());
+    				addTextElement(elements, reference.getTitle().getTitleText(), "TitleText");
     			}
     			if(reference.getTitle().getTitleText() != null) {
-    				elements.put(reference.getTitle().getSubtitleText().getUuid(), reference.getTitle().getSubtitleText());
+    				addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
     			}
     		}
 
@@ -330,6 +340,11 @@ public class DocumentRenderer {
 
     	return elements;
     }
+
     
+    private static void addTextElement(Map<String, TextElement> elements, TextElement sel, String title) {
+    	elements.put(sel.getUuid()+"\t"+title.toUpperCase(), sel);
+    }
+
 }
 
