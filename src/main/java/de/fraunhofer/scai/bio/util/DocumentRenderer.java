@@ -15,6 +15,7 @@
  */
 package de.fraunhofer.scai.bio.util;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,7 @@ public class DocumentRenderer {
     	StringBuilder sb = new StringBuilder();
     	HashSet<String> contents = new HashSet<String>();
     	
+    	// TODO to be discussed what should be indexed
     	Map<String, TextElement> index = getFrontMatterTextElements(document);
     	index.putAll(getBodyMatterTextElements(document));
 
@@ -144,6 +146,29 @@ public class DocumentRenderer {
     }
     
 
+    /**
+     * collect all {@link Annotation}s from all {@link TextElement}s into a {@link List}
+     * @param document {@link Document}
+     * @return
+     */
+    public static List<Annotation> getAllAnnotations(Document document) {
+    	
+    	List<Annotation> annotations = new ArrayList<Annotation>();
+    	
+    	Map<String, TextElement> elements = getDocumentTextElements(document);
+    	
+    	for(TextElement element : elements.values()) {
+    		annotations.addAll(element.getAnnotations());
+    	}
+    	
+    	return annotations;
+    }
+    
+    /**
+     * collect all {@link TextElement}s into a Map
+     * @param document {@link Document}
+     * @return
+     */
     public static Map<String, TextElement> getDocumentTextElements(Document document) {
     	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
@@ -243,13 +268,30 @@ public class DocumentRenderer {
     	
     	if(paragraphs != null) {
     		for(Paragraph par : paragraphs) {
-    			elements.putAll(getStructureElementsTextElements(par.getStructureElements()) );
+    			if(par.getSentences() != null) {
+    				elements.putAll( getSentencesTextElements(par.getSentences()) );
+    			}
+    			if(par.getStructureElements() != null) {
+    					elements.putAll( getStructureElementsTextElements(par.getStructureElements()) );
+    			}
     		}
     	}
     	
 			return elements;
 		}
 
+    public static Map<String, TextElement> getSentencesTextElements(List<Sentence> sentences) {
+    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+    
+    	if(sentences != null) {
+    		for(Sentence sentence : sentences) {
+    			addTextElement(elements, sentence.getText(), "Sentence");
+    		}
+    	}
+    	
+    	return elements;
+    }
+    
     public static Map<String, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
     	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
     
@@ -342,8 +384,17 @@ public class DocumentRenderer {
     }
 
     
-    private static void addTextElement(Map<String, TextElement> elements, TextElement sel, String title) {
-    	elements.put(sel.getUuid()+"\t"+title.toUpperCase(), sel);
+    /**
+     * create a nice key for each {@link TextElement} and place in {@link Map}
+     * @param elements  Map<String, TextElement>
+     * @param textElement {@link TextElement}
+     * @param title of text element {@link String}
+     */
+    private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
+    	elements.put(
+    			String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), 
+    			textElement
+    			);
     }
 
 }
