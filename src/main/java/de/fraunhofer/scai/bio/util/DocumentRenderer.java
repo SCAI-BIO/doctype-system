@@ -68,9 +68,11 @@ public class DocumentRenderer {
     	index.putAll(getBodyMatterTextElements(document));
 
     	for (TextElement se : index.values()) {
-    		Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
-    		contents.add(unwantedMatcher.replaceAll(""));
-
+    		if(se.getText() != null) {
+    			Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
+    			contents.add(unwantedMatcher.replaceAll(""));
+    		}
+    		
     		// TODO if we want to index annotations
     		if (se.getAnnotations() != null) {
     			for(Annotation anot : se.getAnnotations()) {
@@ -157,8 +159,10 @@ public class DocumentRenderer {
     	
     	Map<String, TextElement> elements = getDocumentTextElements(document);
     	
-    	for(TextElement element : elements.values()) {
-    		annotations.addAll(element.getAnnotations());
+    	if(elements != null) {
+    		for(TextElement element : elements.values()) {
+    			annotations.addAll(element.getAnnotations());
+    		}
     	}
     	
     	return annotations;
@@ -391,10 +395,12 @@ public class DocumentRenderer {
      * @param title of text element {@link String}
      */
     private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
-    	elements.put(
-    			String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), 
-    			textElement
-    			);
+    	if(textElement != null) {
+    		elements.put(
+    				String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), 
+    				textElement
+    				);
+    	}
     }
 
 }
