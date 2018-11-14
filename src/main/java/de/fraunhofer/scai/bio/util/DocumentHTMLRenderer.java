@@ -15,9 +15,9 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
 
 import org.apache.commons.lang.StringEscapeUtils;
@@ -255,8 +255,8 @@ public class DocumentHTMLRenderer {
 				
 				sb.append(String.format("<span data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sent"));
 				sb.append(escapeHTML(sentence.getText()));
-				sb.append(String.format(" "));
 				sb.append(String.format("</span>"));
+				sb.append(String.format(" "));
 			}
 		}
 		return sb.toString();
@@ -282,32 +282,37 @@ public class DocumentHTMLRenderer {
 
 
 
+	/**
+	 * convert a text element into proper HTML
+	 * + insert all annotations
+	 *  
+	 * @param textElement {@link TextElement}
+	 * @return {@link String}
+	 */
 	public static String escapeHTML(TextElement textElement) {
-		// TODO replace multiple whitespaces or nobrsp
-		// TODO annotations
-		
 		String text = textElement.getText();
 		StringBuilder sb = new StringBuilder();
+		Map<Float, String> insertions = new TreeMap<Float, String>();
 		
-		// insert annotations TODO stacked
 		int lastChar = 0;
 		if(textElement.getAnnotations() != null) {
 			
-			Comparator<Annotation> comparator = new AnnotationComparator();
-			Collections.sort( textElement.getAnnotations(), comparator );
-
+			// order all spans tags to be inserted
 			for(Annotation anno : textElement.getAnnotations()) {
-
-				if(anno.getStartOffset() > lastChar) {
-					sb.append(text.substring(lastChar, anno.getStartOffset()));
-					sb.append(String.format("<span data-id=\"%s\" class=\"%s\">", anno.getAnnotationText(), anno.getAnnotationType()));
-					sb.append(text.substring(anno.getStartOffset(), anno.getEndOffset()));
-					sb.append("</span>");
-					lastChar = anno.getEndOffset();
-				}
+				Float f = new Float(anno.getStartOffset());
+				while(insertions.containsKey(f)) f += 0.001f;		// collision of indices
+				insertions.put(f, String.format("<span data-id=\"%s\" class=\"%s\">", anno.getAnnotationText(), anno.getAnnotationType()));
 				
-				// TODO stacked ones
-
+				f = new Float(anno.getEndOffset());
+				while(insertions.containsKey(f)) f += 0.001f;
+				insertions.put(f, "</span>");
+			}
+			
+			for(Float key : insertions.keySet()) {
+					int offset = (int)Math.floor(key); 
+					sb.append(text.substring(lastChar, offset));	// text up to insertion
+					sb.append("$$$$"+key+"$$$$");									// insertion placeholder
+					lastChar = offset;
 			}
 		}
 		
@@ -318,10 +323,17 @@ public class DocumentHTMLRenderer {
 			html = StringEscapeUtils.escapeHtml(html.trim())
 					.replaceAll("\\r\\n", "\n")
 					.replaceAll("\\r", "\n")
-					.replaceAll("\n", "<br>");
+					.replaceAll("\n", "<br>")	// eol to BR
+					.replaceAll("\\s+", " ");	// all white spaces to blank
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		// insertions
+		for(Float key : insertions.keySet()) {
+			html = html.replace("$$$$"+key+"$$$$", insertions.get(key));
 		}
 		
 		return html;
