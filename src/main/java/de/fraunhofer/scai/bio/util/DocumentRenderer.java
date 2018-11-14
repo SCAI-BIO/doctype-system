@@ -60,31 +60,31 @@ public class DocumentRenderer {
      */
     public static String renderTextContents(Document document) {
 
-    	StringBuilder sb = new StringBuilder();
-    	HashSet<String> contents = new HashSet<String>();
-    	
-    	// TODO to be discussed what should be indexed
-    	Map<String, TextElement> index = getFrontMatterTextElements(document);
-    	index.putAll(getBodyMatterTextElements(document));
+	StringBuilder sb = new StringBuilder();
+	HashSet<String> contents = new HashSet<String>();
 
-    	for (TextElement se : index.values()) {
-    		if(se.getText() != null) {
-    			Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
-    			contents.add(unwantedMatcher.replaceAll(""));
-    		}
-    		
-    		// TODO if we want to index annotations
-    		if (se.getAnnotations() != null) {
-    			for(Annotation anot : se.getAnnotations()) {
-    				contents.add(anot.getAnnotationText());			
-    			}
-    		}
-    	}
-    	
-    	for (String word : contents) {
-    		sb.append(word + " ");
-    	}
-    	return sb.toString();
+	// TODO to be discussed what should be indexed
+	Map<String, TextElement> index = getFrontMatterTextElements(document);
+	index.putAll(getBodyMatterTextElements(document));
+
+	for (TextElement se : index.values()) {
+	    if (se.getText() != null) {
+		Matcher unwantedMatcher = PUNCTUATION.matcher(se.getText());
+		contents.add(unwantedMatcher.replaceAll(""));
+	    }
+
+	    // TODO if we want to index annotations
+	    if (se.getAnnotations() != null) {
+		for (Annotation anot : se.getAnnotations()) {
+		    contents.add(anot.getAnnotationText());
+		}
+	    }
+	}
+
+	for (String word : contents) {
+	    sb.append(word + " ");
+	}
+	return sb.toString();
     }
 
     /**
@@ -146,76 +146,78 @@ public class DocumentRenderer {
 
 	return null;
     }
-    
 
     /**
-     * collect all {@link Annotation}s from all {@link TextElement}s into a {@link List}
+     * collect all {@link Annotation}s from all {@link TextElement}s into a
+     * {@link List}
+     * 
      * @param document {@link Document}
      * @return
      */
     public static List<Annotation> getAllAnnotations(Document document) {
-    	
-    	List<Annotation> annotations = new ArrayList<Annotation>();
-    	
-    	Map<String, TextElement> elements = getDocumentTextElements(document);
-    	
-    	if(elements != null) {
-    		for(TextElement element : elements.values()) {
-    			annotations.addAll(element.getAnnotations());
-    		}
-    	}
-    	
-    	return annotations;
+
+	List<Annotation> annotations = new ArrayList<Annotation>();
+
+	Map<String, TextElement> elements = getDocumentTextElements(document);
+
+	if (elements != null) {
+	    for (TextElement element : elements.values()) {
+		annotations.addAll(element.getAnnotations());
+	    }
+	}
+
+	return annotations;
     }
-    
+
     /**
      * collect all {@link TextElement}s into a Map
+     * 
      * @param document {@link Document}
      * @return
      */
     public static Map<String, TextElement> getDocumentTextElements(Document document) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	elements.putAll(getMetaElementTextElements(document));
+	elements.putAll(getMetaElementTextElements(document));
 
-    	elements.putAll(getFrontMatterTextElements(document));
-    	elements.putAll(getBodyMatterTextElements(document));
-    	elements.putAll(getBackMatterTextElements(document));
-    	
-    	return elements;
+	elements.putAll(getFrontMatterTextElements(document));
+	elements.putAll(getBodyMatterTextElements(document));
+	elements.putAll(getBackMatterTextElements(document));
+
+	return elements;
     }
 
     public static Map<String, TextElement> getMetaElementTextElements(Document document) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	// TODO
-    	return elements;
-		}
+	// TODO
+	return elements;
+    }
 
-		/**
+    /**
      * 
      * @param document {@link Document}
      * @return
      */
     public static Map<String, TextElement> getFrontMatterTextElements(Document document) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	DocumentElement de = document.getDocumentElement();
+	DocumentElement de = document.getDocumentElement();
 
-    	if(de != null) {
-    		
-    		FrontMatter fm = de.getFrontMatter();
-    		if(fm != null) {
-    			addTextElement(elements, fm.getTitleText(), "FrontMatterTitle");
+	if (de != null) {
 
-    			Abstract abstr = fm.getDocumentAbstract();
-    			if(abstr != null) {
-    				elements.putAll(getSectionsTextElements(abstr.getAbstractSections()) );
-    			}
-    		}
-    	}
-    	
-    	return elements;
+	    FrontMatter fm = de.getFrontMatter();
+	    if (fm != null) {
+		addTextElement(elements, fm.getTitleText(), "FrontMatterTitle");
+
+		Abstract abstr = fm.getDocumentAbstract();
+		if (abstr != null) {
+		    elements.putAll(getSectionsTextElements(abstr.getAbstractSections()));
+		}
+	    }
+	}
+
+	return elements;
     }
 
     /**
@@ -224,184 +226,180 @@ public class DocumentRenderer {
      * @return
      */
     public static Map<String, TextElement> getBodyMatterTextElements(Document document) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	DocumentElement de = document.getDocumentElement();
+	DocumentElement de = document.getDocumentElement();
 
-    	if(de != null) {
-    		
-    		BodyMatter bom = de.getBodyMatter();
-    		if(bom != null) {
-    			elements.putAll( getChapterTextElements(bom.getChapter()) );
-    			elements.putAll( getSectionsTextElements(bom.getSections()) );
-    		}
-    	}
+	if (de != null) {
 
-    	return elements;
+	    BodyMatter bom = de.getBodyMatter();
+	    if (bom != null) {
+		elements.putAll(getChapterTextElements(bom.getChapter()));
+		elements.putAll(getSectionsTextElements(bom.getSections()));
+	    }
+	}
+
+	return elements;
     }
 
     public static Map<String, TextElement> getChapterTextElements(List<Chapter> chapters) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
-    	
-    	if(chapters != null) {
-    		for(Chapter chapter : chapters) {
-    			elements.putAll(getSectionsTextElements(chapter.getSections()) );
-    		}
-    	}
-    	
-			return elements;
-		}
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+
+	if (chapters != null) {
+	    for (Chapter chapter : chapters) {
+		elements.putAll(getSectionsTextElements(chapter.getSections()));
+	    }
+	}
+
+	return elements;
+    }
 
     public static Map<String, TextElement> getSectionsTextElements(List<Section> sections) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
-    	
-    	if(sections != null) {
-    		for(Section sec : sections) {
-    			if(sec.getTitle() != null) {
-    				addTextElement(elements, sec.getTitle(), "SectionTitle"+sec.getDepth());
-    			}
-    			elements.putAll( getParagraphsTextElements(sec.getParagraphs()) );
-    		}
-    	}
-    	
-			return elements;
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+
+	if (sections != null) {
+	    for (Section sec : sections) {
+		if (sec.getTitle() != null) {
+		    addTextElement(elements, sec.getTitle(), "SectionTitle" + sec.getDepth());
 		}
+		if (sec.getParagraphs() != null)
+		    elements.putAll(getParagraphsTextElements(sec.getParagraphs()));
+	    }
+	}
+
+	return elements;
+    }
 
     public static Map<String, TextElement> getParagraphsTextElements(List<Paragraph> paragraphs) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
-    	
-    	if(paragraphs != null) {
-    		for(Paragraph par : paragraphs) {
-    			if(par.getSentences() != null) {
-    				elements.putAll( getSentencesTextElements(par.getSentences()) );
-    			}
-    			if(par.getStructureElements() != null) {
-    					elements.putAll( getStructureElementsTextElements(par.getStructureElements()) );
-    			}
-    		}
-    	}
-    	
-			return elements;
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+
+	if (paragraphs != null) {
+	    for (Paragraph par : paragraphs) {
+		if (par.getSentences() != null) {
+		    elements.putAll(getSentencesTextElements(par.getSentences()));
 		}
+		if (par.getStructureElements() != null) {
+		    elements.putAll(getStructureElementsTextElements(par.getStructureElements()));
+		}
+	    }
+	}
+
+	return elements;
+    }
 
     public static Map<String, TextElement> getSentencesTextElements(List<Sentence> sentences) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
-    
-    	if(sentences != null) {
-    		for(Sentence sentence : sentences) {
-    			addTextElement(elements, sentence.getText(), "Sentence");
-    		}
-    	}
-    	
-    	return elements;
-    }
-    
-    public static Map<String, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
-    
-    	if(structureElements != null) {
-    		for(StructureElement sel : structureElements) {
-    			if (sel.getCaptionedBox() != null) {
-    				addTextElement(elements, sel.getCaptionedBox().getTitle(), "CaptionedBoxTitle");
-    				addTextElement(elements, sel.getCaptionedBox().getCaption(), "CaptionedBoxCaption");
-    				
-    			} else if (sel.getCode() != null) {
-    				addTextElement(elements, sel.getCode().getCode(), "Code");
-    				
-    			} else if (sel.getDataTable() != null) {
-    				addTextElement(elements, sel.getDataTable().getContent(), "DataTableContent");
-    				
-    			} else if (sel.getFigure() != null) {
-    				addTextElement(elements, sel.getFigure().getTitle(), "FigureTitle");
-    				addTextElement(elements, sel.getFigure().getCaption(), "FigureCaption");
-    				
-    			} else if (sel.getFormula() != null) {
-    				addTextElement(elements, sel.getFormula().getFormula(), "Formula");
-    				
-    			} else if (sel.getOutline() != null) {
-    				addTextElement(elements, sel.getOutline().getTitleText(), "OutlineTitleText");
-    				
-    			} else if (sel.getQuotation() != null) {
-    				elements.putAll( getReferenceTextElements(sel.getQuotation().getReference()) );
-    				
-    			} else if (sel.getTable() != null) {
-    				addTextElement(elements, sel.getTable().getTitle(), "TableTitle");
-    				addTextElement(elements, sel.getTable().getText(), "TableText");
-    				addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
-    				
-    			} else if (sel.getTextElement() != null)
-    				addTextElement(elements, sel.getTextElement(), "TextElement");
-    		}
-    	}
-    	
-			return elements;
-		}
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    
-		/**
+	if (sentences != null) {
+	    for (Sentence sentence : sentences) {
+		addTextElement(elements, sentence.getText(), "Sentence");
+	    }
+	}
+
+	return elements;
+    }
+
+    public static Map<String, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+
+	if (structureElements != null) {
+	    for (StructureElement sel : structureElements) {
+		if (sel.getCaptionedBox() != null) {
+		    addTextElement(elements, sel.getCaptionedBox().getTitle(), "CaptionedBoxTitle");
+		    addTextElement(elements, sel.getCaptionedBox().getCaption(), "CaptionedBoxCaption");
+
+		} else if (sel.getCode() != null) {
+		    addTextElement(elements, sel.getCode().getCode(), "Code");
+
+		} else if (sel.getDataTable() != null) {
+		    addTextElement(elements, sel.getDataTable().getContent(), "DataTableContent");
+
+		} else if (sel.getFigure() != null) {
+		    addTextElement(elements, sel.getFigure().getTitle(), "FigureTitle");
+		    addTextElement(elements, sel.getFigure().getCaption(), "FigureCaption");
+
+		} else if (sel.getFormula() != null) {
+		    addTextElement(elements, sel.getFormula().getFormula(), "Formula");
+
+		} else if (sel.getOutline() != null) {
+		    addTextElement(elements, sel.getOutline().getTitleText(), "OutlineTitleText");
+
+		} else if (sel.getQuotation() != null) {
+		    elements.putAll(getReferenceTextElements(sel.getQuotation().getReference()));
+
+		} else if (sel.getTable() != null) {
+		    addTextElement(elements, sel.getTable().getTitle(), "TableTitle");
+		    addTextElement(elements, sel.getTable().getText(), "TableText");
+		    addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
+
+		} else if (sel.getTextElement() != null)
+		    addTextElement(elements, sel.getTextElement(), "TextElement");
+	    }
+	}
+
+	return elements;
+    }
+
+    /**
      * 
      * @param document {@link Document}
      * @return
      */
     public static Map<String, TextElement> getBackMatterTextElements(Document document) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	DocumentElement de = document.getDocumentElement();
-    	
-    	if(de != null) {
-    		BackMatter bam = de.getBackMatter();
+	DocumentElement de = document.getDocumentElement();
 
-    		if(bam != null) {
-    			Bibliography bib = bam.getBibliography();
+	if (de != null) {
+	    BackMatter bam = de.getBackMatter();
 
-    			if(bib != null) {
-    				for(Reference ref : bib.getReferences()) {
-    					elements.putAll(getReferenceTextElements(ref));
-    				}
-    			}
-    		}
-    	}
+	    if (bam != null) {
+		Bibliography bib = bam.getBibliography();
 
-    	return elements;
+		if (bib != null) {
+		    for (Reference ref : bib.getReferences()) {
+			elements.putAll(getReferenceTextElements(ref));
+		    }
+		}
+	    }
+	}
+
+	return elements;
     }
 
     public static Map<String, TextElement> getReferenceTextElements(Reference reference) {
-    	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
+	Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
-    	if(reference != null) {
-    		if(reference.getTitle() != null) {
-    			if(reference.getTitle().getTitleText() != null) {
-    				addTextElement(elements, reference.getTitle().getTitleText(), "TitleText");
-    			}
-    			if(reference.getTitle().getTitleText() != null) {
-    				addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
-    			}
-    		}
+	if (reference != null) {
+	    if (reference.getTitle() != null) {
+		if (reference.getTitle().getTitleText() != null) {
+		    addTextElement(elements, reference.getTitle().getTitleText(), "TitleText");
+		}
+		if (reference.getTitle().getTitleText() != null) {
+		    addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
+		}
+	    }
 
-    		// TODO
-    		reference.getAuthors();
-    		reference.getDoi();
-    		reference.getIsbn();
-    	}
+	    // TODO
+	    reference.getAuthors();
+	    reference.getDoi();
+	    reference.getIsbn();
+	}
 
-    	return elements;
+	return elements;
     }
 
-    
     /**
      * create a nice key for each {@link TextElement} and place in {@link Map}
-     * @param elements  Map<String, TextElement>
+     * 
+     * @param elements    Map<String, TextElement>
      * @param textElement {@link TextElement}
-     * @param title of text element {@link String}
+     * @param title       of text element {@link String}
      */
     private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
-    	if(textElement != null) {
-    		elements.put(
-    				String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), 
-    				textElement
-    				);
-    	}
+	if (textElement != null) {
+	    elements.put(String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), textElement);
+	}
     }
 
 }
-
