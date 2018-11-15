@@ -36,7 +36,9 @@ public class Reference implements Serializable {
     private TextElement referenceDoi;
     private TextElement isbn;
     private Title referenceTitle;
-
+    private TextElement language;
+    private TextElement referenceSource;
+    
     /**
      * setter for author - sets
      * 
@@ -152,5 +154,33 @@ public class Reference implements Serializable {
      */
     public void setTitle(Title title) {
 	this.referenceTitle = title;
+    }
+
+    /**
+     * @return the language
+     */
+    public TextElement getLanguage() {
+	return language;
+    }
+
+    /**
+     * @param language the language to set
+     */
+    public void setLanguage(TextElement language) {
+	this.language = language;
+    }
+
+    /**
+     * @return the referenceSource
+     */
+    public TextElement getReferenceSource() {
+        return referenceSource;
+    }
+
+    /**
+     * @param referenceSource the referenceSource to set
+     */
+    public void setReferenceSource(TextElement referenceSource) {
+        this.referenceSource = referenceSource;
     }
 }
