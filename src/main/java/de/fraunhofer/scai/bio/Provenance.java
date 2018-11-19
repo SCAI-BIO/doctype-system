@@ -50,6 +50,7 @@ public class Provenance implements Serializable {
      */
     private static final long serialVersionUID = -2419659801198983422L;
     private String license;
+    // TODO: map version nummer to arty version number
     private String version = "1.0";
     private String source; // file, database, ...
     private Date date;
