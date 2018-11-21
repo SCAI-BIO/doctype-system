@@ -108,6 +108,7 @@ public class DocumentRenderer {
 							List<Sentence> sentences = para.getSentences();
 							for (Sentence sentence : sentences) {
 								sb.append(sentence.getText().getText());
+								sb.append(" ");
 							}
 						} else {
 							List<StructureElement> structureElements = para.getStructureElements();
@@ -169,7 +170,7 @@ public class DocumentRenderer {
 
 		if (elements != null) {
 			for (TextElement element : elements.values()) {
-				if(element != null) {
+				if(element != null && element.getAnnotations() != null) {
 					annotations.addAll(element.getAnnotations());
 				}
 			}
