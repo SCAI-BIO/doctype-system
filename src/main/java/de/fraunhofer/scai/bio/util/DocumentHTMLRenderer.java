@@ -160,7 +160,8 @@ public class DocumentHTMLRenderer {
 		if(section.getTitle() != null) {
 			sb.append(String.format("<h%d>%s</h%d>", 
 					section.getDepth()+2, 
-					escapeHTML(section.getTitle(), annotations)) 
+					escapeHTML(section.getTitle(), annotations),
+					section.getDepth()+2)					
 					);
 		}
 
