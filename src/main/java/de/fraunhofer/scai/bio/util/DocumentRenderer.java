@@ -418,7 +418,7 @@ public class DocumentRenderer {
 	 * @param title       of text element {@link String}
 	 */
 	private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
-		if (textElement != null) {
+		if (textElement != null && textElement.getUuid() != null) {
 			elements.put(String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), textElement);
 		}
 	}
