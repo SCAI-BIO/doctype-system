@@ -310,17 +310,19 @@ public class DocumentHTMLRenderer {
 			// order all spans tags to be inserted
 			for(Annotation anno : textElement.getAnnotations()) {
 				
-				annotations.add(anno);
-				int idx = annotations.size();
-				
-				Float f = new Float(anno.getStartOffset());
-				while(insertions.containsKey(f)) f += 0.001f;		// collision of indices
-				insertions.put(f, String.format("<span data-id=\"%s\" class=\"%s\">", anno.getAnnotationText(), anno.getAnnotationType()));
+				if(anno != null && anno.getEndOffset() > anno.getStartOffset()) {
+					annotations.add(anno);
+					int idx = annotations.size();
 
-				f = new Float(anno.getEndOffset());
-				while(insertions.containsKey(f)) f += 0.001f;
-				insertions.put(f, String.format("</span> <sup><a href=\"#anno%d\" title=\"%s:%s\">[%d]</a></sup>"
-						,idx ,anno.getAnnotationType() ,anno.getAnnotationText() ,idx));
+					Float f = new Float(anno.getStartOffset());
+					while(insertions.containsKey(f)) f += 0.001f;		// collision of indices
+					insertions.put(f, String.format("<span data-id=\"%s\" class=\"%s\">", anno.getAnnotationText(), anno.getAnnotationType()));
+
+					f = new Float(anno.getEndOffset());
+					while(insertions.containsKey(f)) f += 0.001f;
+					insertions.put(f, String.format("</span> <sup><a href=\"#anno%d\" title=\"%s:%s\">[%d]</a></sup>"
+							,idx ,anno.getAnnotationType() ,anno.getAnnotationText() ,idx));
+				}
 			}
 
 			for(Float key : insertions.keySet()) {
