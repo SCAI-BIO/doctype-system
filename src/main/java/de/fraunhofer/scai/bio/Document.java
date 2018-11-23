@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +28,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
@@ -106,24 +106,6 @@ public class Document {
 
     public void setDocType(String docType) {
 	this.docType = docType;
-    }
-
-    /**
-     * escapes everything for HTML and replaces EOL of a substring
-     * 
-     * @param text  <code>String</code>
-     * @param begin <code>int</code>
-     * @param end   <code>int</code>
-     * @return <code>String</code>
-     */
-    public String toHTML(String text, int begin, int end) {
-
-	String html = StringEscapeUtils.escapeHtml(text.substring(begin, end)).replaceAll("\\r\\n", "\n")
-		.replaceAll("\\r", "\n").replaceAll("\n", "<br>");
-
-	logger.trace(html);
-
-	return html;
     }
 
     /**
