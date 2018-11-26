@@ -9,7 +9,6 @@
 		<version>1.0</version>
 	</parent>
 
-	<groupId>de.fraunhofer.scai.bio</groupId>
 	<artifactId>DocTypeSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
