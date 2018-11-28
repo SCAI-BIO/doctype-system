@@ -47,8 +47,6 @@ public class Document {
     private Provenance provenance;
     private DocumentElement documentElement;
     private String docType;
-    
-    private String mimeType;
 
     @JsonIgnore
     private Map<UUID, TextElement> textElementIndex; // a quick access to all TextElements and their
@@ -96,20 +94,6 @@ public class Document {
      */
     public void setDocumentElement(DocumentElement documentElement) {
 	this.documentElement = documentElement;
-    }
-
-    /**
-     * @return the mimeType
-     */
-    public String getMimeType() {
-        return mimeType;
-    }
-
-    /**
-     * @param mimeType the mimeType to set
-     */
-    public void setMimeType(String mimeType) {
-        this.mimeType = mimeType;
     }
 
     /**
