@@ -16,9 +16,9 @@
 package de.fraunhofer.scai.bio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author marc
@@ -58,7 +58,7 @@ public class Provenance implements Serializable {
     private Date date;
     private String collection; // eg. a collection of documents
 
-    private Map<String, String> comments;
+    private List<String> comments;
     
     /**
      * constructor
@@ -149,23 +149,23 @@ public class Provenance implements Serializable {
     /**
      * @return the comments
      */
-    public Map<String, String> getComments() {
+    public List<String> getComments() {
 	return comments;
     }
 
     /**
      * @param comments the comments to set
      */
-    public void addComment(String key, String comment) {
+    public void addComment(String comment) {
 	if (this.comments == null)
-	    this.comments = new HashMap<String, String>();
-	this.comments.put(key, comment);
+	    this.comments = new ArrayList<String>();
+	this.comments.add(comment);
     }
     
     /**
      * @param comments the comments to set
      */
-    public void setComments(Map<String, String> comments) {
+    public void setComments(List<String> comments) {
 	this.comments = comments;
     }
 }
