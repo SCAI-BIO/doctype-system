@@ -35,6 +35,7 @@ public class BodyMatter implements Serializable {
     private List<Chapter> chapters;
     private List<Section> sections;
 
+    @Deprecated /* to be found in {@link FrontMatter} */
     private Abstract docAbstract;
     
     /**
@@ -86,6 +87,7 @@ public class BodyMatter implements Serializable {
     /**
      * @return the document {@link Abstract}
      */
+    @Deprecated
     public Abstract getDocAbstract() {
 	return docAbstract;
     }
@@ -93,6 +95,7 @@ public class BodyMatter implements Serializable {
     /**
      * @param docAbstract the document {@link Abstract} to set
      */
+    @Deprecated
     public void setDocAbstract(Abstract docAbstract) {
 	this.docAbstract = docAbstract;
     }

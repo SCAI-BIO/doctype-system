@@ -27,12 +27,14 @@ import de.fraunhofer.scai.bio.Document;
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
 import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
 import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
@@ -93,36 +95,112 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param backMatter
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderBackMatter(BackMatter backMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
+		
+		if(backMatter != null) {
+			if(backMatter.getBibliography() != null) {
+				sb.append( renderBibliography(backMatter.getBibliography(), annotations));
+			}
+		}
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @param bibliography
+	 * @param annotations
+	 * @return
+	 */
+	private static String renderBibliography(Bibliography bibliography, List<Annotation> annotations) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("not implemented: renderBibliography");
 		return sb.toString();
 	}
 
 
 
+	/**
+	 * @param bodyMatter
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderBodyMatter(BodyMatter bodyMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
+		
+		if(bodyMatter != null) {
+			if(bodyMatter.getChapter() != null && bodyMatter.getChapter().isEmpty()) { 
+				sb.append( renderChapters( bodyMatter.getChapter(), annotations) );
+			}
+
+			if(bodyMatter.getSections() != null && !bodyMatter.getSections().isEmpty()) {
+				sb.append( renderSections( bodyMatter.getSections(), annotations) );
+			}
+		}
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @param chapters
+	 * @param annotations 
+	 * @return
+	 */
+	public static String renderChapters(List<Chapter> chapters, List<Annotation> annotations) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if(chapters != null && !chapters.isEmpty()) {
+			for(Chapter chapter : chapters) {
+				sb.append( renderChapter(chapter, annotations) );
+			}
+		}
+		
 		return sb.toString();
 	}
 
 
 
+	public static Object renderChapter(Chapter chapter, List<Annotation> annotations) {
+		StringBuilder sb = new StringBuilder();
+		
+		if(chapter != null) {
+			sb.append( renderSections(chapter.getSections(), annotations) );
+		}
+			
+		return sb.toString();
+	}
+
+	/**
+	 * @param frontMatter
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderFrontMatter(FrontMatter frontMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("<h1>");
-		if(frontMatter.getTitleText() != null) {
-			sb.append( escapeHTML( frontMatter.getTitleText(), annotations) );
+		
+		if(frontMatter != null) {
+			sb.append("<h1>");
+			if(frontMatter.getTitleText() != null) {
+				sb.append( escapeHTML( frontMatter.getTitleText(), annotations) );
+			}
+			sb.append("</h1>");
+			sb.append( renderAbstract(frontMatter.getDocumentAbstract(), annotations) );
 		}
-		sb.append("</h1>");
-		sb.append( renderAbstract(frontMatter.getDocumentAbstract(), annotations) );
-
+		
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param documentAbstract
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderAbstract(Abstract documentAbstract, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -136,8 +214,11 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param sections
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderSections(List<Section> sections, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -150,8 +231,11 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param section
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderSection(Section section, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -172,8 +256,11 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param paragraphs
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderParagraphs(List<Paragraph> paragraphs, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -195,67 +282,77 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param structureElements
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderStructureElements(List<StructureElement> structureElements, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if(structureElements != null) {
 			for(StructureElement structureElement : structureElements) {
 				if (structureElement.getCaptionedBox() != null) {
-					escapeHTML(structureElement.getCaptionedBox().getTitle(), annotations);
+					sb.append(escapeHTML(structureElement.getCaptionedBox().getTitle(), annotations));
 					sb.append("<br>");
-					escapeHTML(structureElement.getCaptionedBox().getCaption(), annotations);
+					sb.append(escapeHTML(structureElement.getCaptionedBox().getCaption(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getCode() != null) {
-					escapeHTML(structureElement.getCode().getCode(), annotations);
+					sb.append(escapeHTML(structureElement.getCode().getCode(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getDataTable() != null) {
-					escapeHTML(structureElement.getDataTable().getContent(), annotations);
+					sb.append(escapeHTML(structureElement.getDataTable().getContent(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getFigure() != null) {
-					escapeHTML(structureElement.getFigure().getTitle(), annotations);
+					sb.append(escapeHTML(structureElement.getFigure().getTitle(), annotations));
 					sb.append("<br>");
-					escapeHTML(structureElement.getFigure().getCaption(), annotations);
+					sb.append(escapeHTML(structureElement.getFigure().getCaption(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getFormula() != null) {
-					escapeHTML(structureElement.getFormula().getFormula(), annotations);
+					sb.append(escapeHTML(structureElement.getFormula().getFormula(), annotations));
 
 				} else if (structureElement.getOutline() != null) {
-					escapeHTML(structureElement.getOutline().getTitleText(), annotations);
+					sb.append(escapeHTML(structureElement.getOutline().getTitleText(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getQuotation() != null) {
 					sb.append( renderReference(structureElement.getQuotation().getReference(), annotations) );
 
 				} else if (structureElement.getTable() != null) {
-					escapeHTML(structureElement.getTable().getTitle(), annotations);
+					sb.append(escapeHTML(structureElement.getTable().getTitle(), annotations));
 					sb.append("<br>");
-					escapeHTML(structureElement.getTable().getText(), annotations);
+					sb.append(escapeHTML(structureElement.getTable().getText(), annotations));
 					sb.append("<br>");
-					escapeHTML(structureElement.getTable().getCaption(), annotations);
+					sb.append(escapeHTML(structureElement.getTable().getCaption(), annotations));
 					sb.append("<br>");
 
 				} else if (structureElement.getTextElement() != null)
-					escapeHTML(structureElement.getTextElement(), annotations);
+					sb.append(escapeHTML(structureElement.getTextElement(), annotations));
+					sb.append(" ");
 			}
 		}
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param reference
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderReference(Reference reference, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param sentences
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderSentences(List<Sentence> sentences, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -271,8 +368,11 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-
-
+	/**
+	 * @param metaElement
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderMetaElement(MetaElement metaElement, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
@@ -288,8 +388,6 @@ public class DocumentHTMLRenderer {
 
 		return sb.toString();
 	}
-
-
 
 	/**
 	 * convert a text element into proper HTML
@@ -356,6 +454,11 @@ public class DocumentHTMLRenderer {
 		return html;
 	}
 
+	/**
+	 * @param document
+	 * @param annotations
+	 * @return
+	 */
 	public static String renderAnnotations(Document document, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 

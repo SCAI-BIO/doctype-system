@@ -113,7 +113,7 @@ public class DocumentRenderer {
 						} else {
 							List<StructureElement> structureElements = para.getStructureElements();
 							for (StructureElement se : structureElements) {
-								sb.append(getText(se));
+								sb.append(renderStructureElement(se));
 							}
 						}
 					}
@@ -128,7 +128,7 @@ public class DocumentRenderer {
 	 * 
 	 * @return <code>String</code>
 	 */
-	public static String getText(StructureElement se) {
+	public static String renderStructureElement(StructureElement se) {
 		if(se != null) {
 			if (se.getCaptionedBox() != null)
 				return se.getCaptionedBox().toString();
@@ -153,6 +153,36 @@ public class DocumentRenderer {
 		}
 
 		return null;
+	}
+
+	/**
+	 * concatenate all contents of a list of {@link StructureElement}
+	 * @param seList
+	 * @return {@link String}
+	 */
+	public static String renderStructureElements(List<StructureElement> seList) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if(seList != null && !seList.isEmpty()) {
+			for(StructureElement se : seList) sb.append(renderStructureElement(se));
+		}
+		
+		return sb.toString();
+	}
+
+	
+	/**
+	 * @param textelements
+	 * @return
+	 */
+	public static String renderTextElements(List<TextElement> textelements) {
+		StringBuilder sb = new StringBuilder();
+		
+		for(TextElement te : textelements) sb.append(te.getText());
+		
+		return sb.toString();
+		
 	}
 
 	/**
@@ -422,5 +452,4 @@ public class DocumentRenderer {
 			elements.put(String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), textElement);
 		}
 	}
-
 }
