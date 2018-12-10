@@ -16,6 +16,8 @@
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 
@@ -25,25 +27,44 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
  */
 public class BackMatter implements Serializable {
 
-    /**
-     * serialVersionUID
-     */
-    private static final long serialVersionUID = 242839067331745958L;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 242839067331745958L;
 
-    private Bibliography bibliography;
+	private Bibliography bibliography;
+	private List<Section> sections;
 
-    /**
-     * @return the bibliography
-     */
-    public Bibliography getBibliography() {
-	return bibliography;
-    }
+	/**
+	 * @return the bibliography
+	 */
+	public Bibliography getBibliography() {
+		return bibliography;
+	}
 
-    /**
-     * @param bibliography the bibliography to set
-     */
-    public void setBibliography(Bibliography bibliography) {
-	this.bibliography = bibliography;
-    }
+	/**
+	 * @param bibliography the bibliography to set
+	 */
+	public void setBibliography(Bibliography bibliography) {
+		this.bibliography = bibliography;
+	}
+
+	public List<Section> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
+	/**
+	 * @param section the {@link Section} to set
+	 */
+	public void addSection(Section section) {
+		if (sections == null)
+			sections = new ArrayList<Section>();
+		this.sections.add(section);
+	}
+
 
 }

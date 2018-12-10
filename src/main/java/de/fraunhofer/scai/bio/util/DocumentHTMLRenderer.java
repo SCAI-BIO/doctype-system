@@ -103,6 +103,10 @@ public class DocumentHTMLRenderer {
 	public static String renderBackMatter(BackMatter backMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 		
+		if(backMatter.getSections() != null && !backMatter.getSections().isEmpty()) {
+			sb.append( renderSections( backMatter.getSections(), annotations) );
+		}
+		
 		if(backMatter != null) {
 			if(backMatter.getBibliography() != null) {
 				sb.append( renderBibliography(backMatter.getBibliography(), annotations));
