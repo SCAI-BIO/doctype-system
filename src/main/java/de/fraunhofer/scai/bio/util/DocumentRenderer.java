@@ -383,7 +383,14 @@ public class DocumentRenderer {
 
 					} else if (sel.getTextElement() != null) {
 						addTextElement(elements, sel.getTextElement(), "TextElement");
+						
+					} else if (sel.getList() != null) {
+						addTextElement(elements, sel.getList().getTitle(), "ListTitle");
+						for(TextElement element : sel.getList().getItems()) {
+							addTextElement(elements, element, "ListElement");							
+						}
 					}
+					
 				}
 			}
 		}
@@ -408,7 +415,7 @@ public class DocumentRenderer {
 				Bibliography bib = bam.getBibliography();
 
 				if (bib != null) {
-					for (Reference ref : bib.getReferences()) {
+					for (Reference ref : bib.getReferences().values()) {
 						elements.putAll(getReferenceTextElements(ref));
 					}
 				}
@@ -418,6 +425,10 @@ public class DocumentRenderer {
 		return elements;
 	}
 
+	/**
+	 * @param reference
+	 * @return
+	 */
 	public static Map<String, TextElement> getReferenceTextElements(Reference reference) {
 		Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
@@ -430,11 +441,23 @@ public class DocumentRenderer {
 					addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
 				}
 			}
-
+			if (reference.getLanguage() != null) {
+				addTextElement(elements, reference.getLanguage(), "Language");
+			}
+			if(reference.getPublicationIds() != null) {
+				for(TextElement element : reference.getPublicationIds()) {
+					addTextElement(elements, element, "PublicationId");					
+				}
+			}
+			if(reference.getPublicationType() != null) {
+				addTextElement(elements, reference.getPublicationType(), "PublicationType");
+			}
+			if(reference.getReferenceSource() != null) {
+				addTextElement(elements, reference.getReferenceSource(), "ReferenceSource");
+			}
+			
 			// TODO
 			reference.getAuthors();
-			reference.getDoi();
-			reference.getIsbn();
 		}
 
 		return elements;

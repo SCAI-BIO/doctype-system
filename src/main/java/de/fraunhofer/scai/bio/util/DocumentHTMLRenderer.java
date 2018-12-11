@@ -34,6 +34,7 @@ import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
@@ -123,7 +124,79 @@ public class DocumentHTMLRenderer {
 	 */
 	private static String renderBibliography(Bibliography bibliography, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("not implemented: renderBibliography");
+		
+		if(bibliography != null) {
+			
+			sb.append(String.format("<div data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sec"));
+
+			if(bibliography.getTitle() != null) {
+				sb.append(String.format("<h%d>%s</h%d>", 
+						2, 
+						escapeHTML(bibliography.getTitle(), annotations),
+						2)					
+						);
+			}
+
+			if(bibliography.getReferences() != null) {
+				for(String rid : bibliography.getReferences().keySet()) {
+					sb.append(rid + " ");
+					sb.append(renderReference(bibliography.getReferences().get(rid)));
+					sb.append("<br>");
+				}
+			}
+			
+			sb.append(String.format("</div>"));
+		}
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @param reference
+	 */
+	public static String renderReference(Reference reference) {
+		
+		StringBuilder sb = new StringBuilder();
+
+		if(reference.getAuthors() != null) {
+			for(Author author : reference.getAuthors()) {
+				sb.append(renderAuthor(author));
+				sb.append(". ");
+			}
+		}
+
+		if(reference.getTitle() != null && reference.getTitle().getTitleText() != null) {
+			sb.append(reference.getTitle().getTitleText().getText());
+			sb.append(".");
+		}
+		
+		reference.getDate();
+		
+		if(reference.getPublicationIds() != null) {
+			sb.append(" ");
+			for(TextElement pid : reference.getPublicationIds()) {
+				sb.append(pid.getText() + " ");
+			}
+		}
+		reference.getPublicationIds();
+		reference.getReferenceSource();
+		
+		return sb.toString();
+	}
+
+	/**
+	 * @param author
+	 * @return
+	 */
+	public static String renderAuthor(Author author) {
+		StringBuilder sb = new StringBuilder();
+		
+		if(author != null && author.getAuthor() != null) {
+			if(author.getAuthor().getDegree() != null) sb.append(author.getAuthor().getSurname() + " ");
+			if(author.getAuthor().getForename() != null) sb.append(author.getAuthor().getForename() + " ");
+			if(author.getAuthor().getSurname() != null) sb.append(author.getAuthor().getSurname());
+		}
+		
 		return sb.toString();
 	}
 
@@ -334,9 +407,29 @@ public class DocumentHTMLRenderer {
 					sb.append(escapeHTML(structureElement.getTable().getCaption(), annotations));
 					sb.append("<br>");
 
-				} else if (structureElement.getTextElement() != null)
+				} else if (structureElement.getTextElement() != null) {
 					sb.append(escapeHTML(structureElement.getTextElement(), annotations));
 					sb.append(" ");
+					
+				} else if (structureElement.getList() != null) {
+					if(structureElement.getList().getTitle() != null) {
+						sb.append(escapeHTML(structureElement.getList().getTitle(), annotations));
+						sb.append("<br>");
+					}
+					
+					if(structureElement.getList().isBullets()) { sb.append("<ul>"); }
+					else { sb.append("<ol>"); }
+					
+					for(TextElement element : structureElement.getList().getItems()) {
+						sb.append("<li>");
+						sb.append(element.getText());
+						sb.append("</li>");
+					}
+					
+					if(structureElement.getList().isBullets()) { sb.append("</ul>"); }
+					else { sb.append("</ol>"); }
+					sb.append("<br>");
+				}
 			}
 		}
 		return sb.toString();

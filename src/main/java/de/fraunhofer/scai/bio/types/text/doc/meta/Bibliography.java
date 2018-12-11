@@ -16,8 +16,11 @@
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * The bibliography contains all literature references which are made in the
@@ -25,44 +28,53 @@ import java.util.List;
  */
 public class Bibliography implements Serializable {
 
-    /**
-     * serialVersionUID
-     */
-    private static final long serialVersionUID = 3505381016659827384L;
-    private List<Reference> references;
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 3505381016659827384L;
+	private Map<String, Reference> references;
+	private TextElement title;
 
-    // *--------------*
-    // * Feature: references
+	// *--------------*
+	// * Feature: references
 
-    /**
-     * Add {@link Reference} element.
-     * 
-     * @param reference {@link Reference} to add to the {@link List} of
-     *                  {@link Reference}s
-     */
-    public void addReference(Reference reference) {
-	if (references == null)
-	    references = new ArrayList<Reference>();
-	references.add(reference);
-    }
+	/**
+	 * Add {@link Reference} element.
+	 * 
+	 * @param reference {@link Reference} to add to the {@link List} of
+	 *                  {@link Reference}s
+	 */
+	public void addReference(String id, Reference reference) {
+		if (references == null)
+			references = new LinkedHashMap<String, Reference>();
+		references.put(id, reference);
+	}
 
-    /**
-     * Getter for {@link Reference}s.
-     * 
-     * 
-     * @return the {@link List} of {@link Reference}s
-     */
-    public List<Reference> getReferences() {
-	return references;
-    }
+	/**
+	 * Getter for {@link Reference}s.
+	 * 
+	 * 
+	 * @return the {@link List} of {@link Reference}s
+	 */
+	public Map<String, Reference> getReferences() {
+		return references;
+	}
 
-    /**
-     * setter for {@link Reference}s.
-     * 
-     * 
-     * @param references the {@link List} of {@link Reference}s to set
-     */
-    public void setReferences(List<Reference> references) {
-	this.references = references;
-    }
+	/**
+	 * setter for {@link Reference}s.
+	 * 
+	 * 
+	 * @param references the {@link List} of {@link Reference}s to set
+	 */
+	public void setReferences(Map<String, Reference> references) {
+		this.references = references;
+	}
+
+	public TextElement getTitle() {
+		return title;
+	}
+
+	public void setTitle(TextElement title) {
+		this.title = title;
+	}
 }

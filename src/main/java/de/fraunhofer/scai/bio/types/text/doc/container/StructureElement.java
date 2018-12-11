@@ -11,6 +11,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.DataTable;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Formula;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
+import de.fraunhofer.scai.bio.types.text.doc.structure.List;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Outline;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Quotation;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
@@ -37,6 +38,7 @@ public class StructureElement implements Serializable {
     private Table table;
     private TextElement textElement;
     private Sentence sentence;
+    private List list;
     
     /**
      * @return the captionedBox
@@ -191,5 +193,19 @@ public class StructureElement implements Serializable {
     public void setSentence(Sentence sentence) {
 	this.sentence = sentence;
     }
+
+		/**
+		 * @return
+		 */
+		public List getList() {
+			return list;
+		}
+
+		/**
+		 * @param list
+		 */
+		public void setList(List list) {
+			this.list = list;
+		}
 
 }

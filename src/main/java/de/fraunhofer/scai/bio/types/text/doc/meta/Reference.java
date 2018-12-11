@@ -17,7 +17,6 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
@@ -27,160 +26,143 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  */
 public class Reference implements Serializable {
 
-    /**
-     * serialVersionUID
-     */
-    private static final long serialVersionUID = 4484585069783542995L;
-    private List<Author> authors;
-    private Date date;
-    private TextElement referenceDoi;
-    private TextElement isbn;
-    private Title referenceTitle;
-    private TextElement language;
-    private TextElement referenceSource;
-    
-    /**
-     * setter for author - sets
-     * 
-     * 
-     * @param author {@link Author} to add to the {@link List} of {@link Author}s
-     */
-    public void addAuthor(Author author) {
-	if (this.authors == null)
-	    this.authors = new ArrayList<Author>();
-	this.authors.add(author);
-    }
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = 4484585069783542995L;
+	private List<Author> authors;
+	private Date date;
+	private List<TextElement> publicationIds;
+	private Title referenceTitle;
+	private TextElement language;
+	private TextElement referenceSource;
+	private TextElement publicationType;
 
-    /**
-     * getter for authors - gets
-     * 
-     * 
-     * @return the {@link List} of {@link Author}s
-     */
-    public List<Author> getAuthors() {
-	return authors;
-    }
+	/**
+	 * setter for author - sets
+	 * 
+	 * 
+	 * @param author {@link Author} to add to the {@link List} of {@link Author}s
+	 */
+	public void addAuthor(Author author) {
+		if (this.authors == null)
+			this.authors = new ArrayList<Author>();
+		this.authors.add(author);
+	}
 
-    /**
-     * getter for date - gets Date of the publication.
-     * 
-     * 
-     * @return the publication {@link Date} of the {@link Reference}
-     */
-    public Date getDate() {
-	return date;
-    }
+	/**
+	 * getter for authors - gets
+	 * 
+	 * 
+	 * @return the {@link List} of {@link Author}s
+	 */
+	public List<Author> getAuthors() {
+		return authors;
+	}
 
-    // *--------------*
-    // * Feature: titleText
+	/**
+	 * getter for date - gets Date of the publication.
+	 * 
+	 * 
+	 * @return the publication {@link Date} of the {@link Reference}
+	 */
+	public Date getDate() {
+		return date;
+	}
 
-    /**
-     * getter for doi - gets Digital Object Identifier of the referenced document.
-     * 
-     * 
-     * @return the Digital Object Identifier of the {@link Reference}
-     */
-    public TextElement getDoi() {
-	return referenceDoi;
-    }
+	// *--------------*
+	// * Feature: titleText
 
-    /**
-     * getter for isbn - gets International Standard Book Number of the referenced
-     * document.
-     * 
-     * 
-     * @return the ISBN of the {@link Reference}
-     */
-    public TextElement getIsbn() {
-	return isbn;
-    }
+	/**
+	 * getter for titleText - gets
+	 * 
+	 * 
+	 * @return the {@link Title} of the {@link Reference}
+	 */
+	public Title getTitle() {
+		return this.referenceTitle;
+	}
 
-    /**
-     * getter for titleText - gets
-     * 
-     * 
-     * @return the {@link Title} of the {@link Reference}
-     */
-    public Title getTitle() {
-	return this.referenceTitle;
-    }
+	/**
+	 * setter for {@link Author}s
+	 * 
+	 * 
+	 * @param authors the {@link List} of {@link Author}s
+	 */
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
 
-    /**
-     * setter for {@link Author}s
-     * 
-     * 
-     * @param authors the {@link List} of {@link Author}s
-     */
-    public void setAuthors(List<Author> authors) {
-	this.authors = authors;
-    }
+	/**
+	 * setter for date - sets Date of the publication.
+	 * 
+	 * 
+	 * @param date the publication {@link Date} of the {@link Reference} to set
+	 */
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
-    /**
-     * setter for date - sets Date of the publication.
-     * 
-     * 
-     * @param date the publication {@link Date} of the {@link Reference} to set
-     */
-    public void setDate(Date date) {
-	this.date = date;
-    }
+	/**
+	 * setter for titleText - sets
+	 * 
+	 * 
+	 * @param title the {@link Title} of the {@link Reference}
+	 */
+	public void setTitle(Title title) {
+		this.referenceTitle = title;
+	}
 
-    /**
-     * setter for doi - sets Digital Object Identifier of the referenced document.
-     * 
-     * 
-     * @param doi the Digital Object Identifier of the {@link Reference}
-     */
-    public void setDoi(TextElement doi) {
-	this.referenceDoi = doi;
-    }
+	/**
+	 * @return the language
+	 */
+	public TextElement getLanguage() {
+		return language;
+	}
 
-    /**
-     * setter for isbn - sets International Standard Book Number of the referenced
-     * document.
-     * 
-     * 
-     * @param isbn the ISBN of the {@link Reference} to set
-     */
-    public void setIsbn(TextElement isbn) {
-	this.isbn = isbn;
-    }
+	/**
+	 * @param language the language to set
+	 */
+	public void setLanguage(TextElement language) {
+		this.language = language;
+	}
 
-    /**
-     * setter for titleText - sets
-     * 
-     * 
-     * @param title the {@link Title} of the {@link Reference}
-     */
-    public void setTitle(Title title) {
-	this.referenceTitle = title;
-    }
+	/**
+	 * @return the referenceSource
+	 */
+	public TextElement getReferenceSource() {
+		return referenceSource;
+	}
 
-    /**
-     * @return the language
-     */
-    public TextElement getLanguage() {
-	return language;
-    }
+	/**
+	 * @param referenceSource the referenceSource to set
+	 */
+	public void setReferenceSource(TextElement referenceSource) {
+		this.referenceSource = referenceSource;
+	}
 
-    /**
-     * @param language the language to set
-     */
-    public void setLanguage(TextElement language) {
-	this.language = language;
-    }
+	public List<TextElement> getPublicationIds() {
+		return publicationIds;
+	}
 
-    /**
-     * @return the referenceSource
-     */
-    public TextElement getReferenceSource() {
-        return referenceSource;
-    }
+	public void setPublicationIds(List<TextElement> publicationIds) {
+		this.publicationIds = publicationIds;
+	}
 
-    /**
-     * @param referenceSource the referenceSource to set
-     */
-    public void setReferenceSource(TextElement referenceSource) {
-        this.referenceSource = referenceSource;
-    }
+	public void addPublicationId(TextElement publicationId) {
+		if (this.publicationIds == null) { 
+			this.publicationIds = new ArrayList<TextElement>(); 
+		}
+		
+		this.publicationIds.add(publicationId);
+	}
+
+	public TextElement getPublicationType() {
+		return publicationType;
+	}
+
+	public void setPublicationType(TextElement publicationType) {
+		this.publicationType = publicationType;
+	}
+
 }

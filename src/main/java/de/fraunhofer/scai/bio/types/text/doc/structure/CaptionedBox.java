@@ -34,7 +34,7 @@ public class CaptionedBox implements Serializable {
 
     /**
      * getter for caption - gets All captioned boxes have captions describing the
-     * contents of the box with natural langugage. Example: Figure 1: caption text.
+     * contents of the box with natural language. Example: Figure 1: caption text.
      * 
      * @return caption of the {@link CaptionedBox}
      */
