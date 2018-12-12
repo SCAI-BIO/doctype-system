@@ -274,7 +274,7 @@ public class DocumentRenderer {
 
 			BodyMatter bom = de.getBodyMatter();
 			if (bom != null) {
-				elements.putAll(getChapterTextElements(bom.getChapter()));
+				elements.putAll(getChapterTextElements(bom.getChapters()));
 				elements.putAll(getSectionsTextElements(bom.getSections()));
 			}
 		}

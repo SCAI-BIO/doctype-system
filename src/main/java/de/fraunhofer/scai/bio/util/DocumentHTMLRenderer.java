@@ -207,8 +207,8 @@ public class DocumentHTMLRenderer {
 	StringBuilder sb = new StringBuilder();
 
 	if (bodyMatter != null) {
-	    if (bodyMatter.getChapter() != null && bodyMatter.getChapter().isEmpty()) {
-		sb.append(renderChapters(bodyMatter.getChapter(), annotations));
+	    if (bodyMatter.getChapters() != null && bodyMatter.getChapters().isEmpty()) {
+		sb.append(renderChapters(bodyMatter.getChapters(), annotations));
 	    }
 
 	    if (bodyMatter.getSections() != null && !bodyMatter.getSections().isEmpty()) {
