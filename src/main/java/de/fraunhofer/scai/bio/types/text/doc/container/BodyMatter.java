@@ -64,7 +64,7 @@ public class BodyMatter implements Serializable {
     /**
      * @return the {@link List} of {@link Chapter}s
      */
-    public List<Chapter> getChapter() {
+    public List<Chapter> getChapters() {
 	return chapters;
     }
 
