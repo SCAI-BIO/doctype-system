@@ -60,11 +60,11 @@ public class DocumentHTMLRenderer {
 	StringBuilder sb = new StringBuilder();
 	List<Annotation> annotations = new ArrayList<Annotation>();
 
-	sb.append("<!DOCTYPE html><html>");
+	//sb.append("<!DOCTYPE html><html>");
 
 	sb.append(renderDocumentElement(document, annotations));
 
-	sb.append("</html>");
+	//sb.append("</html>");
 
 	return sb.toString();
     }
@@ -77,9 +77,9 @@ public class DocumentHTMLRenderer {
 	    DocumentElement documentElement = document.getDocumentElement();
 
 	    if (documentElement != null) {
-		sb.append("<head>");
-		sb.append(renderMetaElement(documentElement.getMetaElement(), annotations));
-		sb.append("</head>");
+//		sb.append("<head>");
+//		sb.append(renderMetaElement(documentElement.getMetaElement(), annotations));
+//		sb.append("</head>");
 
 		sb.append("<body>");
 		sb.append(renderFrontMatter(documentElement.getFrontMatter(), annotations));
