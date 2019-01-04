@@ -34,8 +34,11 @@ import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
@@ -161,28 +164,28 @@ public class DocumentRenderer {
 	 * @return {@link String}
 	 */
 	public static String renderStructureElements(List<StructureElement> seList) {
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		if(seList != null && !seList.isEmpty()) {
 			for(StructureElement se : seList) sb.append(renderStructureElement(se));
 		}
-		
+
 		return sb.toString();
 	}
 
-	
+
 	/**
 	 * @param textelements
 	 * @return
 	 */
 	public static String renderTextElements(List<TextElement> textelements) {
 		StringBuilder sb = new StringBuilder();
-		
+
 		for(TextElement te : textelements) sb.append(te.getText());
-		
+
 		return sb.toString();
-		
+
 	}
 
 	/**
@@ -383,14 +386,14 @@ public class DocumentRenderer {
 
 					} else if (sel.getTextElement() != null) {
 						addTextElement(elements, sel.getTextElement(), "TextElement");
-						
+
 					} else if (sel.getList() != null) {
 						addTextElement(elements, sel.getList().getTitle(), "ListTitle");
 						for(TextElement element : sel.getList().getItems()) {
 							addTextElement(elements, element, "ListElement");							
 						}
 					}
-					
+
 				}
 			}
 		}
@@ -455,7 +458,7 @@ public class DocumentRenderer {
 			if(reference.getReferenceSource() != null) {
 				addTextElement(elements, reference.getReferenceSource(), "ReferenceSource");
 			}
-			
+
 			// TODO
 			reference.getAuthors();
 		}
@@ -474,5 +477,85 @@ public class DocumentRenderer {
 		if (textElement != null && textElement.getUuid() != null) {
 			elements.put(String.format("%s\t*%s*", textElement.getUuid(), title.toUpperCase()), textElement);
 		}
+	}
+
+	/**
+	 * @param reference
+	 * @return
+	 */
+	public static String renderReference(Reference reference) {
+		StringBuilder sb = new StringBuilder();
+
+		if(reference.getAuthors() != null) {
+			for(Author author : reference.getAuthors()) {
+				if(author.getAuthor() != null) { 
+					sb.append(renderPerson(author.getAuthor())); 
+					sb.append(", ");
+				}
+				if(author.getOrganization() != null) { 
+					sb.append(author.getOrganization().getOrganization().getText()); 
+					sb.append(", ");
+				}			
+			}
+
+			sb.replace(sb.length()-2, sb.length(), ". ");
+		}
+
+		if(reference.getTitle() != null) { 
+			sb.append( reference.getTitle().getTitleText().getText() );
+		}
+
+		if(reference.getReferenceSource() != null) {
+			if(reference.getTitle() != null) {
+				if(!sb.substring(sb.length()-1).equals("?")) sb.append(". ");
+				else sb.append(" ");
+			}
+
+			sb.append( reference.getReferenceSource().getText() );
+		}
+
+
+		if(reference.getDate() != null) { sb.append( ", "); sb.append( renderDate(reference.getDate())); }
+
+		if(reference.getPublicationIds() != null) {
+			for(TextElement te : reference.getPublicationIds()) {
+				sb.append(" ");
+				sb.append(te.getText());
+			}
+		}
+
+		reference.getPublicationType();		
+
+		sb.append( ".");
+
+		return sb.toString();
+	}
+
+	/**
+	 * @param date
+	 * @return
+	 */
+	public static String renderDate(Date date) {
+		StringBuilder sb = new StringBuilder();
+
+		if(date.getYear()>0) sb.append(date.getYear());
+		if(date.getMonth()>0) { sb.append("-"); sb.append(date.getMonth()); }
+		if(date.getDay()>0) { sb.append("-"); sb.append(date.getDay()); }
+
+		return sb.toString();
+	}
+
+	/**
+	 * @param author
+	 * @return
+	 */
+	public static String renderPerson(Person author) {
+		StringBuilder sb = new StringBuilder();
+
+		if(author.getDegree() != null)  { sb.append(author.getDegree()); sb.append(" "); }
+		if(author.getSurname() != null) { sb.append(author.getSurname()); }
+		if(author.getForename() != null){ sb.append(" "); sb.append(author.getForename()); }
+
+		return sb.toString();
 	}
 }

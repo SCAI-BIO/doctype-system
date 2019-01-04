@@ -27,6 +27,7 @@ public class Author implements Serializable {
      */
     private static final long serialVersionUID = 3790237726324694559L;
     private Person author;
+    private Affiliation organization;
 
     /**
      * getter for author - gets
@@ -47,5 +48,13 @@ public class Author implements Serializable {
     public void setAuthor(Person author) {
 	this.author = author;
     }
+
+		public Affiliation getOrganization() {
+			return organization;
+		}
+
+		public void setOrganization(Affiliation organization) {
+			this.organization = organization;
+		}
     
 }
