@@ -418,9 +418,14 @@ public class DocumentRenderer {
 				Bibliography bib = bam.getBibliography();
 
 				if (bib != null) {
-					for (Reference ref : bib.getReferences().values()) {
-						elements.putAll(getReferenceTextElements(ref));
-					}
+				    Map<String, Reference> refs = bib.getReferences();
+				    
+				    	if (refs != null) {
+						for (Reference ref : refs.values()) {
+							elements.putAll(getReferenceTextElements(ref));
+						}
+				    	}
+
 				}
 			}
 		}
