@@ -1,17 +1,15 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
@@ -59,18 +57,19 @@ public class Figure implements Serializable {
     public void setTitle(TextElement title) {
         this.title = title;
     }
+
     /**
      * @return the caption
      */
     public TextElement getCaption() {
-	return caption;
+        return caption;
     }
 
     /**
      * @param caption the caption to set
      */
     public void setCaption(TextElement caption) {
-	this.caption = caption;
+        this.caption = caption;
     }
 
     /**
@@ -80,7 +79,7 @@ public class Figure implements Serializable {
      * @return value of the feature
      */
     public ImageContent getImage() {
-	return imageContent;
+        return imageContent;
     }
 
     /**
@@ -90,14 +89,19 @@ public class Figure implements Serializable {
      * @param v value to set into the feature
      */
     public void setImage(ImageContent v) {
-	this.imageContent = v;
+        this.imageContent = v;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%s\n%s\n%s", title.getText(), imageContent.toString(), caption.getText());
+        String titleText = (title != null && title.getText() != null) ? title.getText() : "";
+        String imageContentString = imageContent != null ? imageContent.toString() : "";
+        String captionText = (caption != null && caption.getText() != null) ? caption.getText() : "";
+        return String.format("%s\n%s\n%s", titleText, imageContentString, captionText);
     }
 
 }
