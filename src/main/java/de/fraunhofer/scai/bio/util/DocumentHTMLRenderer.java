@@ -86,7 +86,7 @@ public class DocumentHTMLRenderer {
 		sb.append(renderBodyMatter(documentElement.getBodyMatter(), annotations));
 		sb.append(renderBackMatter(documentElement.getBackMatter(), annotations));
 
-		sb.append(renderAnnotations(document, annotations));
+//		sb.append(renderAnnotations(document, annotations));
 
 		sb.append("</body>");
 	    }
@@ -332,7 +332,7 @@ public class DocumentHTMLRenderer {
     public static String renderParagraphs(List<Paragraph> paragraphs, List<Annotation> annotations) {
 	StringBuilder sb = new StringBuilder();
 
-	if (paragraphs != null) {
+	if (paragraphs != null && !paragraphs.isEmpty()) {
 	    for (Paragraph paragraph : paragraphs) {
 
 		sb.append(String.format("<p data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "par"));
