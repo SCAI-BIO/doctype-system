@@ -8,8 +8,12 @@
 	</parent>
 
 	<artifactId>DocTypeSystem</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
-
+	<version>1.0.1</version>
+	<scm>
+		<connection>scm:git:https://gitlab.scai.fraunhofer.de:biodev/DocTypeSystem.git</connection>
+		<developerConnection>scm:git:git@gitlab.scai.fraunhofer.de:biodev/DocTypeSystem.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 	<build>
 		<plugins>
 			<plugin>
