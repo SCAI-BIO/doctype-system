@@ -402,6 +402,12 @@ public class DocumentHTMLRenderer {
 		} else if (structureElement.getTextElement() != null) {
 		    sb.append(escapeHTML(structureElement.getTextElement(), annotations));
 		    sb.append(" ");
+		    
+		} else if (structureElement.getSentence() != null) {
+			sb.append(String.format("<span data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sent"));
+			sb.append(escapeHTML(structureElement.getSentence().getText(), annotations));
+			sb.append(String.format("</span>"));
+			sb.append(String.format(" "));
 
 		} else if (structureElement.getList() != null) {
 		    if (structureElement.getList().getTitle() != null) {

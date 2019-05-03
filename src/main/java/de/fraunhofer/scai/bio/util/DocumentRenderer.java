@@ -384,6 +384,9 @@ public class DocumentRenderer {
                         addTextElement(elements, sel.getTable().getText(), "TableText");
                         addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
 
+                    } else if (sel.getSentence() != null) {
+                    	addTextElement(elements, sel.getSentence().getText(), "Sentence");
+
                     } else if (sel.getTextElement() != null) {
                         addTextElement(elements, sel.getTextElement(), "TextElement");
 
