@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
+ * Copyright 2019 Fraunhofer Institute SCAI, St. Augustin, Germany
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
