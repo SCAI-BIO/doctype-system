@@ -24,10 +24,17 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+import de.fraunhofer.scai.bio.Document;
+import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
 import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
+import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Title;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
@@ -159,6 +166,8 @@ public class DocumentBuilder {
                         dParagraph.addSentence(createSentence(sentences.get(i)));
                     }
                 }
+                
+                logger.info("Created "+ sentences.size() + " sentence(s).");
 
             } else {
                 dParagraph = new Paragraph();
@@ -431,4 +440,91 @@ public class DocumentBuilder {
         }
         return null;
     }
+
+		public void setTitle(Document document, String title, String subtitle) {
+  		TextElement titleTextElement = createTextElement(title);
+  		TextElement subtitleTextElement = createTextElement(subtitle);
+
+  		getFrontMatter(document).setTitleText(titleTextElement);
+  		
+  		createDocumentTitle(titleTextElement, subtitleTextElement);
+			
+		}
+		
+		public void setAbstract(Document document, String dAbstract) {		
+			Abstract documentAbstract = new Abstract();
+			
+			documentAbstract.addAbstractSection( createSection(dAbstract) );
+			getFrontMatter(document).setDocumentAbstract(documentAbstract);		
+			getBibliographic(document).setDocumentAbstract(documentAbstract);
+		}
+		
+		public DocumentElement getDocumentElement(Document document) {
+			DocumentElement docElem = document.getDocumentElement();
+			
+			if(docElem == null) {
+				docElem = new DocumentElement();
+				document.setDocumentElement(docElem);
+			}
+			
+			return docElem;
+		}
+
+		public FrontMatter getFrontMatter(Document document) {
+			FrontMatter frontMatter = getDocumentElement(document).getFrontMatter();
+
+			if(frontMatter == null) {
+				frontMatter = new FrontMatter();
+				getDocumentElement(document).setFrontMatter(frontMatter);
+			} 
+			
+			return frontMatter;
+		}
+
+		public Bibliographic getBibliographic(Document document) {
+			Bibliographic bib = getMetaElement(document).getBibliographic();
+			
+			if(bib == null) {
+				bib = new Bibliographic();
+				getMetaElement(document).setBibliographic(bib);
+			}
+			
+			return bib;
+		}
+
+		public BodyMatter getBodyMatter(Document document) {
+			BodyMatter bodyMatter = getDocumentElement(document).getBodyMatter();
+
+			if(bodyMatter == null) {
+				bodyMatter = new BodyMatter();
+				getDocumentElement(document).setBodyMatter(bodyMatter);
+			} 
+			
+			return bodyMatter;
+		}
+		
+		public MetaElement getMetaElement(Document document) {
+			
+			MetaElement meta = getDocumentElement(document).getMetaElement();
+			
+			if(meta == null) {
+				meta = new MetaElement();
+				getDocumentElement(document).setMetaElement(meta);
+			}
+			
+			return meta;
+		}
+		
+		public Section createMainSection(Document document, String text) {
+			
+			Section section = createSection("Main Section", "Main");
+
+	    Paragraph mainParagraph = createParagraph(text, true);
+	    
+			section.addParagraph(mainParagraph);
+			
+			return section;
+		}		
+
+
 }
