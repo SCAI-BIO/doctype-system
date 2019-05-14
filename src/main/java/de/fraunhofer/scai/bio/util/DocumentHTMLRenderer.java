@@ -461,7 +461,9 @@ public class DocumentHTMLRenderer {
 	    for (Sentence sentence : sentences) {
 
 		sb.append(String.format("<span data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sent"));
+		//sb.append("<u>");
 		sb.append(escapeHTML(sentence.getText(), annotations));
+		//sb.append("</u>");
 		sb.append(String.format("</span>"));
 		sb.append(String.format(" "));
 	    }
