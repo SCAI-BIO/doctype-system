@@ -51,7 +51,7 @@ public class Date implements Serializable {
     }
 
     public void setDate(int day, int month, int year) {
-	this.date.set(day, month, day);
+	this.date.set(day, month, year);
     }
     
     /**
