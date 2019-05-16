@@ -15,6 +15,7 @@
  */
 package de.fraunhofer.scai.bio;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -37,8 +38,13 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  *
  * Central datastructure of our DMS
  */
-public class Document {
-
+public class Document implements Serializable {
+    
+    /**
+     * serial version id.
+     */
+    private static final long serialVersionUID = 4813140736245257135L;
+    
     public static final int ABSTRACT_LENGTH = 250;
     public static final String PUBMED_ABSTRACT = "PUBMED_ABSTRACT";
     public static final String PMC_FULLTEXT = "PMC_FULLTEXT";
