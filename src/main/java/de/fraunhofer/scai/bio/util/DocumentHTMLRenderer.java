@@ -49,6 +49,8 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  */
 public class DocumentHTMLRenderer {
 
+    private static String URL_REGEX = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$";
+ 
     /**
      * converts the document text and all annotations into HTML
      * 
@@ -312,10 +314,21 @@ public class DocumentHTMLRenderer {
 
 	sb.append(String.format("<div data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sec"));
 
-	if (section.getTitle() != null) {
-	    sb.append(String.format("<h%d>%s</h%d>", section.getDepth() + 2,
-		    escapeHTML(section.getTitle(), annotations), section.getDepth() + 2));
-	}
+//	if (section.getTitle() != null) {
+//        sb.append(String.format("<h%d>%s</h%d>", section.getDepth() + 2,
+//            escapeHTML(section.getTitle(), annotations), section.getDepth() + 2));
+//    }
+    if (section.getTitle() != null) {
+        sb.append(String.format("<h%d>%s</h%d>", section.getDepth(),
+            escapeHTML(section.getTitle(), annotations), section.getDepth()));
+    }
+    if (section.getRhetorical() != null) {
+        if (section.getRhetorical().getText().matches(URL_REGEX)) {
+            sb.append(String.format("<p><a href=%s>%s</a></p>", escapeHTML(section.getRhetorical(), annotations), escapeHTML(section.getRhetorical(), annotations)));
+        } else {
+            sb.append(String.format("<p>%s</p>", escapeHTML(section.getRhetorical(), annotations)));
+        }
+    }
 
 	sb.append(renderParagraphs(section.getParagraphs(), annotations));
 
