@@ -103,6 +103,10 @@ public class Reference implements Serializable {
 		this.date = date;
 	}
 
+	public void setDate(java.util.Date date) {
+		setDate(new Date(date));		
+	}
+
 	/**
 	 * setter for titleText - sets
 	 * 

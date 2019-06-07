@@ -41,6 +41,15 @@ public class Date implements Serializable {
 		date = Calendar.getInstance();
 	}
 
+	public Date(java.util.Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
+
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+		month = calendar.get(Calendar.MONTH);
+		year = calendar.get(Calendar.YEAR);
+	}
+
 	/**
 	 * 
 	 * @return the {@link Calendar} object of the {@link Date}.
@@ -54,6 +63,9 @@ public class Date implements Serializable {
 
 	public void setDate(int day, int month, int year) {
 		this.date.set(day, month, year);
+		setDay(day);
+		setMonth(month);
+		setYear(year);
 	}
 
 	/**

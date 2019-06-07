@@ -29,6 +29,7 @@ public class MetaElement implements Serializable {
      */
     private static final long serialVersionUID = 4598961834730776036L;
     private Bibliographic bibliographic;
+    @Deprecated // is already in backmatter contained
     private Bibliography bibliography;
     private List<Keywords> keywords;
     private Concept concept;
