@@ -33,10 +33,11 @@ public class Table implements Serializable {
     private TextElement text;
     private TextElement rhetorical;
     private List<TextElement> headers;
+    private List<String> annotatedHeaders;
     private List<List<TextElement>> columns;
     private List<Map<String, String>> rows;
     private String tableId;
-
+    private TextElement documentId;
 
 
 
@@ -98,8 +99,9 @@ public class Table implements Serializable {
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    public String toString() {
-    	return String.format("%s", tableId);
+    public String toString()
+    {
+        return String.format("%s", documentId);
     }
 
 
@@ -143,5 +145,25 @@ public class Table implements Serializable {
     public void setTableId(String tableId)
     {
         this.tableId = tableId;
+    }
+
+    public List<String> getAnnotatedHeaders()
+    {
+        return annotatedHeaders;
+    }
+
+    public void setAnnotatedHeaders(List<String> annotatedHeaders)
+    {
+        this.annotatedHeaders = annotatedHeaders;
+    }
+
+    public TextElement getDocumentId()
+    {
+        return documentId;
+    }
+
+    public void setDocumentId(TextElement documentId)
+    {
+        this.documentId = documentId;
     }
 }
