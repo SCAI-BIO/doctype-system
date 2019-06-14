@@ -28,8 +28,12 @@ public class Quotation implements Serializable {
      * serialVersionUID
      */
     private static final long serialVersionUID = -8147702454907782570L;
+    @Deprecated // should point to a reference in the bibliography
     private Reference reference;
-
+    
+    private TextElement label;
+    private String referenceId; // points to the key in the bibliography
+        
     /**
      * getter for reference - gets
      * 
@@ -54,5 +58,33 @@ public class Quotation implements Serializable {
     public String toString() {
     	return reference.toString();
     }
+
+		/**
+		 * @return the label
+		 */
+		public TextElement getLabel() {
+			return label;
+		}
+
+		/**
+		 * @param label the label to set
+		 */
+		public void setLabel(TextElement label) {
+			this.label = label;
+		}
+
+		/**
+		 * @return the referenceId
+		 */
+		public String getReferenceId() {
+			return referenceId;
+		}
+
+		/**
+		 * @param referenceId the referenceId to set
+		 */
+		public void setReferenceId(String referenceId) {
+			this.referenceId = referenceId;
+		}
 
 }

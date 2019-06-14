@@ -129,7 +129,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	private static String renderBibliography(Bibliography bibliography, List<Annotation> annotations) {
+	public static String renderBibliography(Bibliography bibliography, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (bibliography != null) {
@@ -144,7 +144,7 @@ public class DocumentHTMLRenderer {
 
 			if (bibliography.getReferences() != null) {
 				for (String rid : bibliography.getReferences().keySet()) {
-					sb.append("[" + rid + "] ");
+					sb.append("[<a id=\"RID_" + rid + "\">"+rid+"</a>] ");
 					sb.append(renderReference(bibliography.getReferences().get(rid)));
 					sb.append("<br>");
 				}
@@ -345,9 +345,6 @@ public class DocumentHTMLRenderer {
 
 				sb.append(String.format("<p data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "par"));
 
-				if (paragraph.getSentences() != null) {
-					sb.append(renderSentences(paragraph.getSentences(), annotations));
-				}
 				if (paragraph.getStructureElements() != null) {
 					sb.append(renderStructureElements(paragraph.getStructureElements(), annotations));
 				}
@@ -397,6 +394,12 @@ public class DocumentHTMLRenderer {
 					sb.append("<br>");
 
 				} else if (structureElement.getQuotation() != null) {
+
+					sb.append("(<a href=\"");
+					sb.append("#RID_" + structureElement.getQuotation().getReferenceId());
+					sb.append("\">");
+					sb.append(escapeHTML(structureElement.getQuotation().getLabel(), annotations));
+					sb.append("</a>)");
 					sb.append(renderReference(structureElement.getQuotation().getReference(), annotations));
 
 				} else if (structureElement.getTable() != null) {
@@ -413,7 +416,9 @@ public class DocumentHTMLRenderer {
 
 				} else if (structureElement.getSentence() != null) {
 					sb.append(String.format("<span data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sent"));
+					sb.append("<u>");
 					sb.append(escapeHTML(structureElement.getSentence().getText(), annotations));
+					sb.append("</u>");
 					sb.append(String.format("</span>"));
 					sb.append(String.format(" "));
 

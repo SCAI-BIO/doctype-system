@@ -39,6 +39,7 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Concept;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
@@ -55,7 +56,7 @@ import de.fraunhofer.scai.bio.uima.textutils.datastructure.SentenceDetector;
  * sentences, tables, ...
  *
  * - first: call constructor - second: create and append document elements - finally: call
- * finalizeCAS to set all indizes and document text
+ * finalizeCAS to set all indices and document text
  * 
  * @author marc
  *
@@ -171,7 +172,11 @@ public class DocumentBuilder {
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
                     for (int i = 0; i < sentences.size(); i++) {
-                        dParagraph.addSentence(createSentence(sentences.get(i)));
+                    	
+                      StructureElement sentence = new StructureElement();
+                      sentence.setSentence(createSentence(sentences.get(i)));
+                  
+                      dParagraph.addStructureElement(sentence);
                     }
                 }
                 
@@ -528,7 +533,7 @@ public class DocumentBuilder {
 			if(publicationType != null) reference.setPublicationType(createTextElement(publicationType));
 			if(referenceSource != null) reference.setReferenceSource(createTextElement(referenceSource));
 			if(title != null) reference.setTitle(createDocumentTitle(createTextElement(title), null));
-			if(docDate != null) reference.setDate(docDate);
+			if(docDate != null) reference.setDate(new Date(docDate));
 			
 			bib.addReference(id, reference);
 

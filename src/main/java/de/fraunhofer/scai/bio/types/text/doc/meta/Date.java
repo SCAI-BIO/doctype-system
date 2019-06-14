@@ -56,6 +56,7 @@ public class Date implements Serializable {
 	 */
 	public Calendar getDate() {
 		if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
+			date = Calendar.getInstance();
 			date.set(getYear(), getMonth(), getDay());
 		}
 		return this.date;
