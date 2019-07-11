@@ -40,130 +40,108 @@ public class Table implements Serializable {
     private TextElement documentId;
 
 
-
     /**
      * @return the caption
      */
-    public TextElement getCaption()
-    {
+    public TextElement getCaption() {
         return caption;
+    }
+
+    public void setCaption(TextElement caption) {
+        this.caption = caption;
     }
 
     /**
      * @return the text
      */
-    public TextElement getText()
-    {
+    public TextElement getText() {
         return text;
+    }
+
+    public void setText(TextElement text) {
+        this.text = text;
     }
 
     /**
      * @return the title
      */
-    public TextElement getTitle()
-    {
+    public TextElement getTitle() {
         return title;
+    }
+
+    public void setTitle(TextElement title) {
+        this.title = title;
     }
 
     /**
      * @return the rhetorical
      */
-    public TextElement getRhetorical()
-    {
+    public TextElement getRhetorical() {
         return rhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
-    public void setRhetorical(TextElement rhetorical)
-    {
+    public void setRhetorical(TextElement rhetorical) {
         this.rhetorical = rhetorical;
-    }
-
-    public void setCaption(TextElement caption)
-    {
-        this.caption = caption;
-    }
-
-    public void setText(TextElement text)
-    {
-        this.text = text;
-    }
-
-    public void setTitle(TextElement title)
-    {
-        this.title = title;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
-    public String toString()
-    {
+    public String toString() {
         return String.format("%s", documentId);
     }
 
 
-    public List<TextElement> getHeaders()
-    {
+    public List<TextElement> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(List<TextElement> headers)
-    {
+    public void setHeaders(List<TextElement> headers) {
         this.headers = headers;
     }
 
 
-    public List<List<TextElement>> getColumns()
-    {
+    public List<List<TextElement>> getColumns() {
         return columns;
     }
 
-    public void setColumns(List<List<TextElement>> columns)
-    {
+    public void setColumns(List<List<TextElement>> columns) {
         this.columns = columns;
     }
 
 
-    public List<Map<String, String>> getRows()
-    {
+    public List<Map<String, String>> getRows() {
         return rows;
     }
 
-    public void setRows(List<Map<String, String>> rows)
-    {
+    public void setRows(List<Map<String, String>> rows) {
         this.rows = rows;
     }
 
-    public String getTableId()
-    {
+    public String getTableId() {
         return tableId;
     }
 
-    public void setTableId(String tableId)
-    {
+    public void setTableId(String tableId) {
         this.tableId = tableId;
     }
 
-    public List<String> getAnnotatedHeaders()
-    {
+    public List<String> getAnnotatedHeaders() {
         return annotatedHeaders;
     }
 
-    public void setAnnotatedHeaders(List<String> annotatedHeaders)
-    {
+    public void setAnnotatedHeaders(List<String> annotatedHeaders) {
         this.annotatedHeaders = annotatedHeaders;
     }
 
-    public TextElement getDocumentId()
-    {
+    public TextElement getDocumentId() {
         return documentId;
     }
 
-    public void setDocumentId(TextElement documentId)
-    {
+    public void setDocumentId(TextElement documentId) {
         this.documentId = documentId;
     }
 }
