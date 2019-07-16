@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 
 /**
  * Abstract of a document.
@@ -36,23 +36,24 @@ public class Abstract implements Serializable {
      * @return the abstractSections
      */
     public List<Section> getAbstractSections() {
-	return abstractSections;
-    }
-
-    /**
-     * @param abstractSection the abstract {@link Section} to add
-     */
-    public void addAbstractSection(Section abstractSection) {
-	if (this.abstractSections == null)
-	    this.abstractSections = new ArrayList<Section>();
-	this.abstractSections.add(abstractSection);
+        return abstractSections;
     }
 
     /**
      * @param abstractSections the abstract {@link Section}s to set
      */
     public void setAbstractSections(List<Section> abstractSections) {
-	this.abstractSections = abstractSections;
+        this.abstractSections = abstractSections;
+    }
+
+    /**
+     * @param abstractSection the abstract {@link Section} to add
+     */
+    public void addAbstractSection(Section abstractSection) {
+        if (this.abstractSections == null) {
+            this.abstractSections = new ArrayList<Section>();
+        }
+        this.abstractSections.add(abstractSection);
     }
 
 }

@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,15 +15,14 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 /**
  * @author klein
- *
  */
 public class Concept implements Serializable {
 
@@ -43,98 +42,98 @@ public class Concept implements Serializable {
     private List<TextElement> hiddenLabels;
 
     /**
-     * 
      * @param altLabel the alternate label to set
      */
     public void addAltLabel(TextElement altLabel) {
-	if (altLabels == null)
-	    altLabels = new ArrayList<TextElement>();
-	altLabels.add(altLabel);
+        if (altLabels == null) {
+            altLabels = new ArrayList<TextElement>();
+        }
+        altLabels.add(altLabel);
     }
 
     /**
      * TODO check index!!!
-     * 
+     *
      * @param index       index
      * @param hiddenLabel hidden label
      */
     public void addHiddenLabel(int index, TextElement hiddenLabel) {
-	if (this.hiddenLabels == null)
-	    this.hiddenLabels = new ArrayList<TextElement>();
-	this.hiddenLabels.add(hiddenLabel);
+        if (this.hiddenLabels == null) {
+            this.hiddenLabels = new ArrayList<TextElement>();
+        }
+        this.hiddenLabels.add(hiddenLabel);
     }
-    
+
     public TextElement getAltLabel() {
-	return this.altLabel;
-    }
-
-    public List<TextElement> getAltLabels() {
-	return this.altLabels;
-    }
-
-    public TextElement getHiddenLabel() {
-	return this.hiddenLabel;
-    }
-
-    public List<TextElement> getHiddenLabels() {
-	return this.hiddenLabels;
-    }
-
-    public TextElement getIdentifier() {
-	return this.identifier;
-    }
-
-    public TextElement getIdentifierSource() {
-	return this.identifierSource;
-    }
-
-    public TextElement[] getIdentifierWithSource() {
-	return this.identifierWithSource;
-    }
-
-    public TextElement getPrefLabel() {
-	return this.preferredLabel;
+        return this.altLabel;
     }
 
     public void setAltLabel(TextElement altlabel) {
-	this.altLabel = altlabel;
+        this.altLabel = altlabel;
+    }
+
+    public List<TextElement> getAltLabels() {
+        return this.altLabels;
     }
 
     /**
      * Set the {@link List} of alternate Labels.
-     * 
+     *
      * @param altLabels the {@link List} of Labels.
      */
     public void setAltLabels(List<TextElement> altLabels) {
-	this.altLabels = altLabels;
+        this.altLabels = altLabels;
+    }
+
+    public TextElement getHiddenLabel() {
+        return this.hiddenLabel;
     }
 
     public void setHiddenLabel(TextElement hiddenlabel) {
-	this.hiddenLabel = hiddenlabel;
+        this.hiddenLabel = hiddenlabel;
+    }
+
+    public List<TextElement> getHiddenLabels() {
+        return this.hiddenLabels;
     }
 
     /**
-     * 
      * @param hiddenLabels the {@link List} of hidden labels to set
      */
     public void setHiddenLabels(List<TextElement> hiddenLabels) {
-	this.hiddenLabels = hiddenLabels;
+        this.hiddenLabels = hiddenLabels;
+    }
+
+    public TextElement getIdentifier() {
+        return this.identifier;
     }
 
     public void setIdentifier(TextElement identifier) {
-	this.identifier = identifier;
+        this.identifier = identifier;
+    }
+
+    public TextElement getIdentifierSource() {
+        return this.identifierSource;
     }
 
     public void setIdentifierSource(TextElement identifierSource) {
-	this.identifierSource = identifierSource;
+        this.identifierSource = identifierSource;
+    }
+
+    public TextElement[] getIdentifierWithSource() {
+        return this.identifierWithSource;
     }
 
     public void setIdentifierWithSource(TextElement[] identifierwithsource) {
-	this.identifierWithSource = identifierwithsource;
+        this.identifierWithSource = identifierwithsource;
+    }
+
+    public TextElement getPrefLabel() {
+        return this.preferredLabel;
     }
 
     public void setPrefLabel(TextElement label) {
-	this.preferredLabel = label;
+        this.preferredLabel = label;
     }
 
 }

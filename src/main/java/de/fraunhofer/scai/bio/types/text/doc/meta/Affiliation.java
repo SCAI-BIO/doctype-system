@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,21 +15,21 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 /**
  * TODO implement/enhance this class (organization, address, ...)
- * @author klein
  *
+ * @author klein
  */
 public class Affiliation implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -3254832719650327389L;
 
@@ -40,37 +40,38 @@ public class Affiliation implements Serializable {
      * @return the organization
      */
     public TextElement getOrganization() {
-	return organization;
+        return organization;
     }
 
     /**
      * @param organization the organization to set
      */
     public void setOrganization(TextElement organization) {
-	this.organization = organization;
+        this.organization = organization;
     }
 
     /**
      * @return the affiliationInfo
      */
     public List<String> getAffiliationInfos() {
-	return affiliationInfos;
+        return affiliationInfos;
+    }
+
+    /**
+     * @param affiliationInfo the affiliationInfo to set
+     */
+    public void setAffiliationInfos(List<String> affiliationInfos) {
+        this.affiliationInfos = affiliationInfos;
     }
 
     /**
      * @param affiliationInfo the affiliationInfo to add
      */
     public void addAffiliationInfo(String affiliationInfo) {
-	if (this.affiliationInfos == null)
-	    this.affiliationInfos = new ArrayList<String>();
-	this.affiliationInfos.add(affiliationInfo);
+        if (this.affiliationInfos == null) {
+            this.affiliationInfos = new ArrayList<String>();
+        }
+        this.affiliationInfos.add(affiliationInfo);
     }
-    
-    /**
-     * @param affiliationInfo the affiliationInfo to set
-     */
-    public void setAffiliationInfos(List<String> affiliationInfos) {
-	this.affiliationInfos = affiliationInfos;
-    }
-    
+
 }

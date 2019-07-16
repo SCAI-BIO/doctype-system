@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.Page;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.Page;
 
 /**
  * The order is Part, Chapter, Section, SubSection, SubSubSection.
@@ -37,37 +37,38 @@ public class Part implements Serializable {
      * @param chapter the {@link Chapter} to add
      */
     public void addChapter(Chapter chapter) {
-	if (this.chapters == null)
-	    this.chapters = new ArrayList<Chapter>();
-	this.chapters.add(chapter);
+        if (this.chapters == null) {
+            this.chapters = new ArrayList<Chapter>();
+        }
+        this.chapters.add(chapter);
     }
 
     /**
      * @return the {@link Chapter}s
      */
     public List<Chapter> getChapters() {
-	return chapters;
-    }
-
-    /**
-     * @return the {@link Page}s
-     */
-    public List<Page> getPages() {
-	return pages;
+        return chapters;
     }
 
     /**
      * @param chapters the {@link Chapter}s to set
      */
     public void setChapters(List<Chapter> chapters) {
-	this.chapters = chapters;
+        this.chapters = chapters;
+    }
+
+    /**
+     * @return the {@link Page}s
+     */
+    public List<Page> getPages() {
+        return pages;
     }
 
     /**
      * @param pages the {@link Page}s to set
      */
     public void setPages(List<Page> pages) {
-	this.pages = pages;
+        this.pages = pages;
     }
 
 }

@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,55 +15,51 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.io.File;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.fraunhofer.scai.bio.Document;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.fraunhofer.scai.bio.Document;
+import java.io.File;
 
 /**
  * Renders a {@link Document} to a HTML document
- * 
- * @author marc
  *
+ * @author marc
  */
 public class DocumentHTMLRendererTest {
-	
-  private Document document;
 
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    private Document document;
 
-  /**
-   * @throws Exception
-   */
-  @Before
-  public void setUp() throws Exception {
-  	
-		File inputDir = new File(getClass().getResource("/positiveIn/").getPath());
+    /**
+     * @throws Exception
+     */
+    @Before
+    public void setUp() throws Exception {
 
-  	
-		// create document from file 
-    ObjectMapper mapper = new ObjectMapper();
-    document = mapper.readValue(new File(inputDir.getPath() + "/" + "testAnnotatedDocument.json"), Document.class);
-  }
+        File inputDir = new File(getClass().getResource("/positiveIn/").getPath());
 
-  /**
-   * Test method for
-   * {@link de.fraunhofer.scai.bio.util.DocumentHTMLRenderer#renderHTML()}.
-   *
-   * @throws Exception
-   */
-  @Test
-  public void renderHTMLTest() {
-  	String html = DocumentHTMLRenderer.renderHTML(document);
-  	System.out.println(html);
-  }
+
+        // create document from file
+        ObjectMapper mapper = new ObjectMapper();
+        document = mapper.readValue(new File(inputDir.getPath() + "/" + "testAnnotatedDocument.json"), Document.class);
+    }
+
+    /**
+     * Test method for
+     * {@link de.fraunhofer.scai.bio.util.DocumentHTMLRenderer#renderHTML()}.
+     *
+     * @throws Exception
+     */
+    @Test
+    public void renderHTMLTest() {
+        String html = DocumentHTMLRenderer.renderHTML(document);
+        System.out.println(html);
+    }
 
 
 }

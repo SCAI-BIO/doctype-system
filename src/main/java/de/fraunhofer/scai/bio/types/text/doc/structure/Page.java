@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -33,50 +33,46 @@ public class Page implements Serializable {
     /**
      * getter for layout - specifies the page layout. Examples: 2-column, titlepage
      * or standard.
-     * 
-     * 
+     *
      * @return layout of the feature
      */
     public TextElement getLayout() {
-	return this.layout;
-    }
-
-    /**
-     * getter for pageNumber - gets The number of the page in the original artifact
-     * 
-     * 
-     * @return page number of the feature
-     */
-    public int getPageNumber() {
-	return this.pageNumber;
+        return this.layout;
     }
 
     /**
      * setter for layout - specifices the page layout. Examples: 2-column, titlepage
      * or standard.
-     * 
-     * 
+     *
      * @param layout value to set into the feature
      */
     public void setLayout(TextElement layout) {
-	this.layout = layout;
+        this.layout = layout;
+    }
+
+    /**
+     * getter for pageNumber - gets The number of the page in the original artifact
+     *
+     * @return page number of the feature
+     */
+    public int getPageNumber() {
+        return this.pageNumber;
     }
 
     /**
      * setter for pageNumber - sets The number of the page in the original artifact
-     * 
-     * 
+     *
      * @param pageNumber value to set into the feature
      */
     public void setPageNumber(int pageNumber) {
-	this.pageNumber = pageNumber;
+        this.pageNumber = pageNumber;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%d\t%s", pageNumber, layout.getText());
+        return String.format("%d\t%s", pageNumber, layout.getText());
     }
 
 }

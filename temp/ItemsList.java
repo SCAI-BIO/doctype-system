@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * An enumeration of items.
@@ -34,34 +34,32 @@ public class ItemsList implements Serializable {
 
     /**
      * getter for items - gets Items of the list. Every item is a text string.
-     * 
+     *
      * @return value of the feature
      */
     public java.util.List<TextElement> getItems() {
-	return this.items;
+        return this.items;
     }
-    
+
     /**
      * setter for items - sets Items of the list. Every item is a text string.
-     * 
-     * 
-     * @param v value to set into the feature
-     */
-    public void addItem(String item) {
-	if (this.items == null) {
-	    this.items = new ArrayList<String>();
-	}
-	this.items.add(item);
-    }
-    
-    /**
-     * setter for items - sets Items of the list. Every item is a text string.
-     * 
-     * 
+     *
      * @param v value to set into the feature
      */
     public void setItems(java.util.List<String> v) {
-	this.items = v;
+        this.items = v;
+    }
+
+    /**
+     * setter for items - sets Items of the list. Every item is a text string.
+     *
+     * @param v value to set into the feature
+     */
+    public void addItem(String item) {
+        if (this.items == null) {
+            this.items = new ArrayList<String>();
+        }
+        this.items.add(item);
     }
 
 }

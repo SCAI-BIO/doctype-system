@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,10 +15,10 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import java.io.Serializable;
-
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import java.io.Serializable;
 
 /**
  * The initial principle part of a document, usually containing self-referential
@@ -41,31 +41,31 @@ public class FrontMatter implements Serializable {
     private Abstract documentAbstract;
 
     /**
-     * @return the titleText 
+     * @return the titleText
      */
     public TextElement getTitleText() {
-	return titleText;
+        return titleText;
     }
 
     /**
      * @param titleText the titleText to set
      */
     public void setTitleText(TextElement titleText) {
-	this.titleText = titleText;
+        this.titleText = titleText;
     }
 
     /**
      * @return the documentAbstract
      */
     public Abstract getDocumentAbstract() {
-	return documentAbstract;
+        return documentAbstract;
     }
 
     /**
      * @param documentAbstract the documentAbstract to set
      */
     public void setDocumentAbstract(Abstract documentAbstract) {
-	this.documentAbstract = documentAbstract;
+        this.documentAbstract = documentAbstract;
     }
 
 }

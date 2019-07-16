@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * The order is Part, Chapter, Section, SubSection, SubSubSection.
@@ -39,66 +39,66 @@ public class Section implements Serializable {
      * @return the rhetorical
      */
     public TextElement getRhetorical() {
-	return sectionRhetorical;
+        return sectionRhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
     public void setRhetorical(TextElement sectionRhetorical) {
-	this.sectionRhetorical = sectionRhetorical;
+        this.sectionRhetorical = sectionRhetorical;
     }
 
     /**
      * @return the sectionTitle
      */
     public TextElement getTitle() {
-	return sectionTitle;
+        return sectionTitle;
     }
 
     /**
      * @param sectionTitle the sectionTitle to set
      */
     public void setTitle(TextElement sectionTitle) {
-	this.sectionTitle = sectionTitle;
+        this.sectionTitle = sectionTitle;
     }
 
     /**
-     * 
      * @return the {@link Paragraph}s
      */
     public List<Paragraph> getParagraphs() {
-	return paragraphs;
-    }
-
-    /**
-     * @param paragraph the {@link Paragraph} to add
-     */
-    public void addParagraph(Paragraph paragraph) {
-	if (this.paragraphs == null)
-	    this.paragraphs = new ArrayList<Paragraph>();
-	this.paragraphs.add(paragraph);
+        return paragraphs;
     }
 
     /**
      * @param paragraphs the {@link Paragraph}s to set
      */
     public void setParagraphs(List<Paragraph> paragraphs) {
-	this.paragraphs = paragraphs;
+        this.paragraphs = paragraphs;
+    }
+
+    /**
+     * @param paragraph the {@link Paragraph} to add
+     */
+    public void addParagraph(Paragraph paragraph) {
+        if (this.paragraphs == null) {
+            this.paragraphs = new ArrayList<Paragraph>();
+        }
+        this.paragraphs.add(paragraph);
     }
 
     /**
      * @return the depth
      */
     public int getDepth() {
-	return depth;
+        return depth;
     }
 
     /**
      * @param depth the depth to set
      */
     public void setDepth(int depth) {
-	this.depth = depth;
+        this.depth = depth;
     }
 
 }

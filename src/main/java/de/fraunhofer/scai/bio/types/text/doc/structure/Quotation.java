@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,9 +15,9 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
-import java.io.Serializable;
-
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+
+import java.io.Serializable;
 
 /**
  * A quotation block which cites another document.
@@ -30,61 +30,61 @@ public class Quotation implements Serializable {
     private static final long serialVersionUID = -8147702454907782570L;
     @Deprecated // should point to a reference in the bibliography
     private Reference reference;
-    
+
     private TextElement label;
     private String referenceId; // points to the key in the bibliography
-        
+
     /**
      * getter for reference - gets
-     * 
+     *
      * @return value of the feature
      */
     public Reference getReference() {
-	return this.reference;
+        return this.reference;
     }
 
     /**
      * setter for reference - sets
-     * 
+     *
      * @param v value to set into the feature
      */
     public void setReference(Reference v) {
-	this.reference = v;
+        this.reference = v;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return reference.toString();
+        return reference.toString();
     }
 
-		/**
-		 * @return the label
-		 */
-		public TextElement getLabel() {
-			return label;
-		}
+    /**
+     * @return the label
+     */
+    public TextElement getLabel() {
+        return label;
+    }
 
-		/**
-		 * @param label the label to set
-		 */
-		public void setLabel(TextElement label) {
-			this.label = label;
-		}
+    /**
+     * @param label the label to set
+     */
+    public void setLabel(TextElement label) {
+        this.label = label;
+    }
 
-		/**
-		 * @return the referenceId
-		 */
-		public String getReferenceId() {
-			return referenceId;
-		}
+    /**
+     * @return the referenceId
+     */
+    public String getReferenceId() {
+        return referenceId;
+    }
 
-		/**
-		 * @param referenceId the referenceId to set
-		 */
-		public void setReferenceId(String referenceId) {
-			this.referenceId = referenceId;
-		}
+    /**
+     * @param referenceId the referenceId to set
+     */
+    public void setReferenceId(String referenceId) {
+        this.referenceId = referenceId;
+    }
 
 }

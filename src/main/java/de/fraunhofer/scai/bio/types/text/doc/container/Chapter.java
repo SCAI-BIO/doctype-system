@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,23 +34,23 @@ public class Chapter implements Serializable {
      * @param section the {@link Section} to add
      */
     public void addSection(Section section) {
-	if (this.sections == null) {
-	    this.sections = new ArrayList<Section>();
-	}
-	this.sections.add(section);
+        if (this.sections == null) {
+            this.sections = new ArrayList<Section>();
+        }
+        this.sections.add(section);
     }
 
     /**
      * @return the {@link Section}s
      */
     public List<Section> getSections() {
-	return sections;
+        return sections;
     }
 
     /**
      * @param sections the {@link List} of {@link Section}s to set
      */
     public void setSections(List<Section> sections) {
-	this.sections = sections;
+        this.sections = sections;
     }
 }

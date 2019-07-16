@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -74,8 +74,7 @@ public class Figure implements Serializable {
 
     /**
      * getter for image - gets
-     * 
-     * 
+     *
      * @return value of the feature
      */
     public ImageContent getImage() {
@@ -84,8 +83,7 @@ public class Figure implements Serializable {
 
     /**
      * setter for image - sets
-     * 
-     * 
+     *
      * @param v value to set into the feature
      */
     public void setImage(ImageContent v) {
@@ -94,7 +92,7 @@ public class Figure implements Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     public String toString() {

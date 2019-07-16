@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,13 +15,12 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import java.io.Serializable;
-
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import java.io.Serializable;
 
 /**
  * @author klein
- *
  */
 public class Person implements Serializable {
 
@@ -37,76 +36,76 @@ public class Person implements Serializable {
     /**
      * getter for affiliation - gets Affiliation of the author. i.e. University of
      * Bonn
-     * 
+     *
      * @return affiliation of the {@link Person}
      */
     public Affiliation getAffiliation() {
-	return affiliation;
-    }
-
-    /**
-     * getter for degree - gets Academic degree of the person, like B.Sc., M.Sc. or
-     * Dr.
-     * 
-     * @return the degree of the {@link Person}
-     */
-    public TextElement getDegree() {
-	return degree;
-    }
-
-    /**
-     * getter for forename - gets Forename of the author. i.e. Max
-     * 
-     * @return the forename of the {@link Person}
-     */
-    public TextElement getForename() {
-	return forename;
-    }
-
-    /**
-     * getter for surname - gets Family name of the author. i.e. Musterman
-     * 
-     * @return the surname of the {@link Person}
-     */
-    public TextElement getSurname() {
-	return surname;
+        return affiliation;
     }
 
     /**
      * setter for affiliation - sets Affiliation of the author. i.e. University of
      * Bonn
-     * 
+     *
      * @param affiliation value to set into the feature
      */
     public void setAffiliation(Affiliation affiliation) {
-	this.affiliation = affiliation;
+        this.affiliation = affiliation;
+    }
+
+    /**
+     * getter for degree - gets Academic degree of the person, like B.Sc., M.Sc. or
+     * Dr.
+     *
+     * @return the degree of the {@link Person}
+     */
+    public TextElement getDegree() {
+        return degree;
     }
 
     /**
      * setter for degree - sets Academic degree of the person, like B.Sc., M.Sc. or
      * Dr.
-     * 
+     *
      * @param degree of the {@link Person} to set
      */
     public void setDegree(TextElement degree) {
-	this.degree = degree;
+        this.degree = degree;
+    }
+
+    /**
+     * getter for forename - gets Forename of the author. i.e. Max
+     *
+     * @return the forename of the {@link Person}
+     */
+    public TextElement getForename() {
+        return forename;
     }
 
     /**
      * setter for forename - sets Forename of the author. i.e. Max
-     * 
+     *
      * @param forename of the {@link Person} to set
      */
     public void setForename(TextElement forename) {
-	this.forename = forename;
+        this.forename = forename;
+    }
+
+    /**
+     * getter for surname - gets Family name of the author. i.e. Musterman
+     *
+     * @return the surname of the {@link Person}
+     */
+    public TextElement getSurname() {
+        return surname;
     }
 
     /**
      * setter for surname - sets Family name of the author. i.e. Musterman
-     * 
+     *
      * @param surname of the {@link Person} to set
      */
     public void setSurname(TextElement surname) {
-	this.surname = surname;
+        this.surname = surname;
     }
 }

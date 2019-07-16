@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,12 +15,12 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * The bibliography contains all literature references which are made in the
@@ -28,53 +28,52 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  */
 public class Bibliography implements Serializable {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 3505381016659827384L;
-	private Map<String, Reference> references;
-	private TextElement title;
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 3505381016659827384L;
+    private Map<String, Reference> references;
+    private TextElement title;
 
-	// *--------------*
-	// * Feature: references
+    // *--------------*
+    // * Feature: references
 
-	/**
-	 * Add {@link Reference} element.
-	 * 
-	 * @param reference {@link Reference} to add to the {@link List} of
-	 *                  {@link Reference}s
-	 */
-	public void addReference(String id, Reference reference) {
-		if (references == null)
-			references = new LinkedHashMap<String, Reference>();
-		references.put(id, reference);
-	}
+    /**
+     * Add {@link Reference} element.
+     *
+     * @param reference {@link Reference} to add to the {@link List} of
+     *                  {@link Reference}s
+     */
+    public void addReference(String id, Reference reference) {
+        if (references == null) {
+            references = new LinkedHashMap<String, Reference>();
+        }
+        references.put(id, reference);
+    }
 
-	/**
-	 * Getter for {@link Reference}s.
-	 * 
-	 * 
-	 * @return the {@link List} of {@link Reference}s
-	 */
-	public Map<String, Reference> getReferences() {
-		return references;
-	}
+    /**
+     * Getter for {@link Reference}s.
+     *
+     * @return the {@link List} of {@link Reference}s
+     */
+    public Map<String, Reference> getReferences() {
+        return references;
+    }
 
-	/**
-	 * setter for {@link Reference}s.
-	 * 
-	 * 
-	 * @param references the {@link List} of {@link Reference}s to set
-	 */
-	public void setReferences(Map<String, Reference> references) {
-		this.references = references;
-	}
+    /**
+     * setter for {@link Reference}s.
+     *
+     * @param references the {@link List} of {@link Reference}s to set
+     */
+    public void setReferences(Map<String, Reference> references) {
+        this.references = references;
+    }
 
-	public TextElement getTitle() {
-		return title;
-	}
+    public TextElement getTitle() {
+        return title;
+    }
 
-	public void setTitle(TextElement title) {
-		this.title = title;
-	}
+    public void setTitle(TextElement title) {
+        this.title = title;
+    }
 }
