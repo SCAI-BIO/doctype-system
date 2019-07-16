@@ -16,6 +16,8 @@
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A captioned table.
@@ -30,6 +32,13 @@ public class Table implements Serializable {
     private TextElement title;
     private TextElement text;
     private TextElement rhetorical;
+    private List<TextElement> headers;
+    private List<String> annotatedHeaders;
+    private List<List<TextElement>> columns;
+    private List<Map<String, String>> rows;
+    private String tableId;
+    private TextElement documentId;
+
 
     /**
      * @return the caption
@@ -82,8 +91,57 @@ public class Table implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        return String.format("%s\n%s\n%s", title.getText(), text.getText(), caption.getText());
+        return String.format("%s", documentId);
     }
 
 
+    public List<TextElement> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(List<TextElement> headers) {
+        this.headers = headers;
+    }
+
+
+    public List<List<TextElement>> getColumns() {
+        return columns;
+    }
+
+    public void setColumns(List<List<TextElement>> columns) {
+        this.columns = columns;
+    }
+
+
+    public List<Map<String, String>> getRows() {
+        return rows;
+    }
+
+    public void setRows(List<Map<String, String>> rows) {
+        this.rows = rows;
+    }
+
+    public String getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
+    }
+
+    public List<String> getAnnotatedHeaders() {
+        return annotatedHeaders;
+    }
+
+    public void setAnnotatedHeaders(List<String> annotatedHeaders) {
+        this.annotatedHeaders = annotatedHeaders;
+    }
+
+    public TextElement getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(TextElement documentId) {
+        this.documentId = documentId;
+    }
 }
