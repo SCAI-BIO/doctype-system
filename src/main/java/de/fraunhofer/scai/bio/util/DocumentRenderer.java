@@ -105,13 +105,7 @@ public class DocumentRenderer {
                 for (Paragraph para : paragraphs) {
                     if (para != null) {
                         // either a sentence or a structure element is set
-                        if (para.getSentences() != null) {
-                            List<Sentence> sentences = para.getSentences();
-                            for (Sentence sentence : sentences) {
-                                sb.append(sentence.getText().getText());
-                                sb.append(" ");
-                            }
-                        } else {
+                        if (para.getStructureElements() != null) {
                             List<StructureElement> structureElements = para.getStructureElements();
                             for (StructureElement se : structureElements) {
                                 sb.append(renderStructureElement(se));
@@ -323,9 +317,6 @@ public class DocumentRenderer {
         if (paragraphs != null) {
             for (Paragraph par : paragraphs) {
                 if (par != null) {
-                    if (par.getSentences() != null) {
-                        elements.putAll(getSentencesTextElements(par.getSentences()));
-                    }
                     if (par.getStructureElements() != null) {
                         elements.putAll(getStructureElementsTextElements(par.getStructureElements()));
                     }
@@ -377,7 +368,7 @@ public class DocumentRenderer {
                         addTextElement(elements, sel.getOutline().getTitleText(), "OutlineTitleText");
 
                     } else if (sel.getQuotation() != null) {
-                        elements.putAll(getReferenceTextElements(sel.getQuotation().getReference()));
+                        addTextElement(elements, sel.getQuotation().getLabel(), "Quotation");
 
                     } else if (sel.getTable() != null) {
                         addTextElement(elements, sel.getTable().getTitle(), "TableTitle");
@@ -387,6 +378,9 @@ public class DocumentRenderer {
                         {
                             addTextElement(elements, header, "TableHeader");
                         }
+
+                    } else if (sel.getSentence() != null) {
+                    	addTextElement(elements, sel.getSentence().getText(), "Sentence");
 
                     } else if (sel.getTextElement() != null) {
                         addTextElement(elements, sel.getTextElement(), "TextElement");
@@ -467,6 +461,10 @@ public class DocumentRenderer {
             if (reference.getReferenceSource() != null) {
                 addTextElement(elements, reference.getReferenceSource(), "ReferenceSource");
             }
+
+            if (reference.getLink() != null) {
+              addTextElement(elements, reference.getLink(), "ReferenceLink");
+          }
 
             // TODO
             reference.getAuthors();

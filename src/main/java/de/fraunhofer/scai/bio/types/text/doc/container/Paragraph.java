@@ -32,6 +32,7 @@ public class Paragraph implements Serializable {
      */
     private static final long serialVersionUID = -8095267361703765778L;
 
+    @Deprecated
     private List<Sentence> sentences;
     private List<StructureElement> structureElements;
 
@@ -61,6 +62,7 @@ public class Paragraph implements Serializable {
     /**
      * @return the {@link Sentence}s
      */
+    @Deprecated
     public List<Sentence> getSentences() {
 	return sentences;
     }
@@ -68,6 +70,7 @@ public class Paragraph implements Serializable {
     /**
      * @param sentences the {@link Sentence} to add
      */
+    @Deprecated
     public void addSentence(Sentence sentence) {
 	if (this.sentences == null)
 	    this.sentences = new ArrayList<Sentence>();
@@ -77,6 +80,7 @@ public class Paragraph implements Serializable {
     /**
      * @param sentences the {@link Sentence}s to set
      */
+    @Deprecated
     public void setSentences(List<Sentence> sentences) {
 	this.sentences = sentences;
     }

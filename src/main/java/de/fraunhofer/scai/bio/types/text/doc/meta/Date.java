@@ -24,87 +24,102 @@ import java.util.Calendar;
  */
 public class Date implements Serializable {
 
-    /**
-     * serialVersionUID
-     */
-    private static final long serialVersionUID = -8973046289828947316L;
-    private int day;
-    private int month;
-    private int year;
-    private Calendar date;
-    
-    /**
-     * Default constructor.
-     *
-     */
-    public Date() {
-    }
+	/**
+	 * serialVersionUID
+	 */
+	private static final long serialVersionUID = -8973046289828947316L;
+	private int day;
+	private int month;
+	private int year;
+	private Calendar date;
 
-    /**
-     * 
-     * @return the {@link Calendar} object of the {@link Date}.
-     */
-    public Calendar getDate() {
-	date = Calendar.getInstance();
-	date.set(getYear(), getMonth(), getDay());
-	return this.date;
-    }
+	/**
+	 * Default constructor.
+	 *
+	 */
+	public Date() {
+		date = Calendar.getInstance();
+	}
 
-    public void setDate(int day, int month, int year) {
-	this.date.set(day, month, day);
-    }
-    
-    /**
-     * getter for day - gets Restricted: 1-31
-     * 
-     * @return day of the {@link Date}
-     */
-    public int getDay() {
-	return day;
-    }
+	public Date(java.util.Date date) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(date);
 
-    /**
-     * getter for month - gets Restriction: 1-12
-     * 
-     * @return month of the {@link Date}
-     */
-    public int getMonth() {
-	return month;
-    }
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+		month = calendar.get(Calendar.MONTH);
+		year = calendar.get(Calendar.YEAR);
+	}
 
-    /**
-     * getter for year - gets Gregorian Calendar: Four digits. i.e. 2012
-     * 
-     * @return year of the {@link Date}
-     */
-    public int getYear() {
-	return year;
-    }
+	/**
+	 * 
+	 * @return the {@link Calendar} object of the {@link Date}.
+	 */
+	public Calendar getDate() {
+		if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
+			date = Calendar.getInstance();
+			date.set(getYear(), getMonth(), getDay());
+		}
+		return this.date;
+	}
 
-    /**
-     * setter for day - sets Restricted: 1-31
-     * 
-     * @param day value to set to {@link Date}
-     */
-    public void setDay(int day) {
-	this.day = day;
-    }
+	public void setDate(int day, int month, int year) {
+		this.date.set(day, month, year);
+		setDay(day);
+		setMonth(month);
+		setYear(year);
+	}
 
-    /**
-     * setter for month - sets Restriction: 1-12
-     * 
-     * @param month value to set to {@link Date}
-     */
-    public void setMonth(int month) {
-	this.month = month;
-    }
+	/**
+	 * getter for day - gets Restricted: 1-31
+	 * 
+	 * @return day of the {@link Date}
+	 */
+	public int getDay() {
+		return day;
+	}
 
-    /**
-     * setter for year - sets Gregorian Calendar: Four digits. i.e. 2012
-     * 
-     * @param year to set to {@link Date}
-     */
-    public void setYear(int year) {
-	this.year = year;
-    }
+	/**
+	 * getter for month - gets Restriction: 1-12
+	 * 
+	 * @return month of the {@link Date}
+	 */
+	public int getMonth() {
+		return month;
+	}
+
+	/**
+	 * getter for year - gets Gregorian Calendar: Four digits. i.e. 2012
+	 * 
+	 * @return year of the {@link Date}
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * setter for day - sets Restricted: 1-31
+	 * 
+	 * @param day value to set to {@link Date}
+	 */
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	/**
+	 * setter for month - sets Restriction: 1-12
+	 * 
+	 * @param month value to set to {@link Date}
+	 */
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	/**
+	 * setter for year - sets Gregorian Calendar: Four digits. i.e. 2012
+	 * 
+	 * @param year to set to {@link Date}
+	 */
+	public void setYear(int year) {
+		this.year = year;
+	}
 }

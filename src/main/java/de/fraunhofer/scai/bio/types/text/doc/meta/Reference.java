@@ -37,6 +37,7 @@ public class Reference implements Serializable {
 	private TextElement language;
 	private TextElement referenceSource;
 	private TextElement publicationType;
+	private TextElement link;	// an uri
 
 	/**
 	 * setter for author - sets
@@ -163,6 +164,20 @@ public class Reference implements Serializable {
 
 	public void setPublicationType(TextElement publicationType) {
 		this.publicationType = publicationType;
+	}
+
+	/**
+	 * @return the link
+	 */
+	public TextElement getLink() {
+		return link;
+	}
+
+	/**
+	 * @param link the link to set
+	 */
+	public void setLink(TextElement link) {
+		this.link = link;
 	}
 
 }
