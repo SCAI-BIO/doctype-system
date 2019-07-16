@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,20 +34,20 @@ public class Formula implements Serializable {
      * @return the formula
      */
     public TextElement getFormula() {
-	return formula;
+        return formula;
     }
 
     /**
      * @param formula the formula to set
      */
     public void setFormula(TextElement formula) {
-	this.formula = formula;
+        this.formula = formula;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return formula.getText();
+        return formula.getText();
     }
 }

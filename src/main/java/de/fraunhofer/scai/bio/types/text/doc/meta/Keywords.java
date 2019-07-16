@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,15 +15,14 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 /**
  * @author klein
- *
  */
 public class Keywords implements Serializable {
 
@@ -35,45 +34,46 @@ public class Keywords implements Serializable {
     private List<TextElement> keywordList;
 
     public Keywords() {
-	// TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub
     }
 
     /**
      * Adds a keyword to the {@link List} of keywords.
-     * 
+     *
      * @param keyword the keyword to add
      */
     public void addKeyword(TextElement keyword) {
-	if (this.keywordList == null)
-	    this.keywordList = new ArrayList<TextElement>();
-	this.keywordList.add(keyword);
+        if (this.keywordList == null) {
+            this.keywordList = new ArrayList<TextElement>();
+        }
+        this.keywordList.add(keyword);
     }
 
     /**
      * @return the {@link List} of {@link Keywords}
      */
     public List<TextElement> getKeywordList() {
-	return keywordList;
-    }
-
-    /**
-     * @return the rhetorical
-     */
-    public TextElement getRhetorical() {
-	return rhetorical;
+        return keywordList;
     }
 
     /**
      * @param keywordList the {@link List} of {@link Keywords} to set
      */
     public void setKeywordList(List<TextElement> keywordList) {
-	this.keywordList = keywordList;
+        this.keywordList = keywordList;
+    }
+
+    /**
+     * @return the rhetorical
+     */
+    public TextElement getRhetorical() {
+        return rhetorical;
     }
 
     /**
      * @param rhetorical the rhetorical to set
      */
     public void setRhetorical(TextElement rhetorical) {
-	this.rhetorical = rhetorical;
+        this.rhetorical = rhetorical;
     }
 }

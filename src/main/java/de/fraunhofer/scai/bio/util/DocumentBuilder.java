@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -13,53 +13,34 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-
 import de.fraunhofer.scai.bio.Document;
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
-import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Affiliation;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Concept;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
-import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Title;
+import de.fraunhofer.scai.bio.types.text.doc.container.*;
+import de.fraunhofer.scai.bio.types.text.doc.meta.*;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
 import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 import de.fraunhofer.scai.bio.uima.textutils.datastructure.SentenceDetector;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * a general class to compose a document from scratch, allows to create sections, paragraphs,
  * sentences, tables, ...
- *
+ * <p>
  * - first: call constructor - second: create and append document elements - finally: call
  * finalizeCAS to set all indices and document text
- * 
- * @author marc
  *
+ * @author marc
  */
 public class DocumentBuilder {
 
@@ -88,8 +69,9 @@ public class DocumentBuilder {
 
         if (subTitleText != null && subTitleText.getText() != null && subTitleText.getText().length() > 0) {
 
-            if (dTitle == null)
+            if (dTitle == null) {
                 dTitle = new Title();
+            }
             dTitle.setSubtitleText(subTitleText);
         }
 
@@ -106,7 +88,7 @@ public class DocumentBuilder {
 
     /**
      * no spacer after paragraphs, no sentences
-     * 
+     *
      * @param text
      * @param rhetorical
      * @param titleText
@@ -154,9 +136,9 @@ public class DocumentBuilder {
 
     /**
      * create a paragraph
-     * 
+     *
      * @param node
-     * @param text annotations
+     * @param text         annotations
      * @param createSpacer an additional CR+LF at end of paragraph
      * @return
      */
@@ -172,15 +154,15 @@ public class DocumentBuilder {
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
                     for (int i = 0; i < sentences.size(); i++) {
-                    	
-                      StructureElement sentence = new StructureElement();
-                      sentence.setSentence(createSentence(sentences.get(i)));
-                  
-                      dParagraph.addStructureElement(sentence);
+
+                        StructureElement sentence = new StructureElement();
+                        sentence.setSentence(createSentence(sentences.get(i)));
+
+                        dParagraph.addStructureElement(sentence);
                     }
                 }
-                
-                logger.debug("Created "+ sentences.size() + " sentence(s).");
+
+                logger.debug("Created " + sentences.size() + " sentence(s).");
 
             } else {
                 dParagraph = new Paragraph();
@@ -220,7 +202,7 @@ public class DocumentBuilder {
         List<Sentence> dSentences = null;
 
         if (textElement != null && textElement.getText() != null) {
-            dSentences =  createSentences(textElement.getText());
+            dSentences = createSentences(textElement.getText());
         }
 
         return dSentences;
@@ -228,24 +210,24 @@ public class DocumentBuilder {
 
     public List<Sentence> createSentences(String text) {
 
-      List<Sentence> dSentences = new ArrayList<Sentence>();
+        List<Sentence> dSentences = new ArrayList<Sentence>();
 
-      if (text != null && !text.isEmpty()) {
+        if (text != null && !text.isEmpty()) {
 
-          List<Integer> eos = sentenceDetector.findSentencesEndPositions(text);
+            List<Integer> eos = sentenceDetector.findSentencesEndPositions(text);
 
-          List<String> sentences = sentenceDetector.getSentences(eos, text, 5);
-          if (!sentences.isEmpty()) {
-              for (int i = 0; i < sentences.size(); i++) {
-                  dSentences.add(createSentence(sentences.get(i)));
-              }
-          }
-      }
+            List<String> sentences = sentenceDetector.getSentences(eos, text, 5);
+            if (!sentences.isEmpty()) {
+                for (int i = 0; i < sentences.size(); i++) {
+                    dSentences.add(createSentence(sentences.get(i)));
+                }
+            }
+        }
 
-      return dSentences;
-  }
+        return dSentences;
+    }
 
-    
+
     /**
      * @param text
      * @return
@@ -262,7 +244,7 @@ public class DocumentBuilder {
 
     /**
      * creating a figure annotation from begin to end
-     * 
+     *
      * @param rhetorical
      * @param caption
      * @param titleText
@@ -296,16 +278,16 @@ public class DocumentBuilder {
 
     /**
      * creating a table annotation from begin to end
-     * 
-     * @param begin <code>int</code>
-     * @param end <code>int</code>
+     *
+     * @param begin      <code>int</code>
+     * @param end        <code>int</code>
      * @param rhetorical <code>String</code>
      * @return <code>structure.List</code>
      */
     public de.fraunhofer.scai.bio.types.text.doc.structure.Table createTable(String rhetorical, String caption,
-            String title) {
+                                                                             String title) {
         de.fraunhofer.scai.bio.types.text.doc.structure.Table dTable =
-                new de.fraunhofer.scai.bio.types.text.doc.structure.Table();
+            new de.fraunhofer.scai.bio.types.text.doc.structure.Table();
 
         if (rhetorical != null) {
             TextElement textElement = createTextElement(rhetorical);
@@ -333,8 +315,8 @@ public class DocumentBuilder {
 
     /**
      * @param outline
-     * @param text <code>String</code>
-     * @param prefix <code>String</code> eg a bullet
+     * @param text           <code>String</code>
+     * @param prefix         <code>String</code> eg a bullet
      * @param creatSentences <code>boolean</code>
      * @return
      */
@@ -369,10 +351,10 @@ public class DocumentBuilder {
 
     /**
      * get the keywords as StringList
-     * 
-     * @param keywords <code>util.List</code>
+     *
+     * @param keywords   <code>util.List</code>
      * @param rhetorical <code>String</code>
-     * @param createNNE <code>boolean</code>
+     * @param createNNE  <code>boolean</code>
      * @return <code>structure.List</code>
      */
     public Keywords createKeywords(List<String> keywords, String rhetorical, boolean createNNE) {
@@ -432,8 +414,9 @@ public class DocumentBuilder {
      * @return
      */
     public StructureElement createStructureElement(TextElement textElement) {
-        if (textElement == null)
+        if (textElement == null) {
             return null;
+        }
 
         StructureElement structureElement = new StructureElement();
         structureElement.setTextElement(textElement);
@@ -454,213 +437,230 @@ public class DocumentBuilder {
         return null;
     }
 
-		public void setTitle(Document document, String title, String subtitle) {
-			
-			if(title == null || title.length() <=0) { title = "no title provided"; }
-			
-  		TextElement titleTextElement = createTextElement(title);
-  		TextElement subtitleTextElement = createTextElement(subtitle);
+    public void setTitle(Document document, String title, String subtitle) {
 
-  		getFrontMatter(document).setTitleText(titleTextElement);
-  		
-  		getBibliographic(document).setTitle(
-  				createDocumentTitle(titleTextElement, subtitleTextElement)
-  				);
-			
-		}
+        if (title == null || title.length() <= 0) {
+            title = "no title provided";
+        }
 
-		public void setLanguage(Document document, String language) {
-			if(language == null || language.length() <=0) language = "unspecified";
-			
-			getBibliographic(document).setLanguage(createTextElement(language));
-		}
-		
-		public void setAbstract(Document document, String dAbstract) {		
-			Abstract documentAbstract = new Abstract();
-			
-			if(dAbstract == null || dAbstract.length() <=0) { dAbstract = "no abstract provided"; }
+        TextElement titleTextElement = createTextElement(title);
+        TextElement subtitleTextElement = createTextElement(subtitle);
 
-			documentAbstract.addAbstractSection( createSimpleSection(dAbstract, "Abstract", "Abstract") );
-			getFrontMatter(document).setDocumentAbstract(documentAbstract);		
-			getBibliographic(document).setDocumentAbstract(documentAbstract);
-		}
-		
-		public DocumentElement getDocumentElement(Document document) {
-			DocumentElement docElem = document.getDocumentElement();
-			
-			if(docElem == null) {
-				docElem = new DocumentElement();
-				document.setDocumentElement(docElem);
-			}
-			
-			return docElem;
-		}
+        getFrontMatter(document).setTitleText(titleTextElement);
 
-		public FrontMatter getFrontMatter(Document document) {
-			FrontMatter frontMatter = getDocumentElement(document).getFrontMatter();
+        getBibliographic(document).setTitle(
+            createDocumentTitle(titleTextElement, subtitleTextElement)
+        );
 
-			if(frontMatter == null) {
-				frontMatter = new FrontMatter();
-				getDocumentElement(document).setFrontMatter(frontMatter);
-			} 
-			
-			return frontMatter;
-		}
+    }
 
-		public Bibliography getBibliography(Document document) {
-			Bibliography bib = getBackMatter(document).getBibliography();
+    public void setLanguage(Document document, String language) {
+        if (language == null || language.length() <= 0) {
+            language = "unspecified";
+        }
 
-			if(bib == null) {
-				bib = new Bibliography();
-				getBackMatter(document).setBibliography(bib);
-			}
+        getBibliographic(document).setLanguage(createTextElement(language));
+    }
 
-			return bib;
-		}
+    public void setAbstract(Document document, String dAbstract) {
+        Abstract documentAbstract = new Abstract();
 
-		public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.util.Date docDate) {
-			
-			Bibliography bib = getBibliography(document);			
-			
-			Reference reference = new Reference();
-			
-			if(authors != null) {
-				for(Author author : authors)
-					reference.addAuthor(author);
-			}
-			if(publicationId != null) reference.addPublicationId(createTextElement(publicationId));
-			//reference.setLanguage(language);
-			if(publicationType != null) reference.setPublicationType(createTextElement(publicationType));
-			if(referenceSource != null) reference.setReferenceSource(createTextElement(referenceSource));
-			if(title != null) reference.setTitle(createDocumentTitle(createTextElement(title), null));
-			if(docDate != null) reference.setDate(new Date(docDate));
-			
-			bib.addReference(id, reference);
+        if (dAbstract == null || dAbstract.length() <= 0) {
+            dAbstract = "no abstract provided";
+        }
 
-		}
-		
-		public Bibliographic getBibliographic(Document document) {
-			Bibliographic bib = getMetaElement(document).getBibliographic();
-			
-			if(bib == null) {
-				bib = new Bibliographic();
-				getMetaElement(document).setBibliographic(bib);
-			}
-			
-			return bib;
-		}
+        documentAbstract.addAbstractSection(createSimpleSection(dAbstract, "Abstract", "Abstract"));
+        getFrontMatter(document).setDocumentAbstract(documentAbstract);
+        getBibliographic(document).setDocumentAbstract(documentAbstract);
+    }
 
-		public BodyMatter getBodyMatter(Document document) {
-			BodyMatter bodyMatter = getDocumentElement(document).getBodyMatter();
+    public DocumentElement getDocumentElement(Document document) {
+        DocumentElement docElem = document.getDocumentElement();
 
-			if(bodyMatter == null) {
-				bodyMatter = new BodyMatter();
-				getDocumentElement(document).setBodyMatter(bodyMatter);
-			} 
-			
-			return bodyMatter;
-		}
+        if (docElem == null) {
+            docElem = new DocumentElement();
+            document.setDocumentElement(docElem);
+        }
 
-		public BackMatter getBackMatter(Document document) {
-			BackMatter backMatter = getDocumentElement(document).getBackMatter();
+        return docElem;
+    }
 
-			if(backMatter == null) {
-				backMatter = new BackMatter();
-				getDocumentElement(document).setBackMatter(backMatter);
-			} 
-			
-			return backMatter;
-		}
+    public FrontMatter getFrontMatter(Document document) {
+        FrontMatter frontMatter = getDocumentElement(document).getFrontMatter();
 
-		public MetaElement getMetaElement(Document document) {
-			
-			MetaElement meta = getDocumentElement(document).getMetaElement();
-			
-			if(meta == null) {
-				meta = new MetaElement();
-				getDocumentElement(document).setMetaElement(meta);
-			}
-			
-			return meta;
-		}
-		
-		public Section createMainSection(Document document, String text) {
-			
-			Section section = createSection("Main Section", "Main");
+        if (frontMatter == null) {
+            frontMatter = new FrontMatter();
+            getDocumentElement(document).setFrontMatter(frontMatter);
+        }
 
-	    Paragraph mainParagraph = createParagraph(text, true);
-	    
-			section.addParagraph(mainParagraph);
-			
-			return section;
-		}		
+        return frontMatter;
+    }
 
-		public Concept setDocumentId(Document document, String source, String id, String altlabel) {
-			Concept concept = getConcept(document);
+    public Bibliography getBibliography(Document document) {
+        Bibliography bib = getBackMatter(document).getBibliography();
 
-			concept.setIdentifierSource(createTextElement(source));
-			concept.setIdentifier(createTextElement(id));
-			concept.setPrefLabel(createTextElement(source+":"+id));
-			concept.setAltLabel(createTextElement(altlabel));
-			
-			return concept;
-		}
+        if (bib == null) {
+            bib = new Bibliography();
+            getBackMatter(document).setBibliography(bib);
+        }
 
-		public Concept setDocumentIdasHash(Document document, String originalString, String altlabel) {
-			
-			String id = DigestUtils.sha512Hex(originalString);
-			String source = "sha512Hex";
-			
-			return setDocumentId(document, id, source, altlabel);					
-		}
+        return bib;
+    }
 
-		public Concept getConcept(Document document) {
-			Concept concept = getMetaElement(document).getConcept();
-			
-					if(concept == null) {
-						concept = new Concept();
-						getMetaElement(document).setConcept(concept);
-					}
+    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.util.Date docDate) {
 
-			return concept;
-		}
+        Bibliography bib = getBibliography(document);
 
-		public void addPerson(Document document, String forename, String surname) {
-			
-			Person person = new Person();
-			person.setForename(createTextElement(forename));
-			person.setSurname(createTextElement(surname));
-			
-			Author author = new Author();
-			author.setAuthor(person);
-			
-			getBibliographic(document).addAuthor(author);
-			
-		}
+        Reference reference = new Reference();
 
-		public void addOrganization(Document document, String name) {
-			Affiliation organization = new Affiliation();
-			organization.setOrganization(createTextElement(name));
-			
-			Author author = new Author();
-			author.setOrganization(organization);
-			
-			getBibliographic(document).addAuthor(author);
-		
-		}
+        if (authors != null) {
+            for (Author author : authors) {
+                reference.addAuthor(author);
+            }
+        }
+        if (publicationId != null) {
+            reference.addPublicationId(createTextElement(publicationId));
+        }
+        //reference.setLanguage(language);
+        if (publicationType != null) {
+            reference.setPublicationType(createTextElement(publicationType));
+        }
+        if (referenceSource != null) {
+            reference.setReferenceSource(createTextElement(referenceSource));
+        }
+        if (title != null) {
+            reference.setTitle(createDocumentTitle(createTextElement(title), null));
+        }
+        if (docDate != null) {
+            reference.setDate(new Date(docDate));
+        }
 
-		public void addOtherDocumentId(Document document, String id) {
-			Concept concept = getConcept(document);
-			
-			concept.addAltLabel(createTextElement(id));
-			
-		}
+        bib.addReference(id, reference);
 
-		public void addKeywords(Document document, String rhetorical, List<String> keywords) {
+    }
 
-			Keywords kws = createKeywords(keywords, rhetorical, false);
-			document.getDocumentElement().getMetaElement().addKeywords(kws);
-						
-		}
+    public Bibliographic getBibliographic(Document document) {
+        Bibliographic bib = getMetaElement(document).getBibliographic();
+
+        if (bib == null) {
+            bib = new Bibliographic();
+            getMetaElement(document).setBibliographic(bib);
+        }
+
+        return bib;
+    }
+
+    public BodyMatter getBodyMatter(Document document) {
+        BodyMatter bodyMatter = getDocumentElement(document).getBodyMatter();
+
+        if (bodyMatter == null) {
+            bodyMatter = new BodyMatter();
+            getDocumentElement(document).setBodyMatter(bodyMatter);
+        }
+
+        return bodyMatter;
+    }
+
+    public BackMatter getBackMatter(Document document) {
+        BackMatter backMatter = getDocumentElement(document).getBackMatter();
+
+        if (backMatter == null) {
+            backMatter = new BackMatter();
+            getDocumentElement(document).setBackMatter(backMatter);
+        }
+
+        return backMatter;
+    }
+
+    public MetaElement getMetaElement(Document document) {
+
+        MetaElement meta = getDocumentElement(document).getMetaElement();
+
+        if (meta == null) {
+            meta = new MetaElement();
+            getDocumentElement(document).setMetaElement(meta);
+        }
+
+        return meta;
+    }
+
+    public Section createMainSection(Document document, String text) {
+
+        Section section = createSection("Main Section", "Main");
+
+        Paragraph mainParagraph = createParagraph(text, true);
+
+        section.addParagraph(mainParagraph);
+
+        return section;
+    }
+
+    public Concept setDocumentId(Document document, String source, String id, String altlabel) {
+        Concept concept = getConcept(document);
+
+        concept.setIdentifierSource(createTextElement(source));
+        concept.setIdentifier(createTextElement(id));
+        concept.setPrefLabel(createTextElement(source + ":" + id));
+        concept.setAltLabel(createTextElement(altlabel));
+
+        return concept;
+    }
+
+    public Concept setDocumentIdasHash(Document document, String originalString, String altlabel) {
+
+        String id = DigestUtils.sha512Hex(originalString);
+        String source = "sha512Hex";
+
+        return setDocumentId(document, id, source, altlabel);
+    }
+
+    public Concept getConcept(Document document) {
+        Concept concept = getMetaElement(document).getConcept();
+
+        if (concept == null) {
+            concept = new Concept();
+            getMetaElement(document).setConcept(concept);
+        }
+
+        return concept;
+    }
+
+    public void addPerson(Document document, String forename, String surname) {
+
+        Person person = new Person();
+        person.setForename(createTextElement(forename));
+        person.setSurname(createTextElement(surname));
+
+        Author author = new Author();
+        author.setAuthor(person);
+
+        getBibliographic(document).addAuthor(author);
+
+    }
+
+    public void addOrganization(Document document, String name) {
+        Affiliation organization = new Affiliation();
+        organization.setOrganization(createTextElement(name));
+
+        Author author = new Author();
+        author.setOrganization(organization);
+
+        getBibliographic(document).addAuthor(author);
+
+    }
+
+    public void addOtherDocumentId(Document document, String id) {
+        Concept concept = getConcept(document);
+
+        concept.addAltLabel(createTextElement(id));
+
+    }
+
+    public void addKeywords(Document document, String rhetorical, List<String> keywords) {
+
+        Keywords kws = createKeywords(keywords, rhetorical, false);
+        document.getDocumentElement().getMetaElement().addKeywords(kws);
+
+    }
 
 }

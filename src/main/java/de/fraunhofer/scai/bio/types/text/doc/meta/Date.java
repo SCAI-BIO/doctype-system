@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,106 +20,103 @@ import java.util.Calendar;
 
 /**
  * @author klein
- *
  */
 public class Date implements Serializable {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = -8973046289828947316L;
-	private int day;
-	private int month;
-	private int year;
-	private Calendar date;
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = -8973046289828947316L;
+    private int day;
+    private int month;
+    private int year;
+    private Calendar date;
 
-	/**
-	 * Default constructor.
-	 *
-	 */
-	public Date() {
-		date = Calendar.getInstance();
-	}
+    /**
+     * Default constructor.
+     */
+    public Date() {
+        date = Calendar.getInstance();
+    }
 
-	public Date(java.util.Date date) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
+    public Date(java.util.Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
 
-		day = calendar.get(Calendar.DAY_OF_MONTH);
-		month = calendar.get(Calendar.MONTH);
-		year = calendar.get(Calendar.YEAR);
-	}
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month = calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+    }
 
-	/**
-	 * 
-	 * @return the {@link Calendar} object of the {@link Date}.
-	 */
-	public Calendar getDate() {
-		if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
-			date = Calendar.getInstance();
-			date.set(getYear(), getMonth(), getDay());
-		}
-		return this.date;
-	}
+    /**
+     * @return the {@link Calendar} object of the {@link Date}.
+     */
+    public Calendar getDate() {
+        if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
+            date = Calendar.getInstance();
+            date.set(getYear(), getMonth(), getDay());
+        }
+        return this.date;
+    }
 
-	public void setDate(int day, int month, int year) {
-		this.date.set(day, month, year);
-		setDay(day);
-		setMonth(month);
-		setYear(year);
-	}
+    public void setDate(int day, int month, int year) {
+        this.date.set(day, month, year);
+        setDay(day);
+        setMonth(month);
+        setYear(year);
+    }
 
-	/**
-	 * getter for day - gets Restricted: 1-31
-	 * 
-	 * @return day of the {@link Date}
-	 */
-	public int getDay() {
-		return day;
-	}
+    /**
+     * getter for day - gets Restricted: 1-31
+     *
+     * @return day of the {@link Date}
+     */
+    public int getDay() {
+        return day;
+    }
 
-	/**
-	 * getter for month - gets Restriction: 1-12
-	 * 
-	 * @return month of the {@link Date}
-	 */
-	public int getMonth() {
-		return month;
-	}
+    /**
+     * setter for day - sets Restricted: 1-31
+     *
+     * @param day value to set to {@link Date}
+     */
+    public void setDay(int day) {
+        this.day = day;
+    }
 
-	/**
-	 * getter for year - gets Gregorian Calendar: Four digits. i.e. 2012
-	 * 
-	 * @return year of the {@link Date}
-	 */
-	public int getYear() {
-		return year;
-	}
+    /**
+     * getter for month - gets Restriction: 1-12
+     *
+     * @return month of the {@link Date}
+     */
+    public int getMonth() {
+        return month;
+    }
 
-	/**
-	 * setter for day - sets Restricted: 1-31
-	 * 
-	 * @param day value to set to {@link Date}
-	 */
-	public void setDay(int day) {
-		this.day = day;
-	}
+    /**
+     * setter for month - sets Restriction: 1-12
+     *
+     * @param month value to set to {@link Date}
+     */
+    public void setMonth(int month) {
+        this.month = month;
+    }
 
-	/**
-	 * setter for month - sets Restriction: 1-12
-	 * 
-	 * @param month value to set to {@link Date}
-	 */
-	public void setMonth(int month) {
-		this.month = month;
-	}
+    /**
+     * getter for year - gets Gregorian Calendar: Four digits. i.e. 2012
+     *
+     * @return year of the {@link Date}
+     */
+    public int getYear() {
+        return year;
+    }
 
-	/**
-	 * setter for year - sets Gregorian Calendar: Four digits. i.e. 2012
-	 * 
-	 * @param year to set to {@link Date}
-	 */
-	public void setYear(int year) {
-		this.year = year;
-	}
+    /**
+     * setter for year - sets Gregorian Calendar: Four digits. i.e. 2012
+     *
+     * @param year to set to {@link Date}
+     */
+    public void setYear(int year) {
+        this.year = year;
+    }
 }

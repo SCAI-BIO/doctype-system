@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  *
@@ -13,41 +13,24 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import de.fraunhofer.scai.bio.Document;
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
-import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
-import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
-import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.container.*;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.meta.*;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author tadams
  * @author marc
- * 
- *         This class provides functionality to render document contents in different formats by
- *         traversing the {@link Document} structure
- *
+ * <p>
+ * This class provides functionality to render document contents in different formats by
+ * traversing the {@link Document} structure
  */
 public class DocumentRenderer {
 
@@ -56,7 +39,7 @@ public class DocumentRenderer {
     /**
      * Assemble all document contents which can be written as String, return them as plain text list
      * separated by blanks. Used for indexing in Solr.
-     * 
+     *
      * @param document {@link Document}
      * @return String of content words separated by blanks
      */
@@ -91,7 +74,7 @@ public class DocumentRenderer {
 
     /**
      * Get the <code>Document</code> {@link Abstract} in plain text format
-     * 
+     *
      * @param doc input <code>Document</code>
      * @return Abstract String
      */
@@ -120,31 +103,41 @@ public class DocumentRenderer {
 
     /**
      * go through all fields and extract from the non-empty one the text
-     * 
+     *
      * @return <code>String</code>
      */
     public static String renderStructureElement(StructureElement se) {
         if (se != null) {
-            if (se.getCaptionedBox() != null)
+            if (se.getCaptionedBox() != null) {
                 return se.getCaptionedBox().toString();
-            if (se.getCode() != null)
+            }
+            if (se.getCode() != null) {
                 return se.getCode().toString();
-            if (se.getDataTable() != null)
+            }
+            if (se.getDataTable() != null) {
                 return se.getDataTable().toString();
-            if (se.getFigure() != null)
+            }
+            if (se.getFigure() != null) {
                 return se.getFigure().toString();
-            if (se.getFormula() != null)
+            }
+            if (se.getFormula() != null) {
                 return se.getFormula().toString();
-            if (se.getImageContent() != null)
+            }
+            if (se.getImageContent() != null) {
                 return se.getImageContent().toString();
-            if (se.getOutline() != null)
+            }
+            if (se.getOutline() != null) {
                 return se.getOutline().toString();
-            if (se.getQuotation() != null)
+            }
+            if (se.getQuotation() != null) {
                 return se.getQuotation().toString();
-            if (se.getTable() != null)
+            }
+            if (se.getTable() != null) {
                 return se.getTable().toString();
-            if (se.getTextElement() != null)
+            }
+            if (se.getTextElement() != null) {
                 return se.getTextElement().toString();
+            }
         }
 
         return null;
@@ -152,7 +145,7 @@ public class DocumentRenderer {
 
     /**
      * concatenate all contents of a list of {@link StructureElement}
-     * 
+     *
      * @param seList
      * @return {@link String}
      */
@@ -161,8 +154,9 @@ public class DocumentRenderer {
         StringBuilder sb = new StringBuilder();
 
         if (seList != null && !seList.isEmpty()) {
-            for (StructureElement se : seList)
+            for (StructureElement se : seList) {
                 sb.append(renderStructureElement(se));
+            }
         }
 
         return sb.toString();
@@ -176,8 +170,9 @@ public class DocumentRenderer {
     public static String renderTextElements(List<TextElement> textelements) {
         StringBuilder sb = new StringBuilder();
 
-        for (TextElement te : textelements)
+        for (TextElement te : textelements) {
             sb.append(te.getText());
+        }
 
         return sb.toString();
 
@@ -185,7 +180,7 @@ public class DocumentRenderer {
 
     /**
      * collect all {@link Annotation}s from all {@link TextElement}s into a {@link List}
-     * 
+     *
      * @param document {@link Document}
      * @return
      */
@@ -208,7 +203,7 @@ public class DocumentRenderer {
 
     /**
      * collect all {@link TextElement}s into a Map
-     * 
+     *
      * @param document {@link Document}
      * @return
      */
@@ -232,7 +227,6 @@ public class DocumentRenderer {
     }
 
     /**
-     * 
      * @param document {@link Document}
      * @return
      */
@@ -258,7 +252,6 @@ public class DocumentRenderer {
     }
 
     /**
-     * 
      * @param document {@link Document}
      * @return
      */
@@ -302,8 +295,9 @@ public class DocumentRenderer {
                     if (sec.getTitle() != null) {
                         addTextElement(elements, sec.getTitle(), "SectionTitle" + sec.getDepth());
                     }
-                    if (sec.getParagraphs() != null)
+                    if (sec.getParagraphs() != null) {
                         elements.putAll(getParagraphsTextElements(sec.getParagraphs()));
+                    }
                 }
             }
         }
@@ -376,7 +370,7 @@ public class DocumentRenderer {
                         addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
 
                     } else if (sel.getSentence() != null) {
-                    	addTextElement(elements, sel.getSentence().getText(), "Sentence");
+                        addTextElement(elements, sel.getSentence().getText(), "Sentence");
 
                     } else if (sel.getTextElement() != null) {
                         addTextElement(elements, sel.getTextElement(), "TextElement");
@@ -396,7 +390,6 @@ public class DocumentRenderer {
     }
 
     /**
-     * 
      * @param document {@link Document}
      * @return
      */
@@ -459,8 +452,8 @@ public class DocumentRenderer {
             }
 
             if (reference.getLink() != null) {
-              addTextElement(elements, reference.getLink(), "ReferenceLink");
-          }
+                addTextElement(elements, reference.getLink(), "ReferenceLink");
+            }
 
             // TODO
             reference.getAuthors();
@@ -471,10 +464,10 @@ public class DocumentRenderer {
 
     /**
      * create a nice key for each {@link TextElement} and place in {@link Map}
-     * 
-     * @param elements Map<String, TextElement>
+     *
+     * @param elements    Map<String, TextElement>
      * @param textElement {@link TextElement}
-     * @param title of text element {@link String}
+     * @param title       of text element {@link String}
      */
     private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
         if (textElement != null && textElement.getUuid() != null) {
@@ -510,10 +503,11 @@ public class DocumentRenderer {
 
         if (reference.getReferenceSource() != null) {
             if (reference.getTitle() != null) {
-                if (!sb.substring(sb.length() - 1).equals("?"))
+                if (!sb.substring(sb.length() - 1).equals("?")) {
                     sb.append(". ");
-                else
+                } else {
                     sb.append(" ");
+                }
             }
             if (reference.getReferenceSource().getText() != null) {
                 sb.append(reference.getReferenceSource().getText());
@@ -547,8 +541,9 @@ public class DocumentRenderer {
     public static String renderDate(Date date) {
         StringBuilder sb = new StringBuilder();
 
-        if (date.getYear() > 0)
+        if (date.getYear() > 0) {
             sb.append(date.getYear());
+        }
         if (date.getMonth() > 0) {
             sb.append("-");
             sb.append(date.getMonth());

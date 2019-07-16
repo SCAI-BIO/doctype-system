@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,122 +44,120 @@ public class Outline implements Serializable {
     private Map<String, List<String>> sections;
 
     /**
-     * 
      * @param numbering The numbering to add
      */
     public void addNumbering(String numbering) {
-	if (this.numbering == null)
-	    this.numbering = new ArrayList<String>();
-	this.numbering.add(numbering);
+        if (this.numbering == null) {
+            this.numbering = new ArrayList<String>();
+        }
+        this.numbering.add(numbering);
     }
 
     /**
      * @return the chapters
      */
     public Map<String, List<String>> getChapters() {
-	return chapters;
-    }
-
-    /**
-     * getter for numbering - gets Numbering of a outline. Subsection example: 1.2.1
-     * Title. Numbering in this case is StringList('1', '2', '1').
-     * 
-     * 
-     * @return numbering of the {@link Outline}
-     */
-    public List<String> getNumbering() {
-	return numbering;
-    }
-
-    /**
-     * @return the parts
-     */
-    public List<String> getParts() {
-	return parts;
-    }
-
-    /**
-     * getter for rhetorical - gets
-     * 
-     * 
-     * @return rhetorical of the feature
-     */
-    public TextElement getRhetorical() {
-	return this.rhetorical;
-    }
-
-    /**
-     * @return the sections
-     */
-    public Map<String, List<String>> getSections() {
-	return sections;
-    }
-
-
-    /**
-     * @return the titleText
-     */
-    public TextElement getTitleText() {
-	return titleText;
+        return chapters;
     }
 
     /**
      * @param chapters the chapters to set
      */
     public void setChapters(Map<String, List<String>> chapters) {
-	this.chapters = chapters;
+        this.chapters = chapters;
+    }
+
+    /**
+     * getter for numbering - gets Numbering of a outline. Subsection example: 1.2.1
+     * Title. Numbering in this case is StringList('1', '2', '1').
+     *
+     * @return numbering of the {@link Outline}
+     */
+    public List<String> getNumbering() {
+        return numbering;
     }
 
     /**
      * setter for numbering - sets Numbering of a outline. Subsection example: 1.2.1
      * Title. Numbering in this case is StringList('1', '2', '1').
-     * 
+     *
      * @param numbering value to set into the feature
      */
     public void setNumbering(List<String> numbering) {
-	this.numbering = numbering;
+        this.numbering = numbering;
+    }
+
+    /**
+     * @return the parts
+     */
+    public List<String> getParts() {
+        return parts;
     }
 
     /**
      * @param parts the parts to set
      */
     public void setParts(List<String> parts) {
-	this.parts = parts;
+        this.parts = parts;
+    }
+
+    /**
+     * getter for rhetorical - gets
+     *
+     * @return rhetorical of the feature
+     */
+    public TextElement getRhetorical() {
+        return this.rhetorical;
     }
 
     /**
      * setter for rhetorical - sets
-     * 
-     * 
+     *
      * @param rhetorical value to set into the feature
      */
     public void setRhetorical(TextElement rhetorical) {
-	this.rhetorical = rhetorical;
+        this.rhetorical = rhetorical;
+    }
+
+    /**
+     * @return the sections
+     */
+    public Map<String, List<String>> getSections() {
+        return sections;
     }
 
     /**
      * @param sections the sections to set
      */
     public void setSections(Map<String, List<String>> sections) {
-	this.sections = sections;
+        this.sections = sections;
     }
 
+    /**
+     * @return the titleText
+     */
+    public TextElement getTitleText() {
+        return titleText;
+    }
 
     /**
      * @param titleText the titleText to set
      */
     public void setTitleText(TextElement titleText) {
-	this.titleText = titleText;
+        this.titleText = titleText;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	StringBuilder sb = new StringBuilder(titleText.getText());
-    	sb.append("\n");
-    	for(String number : numbering) { sb.append(number); sb.append("\n"); }
-    	return sb.toString();
+        StringBuilder sb = new StringBuilder(titleText.getText());
+        sb.append("\n");
+        for (String number : numbering) {
+            sb.append(number);
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
 }

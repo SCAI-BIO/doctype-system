@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,21 +35,21 @@ public class Code implements Serializable {
      * @return the code
      */
     public TextElement getCode() {
-	return code;
+        return code;
     }
 
     /**
      * @param code the code to set
      */
     public void setCode(TextElement code) {
-	this.code = code;
+        this.code = code;
     }
 
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return code.getText();
+        return code.getText();
     }
 
 }

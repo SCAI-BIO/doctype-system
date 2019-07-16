@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -44,64 +44,64 @@ public class MetaElement implements Serializable {
      * @param keywords the keywords to set
      */
     public void addKeywords(Keywords keywordList) {
-	if (this.keywords == null) 
-	    this.keywords = new ArrayList<Keywords>();
-	getKeywords().add(keywordList);
+        if (this.keywords == null) {
+            this.keywords = new ArrayList<Keywords>();
+        }
+        getKeywords().add(keywordList);
     }
 
     /**
      * getter methods
      */
     public Bibliographic getBibliographic() {
-	return this.bibliographic;
+        return this.bibliographic;
+    }
+
+    /**
+     * setter methods
+     */
+    public void setBibliographic(Bibliographic bib) {
+        this.bibliographic = bib;
     }
 
     public Bibliography getBibliography() {
-	return this.bibliography;
+        return this.bibliography;
+    }
+
+    public void setBibliography(Bibliography bib) {
+        this.bibliography = bib;
     }
 
     /**
      * @return the concept
      */
     public Concept getConcept() {
-	return concept;
-    }
-
-    /**
-     * @return the keywords
-     */
-    public List<Keywords> getKeywords() {
-	return keywords;
-    }
-
-    /**
-     * setter methods
-     * 
-     */
-    public void setBibliographic(Bibliographic bib) {
-	this.bibliographic = bib;
-    }
-
-    public void setBibliography(Bibliography bib) {
-	this.bibliography = bib;
+        return concept;
     }
 
     /**
      * @param concept the concept to set
      */
     public void setConcept(Concept concept) {
-	this.concept = concept;
+        this.concept = concept;
     }
 
-    public void setDocumentConcept(Concept concept) {
-	this.concept = concept;
-
+    /**
+     * @return the keywords
+     */
+    public List<Keywords> getKeywords() {
+        return keywords;
     }
-    
+
     /**
      * @param keywords the keywords to set
      */
     public void setKeywords(List<Keywords> keywords) {
-	this.keywords = keywords;
+        this.keywords = keywords;
+    }
+
+    public void setDocumentConcept(Concept concept) {
+        this.concept = concept;
+
     }
 }

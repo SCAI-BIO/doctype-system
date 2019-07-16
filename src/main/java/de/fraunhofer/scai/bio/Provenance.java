@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,28 +22,28 @@ import java.util.List;
 
 /**
  * @author marc
- *
- *         provenance information:
- * 
- *         Software provenance encompasses the origin of software and its
- *         licensing terms. For example, when incorporating a free, open source
- *         or proprietary software component in an application, one may wish to
- *         understand its provenance to ensure that licensing requirements are
- *         fulfilled and that other software characteristics can be understood.
- * 
- *         Data provenance covers the provenance of computerized data. There are
- *         two main aspects of data provenance: ownership of the data and data
- *         usage. Ownership will tell the user who is responsible for the source
- *         of the data, ideally including information on the originator of the
- *         data. Data usage gives details regarding how the data has been used
- *         and modified and often includes information on how to cite the data
- *         source or sources. Data provenance is of particular concern with
- *         electronic data, as data sets are often modified and copied without
- *         proper citation or acknowledgement of the originating data set.
- *         Databases make it easy to select specific information from data sets
- *         and merge this data with other data sources without any documentation
- *         of how the data was obtained or how it was modified from the original
- *         data set or sets.
+ * <p>
+ * provenance information:
+ * <p>
+ * Software provenance encompasses the origin of software and its
+ * licensing terms. For example, when incorporating a free, open source
+ * or proprietary software component in an application, one may wish to
+ * understand its provenance to ensure that licensing requirements are
+ * fulfilled and that other software characteristics can be understood.
+ * <p>
+ * Data provenance covers the provenance of computerized data. There are
+ * two main aspects of data provenance: ownership of the data and data
+ * usage. Ownership will tell the user who is responsible for the source
+ * of the data, ideally including information on the originator of the
+ * data. Data usage gives details regarding how the data has been used
+ * and modified and often includes information on how to cite the data
+ * source or sources. Data provenance is of particular concern with
+ * electronic data, as data sets are often modified and copied without
+ * proper citation or acknowledgement of the originating data set.
+ * Databases make it easy to select specific information from data sets
+ * and merge this data with other data sources without any documentation
+ * of how the data was obtained or how it was modified from the original
+ * data set or sets.
  */
 public class Provenance implements Serializable {
 
@@ -59,7 +59,7 @@ public class Provenance implements Serializable {
     private String collection; // eg. a collection of documents
 
     private List<String> comments;
-    
+
     /**
      * constructor
      */
@@ -67,105 +67,106 @@ public class Provenance implements Serializable {
     }
 
     /**
-     * 
      * @return the collection the Document is stored
      */
     public String getCollection() {
-	return collection;
-    }
-
-    /**
-     * 
-     * @return the {@link Date} this {@link Document} was generated
-     */
-    public Date getDate() {
-	return date;
-    }
-
-    /**
-     * 
-     * @return the License of the {@link Document}
-     */
-    public String getLicense() {
-	return license;
-    }
-
-    /**
-     * 
-     * @return the source of the {@link Document}
-     */
-    public String getSource() {
-	return source;
-    }
-
-    /**
-     * 
-     * @return the version of the {@link Document}
-     */
-    public String getVersion() {
-	return version;
+        return collection;
     }
 
     /**
      * The corpus/collection the {@link Document} belongs to
+     *
      * @param corpus the corpus/collection
      */
     public void setCollection(String corpus) {
-	this.collection = corpus;
+        this.collection = corpus;
     }
 
     /**
-     * Sets the generation {@link Date} 
+     * @return the {@link Date} this {@link Document} was generated
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Sets the generation {@link Date}
+     *
      * @param date the {@link Date} this {@link Document} was generated
      */
     public void setDate(Date date) {
-	this.date = date;
+        this.date = date;
+    }
+
+    /**
+     * @return the License of the {@link Document}
+     */
+    public String getLicense() {
+        return license;
     }
 
     /**
      * Sets the liccense string.
+     *
      * @param license the license string
      */
     public void setLicense(String license) {
-	this.license = license;
+        this.license = license;
     }
 
     /**
-     * Sets the source 
+     * @return the source of the {@link Document}
+     */
+    public String getSource() {
+        return source;
+    }
+
+    /**
+     * Sets the source
+     *
      * @param source the source string
      */
     public void setSource(String source) {
-	this.source = source;
+        this.source = source;
     }
-    
+
+    /**
+     * @return the version of the {@link Document}
+     */
+    public String getVersion() {
+        return version;
+    }
+
     /**
      * Sets the version string
+     *
      * @param version the version string
      */
     public void setVersion(String version) {
-	this.version = version;
+        this.version = version;
     }
 
     /**
      * @return the comments
      */
     public List<String> getComments() {
-	return comments;
+        return comments;
+    }
+
+    /**
+     * @param comments the comments to set
+     */
+    public void setComments(List<String> comments) {
+        this.comments = comments;
     }
 
     /**
      * @param comments the comments to set
      */
     public void addComment(String comment) {
-	if (this.comments == null)
-	    this.comments = new ArrayList<String>();
-	this.comments.add(comment);
-    }
-    
-    /**
-     * @param comments the comments to set
-     */
-    public void setComments(List<String> comments) {
-	this.comments = comments;
+        if (this.comments == null) {
+            this.comments = new ArrayList<String>();
+        }
+        this.comments.add(comment);
     }
 }

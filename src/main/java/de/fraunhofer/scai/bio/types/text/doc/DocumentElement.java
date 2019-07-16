@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,19 +15,18 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc;
 
-import java.io.Serializable;
-
 import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
+
+import java.io.Serializable;
 
 /**
  * Document Elements are the scaffold of every document. Every document element
  * encapsulates a specific (small) domain model and holds attributes of the
  * model. Examples are chapter, paragraph, figure, ... They are organized in
  * three subtypes: structure, container and meta.
- * 
  */
 public class DocumentElement implements Serializable {
 
@@ -40,7 +39,7 @@ public class DocumentElement implements Serializable {
     private BackMatter backMatter;
     private BodyMatter bodyMatter;
     private FrontMatter frontMatter;
-    
+
     /**
      * Default constructor.
      */
@@ -51,7 +50,7 @@ public class DocumentElement implements Serializable {
      * @return the metaElement
      */
     public MetaElement getMetaElement() {
-	return metaElement;
+        return metaElement;
     }
 
 
@@ -59,7 +58,7 @@ public class DocumentElement implements Serializable {
      * @param metaElement the metaElement to set
      */
     public void setMetaElement(MetaElement metaElement) {
-	this.metaElement = metaElement;
+        this.metaElement = metaElement;
     }
 
     /**
@@ -103,6 +102,6 @@ public class DocumentElement implements Serializable {
     public void setFrontMatter(FrontMatter frontMatter) {
         this.frontMatter = frontMatter;
     }
-    
-    
+
+
 }

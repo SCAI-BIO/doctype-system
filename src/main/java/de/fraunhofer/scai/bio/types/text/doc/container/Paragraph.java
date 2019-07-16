@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 
 /**
  * A self-contained unit of discourse that deals with a particular point or
@@ -40,23 +40,24 @@ public class Paragraph implements Serializable {
      * @return the structureElements
      */
     public List<StructureElement> getStructureElements() {
-	return structureElements;
-    }
-
-    /**
-     * @param structureElement the {@link StructureElement} to add
-     */
-    public void addStructureElement(StructureElement structureElement) {
-	if (this.structureElements == null)
-	    this.structureElements = new ArrayList<StructureElement>();
-	this.structureElements.add(structureElement);
+        return structureElements;
     }
 
     /**
      * @param structureElements the {@link StructureElement}s to set
      */
     public void setStructureElements(List<StructureElement> structureElements) {
-	this.structureElements = structureElements;
+        this.structureElements = structureElements;
+    }
+
+    /**
+     * @param structureElement the {@link StructureElement} to add
+     */
+    public void addStructureElement(StructureElement structureElement) {
+        if (this.structureElements == null) {
+            this.structureElements = new ArrayList<StructureElement>();
+        }
+        this.structureElements.add(structureElement);
     }
 
     /**
@@ -64,17 +65,7 @@ public class Paragraph implements Serializable {
      */
     @Deprecated
     public List<Sentence> getSentences() {
-	return sentences;
-    }
-
-    /**
-     * @param sentences the {@link Sentence} to add
-     */
-    @Deprecated
-    public void addSentence(Sentence sentence) {
-	if (this.sentences == null)
-	    this.sentences = new ArrayList<Sentence>();
-	this.sentences.add(sentence);
+        return sentences;
     }
 
     /**
@@ -82,7 +73,18 @@ public class Paragraph implements Serializable {
      */
     @Deprecated
     public void setSentences(List<Sentence> sentences) {
-	this.sentences = sentences;
+        this.sentences = sentences;
+    }
+
+    /**
+     * @param sentences the {@link Sentence} to add
+     */
+    @Deprecated
+    public void addSentence(Sentence sentence) {
+        if (this.sentences == null) {
+            this.sentences = new ArrayList<Sentence>();
+        }
+        this.sentences.add(sentence);
     }
 
 }

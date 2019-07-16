@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,75 +15,78 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
-
-/** 
- *  */
+/**
+ *
+ */
 public class TextElement implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = -9172199956790819065L;
-    
+
     /**
      * The text (plain text without any other object mapping).
      */
     private String text;
-    
+
     private UUID uuid;
-    
+
     private List<Annotation> annotations;
 
     /**
      * @return the text
      */
     public String getText() {
-	return text;
+        return text;
     }
 
     /**
      * @param textElement the textElement to set
      */
     public void setText(String text) {
-	this.text = text;
+        this.text = text;
     }
-    
+
     /**
      * @return the annotations
      */
     public List<Annotation> getAnnotations() {
-	return annotations;
-    }
-
-    /**
-     * @param annotation the annotation to add
-     */
-    public void addAnnotation(Annotation annotation) {
-	if (this.annotations == null)
-	    this.annotations = new ArrayList<Annotation>();
-	this.annotations.add(annotation);
+        return annotations;
     }
 
     /**
      * @param annotations the annotations to set
      */
     public void setAnnotations(List<Annotation> annotations) {
-	this.annotations = annotations;
+        this.annotations = annotations;
+    }
+
+    /**
+     * @param annotation the annotation to add
+     */
+    public void addAnnotation(Annotation annotation) {
+        if (this.annotations == null) {
+            this.annotations = new ArrayList<Annotation>();
+        }
+        this.annotations.add(annotation);
     }
 
     /**
      * @return the uuid
      */
     public UUID getUuid() {
-	if (this.uuid == null)
-	    setUuid();
-	return this.uuid;
+        if (this.uuid == null) {
+            setUuid();
+        }
+        return this.uuid;
     }
 
     /**
@@ -97,6 +100,6 @@ public class TextElement implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return getText();
+        return getText();
     }
 }

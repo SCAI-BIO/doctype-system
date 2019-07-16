@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -31,30 +31,28 @@ public class Author implements Serializable {
 
     /**
      * getter for author - gets
-     * 
-     * 
+     *
      * @return author The {@link Person}
      */
     public Person getAuthor() {
-	return this.author;
+        return this.author;
     }
 
     /**
      * setter for author - sets
-     * 
-     * 
+     *
      * @param author the {@link Person} to set
      */
     public void setAuthor(Person author) {
-	this.author = author;
+        this.author = author;
     }
 
-		public Affiliation getOrganization() {
-			return organization;
-		}
+    public Affiliation getOrganization() {
+        return organization;
+    }
 
-		public void setOrganization(Affiliation organization) {
-			this.organization = organization;
-		}
-    
+    public void setOrganization(Affiliation organization) {
+        this.organization = organization;
+    }
+
 }

@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,7 +19,6 @@ import java.io.Serializable;
 
 /**
  * @author klein
- *
  */
 public class Sentence implements Serializable {
 
@@ -33,14 +32,14 @@ public class Sentence implements Serializable {
      * @return the sentenceText
      */
     public TextElement getText() {
-	return sentenceText;
+        return sentenceText;
     }
 
     /**
      * @param sentenceText the text to set
      */
     public void setText(TextElement sentenceText) {
-	this.sentenceText = sentenceText;
+        this.sentenceText = sentenceText;
     }
 
 }

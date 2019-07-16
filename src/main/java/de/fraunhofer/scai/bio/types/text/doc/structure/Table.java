@@ -1,6 +1,6 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -35,21 +35,33 @@ public class Table implements Serializable {
      * @return the caption
      */
     public TextElement getCaption() {
-	return caption;
+        return caption;
+    }
+
+    public void setCaption(TextElement caption) {
+        this.caption = caption;
     }
 
     /**
      * @return the text
      */
     public TextElement getText() {
-	return text;
+        return text;
+    }
+
+    public void setText(TextElement text) {
+        this.text = text;
     }
 
     /**
      * @return the title
      */
     public TextElement getTitle() {
-	return title;
+        return title;
+    }
+
+    public void setTitle(TextElement title) {
+        this.title = title;
     }
 
     /**
@@ -66,23 +78,11 @@ public class Table implements Serializable {
         this.rhetorical = rhetorical;
     }
 
-    public void setCaption(TextElement caption) {
-	this.caption = caption;
-    }
-
-    public void setText(TextElement text) {
-	this.text = text;
-    }
-
-    public void setTitle(TextElement title) {
-	this.title = title;
-    }
-
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     public String toString() {
-    	return String.format("%s\n%s\n%s", title.getText(), text.getText(), caption.getText());
+        return String.format("%s\n%s\n%s", title.getText(), text.getText(), caption.getText());
     }
 
 
