@@ -1,8 +1,6 @@
 #!/bin/groovy
 pipeline {
-    agent {
-        label 'sl7'
-    }
+    agent any
     tools {
         maven 'Maven 3.6.0'
         jdk 'OpenJDK_1.8.201'
