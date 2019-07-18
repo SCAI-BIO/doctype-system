@@ -4,8 +4,8 @@ pipeline {
         label 'sl7'
     }
     tools {
-            maven 'Maven 3.3.9'
-            jdk 'jdk-1.8.131'
+        maven 'Maven 3.3.9'
+        jdk 'jdk-1.8.131'
     }
     environment {
         WORK_DIR=pwd()
@@ -21,12 +21,12 @@ pipeline {
                    // Download the current client configuration
                    sh "curl -L -u '${user}:${password}' -X GET https://arty.scai.fraunhofer.de/artifactory/libs-snapshot-local/settings.xml > settings.xml"
                }
-                    // Set some flags
-                   sh 'export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"'
-                   // build
-                   sh "mvn clean install -am -fae -s settings.xml -B -U -V -Dmaven.test.failure.ignore=true -Dmaven.repo.local=$LOCAL_REPO"
-            }
-        }
+               // Set some flags
+               sh 'export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"'
+               // build
+               sh "mvn clean install -am -fae -s settings.xml -B -U -V -Dmaven.test.failure.ignore=true -Dmaven.repo.local=$LOCAL_REPO"
+           }
+         }
         stage("Deploy") {
           // only for master branch
            when{
@@ -34,12 +34,11 @@ pipeline {
            }
            steps {
                withCredentials([usernamePassword(credentialsId: 'bio-services-arty', passwordVariable: 'password', usernameVariable: 'user')]) {
-                      sh 'export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"'
-                      sh "mvn deploy -am -fae -s settings.xml -B -U -V -Dmaven.test.failure.ignore=true -Dmaven.repo.local=$LOCAL_REPO -Dusername=${user} -Dpassword=${password} -Dbuildnumber=${env.BUILD_NUMBER} -Dbuildname=${BUILD_NAME} -Dbuildurl=${env.BUILD_URL}"
-                }
+                   sh 'export MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"'
+                   sh "mvn deploy -am -fae -s settings.xml -B -U -V -Dmaven.test.failure.ignore=true -Dmaven.repo.local=$LOCAL_REPO -Dusername=${user} -Dpassword=${password} -Dbuildnumber=${env.BUILD_NUMBER} -Dbuildname=${BUILD_NAME} -Dbuildurl=${env.BUILD_URL}"
                }
+           }
 
-            }
         }
     }
     post {
