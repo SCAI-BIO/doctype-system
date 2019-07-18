@@ -4,8 +4,8 @@ pipeline {
         label 'sl7'
     }
     tools {
-        maven 'Maven 3.3.9'
-        jdk 'jdk-1.8.131'
+        maven 'Maven 3.6.0'
+        jdk 'OpenJDK_1.8.201'
     }
     environment {
         WORK_DIR=pwd()
