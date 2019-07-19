@@ -3,7 +3,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven 3.6.0'
-        jdk 'OpenJDK_1.8.201'
+        jdk 'OpenJDK_1.8'
     }
     environment {
         WORK_DIR=pwd()
