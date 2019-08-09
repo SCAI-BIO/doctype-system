@@ -454,6 +454,14 @@ public class DocumentBuilder {
 
     }
 
+    public void setDocType(Document document, String docType) {
+      if (docType == null || docType.length() <= 0) {
+          docType = "unspecified";
+      }
+      document.setDocType(docType);
+  }
+
+    
     public void setLanguage(Document document, String language) {
         if (language == null || language.length() <= 0) {
             language = "unspecified";
@@ -595,8 +603,17 @@ public class DocumentBuilder {
         return section;
     }
 
+    public void setSource(Document document, String source) {
+      if (source == null || source.length() <= 0) source = "unspecified";
+      getBibliographic(document).setSource(createTextElement(source));      
+    }
+    
     public Concept setDocumentId(Document document, String source, String id, String altlabel) {
         Concept concept = getConcept(document);
+
+        if (source == null || source.length() <= 0) source = "unspecified";
+        if (id == null || id.length() <= 0) id = "unspecified";
+        if (altlabel == null || altlabel.length() <= 0) altlabel = "unspecified";
 
         concept.setIdentifierSource(createTextElement(source));
         concept.setIdentifier(createTextElement(id));
@@ -611,7 +628,7 @@ public class DocumentBuilder {
         String id = DigestUtils.sha512Hex(originalString);
         String source = "sha512Hex";
 
-        return setDocumentId(document, id, source, altlabel);
+        return setDocumentId(document, source, id, altlabel);
     }
 
     public Concept getConcept(Document document) {
@@ -661,6 +678,12 @@ public class DocumentBuilder {
         Keywords kws = createKeywords(keywords, rhetorical, false);
         document.getDocumentElement().getMetaElement().addKeywords(kws);
 
+    }
+    
+    public void setPublicationDate(Document document, int day, int month, int year) {
+    	Date pubDate = new Date();
+    	pubDate.setDate(day, month, year);
+    	getBibliographic(document).setPubDate(pubDate);
     }
 
 }
