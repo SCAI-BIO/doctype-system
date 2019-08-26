@@ -13,17 +13,33 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import de.fraunhofer.scai.bio.Document;
-import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.*;
-import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
-import de.fraunhofer.scai.bio.types.text.doc.meta.*;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import de.fraunhofer.scai.bio.Document;
+import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
+import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * @author tadams
@@ -580,4 +596,10 @@ public class DocumentRenderer {
 
         return sb.toString();
     }
+    
+		public static String renderId(Document document) {
+				// TODO if non empty
+				return document.getDocumentElement().getMetaElement().getConcept().getIdentifier().getText();
+		}
+
 }
