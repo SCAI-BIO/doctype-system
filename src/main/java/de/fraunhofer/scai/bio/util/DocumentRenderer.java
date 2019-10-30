@@ -384,8 +384,10 @@ public class DocumentRenderer {
                         addTextElement(elements, sel.getTable().getTitle(), "TableTitle");
                         addTextElement(elements, sel.getTable().getText(), "TableText");
                         addTextElement(elements, sel.getTable().getCaption(), "TableCaption");
-                        for (TextElement header : sel.getTable().getHeaders()) {
-                            addTextElement(elements, header, "TableHeader");
+                        if (sel.getTable().getHeaders() != null) {
+                            for (TextElement header : sel.getTable().getHeaders()) {
+                                addTextElement(elements, header, "TableHeader");
+                            }
                         }
 
                     } else if (sel.getSentence() != null) {
