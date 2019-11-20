@@ -42,6 +42,10 @@ import java.util.List;
  *
  * @author marc
  */
+/**
+ * @author marc
+ *
+ */
 public class DocumentBuilder {
 
     protected static Logger logger = LoggerFactory.getLogger(DocumentBuilder.class);
@@ -135,14 +139,23 @@ public class DocumentBuilder {
     }
 
     /**
-     * create a paragraph
-     *
-     * @param node
-     * @param text         annotations
-     * @param createSpacer an additional CR+LF at end of paragraph
+     * @param text
+     * @param createSentences
      * @return
      */
     public Paragraph createParagraph(String text, boolean createSentences) {
+    	return createParagraph(text, createSentences, -1);
+    }
+    
+    /**
+     * create a paragraph
+     *
+     * @param text
+     * @param createSentences
+     * @param sentence_limit; -1 iff no limit; maximum number of sentences to create
+     * @return
+     */
+    public Paragraph createParagraph(String text, boolean createSentences, int sentence_limit) {
 
         Paragraph dParagraph = null;
 
@@ -151,14 +164,33 @@ public class DocumentBuilder {
                 List<Integer> eos = sentenceDetector.findSentencesEndPositions(text);
 
                 List<String> sentences = sentenceDetector.getSentences(eos, text, 5);
+                String note = null;
+                
+                // all of them
+                if( sentence_limit<0 && (sentence_limit+10<sentences.size()) ) {
+                	sentence_limit = sentences.size();
+                } else {
+                	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentences.size()-sentence_limit, sentence_limit);                	
+                }
+                
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
-                    for (int i = 0; i < sentences.size(); i++) {
+                    for (int i = 0; i < sentence_limit; i++) {
 
                         StructureElement sentence = new StructureElement();
                         sentence.setSentence(createSentence(sentences.get(i)));
 
                         dParagraph.addStructureElement(sentence);
+                    }
+                    
+                    // add comment if skipped sentences
+                    if(note != null) {
+                      StructureElement sentence = new StructureElement();
+                      sentence.setSentence(createSentence(note));
+
+                      dParagraph.addStructureElement(sentence);
+                      
+                      logger.info(note);
                     }
                 }
 
