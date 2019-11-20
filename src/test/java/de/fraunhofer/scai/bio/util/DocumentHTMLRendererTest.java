@@ -41,12 +41,12 @@ public class DocumentHTMLRendererTest {
     @Before
     public void setUp() throws Exception {
 
-        File inputDir = new File(getClass().getResource("/positiveIn/").getPath());
+        File inputDir = new File(getClass().getResource("/positiveIn/testAnnotatedDocument.json").getPath());
 
 
         // create document from file
         ObjectMapper mapper = new ObjectMapper();
-        document = mapper.readValue(new File(inputDir.getPath() + "/" + "testAnnotatedDocument.json"), Document.class);
+        document = mapper.readValue(inputDir.getAbsoluteFile(), Document.class);
     }
 
     /**
