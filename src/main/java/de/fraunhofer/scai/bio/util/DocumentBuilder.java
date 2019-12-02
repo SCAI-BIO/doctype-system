@@ -191,11 +191,12 @@ public class DocumentBuilder {
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
                     for (int i = 0; i < sentence_limit; i++) {
-
+                    	if(i<sentences.size()) {
                         StructureElement sentence = new StructureElement();
                         sentence.setSentence(createSentence(sentences.get(i)));
 
                         dParagraph.addStructureElement(sentence);
+                    	}
                     }
                     
                     // add comment if skipped sentences
