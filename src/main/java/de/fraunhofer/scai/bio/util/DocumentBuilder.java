@@ -185,7 +185,7 @@ public class DocumentBuilder {
                 if( sentence_limit<0 || (sentence_limit+10<sentences.size()) ) {
                 	sentence_limit = sentences.size();
                 } else {
-                	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentences.size()-sentence_limit, sentence_limit);                	
+                	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentence_limit-sentences.size(), sentence_limit);                	
                 }
                 
                 if (!sentences.isEmpty()) {
