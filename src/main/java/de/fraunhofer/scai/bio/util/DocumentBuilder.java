@@ -167,15 +167,15 @@ public class DocumentBuilder {
                 String note = null;
                 
                 // all of them
-                if( sentence_limit<0 && (sentence_limit+10<sentences.size()) ) {
+                if( sentence_limit<0 && (sentence_limit+1<sentences.size()) ) {
                 	sentence_limit = sentences.size();
                 } else {
-                	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentences.size()-sentence_limit, sentence_limit);                	
+                	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentence_limit-sentences.size(), sentence_limit);                	
                 }
                 
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
-                    for (int i = 0; i < sentence_limit; i++) {
+                    for (int i = 0; i < sentences.size(); i++) {
 
                         StructureElement sentence = new StructureElement();
                         sentence.setSentence(createSentence(sentences.get(i)));
