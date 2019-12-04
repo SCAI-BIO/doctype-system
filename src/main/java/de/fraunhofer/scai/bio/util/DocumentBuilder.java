@@ -57,6 +57,17 @@ public class DocumentBuilder {
         sentenceDetector = new SentenceDetector(0);
     }
 
+    public Author createAuthor(String forename, String surname) {
+    	  TextElement forenameTE = createTextElement(forename);
+    	  TextElement surnameTE = createTextElement(surname);
+    	  Person person = new Person();
+    	  person.setForename(forenameTE);
+    	  person.setSurname(surnameTE);
+    	  Author author = new Author();
+    	  author.setAuthor(person);
+    	  return author;
+    }
+
     /**
      * @param titleTextElement
      * @return
@@ -147,6 +158,10 @@ public class DocumentBuilder {
     	return createParagraph(text, createSentences, -1);
     }
     
+    public Paragraph createParagraph(String text) {
+      return createParagraph(text, false);
+    }
+
     /**
      * create a paragraph
      *
@@ -167,7 +182,7 @@ public class DocumentBuilder {
                 String note = null;
                 
                 // all of them
-                if( sentence_limit<0 && (sentence_limit+1<sentences.size()) ) {
+                if( sentence_limit<0 || (sentence_limit+10<sentences.size()) ) {
                 	sentence_limit = sentences.size();
                 } else {
                 	note = String.format(" >> Note: skipped %d sentences due to size limit of %d.", sentence_limit-sentences.size(), sentence_limit);                	
@@ -175,12 +190,13 @@ public class DocumentBuilder {
                 
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
-                    for (int i = 0; i < sentences.size(); i++) {
-
+                    for (int i = 0; i < sentence_limit; i++) {
+                    	if(i<sentences.size()) {
                         StructureElement sentence = new StructureElement();
                         sentence.setSentence(createSentence(sentences.get(i)));
 
                         dParagraph.addStructureElement(sentence);
+                    	}
                     }
                     
                     // add comment if skipped sentences
@@ -272,6 +288,12 @@ public class DocumentBuilder {
         }
 
         return textElement;
+    }
+    
+    public Title createTitle(String titleContent) {
+        Title title = new Title();
+        title.setTitleText(createTextElement(titleContent));
+        return title;
     }
 
     /**
@@ -624,6 +646,14 @@ public class DocumentBuilder {
         return meta;
     }
 
+    public List<License> createLicense(String value) {
+        List<License> license = new ArrayList<>();
+        License lic = new License();
+        lic.setLicenseName(createTextElement(value));
+        license.add(lic);
+        return license;
+    }
+    
     public Section createMainSection(Document document, String text) {
 
         Section section = createSection("Main Section", "Main");
@@ -655,9 +685,9 @@ public class DocumentBuilder {
         return concept;
     }
 
-    public Concept setDocumentIdasHash(Document document, String originalString, String altlabel) {
+    public Concept setDocumentIdasHash(Document document, String content, String altlabel) {
 
-        String id = DigestUtils.sha512Hex(originalString);
+        String id = DigestUtils.sha512Hex(content);
         String source = "sha512Hex";
 
         return setDocumentId(document, source, id, altlabel);
