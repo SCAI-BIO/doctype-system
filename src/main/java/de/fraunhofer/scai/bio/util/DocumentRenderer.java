@@ -185,7 +185,7 @@ public class DocumentRenderer {
             }
         }
 
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     /**
@@ -200,7 +200,7 @@ public class DocumentRenderer {
             sb.append(" ");
         }
 
-        return sb.toString();
+        return sb.toString().trim();
 
     }
 
