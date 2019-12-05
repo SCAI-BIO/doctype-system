@@ -109,6 +109,7 @@ public class DocumentRenderer {
                                     List<StructureElement> structureElements = para.getStructureElements();
                                     for (StructureElement se : structureElements) {
                                         sb.append(renderStructureElement(se));
+                                        sb.append(" ");
                                     }
                                 }
                             }
@@ -117,7 +118,7 @@ public class DocumentRenderer {
                 }
             }
         }
-        return sb.toString();
+        return sb.toString().trim();
     }
 
     /**
