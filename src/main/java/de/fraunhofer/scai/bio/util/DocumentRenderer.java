@@ -1,15 +1,14 @@
 /*
  * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  */
 package de.fraunhofer.scai.bio.util;
 
@@ -96,18 +95,22 @@ public class DocumentRenderer {
      */
     public static String getDocumentAbstract(Document doc) {
         StringBuilder sb = new StringBuilder();
-        Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
-        List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
-        for (Section section : abstractSections) {
-            if (section != null) {
-                List<Paragraph> paragraphs = section.getParagraphs();
-                for (Paragraph para : paragraphs) {
-                    if (para != null) {
-                        // either a sentence or a structure element is set
-                        if (para.getStructureElements() != null) {
-                            List<StructureElement> structureElements = para.getStructureElements();
-                            for (StructureElement se : structureElements) {
-                                sb.append(renderStructureElement(se));
+        if (doc.getDocumentElement() != null && doc.getDocumentElement().getMetaElement() != null
+            && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
+            Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
+            if (bib.getDocumentAbstract() != null && bib.getDocumentAbstract().getAbstractSections() != null) {
+                List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
+                for (Section section : abstractSections) {
+                    if (section != null) {
+                        List<Paragraph> paragraphs = section.getParagraphs();
+                        for (Paragraph para : paragraphs) {
+                            if (para != null) {
+                                if (para.getStructureElements() != null) {
+                                    List<StructureElement> structureElements = para.getStructureElements();
+                                    for (StructureElement se : structureElements) {
+                                        sb.append(renderStructureElement(se));
+                                    }
+                                }
                             }
                         }
                     }
@@ -142,11 +145,17 @@ public class DocumentRenderer {
             if (se.getImageContent() != null) {
                 return se.getImageContent().toString();
             }
+            if (se.getList() != null) {
+                return se.getList().toString();
+            }
             if (se.getOutline() != null) {
                 return se.getOutline().toString();
             }
             if (se.getQuotation() != null) {
                 return se.getQuotation().toString();
+            }
+            if (se.getSentence() != null) {
+                return se.getSentence().getText().toString();
             }
             if (se.getTable() != null) {
                 return se.getTable().toString();
@@ -155,7 +164,6 @@ public class DocumentRenderer {
                 return se.getTextElement().toString();
             }
         }
-
         return null;
     }
 
@@ -178,7 +186,6 @@ public class DocumentRenderer {
 
         return sb.toString();
     }
-
 
     /**
      * @param textelements
@@ -537,7 +544,6 @@ public class DocumentRenderer {
             }
         }
 
-
         if (reference.getDate() != null) {
             sb.append(", ");
             sb.append(renderDate(reference.getDate()));
@@ -600,10 +606,10 @@ public class DocumentRenderer {
 
         return sb.toString();
     }
-    
-		public static String renderId(Document document) {
-				// TODO if non empty
-				return document.getDocumentElement().getMetaElement().getConcept().getIdentifier().getText();
-		}
+
+    public static String renderId(Document document) {
+        // TODO if non empty
+        return document.getDocumentElement().getMetaElement().getConcept().getIdentifier().getText();
+    }
 
 }
