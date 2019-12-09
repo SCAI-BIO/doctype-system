@@ -181,7 +181,7 @@ public class DocumentRenderer {
         if (seList != null && !seList.isEmpty()) {
             for (StructureElement se : seList) {
                 sb.append(renderStructureElement(se));
-                sb.append(" ");
+//                sb.append(" ");
             }
         }
 

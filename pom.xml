@@ -46,13 +46,6 @@
             <version>2.9.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>de.fraunhofer.scai.bio.uima</groupId>
-            <artifactId>UIMATextUtils</artifactId>
-            <version>8.3-SNAPSHOT</version>
-        </dependency>
-
-
         <!-- If we develop a library, something used by other systems, we only use the slf4j API.
              The system using this library can choose the slf4j-api implementation.
         -->

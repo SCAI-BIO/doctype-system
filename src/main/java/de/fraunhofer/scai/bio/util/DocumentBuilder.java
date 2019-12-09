@@ -13,25 +13,43 @@
  */
 package de.fraunhofer.scai.bio.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import de.fraunhofer.scai.bio.Document;
-import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.*;
-import de.fraunhofer.scai.bio.types.text.doc.meta.*;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
-import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-import de.fraunhofer.scai.bio.uima.textutils.datastructure.SentenceDetector;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import de.fraunhofer.scai.bio.Document;
+import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Affiliation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliographic;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Concept;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
+import de.fraunhofer.scai.bio.types.text.doc.meta.License;
+import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Title;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
+import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * a general class to compose a document from scratch, allows to create sections, paragraphs,
@@ -284,7 +302,8 @@ public class DocumentBuilder {
         TextElement textElement = new TextElement();
 
         if (text != null && !text.isEmpty()) {
-            textElement.setText(text.trim());
+//            textElement.setText(text.trim());
+            textElement.setText(text);
         }
 
         return textElement;
