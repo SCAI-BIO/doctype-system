@@ -46,6 +46,7 @@ public class DocumentHTMLRendererTest {
 
         // create document from file
         ObjectMapper mapper = new ObjectMapper();
+        mapper.findAndRegisterModules();
         document = mapper.readValue(inputDir.getAbsoluteFile(), Document.class);
     }
 

@@ -15,16 +15,34 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import de.fraunhofer.scai.bio.Document;
-import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.*;
-import de.fraunhofer.scai.bio.types.text.doc.meta.*;
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
+
 import org.apache.commons.lang.StringEscapeUtils;
 
-import java.text.SimpleDateFormat;
-import java.util.*;
+import de.fraunhofer.scai.bio.Document;
+import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
+import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Chapter;
+import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
+import de.fraunhofer.scai.bio.types.text.doc.container.Paragraph;
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
+import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
+import de.fraunhofer.scai.bio.types.text.doc.meta.PublicationType;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 /**
  * Renders a {@link Document} to a HTML document
@@ -550,7 +568,7 @@ public class DocumentHTMLRenderer {
 
 		String date = "unspecified";
 		if(metaElement != null && metaElement.getBibliographic() != null && metaElement.getBibliographic().getPubDate() != null) {
-			date = new SimpleDateFormat("MMMM dd, yyyy").format(metaElement.getBibliographic().getPubDate().getDate().getTime());
+		    date = metaElement.getBibliographic().getPubDate().getDate().toString();
 		}
 
 		// identifiers

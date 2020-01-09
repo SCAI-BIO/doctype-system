@@ -16,7 +16,7 @@
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  * @author klein
@@ -30,31 +30,31 @@ public class Date implements Serializable {
     private int day;
     private int month;
     private int year;
-    private Calendar date;
+    private LocalDate date;
 
     /**
      * Default constructor.
      */
     public Date() {
-        date = Calendar.getInstance();
-    }
-
-    public Date(java.util.Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH);
-        year = calendar.get(Calendar.YEAR);
+        date = LocalDate.now();
     }
 
     /**
-     * @return the {@link Calendar} object of the {@link Date}.
+     * Constructor instantiates class with a {@link LocalDate}.
+     * @param date The {@link LocalDate} to set
      */
-    public Calendar getDate() {
-        if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
-            date = Calendar.getInstance();
-            date.set(getYear(), getMonth(), getDay(), 0, 0, 0);
+    public Date(LocalDate date) {
+        day = date.getDayOfMonth();
+        month = date.getMonthValue();
+        year = date.getYear();
+    }
+
+    /**
+     * @return the {@link LocalDate} object of the {@link Date}.
+     */
+    public LocalDate getDate() {
+        if (getDay() > 0 && getMonth() > 0 && getYear() > 0) {
+            date = LocalDate.of(getYear(), getMonth(), getDay());
         }
         return this.date;
     }
@@ -63,8 +63,7 @@ public class Date implements Serializable {
       setDay(day);
       setMonth(month);
       setYear(year);
-      this.date.clear();
-      this.date.set(day, month-1, year, 0, 0, 0);	// month is 0-based
+      this.date = LocalDate.of(year, month, day);
     }
 
     /**

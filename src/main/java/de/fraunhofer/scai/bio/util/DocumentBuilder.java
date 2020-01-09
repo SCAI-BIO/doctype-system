@@ -13,6 +13,7 @@
  */
 package de.fraunhofer.scai.bio.util;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -588,7 +589,7 @@ public class DocumentBuilder {
         return bib;
     }
 
-    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.util.Date docDate) {
+    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, LocalDate docDate) {
 
         Bibliography bib = getBibliography(document);
 
