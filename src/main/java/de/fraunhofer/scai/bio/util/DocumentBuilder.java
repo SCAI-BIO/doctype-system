@@ -588,45 +588,9 @@ public class DocumentBuilder {
 
         return bib;
     }
-
-    @Deprecated
-    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.util.Date docDate) {
-
-        Bibliography bib = getBibliography(document);
-
-        Reference reference = new Reference();
-
-        if (authors != null) {
-            for (Author author : authors) {
-                reference.addAuthor(author);
-            }
-        }
-        if (publicationId != null) {
-            reference.addPublicationId(createTextElement(publicationId));
-        }
-        //reference.setLanguage(language);
-        if (publicationType != null) {
-            reference.setPublicationType(createTextElement(publicationType));
-        }
-        if (referenceSource != null) {
-            reference.setReferenceSource(createTextElement(referenceSource));
-        }
-        if (title != null) {
-            reference.setTitle(createDocumentTitle(createTextElement(title), null));
-        }
-        if (docDate != null) {
-            Date date = new Date();
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(docDate);
-            date.setDate(cal.get(Calendar.DAY_OF_MONTH), cal.get(Calendar.MONTH), cal.get(Calendar.YEAR));
-            reference.setDate(date);
-        }
-
-        bib.addReference(id, reference);
-
-    }
     
-    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.time.LocalDate docDate) {
+    public void addReference(Document document, String id, String referenceSource, String publicationId, 
+            String publicationType, String title, List<Author> authors, java.time.LocalDate docDate) {
 
         Bibliography bib = getBibliography(document);
 
