@@ -31,7 +31,7 @@ public class Date implements Serializable {
     private int day;
     private int month;
     private int year;
-    
+    private java.util.Date date;
     /**
      * Default constructor.
      */
@@ -44,6 +44,13 @@ public class Date implements Serializable {
       setYear(year);
     }
 
+    @Deprecated
+    public java.util.Date getDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        return cal.getTime();
+    }
+    
     /**
      * getter for day - gets Restricted: 1-31
      *
