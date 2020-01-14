@@ -31,68 +31,17 @@ public class Date implements Serializable {
     private int day;
     private int month;
     private int year;
-    private LocalDate date;
     
     /**
      * Default constructor.
      */
     public Date() {
-//        date = LocalDate.now();
     }
-
-    // /**
-    // * Constructor instantiates class with a {@link LocalDate}.
-    // * @param date The {@link LocalDate} to set
-    // */
-    // public Date(LocalDate date) {
-    // day = date.getDayOfMonth();
-    // month = date.getMonthValue();
-    // year = date.getYear();
-    // this.date = date;
-    // }
-    //
-    // @Deprecated
-    // public Date(java.util.Date date) {
-    // Calendar calendar = Calendar.getInstance();
-    // calendar.setTime(date);
-    //
-    // day = calendar.get(Calendar.DAY_OF_MONTH);
-    // month = calendar.get(Calendar.MONTH);
-    // year = calendar.get(Calendar.YEAR);
-    //
-    // this.date = LocalDate.of(year, month, day);
-    // }
-    //
-    // /**
-    // * @return the {@link LocalDate} object of the {@link Date}.
-    // */
-    // public LocalDate getLocalDate() {
-    // if (getDay() > 0 && getMonth() > 0 && getYear() > 0) {
-    // this.date = LocalDate.of(getYear(), getMonth(), getDay());
-    // } else {
-    // this.date = LocalDate.MIN;
-    // }
-    // return this.date;
-    // }
-    //
-    // /**
-    // * @return the {@link Calendar} object of the {@link Date}.
-    // */
-    // @Deprecated
-    // public Calendar getDate() {
-    // if (getDay() > 0 && getMonth() > 0 && getYear() > 0) {
-    // date = LocalDate.of(getYear(), getMonth(), getDay());
-    // }
-    // Calendar cal = Calendar.getInstance();
-    // cal.set(getYear(), getMonth(), getDay(), 0, 0, 0);
-    // return cal;
-    // }
 
     public void setDate(int day, int month, int year) {
       setDay(day);
       setMonth(month);
       setYear(year);
-      //this.date = LocalDate.of(year, month, day);
     }
 
     /**

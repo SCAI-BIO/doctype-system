@@ -15,9 +15,9 @@
  */
 package de.fraunhofer.scai.bio.util;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -571,10 +571,10 @@ public class DocumentHTMLRenderer {
 
 		String date = "unspecified";
 		if(metaElement != null && metaElement.getBibliographic() != null && metaElement.getBibliographic().getPubDate() != null) {
-		    Calendar cal = Calendar.getInstance();
 		    Date d = metaElement.getBibliographic().getPubDate();
-		    cal.set(d.getYear(), d.getMonth(), d.getDay());
-			date = new SimpleDateFormat("MMMM dd, yyyy").format(cal.getTime());
+			LocalDate ld = LocalDate.of(d.getYear(), d.getMonth() > 0 ? d.getMonth() : 1, 
+			        d.getDay() > 0 ? d.getDay() : 1);
+			date = ld.format(DateTimeFormatter.ofPattern("MMMM dd, yyyy"));
 		}
 
 		// identifiers
