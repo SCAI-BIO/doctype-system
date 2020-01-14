@@ -15,7 +15,9 @@
  */
 package de.fraunhofer.scai.bio.util;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,7 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Author;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+import de.fraunhofer.scai.bio.types.text.doc.meta.Date;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.PublicationType;
@@ -568,7 +571,10 @@ public class DocumentHTMLRenderer {
 
 		String date = "unspecified";
 		if(metaElement != null && metaElement.getBibliographic() != null && metaElement.getBibliographic().getPubDate() != null) {
-		    date = metaElement.getBibliographic().getPubDate().getDate().toString();
+		    Calendar cal = Calendar.getInstance();
+		    Date d = metaElement.getBibliographic().getPubDate();
+		    cal.set(d.getYear(), d.getMonth(), d.getDay());
+			date = new SimpleDateFormat("MMMM dd, yyyy").format(cal.getTime());
 		}
 
 		// identifiers
