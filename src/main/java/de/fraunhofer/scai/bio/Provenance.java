@@ -57,7 +57,6 @@ public class Provenance implements Serializable {
     private String version = "1.0";
     private String source; // file, database, ...
     private Date date;
-    private LocalDate localDate;
     private String collection; // eg. a collection of documents
 
     private List<String> comments;
@@ -87,7 +86,6 @@ public class Provenance implements Serializable {
     /**
      * @return the {@link Date} this {@link Document} was generated
      */
-    @Deprecated
     public Date getDate() {
         return date;
     }
@@ -97,24 +95,8 @@ public class Provenance implements Serializable {
      *
      * @param date the {@link Date} this {@link Document} was generated
      */
-    @Deprecated
     public void setDate(Date date) {
         this.date = date;
-    }
-    /**
-     * @return the {@link LocalDate} this {@link Document} was generated
-     */
-    public LocalDate getLocalDate() {
-        return localDate;
-    }
-
-    /**
-     * Sets the generation {@link LocalDate}
-     *
-     * @param date the {@link LocalDate} this {@link Document} was generated
-     */
-    public void setLocalDate(LocalDate date) {
-        this.localDate = date;
     }
 
     /**
