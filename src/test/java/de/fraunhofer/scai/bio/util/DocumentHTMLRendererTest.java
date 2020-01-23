@@ -13,16 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package de.fraunhofer.scai.bio.util;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.fraunhofer.scai.bio.Document;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.io.File;
+import de.fraunhofer.scai.bio.Document;
 
 /**
  * Renders a {@link Document} to a HTML document
@@ -34,6 +40,7 @@ public class DocumentHTMLRendererTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
     private Document document;
+    private Document docNewDate;
 
     /**
      * @throws Exception
@@ -42,24 +49,27 @@ public class DocumentHTMLRendererTest {
     public void setUp() throws Exception {
 
         File inputDir = new File(getClass().getResource("/positiveIn/testAnnotatedDocument.json").getPath());
+        File newDate = new File(getClass().getResource("/positiveIn/testDocumentNewDateFormat.json").getPath());
 
-
-        // create document from file
         ObjectMapper mapper = new ObjectMapper();
         document = mapper.readValue(inputDir.getAbsoluteFile(), Document.class);
+        docNewDate = mapper.readValue(newDate.getAbsoluteFile(), Document.class);
     }
 
     /**
-     * Test method for
-     * {@link de.fraunhofer.scai.bio.util.DocumentHTMLRenderer#renderHTML()}.
+     * Test method for {@link de.fraunhofer.scai.bio.util.DocumentHTMLRenderer#renderHTML()}.
      *
      * @throws Exception
      */
     @Test
     public void renderHTMLTest() {
         String html = DocumentHTMLRenderer.renderHTML(document);
-        System.out.println(html);
-    }
+        assertNotNull(html);
+        assertTrue(!html.isEmpty());
 
+        html = DocumentHTMLRenderer.renderHTML(docNewDate);
+        assertNotNull(html);
+        assertTrue(!html.isEmpty());
+    }
 
 }

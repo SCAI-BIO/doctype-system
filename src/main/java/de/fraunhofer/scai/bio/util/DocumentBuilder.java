@@ -14,6 +14,7 @@
 package de.fraunhofer.scai.bio.util;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -587,8 +588,9 @@ public class DocumentBuilder {
 
         return bib;
     }
-
-    public void addReference(Document document, String id, String referenceSource, String publicationId, String publicationType, String title, List<Author> authors, java.util.Date docDate) {
+    
+    public void addReference(Document document, String id, String referenceSource, String publicationId, 
+            String publicationType, String title, List<Author> authors, java.time.LocalDate docDate) {
 
         Bibliography bib = getBibliography(document);
 
@@ -613,7 +615,9 @@ public class DocumentBuilder {
             reference.setTitle(createDocumentTitle(createTextElement(title), null));
         }
         if (docDate != null) {
-            reference.setDate(new Date(docDate));
+            Date date = new Date();
+            date.setDate(docDate.getDayOfMonth(), docDate.getMonthValue(), docDate.getYear());
+            reference.setDate(date);
         }
 
         bib.addReference(id, reference);

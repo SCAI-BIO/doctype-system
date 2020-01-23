@@ -122,7 +122,6 @@ public class Document implements Serializable {
         try {
             ObjectMapper myObjectMapper = new ObjectMapper();
 
-//	    myObjectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             return myObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
 
         } catch (JsonProcessingException e) {

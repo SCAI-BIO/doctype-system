@@ -1,0 +1,269 @@
+{
+	"provenance": {
+		"license": null,
+		"version": "1.0",
+		"source": "file:/home/klein/data/Medline_Baseline_2020_unpacked/pubmed20n0351.xml",
+		"date": null,
+		"collection": null,
+		"comments": null
+	},
+	"documentElement": {
+		"metaElement": {
+			"bibliographic": {
+				"documentAbstract": {
+					"abstractSections": [
+						{
+							"paragraphs": [
+								{
+									"sentences": null,
+									"structureElements": [
+										{
+											"captionedBox": null,
+											"code": null,
+											"dataTable": null,
+											"figure": null,
+											"formula": null,
+											"imageContent": null,
+											"outline": null,
+											"quotation": null,
+											"table": null,
+											"textElement": {
+												"text": "[No abstract available]",
+												"uuid": "8502b784-921f-4a03-b091-81aaad24c360",
+												"annotations": null
+											},
+											"sentence": null,
+											"list": null
+										}
+									]
+								}
+							],
+							"depth": 0,
+							"title": null,
+							"rhetorical": {
+								"text": "Abstract",
+								"uuid": "7f91598f-05d1-4699-9b72-8efd77f4a567",
+								"annotations": null
+							}
+						}
+					]
+				},
+				"authors": [
+					{
+						"author": {
+							"surname": {
+								"text": "Agin",
+								"uuid": "86c05f92-1211-44f4-bd82-89843d554b1f",
+								"annotations": null
+							},
+							"forename": {
+								"text": "P",
+								"uuid": "8a69a951-053b-4647-b51f-4036984190ea",
+								"annotations": null
+							},
+							"affiliation": {
+								"organization": null,
+								"affiliationInfos": null
+							},
+							"degree": null
+						},
+						"organization": null
+					}
+				],
+				"pubDate": {
+					"day": 0,
+					"month": 12,
+					"year": 1999
+				},
+				"licenses": null,
+				"title": {
+					"titleText": {
+						"text": "Sunscreen product performance.",
+						"uuid": "188d2995-2463-48c2-ab96-793c23afec9e",
+						"annotations": null
+					},
+					"subtitleText": null
+				},
+				"language": {
+					"text": "eng",
+					"uuid": "1ddf5220-cfc1-4edc-9881-3e08323fd594",
+					"annotations": null
+				},
+				"source": {
+					"text": "Photodermatology, photoimmunology & photomedicine. 2000 Dec;15(6):241-4. ",
+					"uuid": "24bbb989-5b46-4791-a8d9-2319ae474939",
+					"annotations": null
+				},
+				"issns": [
+					{
+						"text": "0905-4383",
+						"uuid": "b292b29b-c0f3-4c03-947a-280494147534",
+						"annotations": null
+					}
+				],
+				"publicationTypes": [
+					{
+						"identifier": {
+							"text": "D016420",
+							"uuid": "da883089-9730-4b93-85c2-dfa76f731961",
+							"annotations": null
+						},
+						"publicationType": {
+							"text": "Comment",
+							"uuid": "72b00239-e59d-41f8-8e33-bfbd70027e7e",
+							"annotations": null
+						}
+					},
+					{
+						"identifier": {
+							"text": "D016422",
+							"uuid": "74cbc243-41a7-4657-9030-c48078b5e4e5",
+							"annotations": null
+						},
+						"publicationType": {
+							"text": "Letter",
+							"uuid": "27b31c60-5eef-4492-a7ff-31e4a0bf174a",
+							"annotations": null
+						}
+					}
+				]
+			},
+			"bibliography": null,
+			"keywords": [
+				{
+					"rhetorical": {
+						"text": "MeSH Terms",
+						"uuid": "7b4ca8fa-5d07-4b63-be7c-b846df1271d0",
+						"annotations": null
+					},
+					"keywordList": [
+						{
+							"text": "D003257",
+							"uuid": "a1a954d7-fa6e-4668-a049-ecc037278825",
+							"annotations": null
+						},
+						{
+							"text": "D003257/Q000592",
+							"uuid": "c63e1b8e-ba6b-4a02-8152-5e51c67d35a1",
+							"annotations": null
+						},
+						{
+							"text": "D006801",
+							"uuid": "570f7f6b-b63d-4888-960c-5de0219f821e",
+							"annotations": null
+						},
+						{
+							"text": "D013473",
+							"uuid": "7573e4b8-aea3-4952-bb8b-758e8da42c7e",
+							"annotations": null
+						},
+						{
+							"text": "D013473/Q000592",
+							"uuid": "a618931e-dee9-40ef-ba9f-292a36f55072",
+							"annotations": null
+						},
+						{
+							"text": "D014481",
+							"uuid": "d7f90a2d-a61d-4ab6-941c-e0e1903b171e",
+							"annotations": null
+						}
+					]
+				},
+				{
+					"rhetorical": {
+						"text": "Substances",
+						"uuid": "b962b889-a963-4e07-93d7-cbf8cca5124c",
+						"annotations": null
+					},
+					"keywordList": [
+						{
+							"text": "D013473",
+							"uuid": "5b829553-18ae-4095-8e1f-12aba0910eef",
+							"annotations": null
+						}
+					]
+				}
+			],
+			"concept": {
+				"altLabel": null,
+				"hiddenLabel": null,
+				"identifier": {
+					"text": "10599975",
+					"uuid": "395fca27-f6c5-4eca-9e12-72a13b841a83",
+					"annotations": null
+				},
+				"identifierSource": {
+					"text": "http://www.ncbi.nlm.nih.gov/pubmed/",
+					"uuid": "29c309df-3032-4111-a49c-db44563f6f8a",
+					"annotations": null
+				},
+				"identifierWithSource": null,
+				"altLabels": [
+					{
+						"text": "DOI:10.1111/j.1600-0781.1999.tb00097.x",
+						"uuid": "41480a91-6c91-46a0-bb02-0fa2f07979a8",
+						"annotations": null
+					}
+				],
+				"hiddenLabels": null,
+				"prefLabel": {
+					"text": "PMID:10599975",
+					"uuid": "d15c1490-4fd4-4ce2-87f6-5b1f083bcd5c",
+					"annotations": null
+				}
+			}
+		},
+		"backMatter": null,
+		"bodyMatter": null,
+		"frontMatter": {
+			"titleText": {
+				"text": "Sunscreen product performance.",
+				"uuid": "188d2995-2463-48c2-ab96-793c23afec9e",
+				"annotations": null
+			},
+			"documentAbstract": {
+				"abstractSections": [
+					{
+						"paragraphs": [
+							{
+								"sentences": null,
+								"structureElements": [
+									{
+										"captionedBox": null,
+										"code": null,
+										"dataTable": null,
+										"figure": null,
+										"formula": null,
+										"imageContent": null,
+										"outline": null,
+										"quotation": null,
+										"table": null,
+										"textElement": {
+											"text": "[No abstract available]",
+											"uuid": "8502b784-921f-4a03-b091-81aaad24c360",
+											"annotations": null
+										},
+										"sentence": null,
+										"list": null
+									}
+								]
+							}
+						],
+						"depth": 0,
+						"title": null,
+						"rhetorical": {
+							"text": "Abstract",
+							"uuid": "7f91598f-05d1-4699-9b72-8efd77f4a567",
+							"annotations": null
+						}
+					}
+				]
+			}
+		}
+	},
+	"docType": "PUBMED_ABSTRACT",
+	"originalMimeType": "text/xml",
+	"textElementIndex": {
+		
+	}
+}
