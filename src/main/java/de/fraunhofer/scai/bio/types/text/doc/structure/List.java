@@ -89,7 +89,12 @@ public class List implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        StringBuilder sb = new StringBuilder(String.format("%d%s\n", title.getText()));
+        StringBuilder sb = new StringBuilder();
+        if (title != null && title.getText() != null && !title.getText().isEmpty()) {
+            sb.append(String.format("%d%s\n", title.getText()));
+        } else {
+            sb.append(String.format("%d%s\n", "[NO TITLE AVAILABLE]"));
+        }
         for (TextElement item : items) {
             sb.append("\t" + item.getText() + "\n");
         }
