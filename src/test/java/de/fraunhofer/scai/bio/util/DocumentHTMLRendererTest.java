@@ -48,11 +48,11 @@ public class DocumentHTMLRendererTest {
     @Before
     public void setUp() throws Exception {
 
-        File inputDir = new File(getClass().getResource("/positiveIn/testAnnotatedDocument.json").getPath());
+        //File inputDir = new File(getClass().getResource("/positiveIn/testAnnotatedDocument.json").getPath());
         File newDate = new File(getClass().getResource("/positiveIn/testDocumentNewDateFormat.json").getPath());
 
         ObjectMapper mapper = new ObjectMapper();
-        document = mapper.readValue(inputDir.getAbsoluteFile(), Document.class);
+        //document = mapper.readValue(inputDir.getAbsoluteFile(), Document.class);
         docNewDate = mapper.readValue(newDate.getAbsoluteFile(), Document.class);
     }
 
@@ -63,11 +63,7 @@ public class DocumentHTMLRendererTest {
      */
     @Test
     public void renderHTMLTest() {
-        String html = DocumentHTMLRenderer.renderHTML(document);
-        assertNotNull(html);
-        assertTrue(!html.isEmpty());
-
-        html = DocumentHTMLRenderer.renderHTML(docNewDate);
+        String html = DocumentHTMLRenderer.renderHTML(docNewDate);
         assertNotNull(html);
         assertTrue(!html.isEmpty());
     }

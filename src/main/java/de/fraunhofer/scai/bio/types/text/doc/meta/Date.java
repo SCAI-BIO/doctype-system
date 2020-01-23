@@ -30,7 +30,7 @@ public class Date implements Serializable {
     private int day;
     private int month;
     private int year;
-    private Calendar date;
+
     /**
      * Default constructor.
      */
@@ -41,19 +41,6 @@ public class Date implements Serializable {
       setDay(day);
       setMonth(month);
       setYear(year);
-    }
-
-    @Deprecated
-    /**
-     * @return the {@link Calendar} object of the {@link Date}.
-     */
-    public Calendar getDate() {
-        if (getDay() >= 0 && getMonth() >= 0 && getYear() >= 0) {
-            date = Calendar.getInstance();
-            date.clear();
-            date.set(getYear(), getMonth() > 0 ? getMonth() - 1 : 0, getDay() > 0 ? getDay() : 1, 0, 0, 0);
-        }
-        return this.date;
     }
     
     /**
