@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Fraunhofer Institute SCAI, St. Augustin, Germany
+ * Copyright 2020 Fraunhofer Institute SCAI, St. Augustin, Germany
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,11 +92,11 @@ public class List implements Serializable {
         StringBuilder sb = new StringBuilder();
         if (title != null && title.getText() != null && !title.getText().isEmpty()) {
             sb.append(String.format("%d%s\n", title.getText()));
-        } else {
-            sb.append(String.format("%d%s\n", "[NO TITLE AVAILABLE]"));
         }
-        for (TextElement item : items) {
-            sb.append("\t" + item.getText() + "\n");
+        if (items != null) {
+            for (TextElement item : items) {
+                sb.append("\t" + item.getText() + "\n");
+            }
         }
         return sb.toString();
     }
