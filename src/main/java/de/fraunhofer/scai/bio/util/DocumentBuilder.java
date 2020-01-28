@@ -14,15 +14,9 @@
 package de.fraunhofer.scai.bio.util;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -465,22 +459,6 @@ public class DocumentBuilder {
         }
 
         return null;
-    }
-
-    public String objectToString(Object o) {
-
-        // Convert object to JSON string
-        try {
-            ObjectMapper myObjectMapper = new ObjectMapper();
-
-            myObjectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-            return myObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(o);
-
-        } catch (JsonProcessingException e) {
-            logger.error(e.getMessage());
-            logger.debug(ExceptionUtils.getStackTrace(e));
-            return null;
-        }
     }
 
     /**
