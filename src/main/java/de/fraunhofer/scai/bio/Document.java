@@ -16,12 +16,11 @@
 package de.fraunhofer.scai.bio;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-import org.apache.commons.lang.exception.ExceptionUtils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -113,23 +112,6 @@ public class Document implements Serializable {
         this.docType = docType;
     }
 
-    /**
-     * programming logic
-     */
-    public String toJsonString() {
-
-        // Convert object to JSON string
-        try {
-            ObjectMapper myObjectMapper = new ObjectMapper();
-
-            return myObjectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
-
-        } catch (JsonProcessingException e) {
-            logger.error(e.getMessage());
-            logger.debug(ExceptionUtils.getStackTrace(e));
-            return null;
-        }
-    }
 
     /**
      * @return the index of the {@link StructureElement}s
