@@ -95,7 +95,9 @@ public class List implements Serializable {
         }
         if (items != null) {
             for (TextElement item : items) {
-                sb.append("\t" + item.getText() + "\n");
+                if (item.getText() != null && !item.getText().isEmpty()) {
+                    sb.append("\t" + item.getText() + "\n");
+                }
             }
         }
         return sb.toString();
