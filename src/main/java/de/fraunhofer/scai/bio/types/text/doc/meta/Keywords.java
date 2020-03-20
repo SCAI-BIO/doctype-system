@@ -53,7 +53,10 @@ public class Keywords implements Serializable {
      * @return the {@link List} of {@link Keywords}
      */
     public List<TextElement> getKeywordList() {
-        return keywordList;
+        if (this.keywordList == null) {
+            this.keywordList = new ArrayList<TextElement>();
+        }
+        return this.keywordList;
     }
 
     /**
