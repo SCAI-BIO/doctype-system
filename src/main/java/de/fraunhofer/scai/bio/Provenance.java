@@ -74,12 +74,12 @@ public class Provenance implements Serializable {
     }
 
     /**
-     * The corpus/collection the {@link Document} belongs to
+     * The collection the {@link Document} belongs to
      *
-     * @param corpus the corpus/collection
+     * @param collection the collection
      */
-    public void setCollection(String corpus) {
-        this.collection = corpus;
+    public void setCollection(String collection) {
+        this.collection = collection;
     }
 
     /**
