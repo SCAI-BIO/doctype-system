@@ -15,16 +15,18 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Page;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.Page;
+
+import lombok.Data;
+
 /**
  * The order is Part, Chapter, Section, SubSection, SubSubSection.
  */
-public class Part implements Serializable {
+@Data public class Part implements Serializable {
 
     /**
      * serialVersionUID
@@ -41,34 +43,6 @@ public class Part implements Serializable {
             this.chapters = new ArrayList<Chapter>();
         }
         this.chapters.add(chapter);
-    }
-
-    /**
-     * @return the {@link Chapter}s
-     */
-    public List<Chapter> getChapters() {
-        return chapters;
-    }
-
-    /**
-     * @param chapters the {@link Chapter}s to set
-     */
-    public void setChapters(List<Chapter> chapters) {
-        this.chapters = chapters;
-    }
-
-    /**
-     * @return the {@link Page}s
-     */
-    public List<Page> getPages() {
-        return pages;
-    }
-
-    /**
-     * @param pages the {@link Page}s to set
-     */
-    public void setPages(List<Page> pages) {
-        this.pages = pages;
     }
 
 }

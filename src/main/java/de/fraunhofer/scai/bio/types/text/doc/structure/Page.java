@@ -17,11 +17,12 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
- * If a specific page should start, wrap the concerning document elements into
- * the page.
+ * If a specific page should start, wrap the concerning document elements into the page.
  */
-public class Page implements Serializable {
+@Data public class Page implements Serializable {
 
     /**
      * serialVersionUID
@@ -29,50 +30,5 @@ public class Page implements Serializable {
     private static final long serialVersionUID = 8710743034102291637L;
     private int pageNumber;
     private TextElement layout;
-
-    /**
-     * getter for layout - specifies the page layout. Examples: 2-column, titlepage
-     * or standard.
-     *
-     * @return layout of the feature
-     */
-    public TextElement getLayout() {
-        return this.layout;
-    }
-
-    /**
-     * setter for layout - specifices the page layout. Examples: 2-column, titlepage
-     * or standard.
-     *
-     * @param layout value to set into the feature
-     */
-    public void setLayout(TextElement layout) {
-        this.layout = layout;
-    }
-
-    /**
-     * getter for pageNumber - gets The number of the page in the original artifact
-     *
-     * @return page number of the feature
-     */
-    public int getPageNumber() {
-        return this.pageNumber;
-    }
-
-    /**
-     * setter for pageNumber - sets The number of the page in the original artifact
-     *
-     * @param pageNumber value to set into the feature
-     */
-    public void setPageNumber(int pageNumber) {
-        this.pageNumber = pageNumber;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return String.format("%d\t%s", pageNumber, layout.getText());
-    }
 
 }

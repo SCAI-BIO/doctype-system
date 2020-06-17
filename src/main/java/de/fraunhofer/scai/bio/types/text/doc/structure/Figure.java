@@ -15,10 +15,12 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * Figures containing images and describe them in a caption.
  */
-public class Figure implements Serializable {
+@Data public class Figure implements Serializable {
 
     /**
      * serialVersionUID
@@ -29,48 +31,6 @@ public class Figure implements Serializable {
     private TextElement title;
     private TextElement caption;
     private ImageContent imageContent;
-
-    /**
-     * @return the rhetorical
-     */
-    public TextElement getRhetorical() {
-        return rhetorical;
-    }
-
-    /**
-     * @param rhetorical the rhetorical to set
-     */
-    public void setRhetorical(TextElement rhetorical) {
-        this.rhetorical = rhetorical;
-    }
-
-    /**
-     * @return the title
-     */
-    public TextElement getTitle() {
-        return title;
-    }
-
-    /**
-     * @param title the title to set
-     */
-    public void setTitle(TextElement title) {
-        this.title = title;
-    }
-
-    /**
-     * @return the caption
-     */
-    public TextElement getCaption() {
-        return caption;
-    }
-
-    /**
-     * @param caption the caption to set
-     */
-    public void setCaption(TextElement caption) {
-        this.caption = caption;
-    }
 
     /**
      * getter for image - gets
@@ -88,18 +48,6 @@ public class Figure implements Serializable {
      */
     public void setImage(ImageContent v) {
         this.imageContent = v;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        String titleText = (title != null && title.getText() != null) ? title.getText() : "";
-        String imageContentString = imageContent != null ? imageContent.toString() : "";
-        String captionText = (caption != null && caption.getText() != null) ? caption.getText() : "";
-        return String.format("%s\n%s\n%s", titleText, imageContentString, captionText);
     }
 
 }

@@ -17,10 +17,12 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * The autor(s) of the document.
  */
-public class Author implements Serializable {
+@Data public class Author implements Serializable {
 
     /**
      * serialVersionUID
@@ -28,31 +30,5 @@ public class Author implements Serializable {
     private static final long serialVersionUID = 3790237726324694559L;
     private Person author;
     private Affiliation organization;
-
-    /**
-     * getter for author - gets
-     *
-     * @return author The {@link Person}
-     */
-    public Person getAuthor() {
-        return this.author;
-    }
-
-    /**
-     * setter for author - sets
-     *
-     * @param author the {@link Person} to set
-     */
-    public void setAuthor(Person author) {
-        this.author = author;
-    }
-
-    public Affiliation getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Affiliation organization) {
-        this.organization = organization;
-    }
 
 }

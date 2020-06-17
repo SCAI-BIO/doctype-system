@@ -16,12 +16,13 @@
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
-import java.util.Calendar;
+
+import lombok.Data;
 
 /**
  * @author klein
  */
-public class Date implements Serializable {
+@Data public class Date implements Serializable {
 
     /**
      * serialVersionUID
@@ -42,58 +43,5 @@ public class Date implements Serializable {
       setMonth(month);
       setYear(year);
     }
-    
-    /**
-     * getter for day - gets Restricted: 1-31
-     *
-     * @return day of the {@link Date}
-     */
-    public int getDay() {
-        return day;
-    }
 
-    /**
-     * setter for day - sets Restricted: 1-31
-     *
-     * @param day value to set to {@link Date}
-     */
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    /**
-     * getter for month - gets Restriction: 1-12
-     *
-     * @return month of the {@link Date}
-     */
-    public int getMonth() {
-        return month;
-    }
-
-    /**
-     * setter for month - sets Restriction: 1-12
-     *
-     * @param month value to set to {@link Date}
-     */
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    /**
-     * getter for year - gets Gregorian Calendar: Four digits. i.e. 2012
-     *
-     * @return year of the {@link Date}
-     */
-    public int getYear() {
-        return year;
-    }
-
-    /**
-     * setter for year - sets Gregorian Calendar: Four digits. i.e. 2012
-     *
-     * @param year to set to {@link Date}
-     */
-    public void setYear(int year) {
-        this.year = year;
-    }
 }

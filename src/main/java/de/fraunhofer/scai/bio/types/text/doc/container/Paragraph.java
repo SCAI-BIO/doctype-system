@@ -15,17 +15,19 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
+
+import lombok.Data;
 
 /**
  * A self-contained unit of discourse that deals with a particular point or
  * idea. (DoCO)
  */
-public class Paragraph implements Serializable {
+@Data public class Paragraph implements Serializable {
 
     /**
      * serialVersionUID
@@ -37,20 +39,6 @@ public class Paragraph implements Serializable {
     private List<StructureElement> structureElements;
 
     /**
-     * @return the structureElements
-     */
-    public List<StructureElement> getStructureElements() {
-        return structureElements;
-    }
-
-    /**
-     * @param structureElements the {@link StructureElement}s to set
-     */
-    public void setStructureElements(List<StructureElement> structureElements) {
-        this.structureElements = structureElements;
-    }
-
-    /**
      * @param structureElement the {@link StructureElement} to add
      */
     public void addStructureElement(StructureElement structureElement) {
@@ -58,22 +46,6 @@ public class Paragraph implements Serializable {
             this.structureElements = new ArrayList<StructureElement>();
         }
         this.structureElements.add(structureElement);
-    }
-
-    /**
-     * @return the {@link Sentence}s
-     */
-    @Deprecated
-    public List<Sentence> getSentences() {
-        return sentences;
-    }
-
-    /**
-     * @param sentences the {@link Sentence}s to set
-     */
-    @Deprecated
-    public void setSentences(List<Sentence> sentences) {
-        this.sentences = sentences;
     }
 
     /**

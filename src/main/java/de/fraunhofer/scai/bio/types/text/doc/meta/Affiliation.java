@@ -15,18 +15,20 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
 
 /**
  * TODO implement/enhance this class (organization, address, ...)
  *
  * @author klein
  */
-public class Affiliation implements Serializable {
+@Data public class Affiliation implements Serializable {
 
     /**
      *
@@ -35,34 +37,6 @@ public class Affiliation implements Serializable {
 
     private TextElement organization;
     private List<String> affiliationInfos;
-
-    /**
-     * @return the organization
-     */
-    public TextElement getOrganization() {
-        return organization;
-    }
-
-    /**
-     * @param organization the organization to set
-     */
-    public void setOrganization(TextElement organization) {
-        this.organization = organization;
-    }
-
-    /**
-     * @return the affiliationInfo
-     */
-    public List<String> getAffiliationInfos() {
-        return affiliationInfos;
-    }
-
-    /**
-     * @param affiliationInfo the affiliationInfo to set
-     */
-    public void setAffiliationInfos(List<String> affiliationInfos) {
-        this.affiliationInfos = affiliationInfos;
-    }
 
     /**
      * @param affiliationInfo the affiliationInfo to add

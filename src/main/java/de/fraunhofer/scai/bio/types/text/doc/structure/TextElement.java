@@ -15,17 +15,21 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonMerge;
+
+import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
+
+import lombok.Data;
+
 /**
  *
  */
-public class TextElement implements Serializable {
+@Data public class TextElement implements Serializable {
 
     /**
      * serialVersionUID
@@ -39,35 +43,8 @@ public class TextElement implements Serializable {
 
     private UUID uuid;
 
+    @JsonMerge
     private List<Annotation> annotations;
-
-    /**
-     * @return the text
-     */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * @param textElement the textElement to set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    /**
-     * @return the annotations
-     */
-    public List<Annotation> getAnnotations() {
-        return annotations;
-    }
-
-    /**
-     * @param annotations the annotations to set
-     */
-    public void setAnnotations(List<Annotation> annotations) {
-        this.annotations = annotations;
-    }
 
     /**
      * @param annotation the annotation to add
@@ -80,26 +57,10 @@ public class TextElement implements Serializable {
     }
 
     /**
-     * @return the uuid
-     */
-    public UUID getUuid() {
-        if (this.uuid == null) {
-            setUuid();
-        }
-        return this.uuid;
-    }
-
-    /**
      * Creates a new {@link UUID}.
      */
     public void setUuid() {
         this.uuid = UUID.randomUUID();
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return getText();
-    }
 }

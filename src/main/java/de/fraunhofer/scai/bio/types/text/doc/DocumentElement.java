@@ -15,20 +15,23 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.container.BackMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.BodyMatter;
 import de.fraunhofer.scai.bio.types.text.doc.container.FrontMatter;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 
-import java.io.Serializable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
- * Document Elements are the scaffold of every document. Every document element
- * encapsulates a specific (small) domain model and holds attributes of the
- * model. Examples are chapter, paragraph, figure, ... They are organized in
- * three subtypes: structure, container and meta.
+ * Document Elements are the scaffold of every document. Every document element encapsulates a specific (small) domain
+ * model and holds attributes of the model. Examples are chapter, paragraph, figure, ... They are organized in three
+ * subtypes: structure, container and meta.
  */
-public class DocumentElement implements Serializable {
+@NoArgsConstructor
+@Data public class DocumentElement implements Serializable {
 
     /**
      * serialVersionUID
@@ -39,69 +42,6 @@ public class DocumentElement implements Serializable {
     private BackMatter backMatter;
     private BodyMatter bodyMatter;
     private FrontMatter frontMatter;
-
-    /**
-     * Default constructor.
-     */
-    public DocumentElement() {
-    }
-
-    /**
-     * @return the metaElement
-     */
-    public MetaElement getMetaElement() {
-        return metaElement;
-    }
-
-
-    /**
-     * @param metaElement the metaElement to set
-     */
-    public void setMetaElement(MetaElement metaElement) {
-        this.metaElement = metaElement;
-    }
-
-    /**
-     * @return the backMatter
-     */
-    public BackMatter getBackMatter() {
-        return backMatter;
-    }
-
-    /**
-     * @param backMatter the backMatter to set
-     */
-    public void setBackMatter(BackMatter backMatter) {
-        this.backMatter = backMatter;
-    }
-
-    /**
-     * @return the bodyMatter
-     */
-    public BodyMatter getBodyMatter() {
-        return bodyMatter;
-    }
-
-    /**
-     * @param bodyMatter the bodyMatter to set
-     */
-    public void setBodyMatter(BodyMatter bodyMatter) {
-        this.bodyMatter = bodyMatter;
-    }
-
-    /**
-     * @return the frontMatter
-     */
-    public FrontMatter getFrontMatter() {
-        return frontMatter;
-    }
-
-    /**
-     * @param frontMatter the frontMatter to set
-     */
-    public void setFrontMatter(FrontMatter frontMatter) {
-        this.frontMatter = frontMatter;
-    }
 
 
 }

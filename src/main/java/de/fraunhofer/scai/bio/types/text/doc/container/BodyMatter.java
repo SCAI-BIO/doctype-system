@@ -15,17 +15,19 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
+
+import lombok.Data;
+
 /**
- * The central principle part of a document, that contains the real content. It
- * may be subdivided hierarchically by the use of chapters and sections. (DoCO)
+ * The central principle part of a document, that contains the real content. It may be subdivided hierarchically by the
+ * use of chapters and sections. (DoCO)
  */
-public class BodyMatter implements Serializable {
+@Data public class BodyMatter implements Serializable {
 
     /**
      * serialVersionUID
@@ -39,20 +41,6 @@ public class BodyMatter implements Serializable {
     private Abstract docAbstract;
 
     /**
-     * @return the section
-     */
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    /**
-     * @param sections the {@link List} of {@link Section}s to set
-     */
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
-
-    /**
      * @param section the {@link Section} to set
      */
     public void addSection(Section section) {
@@ -63,20 +51,6 @@ public class BodyMatter implements Serializable {
     }
 
     /**
-     * @return the {@link List} of {@link Chapter}s
-     */
-    public List<Chapter> getChapters() {
-        return chapters;
-    }
-
-    /**
-     * @param chapters the {@link List} of {@link Chapter}s to set
-     */
-    public void setChapters(List<Chapter> chapters) {
-        this.chapters = chapters;
-    }
-
-    /**
      * @param chapter the {@link Chapter} to add
      */
     public void addChapter(Chapter chapter) {
@@ -84,22 +58,6 @@ public class BodyMatter implements Serializable {
             chapters = new ArrayList<Chapter>();
         }
         this.chapters.add(chapter);
-    }
-
-    /**
-     * @return the document {@link Abstract}
-     */
-    @Deprecated
-    public Abstract getDocAbstract() {
-        return docAbstract;
-    }
-
-    /**
-     * @param docAbstract the document {@link Abstract} to set
-     */
-    @Deprecated
-    public void setDocAbstract(Abstract docAbstract) {
-        this.docAbstract = docAbstract;
     }
 
 }

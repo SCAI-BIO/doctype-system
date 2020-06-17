@@ -15,14 +15,16 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * Title of a document. It can also contain a subtitle.
  */
-public class Title implements Serializable {
+@Data public class Title implements Serializable {
 
     /**
      * serialVersionUID
@@ -49,21 +51,4 @@ public class Title implements Serializable {
         this.subTitleText = subTitleText;
     }
 
-    /**
-     * getter for titleText - gets
-     *
-     * @return the title text
-     */
-    public TextElement getTitleText() {
-        return this.titleText;
-    }
-
-    /**
-     * setter for titleText - sets
-     *
-     * @param titleText the title text
-     */
-    public void setTitleText(TextElement titleText) {
-        this.titleText = titleText;
-    }
 }

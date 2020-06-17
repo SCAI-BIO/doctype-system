@@ -15,10 +15,12 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * The initial principle part of a document, usually containing self-referential
@@ -30,7 +32,7 @@ import java.io.Serializable;
  * footnote or the back matter. In books, the front matter pages may be numbered
  * in lowercase Roman numerals. (DoCO)
  */
-public class FrontMatter implements Serializable {
+@Data public class FrontMatter implements Serializable {
 
     /**
      * serialVersionUID
@@ -39,33 +41,5 @@ public class FrontMatter implements Serializable {
 
     private TextElement titleText;
     private Abstract documentAbstract;
-
-    /**
-     * @return the titleText
-     */
-    public TextElement getTitleText() {
-        return titleText;
-    }
-
-    /**
-     * @param titleText the titleText to set
-     */
-    public void setTitleText(TextElement titleText) {
-        this.titleText = titleText;
-    }
-
-    /**
-     * @return the documentAbstract
-     */
-    public Abstract getDocumentAbstract() {
-        return documentAbstract;
-    }
-
-    /**
-     * @param documentAbstract the documentAbstract to set
-     */
-    public void setDocumentAbstract(Abstract documentAbstract) {
-        this.documentAbstract = documentAbstract;
-    }
 
 }

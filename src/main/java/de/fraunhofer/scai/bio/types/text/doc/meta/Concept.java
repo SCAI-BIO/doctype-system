@@ -15,16 +15,18 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
+
 /**
  * @author klein
  */
-public class Concept implements Serializable {
+@Data public class Concept implements Serializable {
 
     /**
      * serialVersionUID
@@ -62,70 +64,6 @@ public class Concept implements Serializable {
             this.hiddenLabels = new ArrayList<TextElement>();
         }
         this.hiddenLabels.add(hiddenLabel);
-    }
-
-    public TextElement getAltLabel() {
-        return this.altLabel;
-    }
-
-    public void setAltLabel(TextElement altlabel) {
-        this.altLabel = altlabel;
-    }
-
-    public List<TextElement> getAltLabels() {
-        return this.altLabels;
-    }
-
-    /**
-     * Set the {@link List} of alternate Labels.
-     *
-     * @param altLabels the {@link List} of Labels.
-     */
-    public void setAltLabels(List<TextElement> altLabels) {
-        this.altLabels = altLabels;
-    }
-
-    public TextElement getHiddenLabel() {
-        return this.hiddenLabel;
-    }
-
-    public void setHiddenLabel(TextElement hiddenlabel) {
-        this.hiddenLabel = hiddenlabel;
-    }
-
-    public List<TextElement> getHiddenLabels() {
-        return this.hiddenLabels;
-    }
-
-    /**
-     * @param hiddenLabels the {@link List} of hidden labels to set
-     */
-    public void setHiddenLabels(List<TextElement> hiddenLabels) {
-        this.hiddenLabels = hiddenLabels;
-    }
-
-    public TextElement getIdentifier() {
-        return this.identifier;
-    }
-
-    public void setIdentifier(TextElement identifier) {
-        this.identifier = identifier;
-    }
-
-    public TextElement getIdentifierSource() {
-        return this.identifierSource;
-    }
-
-    public void setIdentifierSource(TextElement identifierSource) {
-        this.identifierSource = identifierSource;
-    }
-
-    public TextElement[] getIdentifierWithSource() {
-        return this.identifierWithSource;
-    }
-
-    public void setIdentifierWithSource(TextElement[] identifierwithsource) {
-        this.identifierWithSource = identifierwithsource;
     }
 
     public TextElement getPrefLabel() {

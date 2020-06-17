@@ -15,14 +15,16 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * @author klein
  */
-public class PublicationType implements Serializable {
+@Data public class PublicationType implements Serializable {
 
     /**
      * serialVersionUID
@@ -30,34 +32,6 @@ public class PublicationType implements Serializable {
     private static final long serialVersionUID = -413014484812578059L;
     private TextElement identifier;
     private TextElement publicationType;
-
-    /**
-     * @return the identifier
-     */
-    public TextElement getIdentifier() {
-        return identifier;
-    }
-
-    /**
-     * @param identifier the identifier to set
-     */
-    public void setIdentifier(TextElement identifier) {
-        this.identifier = identifier;
-    }
-
-    /**
-     * @return the publicationType
-     */
-    public TextElement getPublicationType() {
-        return publicationType;
-    }
-
-    /**
-     * @param publicationType the publicationType to set
-     */
-    public void setPublicationType(TextElement publicationType) {
-        this.publicationType = publicationType;
-    }
 
 
 }

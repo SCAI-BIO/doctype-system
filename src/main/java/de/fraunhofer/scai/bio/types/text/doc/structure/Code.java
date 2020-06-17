@@ -17,12 +17,14 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * This represents code listings within a document. It can be code for all
  * programming languages or pseudo code. Write into the rhetorical attribute if
  * it's c, java, pseudo, latex or something like that.
  */
-public class Code implements Serializable {
+@Data public class Code implements Serializable {
 
     /**
      * serialVersionUID
@@ -30,26 +32,5 @@ public class Code implements Serializable {
     private static final long serialVersionUID = -871863145178162566L;
 
     private TextElement code;
-
-    /**
-     * @return the code
-     */
-    public TextElement getCode() {
-        return code;
-    }
-
-    /**
-     * @param code the code to set
-     */
-    public void setCode(TextElement code) {
-        this.code = code;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return code.getText();
-    }
 
 }
