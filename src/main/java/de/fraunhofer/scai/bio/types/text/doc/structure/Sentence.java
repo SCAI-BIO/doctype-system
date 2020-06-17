@@ -17,10 +17,12 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * @author klein
  */
-public class Sentence implements Serializable {
+@Data public class Sentence implements Serializable {
 
     /**
      * serialVersionUID

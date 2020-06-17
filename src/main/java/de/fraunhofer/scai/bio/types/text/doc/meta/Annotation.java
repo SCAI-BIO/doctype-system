@@ -15,14 +15,16 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.Provenance;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * @author klein
  */
-public class Annotation implements Serializable {
+@Data public class Annotation implements Serializable {
 
     /**
      * serialVersionUID
@@ -34,75 +36,5 @@ public class Annotation implements Serializable {
     private String annotationText;
 
     private Provenance provenance;
-
-    /**
-     * @return the {@link Provenance}
-     */
-    public Provenance getProvenance() {
-        return provenance;
-    }
-
-    /**
-     * @param provenance the {@link Provenance} to set
-     */
-    public void setProvenance(Provenance provenance) {
-        this.provenance = provenance;
-    }
-
-    /**
-     * @return the startOffset
-     */
-    public int getStartOffset() {
-        return startOffset;
-    }
-
-    /**
-     * @param startOffset the startOffset to set
-     */
-    public void setStartOffset(int startOffset) {
-        this.startOffset = startOffset;
-    }
-
-    /**
-     * @return the endOffset
-     */
-    public int getEndOffset() {
-        return endOffset;
-    }
-
-    /**
-     * @param endOffset the endOffset to set
-     */
-    public void setEndOffset(int endOffset) {
-        this.endOffset = endOffset;
-    }
-
-    /**
-     * @return the annotationType
-     */
-    public String getAnnotationType() {
-        return annotationType;
-    }
-
-    /**
-     * @param annotationType the annotationType to set
-     */
-    public void setAnnotationType(String annotationType) {
-        this.annotationType = annotationType;
-    }
-
-    /**
-     * @return the annotationText
-     */
-    public String getAnnotationText() {
-        return annotationText;
-    }
-
-    /**
-     * @param annotationText the annotationText to set
-     */
-    public void setAnnotationText(String annotationText) {
-        this.annotationText = annotationText;
-    }
 
 }

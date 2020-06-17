@@ -18,12 +18,14 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import lombok.Data;
+
 /**
  * These boxes in documents contain usually pictures or tabular data and usually
  * have a numbering and a caption. Examples are figure, table, code or formula
  * (math).
  */
-public class List implements Serializable {
+@Data public class List implements Serializable {
 
     /**
      * serialVersionUID
@@ -33,43 +35,6 @@ public class List implements Serializable {
     private java.util.List<TextElement> items;
     private boolean bullets;
 
-    /**
-     * getter for caption - gets All captioned boxes have captions describing the
-     * contents of the box with natural language. Example: Figure 1: caption text.
-     *
-     * @return caption of the {@link List}
-     */
-    public java.util.List<TextElement> getItems() {
-        return this.items;
-    }
-
-    /**
-     * setter for items of a list
-     *
-     * @param caption of the {@link List} to set
-     */
-    public void setItems(java.util.List<TextElement> items) {
-        this.items = items;
-    }
-
-    /**
-     * getter for titleText - Some captioned boxes have titles.
-     *
-     * @return the title of the {@link List}
-     */
-    public TextElement getTitle() {
-        return this.title;
-    }
-
-    /**
-     * setter for titleText - sets Some captioned boxes have titles.
-     *
-     * @param title of the {@link List}
-     */
-    public void setTitle(TextElement title) {
-        this.title = title;
-    }
-
     public void addItem(TextElement item) {
         if (this.items == null) {
             this.items = new ArrayList<TextElement>();
@@ -77,30 +42,5 @@ public class List implements Serializable {
         this.items.add(item);
     }
 
-    public boolean isBullets() {
-        return bullets;
-    }
-
-    public void setBullets(boolean bullets) {
-        this.bullets = bullets;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        if (title != null && title.getText() != null && !title.getText().isEmpty()) {
-            sb.append(String.format("%d%s\n", title.getText()));
-        }
-        if (items != null) {
-            for (TextElement item : items) {
-                if (item.getText() != null && !item.getText().isEmpty()) {
-                    sb.append("\t" + item.getText() + "\n");
-                }
-            }
-        }
-        return sb.toString();
-    }
 }
 

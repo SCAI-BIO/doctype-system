@@ -15,18 +15,20 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
+
 /**
- * The bibliography contains all literature references which are made in the
- * document. Synonyms are references or list of literature.
+ * The bibliography contains all literature references which are made in the document. Synonyms are references or list
+ * of literature.
  */
-public class Bibliography implements Serializable {
+@Data public class Bibliography implements Serializable {
 
     /**
      * serialVersionUID
@@ -34,9 +36,6 @@ public class Bibliography implements Serializable {
     private static final long serialVersionUID = 3505381016659827384L;
     private Map<String, Reference> references;
     private TextElement title;
-
-    // *--------------*
-    // * Feature: references
 
     /**
      * Add {@link Reference} element.
@@ -51,29 +50,4 @@ public class Bibliography implements Serializable {
         references.put(id, reference);
     }
 
-    /**
-     * Getter for {@link Reference}s.
-     *
-     * @return the {@link List} of {@link Reference}s
-     */
-    public Map<String, Reference> getReferences() {
-        return references;
-    }
-
-    /**
-     * setter for {@link Reference}s.
-     *
-     * @param references the {@link List} of {@link Reference}s to set
-     */
-    public void setReferences(Map<String, Reference> references) {
-        this.references = references;
-    }
-
-    public TextElement getTitle() {
-        return title;
-    }
-
-    public void setTitle(TextElement title) {
-        this.title = title;
-    }
 }

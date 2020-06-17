@@ -15,16 +15,18 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
+
 /**
  * @author klein
  */
-public class Keywords implements Serializable {
+@Data public class Keywords implements Serializable {
 
     /**
      * serialVersionUID
@@ -49,34 +51,4 @@ public class Keywords implements Serializable {
         this.keywordList.add(keyword);
     }
 
-    /**
-     * @return the {@link List} of {@link Keywords}
-     */
-    public List<TextElement> getKeywordList() {
-        if (this.keywordList == null) {
-            this.keywordList = new ArrayList<TextElement>();
-        }
-        return this.keywordList;
-    }
-
-    /**
-     * @param keywordList the {@link List} of {@link Keywords} to set
-     */
-    public void setKeywordList(List<TextElement> keywordList) {
-        this.keywordList = keywordList;
-    }
-
-    /**
-     * @return the rhetorical
-     */
-    public TextElement getRhetorical() {
-        return rhetorical;
-    }
-
-    /**
-     * @param rhetorical the rhetorical to set
-     */
-    public void setRhetorical(TextElement rhetorical) {
-        this.rhetorical = rhetorical;
-    }
 }

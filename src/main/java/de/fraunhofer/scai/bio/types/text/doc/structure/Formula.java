@@ -17,11 +17,13 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 
 /**
  * A formula can be a math, physical, chemical or something like that.
  */
-public class Formula implements Serializable {
+@Data public class Formula implements Serializable {
 
     /**
      * serialVersionUID
@@ -30,24 +32,4 @@ public class Formula implements Serializable {
 
     private TextElement formula;
 
-    /**
-     * @return the formula
-     */
-    public TextElement getFormula() {
-        return formula;
-    }
-
-    /**
-     * @param formula the formula to set
-     */
-    public void setFormula(TextElement formula) {
-        this.formula = formula;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return formula.getText();
-    }
 }

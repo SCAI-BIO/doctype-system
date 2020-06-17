@@ -15,17 +15,18 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
+
+import lombok.Data;
+
 /**
- * The final principle part of a document, in which is usually found the
- * bibliography, index, appendixes, etc. (DoCO)
+ * The final principle part of a document, in which is usually found the bibliography, index, appendixes, etc. (DoCO)
  */
-public class BackMatter implements Serializable {
+@Data public class BackMatter implements Serializable {
 
     /**
      * serialVersionUID
@@ -34,28 +35,6 @@ public class BackMatter implements Serializable {
 
     private Bibliography bibliography;
     private List<Section> sections;
-
-    /**
-     * @return the bibliography
-     */
-    public Bibliography getBibliography() {
-        return bibliography;
-    }
-
-    /**
-     * @param bibliography the bibliography to set
-     */
-    public void setBibliography(Bibliography bibliography) {
-        this.bibliography = bibliography;
-    }
-
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
 
     /**
      * @param section the {@link Section} to set

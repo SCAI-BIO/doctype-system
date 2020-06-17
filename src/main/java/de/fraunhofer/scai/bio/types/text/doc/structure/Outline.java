@@ -20,16 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Data;
+
 /**
- * Specifies the document outline. Examples are chapters, sections, and so on.
- * The outline-order of common (large) books is Part, Chapter, Section,
- * SubSection, SubSubSection. The outline-order of common for scientific works
- * like thesis are Chapter, Section, SubSection, SubSubSection. If you've got a
- * very deeply resp. uncommon outlined text, with section-headings like
- * '1.1.1.2.3 heading titleText', you can use the raw Outline document element
- * and nest it. So you have a generic way to express any outline-depth.
+ * Specifies the document outline. Examples are chapters, sections, and so on. The outline-order of common (large) books
+ * is Part, Chapter, Section, SubSection, SubSubSection. The outline-order of common for scientific works like thesis
+ * are Chapter, Section, SubSection, SubSubSection. If you've got a very deeply resp. uncommon outlined text, with
+ * section-headings like '1.1.1.2.3 heading titleText', you can use the raw Outline document element and nest it. So you
+ * have a generic way to express any outline-depth.
  */
-public class Outline implements Serializable {
+@Data public class Outline implements Serializable {
 
     /**
      * serialVersionUID
@@ -51,113 +51,6 @@ public class Outline implements Serializable {
             this.numbering = new ArrayList<String>();
         }
         this.numbering.add(numbering);
-    }
-
-    /**
-     * @return the chapters
-     */
-    public Map<String, List<String>> getChapters() {
-        return chapters;
-    }
-
-    /**
-     * @param chapters the chapters to set
-     */
-    public void setChapters(Map<String, List<String>> chapters) {
-        this.chapters = chapters;
-    }
-
-    /**
-     * getter for numbering - gets Numbering of a outline. Subsection example: 1.2.1
-     * Title. Numbering in this case is StringList('1', '2', '1').
-     *
-     * @return numbering of the {@link Outline}
-     */
-    public List<String> getNumbering() {
-        return numbering;
-    }
-
-    /**
-     * setter for numbering - sets Numbering of a outline. Subsection example: 1.2.1
-     * Title. Numbering in this case is StringList('1', '2', '1').
-     *
-     * @param numbering value to set into the feature
-     */
-    public void setNumbering(List<String> numbering) {
-        this.numbering = numbering;
-    }
-
-    /**
-     * @return the parts
-     */
-    public List<String> getParts() {
-        return parts;
-    }
-
-    /**
-     * @param parts the parts to set
-     */
-    public void setParts(List<String> parts) {
-        this.parts = parts;
-    }
-
-    /**
-     * getter for rhetorical - gets
-     *
-     * @return rhetorical of the feature
-     */
-    public TextElement getRhetorical() {
-        return this.rhetorical;
-    }
-
-    /**
-     * setter for rhetorical - sets
-     *
-     * @param rhetorical value to set into the feature
-     */
-    public void setRhetorical(TextElement rhetorical) {
-        this.rhetorical = rhetorical;
-    }
-
-    /**
-     * @return the sections
-     */
-    public Map<String, List<String>> getSections() {
-        return sections;
-    }
-
-    /**
-     * @param sections the sections to set
-     */
-    public void setSections(Map<String, List<String>> sections) {
-        this.sections = sections;
-    }
-
-    /**
-     * @return the titleText
-     */
-    public TextElement getTitleText() {
-        return titleText;
-    }
-
-    /**
-     * @param titleText the titleText to set
-     */
-    public void setTitleText(TextElement titleText) {
-        this.titleText = titleText;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder(titleText.getText());
-        sb.append("\n");
-        for (String number : numbering) {
-            sb.append(number);
-            sb.append("\n");
-        }
-        return sb.toString();
     }
 
 }
