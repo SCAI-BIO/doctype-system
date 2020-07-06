@@ -15,19 +15,21 @@
  */
 package de.fraunhofer.scai.bio;
 
+import java.io.Serializable;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.Serializable;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.UUID;
+import lombok.Data;
 
 /**
  * @author marc
@@ -35,7 +37,7 @@ import java.util.UUID;
  * <p>
  * Central datastructure of our DMS
  */
-public class Document implements Serializable {
+@Data public class Document implements Serializable {
 
     public static final int ABSTRACT_LENGTH = 250;
     public static final String PUBMED_ABSTRACT = "PUBMED_ABSTRACT";
@@ -63,70 +65,6 @@ public class Document implements Serializable {
         this.setTextElementIndex(new TreeMap<UUID, TextElement>());
     }
 
-    /**********************************************************************
-     * getter and setter
-     **********************************************************************/
-
-    /**
-     * @return the {@link DocumentElement}
-     */
-    public DocumentElement getDocumentElement() {
-        return documentElement;
-    }
-
-    /**
-     * Sets the {@link DocumentElement}
-     *
-     * @param documentElement the {@link DocumentElement}
-     */
-    public void setDocumentElement(DocumentElement documentElement) {
-        this.documentElement = documentElement;
-    }
-
-    /**
-     * @return the {@link Provenance}
-     */
-    public Provenance getProvenance() {
-        return provenance;
-    }
-
-    /**
-     * Sets the {@link Provenance}
-     *
-     * @param provenance the {@link Provenance}
-     */
-    public void setProvenance(Provenance provenance) {
-        this.provenance = provenance;
-    }
-
-    /**
-     * Returns the content type of the document, e.g. PubMedAbstract, PubMedArticle, UserDocument, ...
-     *
-     * @return docType the type
-     */
-    public String getDocType() {
-        return docType;
-    }
-
-    public void setDocType(String docType) {
-        this.docType = docType;
-    }
-
-
-    /**
-     * @return the index of the {@link StructureElement}s
-     */
-    public Map<UUID, TextElement> getTextElementIndex() {
-        return textElementIndex;
-    }
-
-    /**
-     * @param structureElementIndex the index of the {@link StructureElement}s
-     */
-    public void setTextElementIndex(Map<UUID, TextElement> textElementIndex) {
-        this.textElementIndex = textElementIndex;
-    }
-
     /**
      * Adds a {@link StructureElement} to the index
      *
@@ -135,20 +73,6 @@ public class Document implements Serializable {
      */
     public void addToTextElementIndex(UUID key, TextElement structureElement) {
         this.textElementIndex.put(key, structureElement);
-    }
-
-    /**
-     * @return the mimeType
-     */
-    public String getOriginalMimeType() {
-        return originalMimeType;
-    }
-
-    /**
-     * @param mimeType the mimeType to set
-     */
-    public void setOriginalMimeType(String originalMimeType) {
-        this.originalMimeType = originalMimeType;
     }
 
 }

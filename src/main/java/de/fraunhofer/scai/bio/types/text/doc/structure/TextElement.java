@@ -16,11 +16,9 @@
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
-
-import com.fasterxml.jackson.annotation.JsonMerge;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
@@ -43,15 +41,14 @@ import lombok.Data;
 
     private UUID uuid;
 
-    @JsonMerge
-    private List<Annotation> annotations;
+    private Set<Annotation> annotations;
 
     /**
      * @param annotation the annotation to add
      */
     public void addAnnotation(Annotation annotation) {
         if (this.annotations == null) {
-            this.annotations = new ArrayList<Annotation>();
+            this.annotations = new HashSet<>();
         }
         this.annotations.add(annotation);
     }
