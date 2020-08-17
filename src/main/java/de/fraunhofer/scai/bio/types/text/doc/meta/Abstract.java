@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.container.Section;
 
@@ -32,14 +34,14 @@ import lombok.Data;
      * serialVersionUID
      */
     private static final long serialVersionUID = 3867798877915368582L;
-    private List<Section> abstractSections;
+    private Set<Section> abstractSections;
 
     /**
      * @param abstractSection the abstract {@link Section} to add
      */
     public void addAbstractSection(Section abstractSection) {
         if (this.abstractSections == null) {
-            this.abstractSections = new ArrayList<Section>();
+            this.abstractSections = new HashSet<>();
         }
         this.abstractSections.add(abstractSection);
     }

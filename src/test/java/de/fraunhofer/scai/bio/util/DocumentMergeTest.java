@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -30,10 +31,15 @@ public class DocumentMergeTest {
         Document oldDocument = mapper.readValue(json0.getAbsoluteFile(), Document.class);
         Set<Annotation> before = oldDocument.getDocumentElement().getFrontMatter().getTitleText().getAnnotations();
         Set<Annotation> beforeSet = new HashSet<>(before);
+        List<Annotation> ab = before.stream().filter(s-> s.getStartOffset() == 11 && s.getEndOffset() == 20).collect(
+            Collectors.toList());
+
         ObjectReader objectReader = mapper.readerForUpdating(oldDocument);
         Document updatedDocument = objectReader.readValue(json1);
         Set<Annotation> after = updatedDocument.getDocumentElement().getFrontMatter().getTitleText().getAnnotations();
         Set<Annotation> afterSet = new HashSet<>(after);
+        List<Annotation> ac = after.stream().filter(s-> s.getStartOffset() == 11 && s.getEndOffset() == 20).collect(
+            Collectors.toList());
         assertTrue( "Annotation set is not larger after merge", beforeSet.size()< afterSet.size());
 
 

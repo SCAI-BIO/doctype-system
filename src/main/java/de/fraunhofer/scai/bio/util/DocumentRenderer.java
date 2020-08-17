@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -99,14 +100,14 @@ public class DocumentRenderer {
             && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
             Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
             if (bib.getDocumentAbstract() != null && bib.getDocumentAbstract().getAbstractSections() != null) {
-                List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
+                Set<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
                 for (Section section : abstractSections) {
                     if (section != null) {
-                        List<Paragraph> paragraphs = section.getParagraphs();
+                        Set<Paragraph> paragraphs = section.getParagraphs();
                         for (Paragraph para : paragraphs) {
                             if (para != null) {
                                 if (para.getStructureElements() != null) {
-                                    List<StructureElement> structureElements = para.getStructureElements();
+                                    Set<StructureElement> structureElements = para.getStructureElements();
                                     for (StructureElement se : structureElements) {
                                         sb.append(renderStructureElement(se));
                                         sb.append(" ");
@@ -298,7 +299,7 @@ public class DocumentRenderer {
         return elements;
     }
 
-    public static Map<String, TextElement> getChapterTextElements(List<Chapter> chapters) {
+    public static Map<String, TextElement> getChapterTextElements(Set<Chapter> chapters) {
         Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
         if (chapters != null) {
@@ -312,7 +313,7 @@ public class DocumentRenderer {
         return elements;
     }
 
-    public static Map<String, TextElement> getSectionsTextElements(List<Section> sections) {
+    public static Map<String, TextElement> getSectionsTextElements(Set<Section> sections) {
         Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
         if (sections != null) {
@@ -331,7 +332,7 @@ public class DocumentRenderer {
         return elements;
     }
 
-    public static Map<String, TextElement> getParagraphsTextElements(List<Paragraph> paragraphs) {
+    public static Map<String, TextElement> getParagraphsTextElements(Set<Paragraph> paragraphs) {
         Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
         if (paragraphs != null) {
@@ -347,7 +348,7 @@ public class DocumentRenderer {
         return elements;
     }
 
-    public static Map<String, TextElement> getSentencesTextElements(List<Sentence> sentences) {
+    public static Map<String, TextElement> getSentencesTextElements(Set<Sentence> sentences) {
         Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
         if (sentences != null) {
@@ -361,7 +362,7 @@ public class DocumentRenderer {
         return elements;
     }
 
-    public static Map<String, TextElement> getStructureElementsTextElements(List<StructureElement> structureElements) {
+    public static Map<String, TextElement> getStructureElementsTextElements(Set<StructureElement> structureElements) {
         Map<String, TextElement> elements = new TreeMap<String, TextElement>();
 
         if (structureElements != null) {

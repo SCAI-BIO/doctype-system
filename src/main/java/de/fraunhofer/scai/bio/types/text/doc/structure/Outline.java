@@ -17,8 +17,10 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import lombok.Data;
 
@@ -36,19 +38,19 @@ import lombok.Data;
      */
     private static final long serialVersionUID = -4868157788079288706L;
     private TextElement titleText;
-    private List<String> numbering;
+    private Set<String> numbering;
     private TextElement rhetorical;
 
-    private List<String> parts;
-    private Map<String, List<String>> chapters;
-    private Map<String, List<String>> sections;
+    private Set<String> parts;
+    private Map<String, Set<String>> chapters;
+    private Map<String, Set<String>> sections;
 
     /**
      * @param numbering The numbering to add
      */
     public void addNumbering(String numbering) {
         if (this.numbering == null) {
-            this.numbering = new ArrayList<String>();
+            this.numbering = new HashSet<>();
         }
         this.numbering.add(numbering);
     }

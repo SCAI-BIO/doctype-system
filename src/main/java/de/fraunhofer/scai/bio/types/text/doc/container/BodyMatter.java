@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Abstract;
 
@@ -34,8 +36,8 @@ import lombok.Data;
      */
     private static final long serialVersionUID = -80408256147660520L;
 
-    private List<Chapter> chapters;
-    private List<Section> sections;
+    private Set<Chapter> chapters;
+    private Set<Section> sections;
 
     @Deprecated /* to be found in {@link FrontMatter} */
     private Abstract docAbstract;
@@ -45,7 +47,7 @@ import lombok.Data;
      */
     public void addSection(Section section) {
         if (sections == null) {
-            sections = new ArrayList<Section>();
+            sections = new HashSet<>();
         }
         this.sections.add(section);
     }
@@ -55,7 +57,7 @@ import lombok.Data;
      */
     public void addChapter(Chapter chapter) {
         if (chapters == null) {
-            chapters = new ArrayList<Chapter>();
+            chapters = new HashSet<Chapter>();
         }
         this.chapters.add(chapter);
     }

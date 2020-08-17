@@ -33,6 +33,7 @@ import lombok.Data;
     /**
      * @return the sentenceText
      */
+    @Deprecated
     public TextElement getText() {
         return sentenceText;
     }
@@ -40,6 +41,7 @@ import lombok.Data;
     /**
      * @param sentenceText the text to set
      */
+    @Deprecated
     public void setText(TextElement sentenceText) {
         this.sentenceText = sentenceText;
     }

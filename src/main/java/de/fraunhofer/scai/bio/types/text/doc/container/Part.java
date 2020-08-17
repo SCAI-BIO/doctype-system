@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.Page;
 
@@ -32,15 +34,15 @@ import lombok.Data;
      * serialVersionUID
      */
     private static final long serialVersionUID = 3806436372769367479L;
-    private List<Chapter> chapters;
-    private List<Page> pages;
+    private Set<Chapter> chapters;
+    private Set<Page> pages;
 
     /**
      * @param chapter the {@link Chapter} to add
      */
     public void addChapter(Chapter chapter) {
         if (this.chapters == null) {
-            this.chapters = new ArrayList<Chapter>();
+            this.chapters = new HashSet<>();
         }
         this.chapters.add(chapter);
     }

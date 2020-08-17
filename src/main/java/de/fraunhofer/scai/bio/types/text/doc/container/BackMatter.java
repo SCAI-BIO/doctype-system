@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.meta.Bibliography;
 
@@ -34,14 +36,14 @@ import lombok.Data;
     private static final long serialVersionUID = 242839067331745958L;
 
     private Bibliography bibliography;
-    private List<Section> sections;
+    private Set<Section> sections;
 
     /**
      * @param section the {@link Section} to set
      */
     public void addSection(Section section) {
         if (sections == null) {
-            sections = new ArrayList<Section>();
+            sections = new HashSet<>();
         }
         this.sections.add(section);
     }

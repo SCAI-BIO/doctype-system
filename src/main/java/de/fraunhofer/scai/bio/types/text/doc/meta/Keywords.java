@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -33,7 +35,7 @@ import lombok.Data;
      */
     private static final long serialVersionUID = 6068148947394926182L;
     private TextElement rhetorical;
-    private List<TextElement> keywordList;
+    private Set<TextElement> keywordList;
 
     public Keywords() {
         // TODO Auto-generated constructor stub
@@ -46,7 +48,7 @@ import lombok.Data;
      */
     public void addKeyword(TextElement keyword) {
         if (this.keywordList == null) {
-            this.keywordList = new ArrayList<TextElement>();
+            this.keywordList = new HashSet<>();
         }
         this.keywordList.add(keyword);
     }
