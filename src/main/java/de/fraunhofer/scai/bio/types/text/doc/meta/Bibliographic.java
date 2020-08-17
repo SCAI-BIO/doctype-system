@@ -21,9 +21,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonMerge;
-import com.fasterxml.jackson.annotation.OptBoolean;
-
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
@@ -39,8 +36,7 @@ import lombok.Data;
      */
     private static final long serialVersionUID = 7449243668495438139L;
     private Abstract documentAbstract;
-    @JsonMerge(OptBoolean.FALSE)
-    private List<Author> authors;
+    private Set<Author> authors;
     private Date pubDate;
     private Set<License> licenses;
     private Title title;
@@ -54,7 +50,7 @@ import lombok.Data;
      */
     public void addAuthor(Author author) {
         if (this.authors == null) {
-            this.authors = new ArrayList<>();
+            this.authors = new HashSet<>();
         }
         this.authors.add(author);
     }
