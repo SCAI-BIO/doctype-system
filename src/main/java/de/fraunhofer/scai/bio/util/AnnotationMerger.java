@@ -12,7 +12,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  */
 public class AnnotationMerger {
 
-    public Document mergeAnnotations(Document baseDocument, Document extensionDocument) {
+    public static Document mergeAnnotations(Document baseDocument, Document extensionDocument) {
         Map<UUID, TextElement> textElementMapDocument1 = DocumentRenderer.getDocumentTextElements(baseDocument)
             .values()
             .stream()
