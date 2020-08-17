@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -40,15 +42,15 @@ import lombok.Data;
     private TextElement identifierSource;
 
     private TextElement[] identifierWithSource;
-    private List<TextElement> altLabels;
-    private List<TextElement> hiddenLabels;
+    private Set<TextElement> altLabels;
+    private Set<TextElement> hiddenLabels;
 
     /**
      * @param altLabel the alternate label to set
      */
     public void addAltLabel(TextElement altLabel) {
         if (altLabels == null) {
-            altLabels = new ArrayList<TextElement>();
+            altLabels = new HashSet<>();
         }
         altLabels.add(altLabel);
     }
@@ -61,15 +63,17 @@ import lombok.Data;
      */
     public void addHiddenLabel(int index, TextElement hiddenLabel) {
         if (this.hiddenLabels == null) {
-            this.hiddenLabels = new ArrayList<TextElement>();
+            this.hiddenLabels = new HashSet<>();
         }
         this.hiddenLabels.add(hiddenLabel);
     }
 
+    @Deprecated
     public TextElement getPrefLabel() {
         return this.preferredLabel;
     }
 
+    @Deprecated
     public void setPrefLabel(TextElement label) {
         this.preferredLabel = label;
     }

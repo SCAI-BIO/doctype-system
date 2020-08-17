@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -36,14 +38,14 @@ import lombok.Data;
     private static final long serialVersionUID = -3254832719650327389L;
 
     private TextElement organization;
-    private List<String> affiliationInfos;
+    private Set<String> affiliationInfos;
 
     /**
      * @param affiliationInfo the affiliationInfo to add
      */
     public void addAffiliationInfo(String affiliationInfo) {
         if (this.affiliationInfos == null) {
-            this.affiliationInfos = new ArrayList<String>();
+            this.affiliationInfos = new HashSet<>();
         }
         this.affiliationInfos.add(affiliationInfo);
     }

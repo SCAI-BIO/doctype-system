@@ -18,6 +18,7 @@ import lombok.Data;
     /**
      * @return the content type
      */
+    @Deprecated
     public String getContentType() {
         return CONTENT_TYPE;
     }

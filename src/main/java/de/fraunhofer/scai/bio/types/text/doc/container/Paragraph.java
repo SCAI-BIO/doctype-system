@@ -17,7 +17,9 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 
@@ -35,15 +37,15 @@ import lombok.Data;
     private static final long serialVersionUID = -8095267361703765778L;
 
     @Deprecated
-    private List<Sentence> sentences;
-    private List<StructureElement> structureElements;
+    private Set<Sentence> sentences;
+    private Set<StructureElement> structureElements;
 
     /**
      * @param structureElement the {@link StructureElement} to add
      */
     public void addStructureElement(StructureElement structureElement) {
         if (this.structureElements == null) {
-            this.structureElements = new ArrayList<StructureElement>();
+            this.structureElements = new HashSet<StructureElement>();
         }
         this.structureElements.add(structureElement);
     }
@@ -54,7 +56,7 @@ import lombok.Data;
     @Deprecated
     public void addSentence(Sentence sentence) {
         if (this.sentences == null) {
-            this.sentences = new ArrayList<Sentence>();
+            this.sentences = new HashSet<Sentence>();
         }
         this.sentences.add(sentence);
     }

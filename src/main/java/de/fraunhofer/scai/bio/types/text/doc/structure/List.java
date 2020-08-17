@@ -17,6 +17,8 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.Data;
 
@@ -32,12 +34,12 @@ import lombok.Data;
      */
     private static final long serialVersionUID = -3952148080008882699L;
     private TextElement title;
-    private java.util.List<TextElement> items;
+    private Set<TextElement> items;
     private boolean bullets;
 
     public void addItem(TextElement item) {
         if (this.items == null) {
-            this.items = new ArrayList<TextElement>();
+            this.items = new HashSet<>();
         }
         this.items.add(item);
     }

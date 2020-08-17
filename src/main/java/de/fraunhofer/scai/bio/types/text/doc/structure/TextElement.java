@@ -56,6 +56,7 @@ import lombok.Data;
     /**
      * Creates a new {@link UUID}.
      */
+    @Deprecated
     public void setUuid() {
         this.uuid = UUID.randomUUID();
     }
