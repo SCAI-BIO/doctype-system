@@ -18,7 +18,6 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import lombok.Data;
 
@@ -35,10 +34,10 @@ import lombok.Data;
     private TextElement title;
     private TextElement text;
     private TextElement rhetorical;
-    private Set<TextElement> headers;
-    private Set<String> annotatedHeaders;
-    private Set<Set<TextElement>> columns;
-    private Set<Map<String, String>> rows;
+    private List<TextElement> headers;
+    private List<String> annotatedHeaders;
+    private List<List<TextElement>> columns;
+    private List<Map<String, String>> rows;
     private String tableId;
     private TextElement documentId;
 

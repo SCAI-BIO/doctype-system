@@ -17,9 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -34,9 +32,9 @@ import lombok.Data;
      * serialVersionUID
      */
     private static final long serialVersionUID = 4484585069783542995L;
-    private Set<Author> authors;
+    private List<Author> authors;
     private Date date;
-    private Set<TextElement> publicationIds;
+    private List<TextElement> publicationIds;
     private Title referenceTitle;
     private TextElement language;
     private TextElement referenceSource;
@@ -50,7 +48,7 @@ import lombok.Data;
      */
     public void addAuthor(Author author) {
         if (this.authors == null) {
-            this.authors = new HashSet<>();
+            this.authors = new ArrayList<Author>();
         }
         this.authors.add(author);
     }
@@ -60,7 +58,6 @@ import lombok.Data;
      *
      * @return the {@link Title} of the {@link Reference}
      */
-    @Deprecated
     public Title getTitle() {
         return this.referenceTitle;
     }
@@ -70,14 +67,13 @@ import lombok.Data;
      *
      * @param title the {@link Title} of the {@link Reference}
      */
-    @Deprecated
     public void setTitle(Title title) {
         this.referenceTitle = title;
     }
 
     public void addPublicationId(TextElement publicationId) {
         if (this.publicationIds == null) {
-            this.publicationIds = new HashSet<>();
+            this.publicationIds = new ArrayList<TextElement>();
         }
 
         this.publicationIds.add(publicationId);

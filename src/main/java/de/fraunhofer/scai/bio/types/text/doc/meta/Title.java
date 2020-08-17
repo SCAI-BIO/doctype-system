@@ -38,7 +38,6 @@ import lombok.Data;
      *
      * @return the subtitle
      */
-    @Deprecated
     public TextElement getSubtitleText() {
         return this.subTitleText;
     }
@@ -48,7 +47,6 @@ import lombok.Data;
      *
      * @param subTitleText value to set into the feature
      */
-    @Deprecated
     public void setSubtitleText(TextElement subTitleText) {
         this.subTitleText = subTitleText;
     }

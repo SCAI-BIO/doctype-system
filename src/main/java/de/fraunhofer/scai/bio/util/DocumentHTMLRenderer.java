@@ -19,13 +19,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
@@ -66,7 +63,7 @@ public class DocumentHTMLRenderer {
 	public static String renderHTML(Document document) {
 
 		StringBuilder sb = new StringBuilder();
-		Set<Annotation> annotations = new HashSet<>();
+		List<Annotation> annotations = new ArrayList<Annotation>();
 
 		//sb.append("<!DOCTYPE html><html>");
 
@@ -82,7 +79,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderDocumentElement(Document document, Set<Annotation> annotations) {
+	public static String renderDocumentElement(Document document, List<Annotation> annotations) {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -113,7 +110,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderBackMatter(BackMatter backMatter, Set<Annotation> annotations) {
+	public static String renderBackMatter(BackMatter backMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (backMatter != null) {
@@ -134,7 +131,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderBibliography(Bibliography bibliography, Set<Annotation> annotations) {
+	public static String renderBibliography(Bibliography bibliography, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (bibliography != null) {
@@ -221,7 +218,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderBodyMatter(BodyMatter bodyMatter, Set<Annotation> annotations) {
+	public static String renderBodyMatter(BodyMatter bodyMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (bodyMatter != null) {
@@ -242,7 +239,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderChapters(Set<Chapter> chapters, Set<Annotation> annotations) {
+	public static String renderChapters(List<Chapter> chapters, List<Annotation> annotations) {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -255,7 +252,7 @@ public class DocumentHTMLRenderer {
 		return sb.toString();
 	}
 
-	public static Object renderChapter(Chapter chapter, Set<Annotation> annotations) {
+	public static Object renderChapter(Chapter chapter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (chapter != null) {
@@ -270,7 +267,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderFrontMatter(FrontMatter frontMatter, Set<Annotation> annotations) {
+	public static String renderFrontMatter(FrontMatter frontMatter, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (frontMatter != null) {
@@ -290,7 +287,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderAbstract(Abstract documentAbstract, Set<Annotation> annotations) {
+	public static String renderAbstract(Abstract documentAbstract, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(String.format("<div data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sec"));
@@ -306,7 +303,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderSections(Set<Section> sections, Set<Annotation> annotations) {
+	public static String renderSections(List<Section> sections, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (sections != null) {
@@ -323,7 +320,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderSection(Section section, Set<Annotation> annotations) {
+	public static String renderSection(Section section, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append(String.format("<div data-id=\"%s\" class=\"%s\">", UUID.randomUUID().toString(), "sec"));
@@ -345,7 +342,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderParagraphs(Set<Paragraph> paragraphs, Set<Annotation> annotations) {
+	public static String renderParagraphs(List<Paragraph> paragraphs, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (paragraphs != null && !paragraphs.isEmpty()) {
@@ -368,8 +365,8 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderStructureElements(Set<StructureElement> structureElements,
-			Set<Annotation> annotations) {
+	public static String renderStructureElements(List<StructureElement> structureElements,
+			List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (structureElements != null) {
@@ -519,7 +516,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderReference(Reference reference, Set<Annotation> annotations) {
+	public static String renderReference(Reference reference, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 		return sb.toString();
 	}
@@ -529,7 +526,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderSentences(Set<Sentence> sentences, Set<Annotation> annotations) {
+	public static String renderSentences(List<Sentence> sentences, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		if (sentences != null) {
@@ -552,7 +549,7 @@ public class DocumentHTMLRenderer {
 	 * @param document
 	 * @return
 	 */
-	public static String renderMetaElement(Document document, MetaElement metaElement, Set<Annotation> annotations) {
+	public static String renderMetaElement(Document document, MetaElement metaElement, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("<title>");
@@ -633,7 +630,7 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return {@link String}
 	 */
-	public static String escapeHTML(TextElement textElement, Set<Annotation> annotations) {
+	public static String escapeHTML(TextElement textElement, List<Annotation> annotations) {
 		String text = textElement.getText();
 		StringBuilder sb = new StringBuilder();
 		Map<Float, String> insertions = new TreeMap<Float, String>();
@@ -698,20 +695,18 @@ public class DocumentHTMLRenderer {
 	 * @param annotations
 	 * @return
 	 */
-	public static String renderAnnotations(Document document, Set<Annotation> annotations) {
+	public static String renderAnnotations(Document document, List<Annotation> annotations) {
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("<hr>");
 		sb.append("<h2>Annotations</h2>");
 		sb.append("<ul style=\"list-style-type:none\">");
-		AtomicInteger atomicInteger = new AtomicInteger(1);
-		annotations.forEach(anno ->
-		{
-			int i = atomicInteger.incrementAndGet();
-			sb.append(String.format("<li id=\"anno%d\">[%d] <b>%s:%s</b> <i>%s@[%d,%d]</i></li>", i , i,
+		for (int i = 0; i < annotations.size(); i++) {
+			Annotation anno = annotations.get(i);
+			sb.append(String.format("<li id=\"anno%d\">[%d] <b>%s:%s</b> <i>%s@[%d,%d]</i></li>", i + 1, i + 1,
 					anno.getAnnotationType(), anno.getAnnotationText(), anno.getProvenance().getSource(),
 					anno.getStartOffset(), anno.getEndOffset()));
-		});
+		}
 		sb.append("</ol>");
 
 		return sb.toString();

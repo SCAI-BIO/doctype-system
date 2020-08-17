@@ -17,9 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import lombok.Data;
 
@@ -35,7 +33,7 @@ import lombok.Data;
     private Bibliographic bibliographic;
     @Deprecated // is already in backmatter contained
     private Bibliography bibliography;
-    private Set<Keywords> keywords;
+    private List<Keywords> keywords;
     private Concept concept;
 
     /**
@@ -49,12 +47,11 @@ import lombok.Data;
      */
     public void addKeywords(Keywords keywordList) {
         if (this.keywords == null) {
-            this.keywords = new HashSet<>();
+            this.keywords = new ArrayList<Keywords>();
         }
         getKeywords().add(keywordList);
     }
 
-    @Deprecated
     public void setDocumentConcept(Concept concept) {
         this.concept = concept;
 

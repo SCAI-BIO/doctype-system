@@ -17,9 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -36,21 +34,21 @@ import lombok.Data;
      */
     private static final long serialVersionUID = 7449243668495438139L;
     private Abstract documentAbstract;
-    private Set<Author> authors;
+    private List<Author> authors;
     private Date pubDate;
-    private Set<License> licenses;
+    private List<License> licenses;
     private Title title;
     private TextElement language;
     private TextElement source;
-    private Set<TextElement> issns;
-    private Set<PublicationType> publicationTypes;
+    private List<TextElement> issns;
+    private List<PublicationType> publicationTypes;
 
     /**
      * @param author the {@link Author} to add to the {@link List} of authors
      */
     public void addAuthor(Author author) {
         if (this.authors == null) {
-            this.authors = new HashSet<>();
+            this.authors = new ArrayList<Author>();
         }
         this.authors.add(author);
     }
@@ -60,7 +58,7 @@ import lombok.Data;
      */
     public void addLicense(License license) {
         if (this.licenses == null) {
-            this.licenses = new HashSet<>();
+            this.licenses = new ArrayList<License>();
         }
         this.licenses.add(license);
     }
@@ -70,7 +68,7 @@ import lombok.Data;
      */
     public void addIssn(TextElement issn) {
         if (this.issns == null) {
-            this.issns = new HashSet<>();
+            this.issns = new ArrayList<TextElement>();
         }
         this.issns.add(issn);
     }
@@ -80,7 +78,7 @@ import lombok.Data;
      */
     public void addPublicationType(PublicationType publicationType) {
         if (this.publicationTypes == null) {
-            this.publicationTypes = new HashSet<>();
+            this.publicationTypes = new ArrayList<PublicationType>();
         }
         this.publicationTypes.add(publicationType);
     }

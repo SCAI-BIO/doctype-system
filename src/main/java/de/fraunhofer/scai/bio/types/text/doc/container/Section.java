@@ -17,9 +17,7 @@ package de.fraunhofer.scai.bio.types.text.doc.container;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -36,13 +34,12 @@ import lombok.Data;
     private static final long serialVersionUID = -2516877768148991422L;
     private TextElement sectionRhetorical;
     private TextElement sectionTitle;
-    private Set<Paragraph> paragraphs;
+    private List<Paragraph> paragraphs;
     private int depth = 0;
 
     /**
      * @return the rhetorical
      */
-    @Deprecated
     public TextElement getRhetorical() {
         return sectionRhetorical;
     }
@@ -50,7 +47,6 @@ import lombok.Data;
     /**
      * @param rhetorical the rhetorical to set
      */
-    @Deprecated
     public void setRhetorical(TextElement sectionRhetorical) {
         this.sectionRhetorical = sectionRhetorical;
     }
@@ -58,7 +54,6 @@ import lombok.Data;
     /**
      * @return the sectionTitle
      */
-    @Deprecated
     public TextElement getTitle() {
         return sectionTitle;
     }
@@ -66,7 +61,6 @@ import lombok.Data;
     /**
      * @param sectionTitle the sectionTitle to set
      */
-    @Deprecated
     public void setTitle(TextElement sectionTitle) {
         this.sectionTitle = sectionTitle;
     }
@@ -76,7 +70,7 @@ import lombok.Data;
      */
     public void addParagraph(Paragraph paragraph) {
         if (this.paragraphs == null) {
-            this.paragraphs = new HashSet<>();
+            this.paragraphs = new ArrayList<Paragraph>();
         }
         this.paragraphs.add(paragraph);
     }

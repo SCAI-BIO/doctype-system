@@ -37,7 +37,6 @@ import lombok.Data;
      *
      * @return value of the feature
      */
-    @Deprecated
     public ImageContent getImage() {
         return imageContent;
     }
@@ -47,7 +46,6 @@ import lombok.Data;
      *
      * @param v value to set into the feature
      */
-    @Deprecated
     public void setImage(ImageContent v) {
         this.imageContent = v;
     }
