@@ -54,6 +54,16 @@ import lombok.Data;
     }
 
     /**
+     * Creates the {@link UUID}, if none set this will generate a random ID.
+     */
+    public UUID getUuid() {
+        if (uuid == null) {
+            setUuid();
+        }
+        return uuid;
+    }
+
+    /**
      * Creates a new {@link UUID}.
      */
     public void setUuid() {
