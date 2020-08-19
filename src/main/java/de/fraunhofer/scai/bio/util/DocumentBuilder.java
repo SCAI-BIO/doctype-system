@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.fraunhofer.scai.bio.Document;
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
