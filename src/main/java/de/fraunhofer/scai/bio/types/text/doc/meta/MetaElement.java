@@ -46,8 +46,4 @@ import lombok.Data;
         getKeywords().add(keywordList);
     }
 
-    public void setDocumentConcept(Concept concept) {
-        this.concept = concept;
-
-    }
 }
