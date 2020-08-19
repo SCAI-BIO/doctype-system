@@ -16,18 +16,8 @@
 package de.fraunhofer.scai.bio;
 
 import java.io.Serializable;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.UUID;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
-import de.fraunhofer.scai.bio.types.text.doc.container.StructureElement;
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
 
@@ -52,26 +42,12 @@ import lombok.Data;
     private String docType;
     private String originalMimeType;
 
-    @JsonIgnore
-    private Map<UUID, TextElement> textElementIndex; // a quick access to all TextElements and their
-    // Annotations
-
     /**
      * Constructor.
      */
     public Document() {
         this.provenance = new Provenance();
-        this.setTextElementIndex(new TreeMap<UUID, TextElement>());
     }
 
-    /**
-     * Adds a {@link StructureElement} to the index
-     *
-     * @param key              The key of the {@link StructureElement}
-     * @param structureElement the {@link StructureElement}
-     */
-    public void addToTextElementIndex(UUID key, TextElement structureElement) {
-        this.textElementIndex.put(key, structureElement);
-    }
 
 }
