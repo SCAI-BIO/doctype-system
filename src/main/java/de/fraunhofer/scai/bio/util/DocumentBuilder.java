@@ -15,6 +15,7 @@ package de.fraunhofer.scai.bio.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
@@ -297,10 +298,13 @@ public class DocumentBuilder {
         TextElement textElement = new TextElement();
 
         if (text != null && !text.isEmpty()) {
-//            textElement.setText(text.trim());
             textElement.setText(text);
         }
-        textElement.setUuid();
+        if (text != null && !text.isEmpty()) {
+            textElement.setUuid(UUID.nameUUIDFromBytes(text.getBytes()));
+        } else {
+            textElement.setUuid();
+        }
 
         return textElement;
     }
