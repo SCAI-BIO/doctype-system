@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
@@ -34,6 +35,7 @@ import lombok.Data;
      * serialVersionUID
      */
     private static final long serialVersionUID = 7443533790762224432L;
+    @JsonProperty("prefLabel")
     private TextElement preferredLabel;
     private TextElement altLabel;
     private TextElement hiddenLabel;
