@@ -19,6 +19,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
@@ -66,6 +68,7 @@ import lombok.Data;
         this.hiddenLabels.add(hiddenLabel);
     }
 
+    @JsonIgnore
     public TextElement getPrefLabel() {
         return this.preferredLabel;
     }

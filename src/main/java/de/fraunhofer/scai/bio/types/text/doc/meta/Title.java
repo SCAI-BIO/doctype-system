@@ -33,22 +33,4 @@ import lombok.Data;
     private TextElement titleText;
     private TextElement subTitleText;
 
-    /**
-     * getter for subtitle - gets
-     *
-     * @return the subtitle
-     */
-    public TextElement getSubtitleText() {
-        return this.subTitleText;
-    }
-
-    /**
-     * setter for subtitle - sets
-     *
-     * @param subTitleText value to set into the feature
-     */
-    public void setSubtitleText(TextElement subTitleText) {
-        this.subTitleText = subTitleText;
-    }
-
 }

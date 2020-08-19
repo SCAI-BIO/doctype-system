@@ -19,6 +19,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
@@ -32,7 +35,9 @@ import lombok.Data;
      * serialVersionUID
      */
     private static final long serialVersionUID = -2516877768148991422L;
+    @JsonProperty("rhetorical")
     private TextElement sectionRhetorical;
+    @JsonProperty("title")
     private TextElement sectionTitle;
     private List<Paragraph> paragraphs;
     private int depth = 0;
@@ -40,6 +45,7 @@ import lombok.Data;
     /**
      * @return the rhetorical
      */
+    @JsonIgnore
     public TextElement getRhetorical() {
         return sectionRhetorical;
     }
@@ -54,6 +60,7 @@ import lombok.Data;
     /**
      * @return the sectionTitle
      */
+    @JsonIgnore
     public TextElement getTitle() {
         return sectionTitle;
     }

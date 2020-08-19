@@ -32,11 +32,6 @@ import lombok.Data;
     private int month;
     private int year;
 
-    /**
-     * Default constructor.
-     */
-    public Date() {
-    }
 
     public void setDate(int day, int month, int year) {
       setDay(day);

@@ -35,9 +35,6 @@ import lombok.Data;
     private TextElement rhetorical;
     private List<TextElement> keywordList;
 
-    public Keywords() {
-        // TODO Auto-generated constructor stub
-    }
 
     /**
      * Adds a keyword to the {@link List} of keywords.

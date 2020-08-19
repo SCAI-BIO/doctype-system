@@ -19,6 +19,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
@@ -35,6 +38,7 @@ import lombok.Data;
     private List<Author> authors;
     private Date date;
     private List<TextElement> publicationIds;
+    @JsonProperty("title")
     private Title referenceTitle;
     private TextElement language;
     private TextElement referenceSource;
@@ -58,6 +62,7 @@ import lombok.Data;
      *
      * @return the {@link Title} of the {@link Reference}
      */
+    @JsonIgnore
     public Title getTitle() {
         return this.referenceTitle;
     }

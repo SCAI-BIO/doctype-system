@@ -15,6 +15,9 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 /**
@@ -30,6 +33,7 @@ import lombok.Data;
     private TextElement rhetorical;
     private TextElement title;
     private TextElement caption;
+    @JsonProperty("image")
     private ImageContent imageContent;
 
     /**
@@ -37,6 +41,7 @@ import lombok.Data;
      *
      * @return value of the feature
      */
+    @JsonIgnore
     public ImageContent getImage() {
         return imageContent;
     }
