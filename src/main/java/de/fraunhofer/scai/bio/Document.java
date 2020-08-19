@@ -17,6 +17,8 @@ package de.fraunhofer.scai.bio;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
 
 import lombok.Data;
@@ -27,6 +29,7 @@ import lombok.Data;
  * <p>
  * Central datastructure of our DMS
  */
+@JsonIgnoreProperties({"textElementIndex"})
 @Data public class Document implements Serializable {
 
     public static final int ABSTRACT_LENGTH = 250;
