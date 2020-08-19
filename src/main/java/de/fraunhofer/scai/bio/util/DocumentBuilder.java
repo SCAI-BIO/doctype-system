@@ -103,7 +103,7 @@ public class DocumentBuilder {
             if (dTitle == null) {
                 dTitle = new Title();
             }
-            dTitle.setSubtitleText(subTitleText);
+            dTitle.setSubTitleText(subTitleText);
         }
 
         return dTitle;
@@ -305,7 +305,7 @@ public class DocumentBuilder {
         if (text != null && !text.isEmpty()) {
             textElement.setUuid(UUID.nameUUIDFromBytes(text.getBytes()));
         } else {
-            textElement.setUuid();
+            textElement.setUuid(UUID.randomUUID());
         }
 
         return textElement;

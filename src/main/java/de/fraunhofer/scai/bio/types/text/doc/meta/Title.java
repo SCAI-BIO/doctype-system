@@ -17,6 +17,8 @@ package de.fraunhofer.scai.bio.types.text.doc.meta;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
 import lombok.Data;
@@ -31,6 +33,7 @@ import lombok.Data;
      */
     private static final long serialVersionUID = 441162620093039893L;
     private TextElement titleText;
+    @JsonProperty("subtitleText")
     private TextElement subTitleText;
 
 }

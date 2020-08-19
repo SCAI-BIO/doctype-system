@@ -20,8 +20,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
 import lombok.Data;
@@ -53,24 +51,6 @@ import lombok.Data;
             this.annotations = new HashSet<>();
         }
         this.annotations.add(annotation);
-    }
-
-    /**
-     * Get the {@link UUID} of this object, if none set this will generate a random ID.
-     */
-    @JsonIgnore
-    public UUID getUuid() {
-        if (uuid == null) {
-            setUuid();
-        }
-        return uuid;
-    }
-
-    /**
-     * Creates a new {@link UUID}.
-     */
-    public void setUuid() {
-        this.uuid = UUID.randomUUID();
     }
 
 }
