@@ -126,15 +126,12 @@ public class DocumentBuilder {
     public Section createSimpleSection(String text, String rhetorical, String title) {
 
         Section dSection = new Section();
-        TextElement rhetoricalElement = new TextElement();
-        rhetoricalElement.setText(rhetorical);
+        TextElement rhetoricalElement = createTextElement(rhetorical);
         dSection.setRhetorical(rhetoricalElement);
-        TextElement titleElement = new TextElement();
-        titleElement.setText(title);
+        TextElement titleElement = createTextElement(title);
         dSection.setTitle(titleElement);
 
-        TextElement textElement = new TextElement();
-        textElement.setText(text);
+        TextElement textElement = createTextElement(text);
         Paragraph paragraph = new Paragraph();
         StructureElement structureElement = new StructureElement();
         structureElement.setTextElement(textElement);
@@ -153,11 +150,9 @@ public class DocumentBuilder {
     public Section createSection(String rhetorical, String title) {
 
         Section dSection = new Section();
-        TextElement rhetoricalElement = new TextElement();
-        rhetoricalElement.setText(rhetorical);
+        TextElement rhetoricalElement = createTextElement(rhetorical);
         dSection.setRhetorical(rhetoricalElement);
-        TextElement titleElement = new TextElement();
-        titleElement.setText(title);
+        TextElement titleElement = createTextElement(title);
         dSection.setTitle(titleElement);
 
         return dSection;
@@ -228,8 +223,7 @@ public class DocumentBuilder {
 
             } else {
                 dParagraph = new Paragraph();
-                TextElement paragraphText = new TextElement();
-                paragraphText.setText(text);
+                TextElement paragraphText = createTextElement(text);
                 StructureElement pText = new StructureElement();
                 pText.setTextElement(paragraphText);
                 dParagraph.addStructureElement(pText);
@@ -291,8 +285,11 @@ public class DocumentBuilder {
 
 
     /**
-     * @param text
-     * @return
+     * Creates a {@link TextElement} for a given String.
+     * The {@link UUID} for the {@link TextElement} is generated from the values of the given String.
+     * see UUID.nameUUIDFromBytes(String)
+     * @param text Content of the {@link TextElement} to create
+     * @return the created {@link TextElement}
      */
     public TextElement createTextElement(String text) {
         TextElement textElement = new TextElement();
@@ -437,8 +434,7 @@ public class DocumentBuilder {
             Keywords keywordList = new Keywords();
 
             for (int i = 0; i < keywords.size(); i++) {
-                TextElement kwElement = new TextElement();
-                kwElement.setText(keywords.get(i).split("@")[0].trim());
+                TextElement kwElement = createTextElement(keywords.get(i).split("@")[0].trim());
                 keywordList.addKeyword(kwElement);
 
                 // TODO add annotations from keywords
@@ -453,11 +449,11 @@ public class DocumentBuilder {
                 // } catch (Exception e) {
                 // }
             }
-            TextElement rhetoricalElement = new TextElement();
+            TextElement rhetoricalElement;
             if (rhetorical != null && !rhetorical.isEmpty()) {
-                rhetoricalElement.setText(rhetorical);
+                rhetoricalElement = createTextElement(rhetorical);
             } else {
-                rhetoricalElement.setText("keywords");
+                rhetoricalElement = createTextElement("keywords");
             }
             keywordList.setRhetorical(rhetoricalElement);
             return keywordList;
