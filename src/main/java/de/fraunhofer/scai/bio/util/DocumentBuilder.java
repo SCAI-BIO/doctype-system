@@ -300,6 +300,7 @@ public class DocumentBuilder {
 //            textElement.setText(text.trim());
             textElement.setText(text);
         }
+        textElement.setUuid();
 
         return textElement;
     }
