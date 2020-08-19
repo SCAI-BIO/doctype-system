@@ -47,6 +47,8 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * a general class to compose a document from scratch, allows to create sections, paragraphs,
  * sentences, tables, ...
@@ -60,9 +62,9 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  * @author marc
  *
  */
+@Slf4j
 public class DocumentBuilder {
 
-    protected static Logger logger = LoggerFactory.getLogger(DocumentBuilder.class);
 
     private SentenceDetector sentenceDetector;
 
@@ -101,7 +103,7 @@ public class DocumentBuilder {
             if (dTitle == null) {
                 dTitle = new Title();
             }
-            dTitle.setSubtitleText(subTitleText);
+            dTitle.setSubTitleText(subTitleText);
         }
 
         return dTitle;
@@ -215,11 +217,11 @@ public class DocumentBuilder {
 
                       dParagraph.addStructureElement(sentence);
                       
-                      logger.info(note);
+                      log.info(note);
                     }
                 }
 
-                logger.debug("Created " + sentences.size() + " sentence(s).");
+                log.debug("Created " + sentences.size() + " sentence(s).");
 
             } else {
                 dParagraph = new Paragraph();
@@ -300,7 +302,7 @@ public class DocumentBuilder {
         if (text != null && !text.isEmpty()) {
             textElement.setUuid(UUID.nameUUIDFromBytes(text.getBytes()));
         } else {
-            textElement.setUuid();
+            textElement.setUuid(UUID.randomUUID());
         }
 
         return textElement;

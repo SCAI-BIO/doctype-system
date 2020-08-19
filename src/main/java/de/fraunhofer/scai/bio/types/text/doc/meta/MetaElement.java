@@ -37,12 +37,6 @@ import lombok.Data;
     private Concept concept;
 
     /**
-     * Default constructor.
-     */
-    public MetaElement() {
-    }
-
-    /**
      * @param keywords the keywords to set
      */
     public void addKeywords(Keywords keywordList) {

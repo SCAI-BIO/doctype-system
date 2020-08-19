@@ -464,7 +464,7 @@ public class DocumentRenderer {
                     addTextElement(elements, reference.getTitle().getTitleText(), "TitleText");
                 }
                 if (reference.getTitle().getTitleText() != null) {
-                    addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
+                    addTextElement(elements, reference.getTitle().getSubTitleText(), "SubtitleText");
                 }
             }
             if (reference.getLanguage() != null) {

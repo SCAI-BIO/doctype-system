@@ -46,7 +46,6 @@ import lombok.Data;
      * serial version id.
      */
     private static final long serialVersionUID = 4813140736245257135L;
-    protected static Logger logger = LoggerFactory.getLogger(Document.class);
 
     private Provenance provenance;
     private DocumentElement documentElement;
