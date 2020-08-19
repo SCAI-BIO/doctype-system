@@ -200,12 +200,12 @@ public class DocumentBuilder {
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
                     for (int i = 0; i < sentence_limit; i++) {
-                    	if(i<sentences.size()) {
-                        StructureElement sentence = new StructureElement();
-                        sentence.setSentence(createSentence(sentences.get(i)));
+                        if (i < sentences.size()) {
+                            StructureElement sentence = new StructureElement();
+                            sentence.setSentence(createSentence(sentences.get(i)));
 
-                        dParagraph.addStructureElement(sentence);
-                    	}
+                            dParagraph.addStructureElement(sentence);
+                        }
                     }
                     
                     // add comment if skipped sentences
@@ -234,15 +234,15 @@ public class DocumentBuilder {
     }
 
     /**
+     * Creates a Sentence from the given text
+     *
      * @param text
      * @return
      */
     public Sentence createSentence(String text) {
         if (text != null && text.length() > 0) {
             Sentence dsentence = new Sentence();
-
-            TextElement textElement = createTextElement(text);
-            dsentence.setText(textElement);
+            dsentence.setText(createTextElement(text));
             return dsentence;
         } else {
             return null;

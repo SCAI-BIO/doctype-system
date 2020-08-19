@@ -47,6 +47,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  * This class provides functionality to render document contents in different formats by
  * traversing the {@link Document} structure
  */
+@Deprecated
 public class DocumentRenderer {
 
     private static final Pattern PUNCTUATION = Pattern.compile("[.!?\\;]");
@@ -126,43 +127,44 @@ public class DocumentRenderer {
      *
      * @return <code>String</code>
      */
+    @Deprecated
     public static String renderStructureElement(StructureElement se) {
         if (se != null) {
             if (se.getCaptionedBox() != null) {
-                return se.getCaptionedBox().toString();
+                return se.getCaptionedBox().getTitle().getText().toString();
             }
             if (se.getCode() != null) {
-                return se.getCode().toString();
+                return se.getCode().getCode().getText().toString();
             }
             if (se.getDataTable() != null) {
-                return se.getDataTable().toString();
+                return se.getDataTable().getContent().getText().toString();
             }
             if (se.getFigure() != null) {
-                return se.getFigure().toString();
+                return se.getFigure().getTitle().getText().toString();
             }
             if (se.getFormula() != null) {
-                return se.getFormula().toString();
+                return se.getFormula().getFormula().getText().toString();
             }
             if (se.getImageContent() != null) {
                 return se.getImageContent().toString();
             }
             if (se.getList() != null) {
-                return se.getList().toString();
+                return se.getList().getTitle().getText().toString();
             }
             if (se.getOutline() != null) {
-                return se.getOutline().toString();
+                return se.getOutline().getTitleText().getText().toString();
             }
             if (se.getQuotation() != null) {
-                return se.getQuotation().toString();
+                return se.getQuotation().getLabel().getText().toString();
             }
             if (se.getSentence() != null) {
                 return se.getSentence().getText().toString();
             }
             if (se.getTable() != null) {
-                return se.getTable().toString();
+                return se.getTable().getText().toString();
             }
             if (se.getTextElement() != null) {
-                return se.getTextElement().toString();
+                return se.getTextElement().getText().toString();
             }
         }
         return null;
@@ -174,6 +176,7 @@ public class DocumentRenderer {
      * @param seList
      * @return {@link String}
      */
+    @Deprecated
     public static String renderStructureElements(List<StructureElement> seList) {
 
         StringBuilder sb = new StringBuilder();
