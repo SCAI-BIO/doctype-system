@@ -133,10 +133,12 @@ public class DocumentRenderer {
     @Deprecated
     public static String renderStructureElement(StructureElement se) {
         if (se != null) {
-            if (se.getCaptionedBox() != null) {
+            if (se.getCaptionedBox() != null && se.getCaptionedBox().getTitle() != null
+                    && se.getCaptionedBox().getTitle().getText() != null) {
                 return se.getCaptionedBox().getTitle().getText().toString();
             }
-            if (se.getCode() != null && se.getCode().getCode() != null && se.getCode().getCode().getText() != null) {
+            if (se.getCode() != null && se.getCode().getCode() != null 
+                    && se.getCode().getCode().getText() != null) {
                 return se.getCode().getCode().getText().toString();
             }
             if (se.getDataTable() != null && se.getDataTable().getContent() != null
@@ -151,7 +153,8 @@ public class DocumentRenderer {
                     && se.getFormula().getFormula().getText() != null) {
                 return se.getFormula().getFormula().getText().toString();
             }
-            if (se.getList() != null && se.getList().getTitle() != null && se.getList().getTitle().getText() != null) {
+            if (se.getList() != null && se.getList().getTitle() != null 
+                    && se.getList().getTitle().getText() != null) {
                 return se.getList().getTitle().getText().toString();
             }
             if (se.getOutline() != null && se.getOutline().getTitleText() != null
