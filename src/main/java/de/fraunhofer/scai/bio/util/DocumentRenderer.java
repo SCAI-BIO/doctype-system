@@ -162,7 +162,8 @@ public class DocumentRenderer {
                     && se.getQuotation().getLabel().getText() != null) {
                 return se.getQuotation().getLabel().getText().toString();
             }
-            if (se.getSentence() != null && se.getSentence().getText() != null) {
+            if (se.getSentence() != null && se.getSentence().getSentenceText() != null
+                    && se.getSentence().getSentenceText().getText() != null) {
                 return se.getSentence().getSentenceText().getText().toString();
             }
             if (se.getTable() != null && se.getTable().getText() != null) {
@@ -174,7 +175,7 @@ public class DocumentRenderer {
         }
         return null;
     }
-    
+
     /**
      * concatenate all contents of a list of {@link StructureElement}
      *
