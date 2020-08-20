@@ -162,8 +162,8 @@ public class DocumentRenderer {
                     && se.getQuotation().getLabel().getText() != null) {
                 return se.getQuotation().getLabel().getText().toString();
             }
-            if (se.getSentence() != null && se.getTable().getText() != null) {
-                return se.getTable().getText().toString();
+            if (se.getSentence() != null && se.getSentence().getText() != null) {
+                return se.getSentence().getSentenceText().getText().toString();
             }
             if (se.getTable() != null && se.getTable().getText() != null) {
                 return se.getTable().getText().toString();
