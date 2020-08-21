@@ -23,7 +23,7 @@ public class AnnotationMerger {
             .stream()
             .collect(Collectors.toMap(p -> p.getUuid(), p -> p,(a,b)->a));
 
-        textElementMapDocument1.values().parallelStream().forEach(s -> {
+        textElementMapDocument1.values().stream().forEach(s -> {
             TextElement other = textElementMapDocument2.get(s.getUuid());
             if (other != null) {
                 if (s.getAnnotations() == null) {
