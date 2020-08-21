@@ -16,12 +16,12 @@ public class AnnotationMerger {
         Map<UUID, TextElement> textElementMapDocument1 = DocumentRenderer.getDocumentTextElements(baseDocument)
             .values()
             .stream()
-            .collect(Collectors.toMap(p -> p.getUuid(), p -> p));
+            .collect(Collectors.toMap(p -> p.getUuid(), p -> p,(a,b)->a));
 
         Map<UUID, TextElement> textElementMapDocument2 = DocumentRenderer.getDocumentTextElements(extensionDocument)
             .values()
             .stream()
-            .collect(Collectors.toMap(p -> p.getUuid(), p -> p));
+            .collect(Collectors.toMap(p -> p.getUuid(), p -> p,(a,b)->a));
 
         textElementMapDocument1.values().parallelStream().forEach(s -> {
             TextElement other = textElementMapDocument2.get(s.getUuid());
