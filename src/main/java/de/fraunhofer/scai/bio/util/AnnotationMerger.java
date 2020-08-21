@@ -27,9 +27,13 @@ public class AnnotationMerger {
             TextElement other = textElementMapDocument2.get(s.getUuid());
             if (other != null) {
                 if (s.getAnnotations() == null) {
-                    s.setAnnotations(other.getAnnotations());
+                    if (other.getAnnotations() != null) {
+                        s.setAnnotations(other.getAnnotations());
+                    }
                 } else {
-                    s.getAnnotations().addAll(other.getAnnotations());
+                    if (other.getAnnotations() != null) {
+                        s.getAnnotations().addAll(other.getAnnotations());
+                    }
                 }
             }
         });
