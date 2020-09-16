@@ -52,6 +52,7 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  *
  * @author marc
  */
+@Deprecated
 public class DocumentHTMLRenderer {
 
 	/**
