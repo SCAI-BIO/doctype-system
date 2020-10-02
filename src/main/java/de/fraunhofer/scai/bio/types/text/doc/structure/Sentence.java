@@ -17,20 +17,28 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Data;
+
 /**
  * @author klein
  */
-public class Sentence implements Serializable {
+@Data public class Sentence implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = -2995499511215948320L;
+
+    @JsonProperty("text")
     private TextElement sentenceText;
 
     /**
      * @return the sentenceText
      */
+    @JsonIgnore
     public TextElement getText() {
         return sentenceText;
     }

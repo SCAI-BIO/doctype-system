@@ -15,36 +15,24 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.container.Section;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.fraunhofer.scai.bio.types.text.doc.container.Section;
+
+import lombok.Data;
+
 /**
  * Abstract of a document.
  */
-public class Abstract implements Serializable {
+@Data public class Abstract implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = 3867798877915368582L;
     private List<Section> abstractSections;
-
-    /**
-     * @return the abstractSections
-     */
-    public List<Section> getAbstractSections() {
-        return abstractSections;
-    }
-
-    /**
-     * @param abstractSections the abstract {@link Section}s to set
-     */
-    public void setAbstractSections(List<Section> abstractSections) {
-        this.abstractSections = abstractSections;
-    }
 
     /**
      * @param abstractSection the abstract {@link Section} to add

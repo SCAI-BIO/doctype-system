@@ -15,22 +15,29 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.container;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
+
 /**
  * The order is Part, Chapter, Section, SubSection, SubSubSection.
  */
-public class Section implements Serializable {
+@Data public class Section implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = -2516877768148991422L;
+    @JsonProperty("rhetorical")
     private TextElement sectionRhetorical;
+    @JsonProperty("title")
     private TextElement sectionTitle;
     private List<Paragraph> paragraphs;
     private int depth = 0;
@@ -38,6 +45,7 @@ public class Section implements Serializable {
     /**
      * @return the rhetorical
      */
+    @JsonIgnore
     public TextElement getRhetorical() {
         return sectionRhetorical;
     }
@@ -52,6 +60,7 @@ public class Section implements Serializable {
     /**
      * @return the sectionTitle
      */
+    @JsonIgnore
     public TextElement getTitle() {
         return sectionTitle;
     }
@@ -64,20 +73,6 @@ public class Section implements Serializable {
     }
 
     /**
-     * @return the {@link Paragraph}s
-     */
-    public List<Paragraph> getParagraphs() {
-        return paragraphs;
-    }
-
-    /**
-     * @param paragraphs the {@link Paragraph}s to set
-     */
-    public void setParagraphs(List<Paragraph> paragraphs) {
-        this.paragraphs = paragraphs;
-    }
-
-    /**
      * @param paragraph the {@link Paragraph} to add
      */
     public void addParagraph(Paragraph paragraph) {
@@ -85,20 +80,6 @@ public class Section implements Serializable {
             this.paragraphs = new ArrayList<Paragraph>();
         }
         this.paragraphs.add(paragraph);
-    }
-
-    /**
-     * @return the depth
-     */
-    public int getDepth() {
-        return depth;
-    }
-
-    /**
-     * @param depth the depth to set
-     */
-    public void setDepth(int depth) {
-        this.depth = depth;
     }
 
 }

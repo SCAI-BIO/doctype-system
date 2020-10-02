@@ -15,16 +15,21 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
+
 /**
  * Reference to cited literature.
  */
-public class Reference implements Serializable {
+@Data public class Reference implements Serializable {
 
     /**
      * serialVersionUID
@@ -33,6 +38,7 @@ public class Reference implements Serializable {
     private List<Author> authors;
     private Date date;
     private List<TextElement> publicationIds;
+    @JsonProperty("title")
     private Title referenceTitle;
     private TextElement language;
     private TextElement referenceSource;
@@ -52,49 +58,11 @@ public class Reference implements Serializable {
     }
 
     /**
-     * getter for authors - gets
-     *
-     * @return the {@link List} of {@link Author}s
-     */
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    /**
-     * setter for {@link Author}s
-     *
-     * @param authors the {@link List} of {@link Author}s
-     */
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
-    // *--------------*
-    // * Feature: titleText
-
-    /**
-     * getter for date - gets Date of the publication.
-     *
-     * @return the publication {@link Date} of the {@link Reference}
-     */
-    public Date getDate() {
-        return date;
-    }
-
-    /**
-     * setter for date - sets Date of the publication.
-     *
-     * @param date the publication {@link Date} of the {@link Reference} to set
-     */
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    /**
      * getter for titleText - gets
      *
      * @return the {@link Title} of the {@link Reference}
      */
+    @JsonIgnore
     public Title getTitle() {
         return this.referenceTitle;
     }
@@ -108,70 +76,12 @@ public class Reference implements Serializable {
         this.referenceTitle = title;
     }
 
-    /**
-     * @return the language
-     */
-    public TextElement getLanguage() {
-        return language;
-    }
-
-    /**
-     * @param language the language to set
-     */
-    public void setLanguage(TextElement language) {
-        this.language = language;
-    }
-
-    /**
-     * @return the referenceSource
-     */
-    public TextElement getReferenceSource() {
-        return referenceSource;
-    }
-
-    /**
-     * @param referenceSource the referenceSource to set
-     */
-    public void setReferenceSource(TextElement referenceSource) {
-        this.referenceSource = referenceSource;
-    }
-
-    public List<TextElement> getPublicationIds() {
-        return publicationIds;
-    }
-
-    public void setPublicationIds(List<TextElement> publicationIds) {
-        this.publicationIds = publicationIds;
-    }
-
     public void addPublicationId(TextElement publicationId) {
         if (this.publicationIds == null) {
             this.publicationIds = new ArrayList<TextElement>();
         }
 
         this.publicationIds.add(publicationId);
-    }
-
-    public TextElement getPublicationType() {
-        return publicationType;
-    }
-
-    public void setPublicationType(TextElement publicationType) {
-        this.publicationType = publicationType;
-    }
-
-    /**
-     * @return the link
-     */
-    public TextElement getLink() {
-        return link;
-    }
-
-    /**
-     * @param link the link to set
-     */
-    public void setLink(TextElement link) {
-        this.link = link;
     }
 
 }

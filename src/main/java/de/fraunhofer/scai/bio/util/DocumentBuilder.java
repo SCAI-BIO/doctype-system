@@ -15,10 +15,9 @@ package de.fraunhofer.scai.bio.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import de.fraunhofer.scai.bio.Document;
 import de.fraunhofer.scai.bio.types.text.doc.DocumentElement;
@@ -46,6 +45,8 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.ImageContent;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Sentence;
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * a general class to compose a document from scratch, allows to create sections, paragraphs,
  * sentences, tables, ...
@@ -59,9 +60,9 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
  * @author marc
  *
  */
+@Slf4j
 public class DocumentBuilder {
 
-    protected static Logger logger = LoggerFactory.getLogger(DocumentBuilder.class);
 
     private SentenceDetector sentenceDetector;
 
@@ -100,7 +101,7 @@ public class DocumentBuilder {
             if (dTitle == null) {
                 dTitle = new Title();
             }
-            dTitle.setSubtitleText(subTitleText);
+            dTitle.setSubTitleText(subTitleText);
         }
 
         return dTitle;
@@ -125,15 +126,12 @@ public class DocumentBuilder {
     public Section createSimpleSection(String text, String rhetorical, String title) {
 
         Section dSection = new Section();
-        TextElement rhetoricalElement = new TextElement();
-        rhetoricalElement.setText(rhetorical);
+        TextElement rhetoricalElement = createTextElement(rhetorical);
         dSection.setRhetorical(rhetoricalElement);
-        TextElement titleElement = new TextElement();
-        titleElement.setText(title);
+        TextElement titleElement = createTextElement(title);
         dSection.setTitle(titleElement);
 
-        TextElement textElement = new TextElement();
-        textElement.setText(text);
+        TextElement textElement = createTextElement(text);
         Paragraph paragraph = new Paragraph();
         StructureElement structureElement = new StructureElement();
         structureElement.setTextElement(textElement);
@@ -152,11 +150,9 @@ public class DocumentBuilder {
     public Section createSection(String rhetorical, String title) {
 
         Section dSection = new Section();
-        TextElement rhetoricalElement = new TextElement();
-        rhetoricalElement.setText(rhetorical);
+        TextElement rhetoricalElement = createTextElement(rhetorical);
         dSection.setRhetorical(rhetoricalElement);
-        TextElement titleElement = new TextElement();
-        titleElement.setText(title);
+        TextElement titleElement = createTextElement(title);
         dSection.setTitle(titleElement);
 
         return dSection;
@@ -204,12 +200,12 @@ public class DocumentBuilder {
                 if (!sentences.isEmpty()) {
                     dParagraph = new Paragraph();
                     for (int i = 0; i < sentence_limit; i++) {
-                    	if(i<sentences.size()) {
-                        StructureElement sentence = new StructureElement();
-                        sentence.setSentence(createSentence(sentences.get(i)));
+                        if (i < sentences.size()) {
+                            StructureElement sentence = new StructureElement();
+                            sentence.setSentence(createSentence(sentences.get(i)));
 
-                        dParagraph.addStructureElement(sentence);
-                    	}
+                            dParagraph.addStructureElement(sentence);
+                        }
                     }
                     
                     // add comment if skipped sentences
@@ -219,16 +215,15 @@ public class DocumentBuilder {
 
                       dParagraph.addStructureElement(sentence);
                       
-                      logger.info(note);
+                      log.info(note);
                     }
                 }
 
-                logger.debug("Created " + sentences.size() + " sentence(s).");
+                log.debug("Created " + sentences.size() + " sentence(s).");
 
             } else {
                 dParagraph = new Paragraph();
-                TextElement paragraphText = new TextElement();
-                paragraphText.setText(text);
+                TextElement paragraphText = createTextElement(text);
                 StructureElement pText = new StructureElement();
                 pText.setTextElement(paragraphText);
                 dParagraph.addStructureElement(pText);
@@ -239,15 +234,15 @@ public class DocumentBuilder {
     }
 
     /**
+     * Creates a Sentence from the given text
+     *
      * @param text
      * @return
      */
     public Sentence createSentence(String text) {
         if (text != null && text.length() > 0) {
             Sentence dsentence = new Sentence();
-
-            TextElement textElement = createTextElement(text);
-            dsentence.setText(textElement);
+            dsentence.setText(createTextElement(text));
             return dsentence;
         } else {
             return null;
@@ -290,15 +285,22 @@ public class DocumentBuilder {
 
 
     /**
-     * @param text
-     * @return
+     * Creates a {@link TextElement} for a given String.
+     * The {@link UUID} for the {@link TextElement} is generated from the values of the given String.
+     * see UUID.nameUUIDFromBytes(String)
+     * @param text Content of the {@link TextElement} to create
+     * @return the created {@link TextElement}
      */
     public TextElement createTextElement(String text) {
         TextElement textElement = new TextElement();
 
         if (text != null && !text.isEmpty()) {
-//            textElement.setText(text.trim());
             textElement.setText(text);
+        }
+        if (text != null && !text.isEmpty()) {
+            textElement.setUuid(UUID.nameUUIDFromBytes(text.getBytes()));
+        } else {
+            textElement.setUuid(UUID.randomUUID());
         }
 
         return textElement;
@@ -432,8 +434,7 @@ public class DocumentBuilder {
             Keywords keywordList = new Keywords();
 
             for (int i = 0; i < keywords.size(); i++) {
-                TextElement kwElement = new TextElement();
-                kwElement.setText(keywords.get(i).split("@")[0].trim());
+                TextElement kwElement = createTextElement(keywords.get(i).split("@")[0].trim());
                 keywordList.addKeyword(kwElement);
 
                 // TODO add annotations from keywords
@@ -448,11 +449,11 @@ public class DocumentBuilder {
                 // } catch (Exception e) {
                 // }
             }
-            TextElement rhetoricalElement = new TextElement();
+            TextElement rhetoricalElement;
             if (rhetorical != null && !rhetorical.isEmpty()) {
-                rhetoricalElement.setText(rhetorical);
+                rhetoricalElement = createTextElement(rhetorical);
             } else {
-                rhetoricalElement.setText("keywords");
+                rhetoricalElement = createTextElement("keywords");
             }
             keywordList.setRhetorical(rhetoricalElement);
             return keywordList;

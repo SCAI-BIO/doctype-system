@@ -4,6 +4,12 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Annotation;
 
 import java.util.Comparator;
 
+/**
+ * Compares two Annotations based on Offsets.
+ * Returns -1 if anno1 starts/ends before annot2
+ * Returns 1 if anno1 start/ends after anno2
+ * Returns 0 of located at the same location
+ */
 public class AnnotationComparator implements Comparator<Annotation> {
 
     @Override

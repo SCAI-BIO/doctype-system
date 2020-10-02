@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package de.fraunhofer.scai.bio.util;
 
 import java.util.ArrayList;
@@ -43,19 +44,21 @@ import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 /**
  * @author tadams
  * @author marc
- * <p>
- * This class provides functionality to render document contents in different formats by
- * traversing the {@link Document} structure
+ *         <p>
+ *         This class provides functionality to render document contents in different formats by traversing the
+ *         {@link Document} structure
  */
+@Deprecated
 public class DocumentRenderer {
 
     private static final Pattern PUNCTUATION = Pattern.compile("[.!?\\;]");
 
     /**
-     * Assemble all document contents which can be written as String, return them as plain text list
-     * separated by blanks. Used for indexing in Solr.
+     * Assemble all document contents which can be written as String, return them as plain text list separated by
+     * blanks. Used for indexing in Solr.
      *
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return String of content words separated by blanks
      */
     public static String renderTextContents(Document document) {
@@ -90,13 +93,14 @@ public class DocumentRenderer {
     /**
      * Get the <code>Document</code> {@link Abstract} in plain text format
      *
-     * @param doc input <code>Document</code>
+     * @param doc
+     *        input <code>Document</code>
      * @return Abstract String
      */
     public static String getDocumentAbstract(Document doc) {
         StringBuilder sb = new StringBuilder();
         if (doc.getDocumentElement() != null && doc.getDocumentElement().getMetaElement() != null
-            && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
+                && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
             Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
             if (bib.getDocumentAbstract() != null && bib.getDocumentAbstract().getAbstractSections() != null) {
                 List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
@@ -126,43 +130,50 @@ public class DocumentRenderer {
      *
      * @return <code>String</code>
      */
+    @Deprecated
     public static String renderStructureElement(StructureElement se) {
         if (se != null) {
-            if (se.getCaptionedBox() != null) {
-                return se.getCaptionedBox().toString();
+            if (se.getCaptionedBox() != null && se.getCaptionedBox().getTitle() != null
+                    && se.getCaptionedBox().getTitle().getText() != null) {
+                return se.getCaptionedBox().getTitle().getText().toString();
             }
-            if (se.getCode() != null) {
-                return se.getCode().toString();
+            if (se.getCode() != null && se.getCode().getCode() != null 
+                    && se.getCode().getCode().getText() != null) {
+                return se.getCode().getCode().getText().toString();
             }
-            if (se.getDataTable() != null) {
-                return se.getDataTable().toString();
+            if (se.getDataTable() != null && se.getDataTable().getContent() != null
+                    && se.getDataTable().getContent().getText() != null) {
+                return se.getDataTable().getContent().getText().toString();
             }
-            if (se.getFigure() != null) {
-                return se.getFigure().toString();
+            if (se.getFigure() != null && se.getFigure().getTitle() != null
+                    && se.getFigure().getTitle().getText() != null) {
+                return se.getFigure().getTitle().getText().toString();
             }
-            if (se.getFormula() != null) {
-                return se.getFormula().toString();
+            if (se.getFormula() != null && se.getFormula().getFormula() != null
+                    && se.getFormula().getFormula().getText() != null) {
+                return se.getFormula().getFormula().getText().toString();
             }
-            if (se.getImageContent() != null) {
-                return se.getImageContent().toString();
+            if (se.getList() != null && se.getList().getTitle() != null 
+                    && se.getList().getTitle().getText() != null) {
+                return se.getList().getTitle().getText().toString();
             }
-            if (se.getList() != null) {
-                return se.getList().toString();
+            if (se.getOutline() != null && se.getOutline().getTitleText() != null
+                    && se.getOutline().getTitleText().getText() != null) {
+                return se.getOutline().getTitleText().getText().toString();
             }
-            if (se.getOutline() != null) {
-                return se.getOutline().toString();
+            if (se.getQuotation() != null && se.getQuotation().getLabel() != null
+                    && se.getQuotation().getLabel().getText() != null) {
+                return se.getQuotation().getLabel().getText().toString();
             }
-            if (se.getQuotation() != null) {
-                return se.getQuotation().toString();
+            if (se.getSentence() != null && se.getSentence().getSentenceText() != null
+                    && se.getSentence().getSentenceText().getText() != null) {
+                return se.getSentence().getSentenceText().getText().toString();
             }
-            if (se.getSentence() != null) {
-                return se.getSentence().getText().toString();
+            if (se.getTable() != null && se.getTable().getText() != null) {
+                return se.getTable().getText().toString();
             }
-            if (se.getTable() != null) {
-                return se.getTable().toString();
-            }
-            if (se.getTextElement() != null) {
-                return se.getTextElement().toString();
+            if (se.getTextElement() != null && se.getTextElement().getText() != null) {
+                return se.getTextElement().getText();
             }
         }
         return null;
@@ -174,6 +185,7 @@ public class DocumentRenderer {
      * @param seList
      * @return {@link String}
      */
+    @Deprecated
     public static String renderStructureElements(List<StructureElement> seList) {
 
         StringBuilder sb = new StringBuilder();
@@ -181,7 +193,7 @@ public class DocumentRenderer {
         if (seList != null && !seList.isEmpty()) {
             for (StructureElement se : seList) {
                 sb.append(renderStructureElement(se));
-//                sb.append(" ");
+                // sb.append(" ");
             }
         }
 
@@ -207,7 +219,8 @@ public class DocumentRenderer {
     /**
      * collect all {@link Annotation}s from all {@link TextElement}s into a {@link List}
      *
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return
      */
     public static List<Annotation> getAllAnnotations(Document document) {
@@ -230,7 +243,8 @@ public class DocumentRenderer {
     /**
      * collect all {@link TextElement}s into a Map
      *
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return
      */
     public static Map<String, TextElement> getDocumentTextElements(Document document) {
@@ -253,7 +267,8 @@ public class DocumentRenderer {
     }
 
     /**
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return
      */
     public static Map<String, TextElement> getFrontMatterTextElements(Document document) {
@@ -278,7 +293,8 @@ public class DocumentRenderer {
     }
 
     /**
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return
      */
     public static Map<String, TextElement> getBodyMatterTextElements(Document document) {
@@ -421,7 +437,8 @@ public class DocumentRenderer {
     }
 
     /**
-     * @param document {@link Document}
+     * @param document
+     *        {@link Document}
      * @return
      */
     public static Map<String, TextElement> getBackMatterTextElements(Document document) {
@@ -464,7 +481,7 @@ public class DocumentRenderer {
                     addTextElement(elements, reference.getTitle().getTitleText(), "TitleText");
                 }
                 if (reference.getTitle().getTitleText() != null) {
-                    addTextElement(elements, reference.getTitle().getSubtitleText(), "SubtitleText");
+                    addTextElement(elements, reference.getTitle().getSubTitleText(), "SubtitleText");
                 }
             }
             if (reference.getLanguage() != null) {
@@ -496,9 +513,12 @@ public class DocumentRenderer {
     /**
      * create a nice key for each {@link TextElement} and place in {@link Map}
      *
-     * @param elements    Map<String, TextElement>
-     * @param textElement {@link TextElement}
-     * @param title       of text element {@link String}
+     * @param elements
+     *        Map<String, TextElement>
+     * @param textElement
+     *        {@link TextElement}
+     * @param title
+     *        of text element {@link String}
      */
     private static void addTextElement(Map<String, TextElement> elements, TextElement textElement, String title) {
         if (textElement != null && textElement.getUuid() != null) {

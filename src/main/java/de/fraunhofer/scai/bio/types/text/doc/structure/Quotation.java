@@ -15,14 +15,16 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.structure;
 
+import java.io.Serializable;
+
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * A quotation block which cites another document.
  */
-public class Quotation implements Serializable {
+@Data public class Quotation implements Serializable {
 
     /**
      * serialVersionUID
@@ -33,58 +35,5 @@ public class Quotation implements Serializable {
 
     private TextElement label;
     private String referenceId; // points to the key in the bibliography
-
-    /**
-     * getter for reference - gets
-     *
-     * @return value of the feature
-     */
-    public Reference getReference() {
-        return this.reference;
-    }
-
-    /**
-     * setter for reference - sets
-     *
-     * @param v value to set into the feature
-     */
-    public void setReference(Reference v) {
-        this.reference = v;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return reference.toString();
-    }
-
-    /**
-     * @return the label
-     */
-    public TextElement getLabel() {
-        return label;
-    }
-
-    /**
-     * @param label the label to set
-     */
-    public void setLabel(TextElement label) {
-        this.label = label;
-    }
-
-    /**
-     * @return the referenceId
-     */
-    public String getReferenceId() {
-        return referenceId;
-    }
-
-    /**
-     * @param referenceId the referenceId to set
-     */
-    public void setReferenceId(String referenceId) {
-        this.referenceId = referenceId;
-    }
 
 }

@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @author marc
  * <p>
@@ -45,7 +48,8 @@ import java.util.List;
  * of how the data was obtained or how it was modified from the original
  * data set or sets.
  */
-public class Provenance implements Serializable {
+@NoArgsConstructor
+@Data public class Provenance implements Serializable {
 
     /**
      * serialVersionUID
@@ -59,106 +63,6 @@ public class Provenance implements Serializable {
     private String collection; // eg. a collection of documents
 
     private List<String> comments;
-
-    /**
-     * constructor
-     */
-    public Provenance() {
-    }
-
-    /**
-     * @return the collection the Document is stored
-     */
-    public String getCollection() {
-        return collection;
-    }
-
-    /**
-     * The corpus/collection the {@link Document} belongs to
-     *
-     * @param corpus the corpus/collection
-     */
-    public void setCollection(String corpus) {
-        this.collection = corpus;
-    }
-
-    /**
-     * @return the {@link Date} this {@link Document} was generated
-     */
-    public Date getDate() {
-        return date;
-    }
-
-    /**
-     * Sets the generation {@link Date}
-     *
-     * @param date the {@link Date} this {@link Document} was generated
-     */
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    /**
-     * @return the License of the {@link Document}
-     */
-    public String getLicense() {
-        return license;
-    }
-
-    /**
-     * Sets the liccense string.
-     *
-     * @param license the license string
-     */
-    public void setLicense(String license) {
-        this.license = license;
-    }
-
-    /**
-     * @return the source of the {@link Document}
-     */
-    public String getSource() {
-        return source;
-    }
-
-    /**
-     * Sets the source
-     *
-     * @param source the source string
-     */
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    /**
-     * @return the version of the {@link Document}
-     */
-    public String getVersion() {
-        return version;
-    }
-
-    /**
-     * Sets the version string
-     *
-     * @param version the version string
-     */
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    /**
-     * @return the comments
-     */
-    public List<String> getComments() {
-        return comments;
-    }
-
-    /**
-     * @param comments the comments to set
-     */
-    public void setComments(List<String> comments) {
-        this.comments = comments;
-    }
 
     /**
      * @param comments the comments to set

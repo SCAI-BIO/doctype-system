@@ -19,10 +19,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
 /**
  * The order is Part, Chapter, Section, SubSection, SubSubSection.
  */
-public class Chapter implements Serializable {
+@Data public class Chapter implements Serializable {
 
     /**
      * serialVersionUID
@@ -40,17 +42,4 @@ public class Chapter implements Serializable {
         this.sections.add(section);
     }
 
-    /**
-     * @return the {@link Section}s
-     */
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    /**
-     * @param sections the {@link List} of {@link Section}s to set
-     */
-    public void setSections(List<Section> sections) {
-        this.sections = sections;
-    }
 }

@@ -15,55 +15,25 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
 
-import java.io.Serializable;
+import lombok.Data;
 
 /**
  * Title of a document. It can also contain a subtitle.
  */
-public class Title implements Serializable {
+@Data public class Title implements Serializable {
 
     /**
      * serialVersionUID
      */
     private static final long serialVersionUID = 441162620093039893L;
     private TextElement titleText;
+    @JsonProperty("subtitleText")
     private TextElement subTitleText;
 
-    /**
-     * getter for subtitle - gets
-     *
-     * @return the subtitle
-     */
-    public TextElement getSubtitleText() {
-        return this.subTitleText;
-    }
-
-    /**
-     * setter for subtitle - sets
-     *
-     * @param subTitleText value to set into the feature
-     */
-    public void setSubtitleText(TextElement subTitleText) {
-        this.subTitleText = subTitleText;
-    }
-
-    /**
-     * getter for titleText - gets
-     *
-     * @return the title text
-     */
-    public TextElement getTitleText() {
-        return this.titleText;
-    }
-
-    /**
-     * setter for titleText - sets
-     *
-     * @param titleText the title text
-     */
-    public void setTitleText(TextElement titleText) {
-        this.titleText = titleText;
-    }
 }

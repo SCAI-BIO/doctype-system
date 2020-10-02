@@ -15,17 +15,19 @@
  */
 package de.fraunhofer.scai.bio.types.text.doc.meta;
 
-import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.fraunhofer.scai.bio.types.text.doc.structure.TextElement;
+
+import lombok.Data;
 
 /**
  * Bibliographic informations about the document itself. Like titleText, author,
  * etc.
  */
-public class Bibliographic implements Serializable {
+@Data public class Bibliographic implements Serializable {
 
     /**
      * serialVersionUID
@@ -62,113 +64,6 @@ public class Bibliographic implements Serializable {
     }
 
     /**
-     * @return the {@link List} of {@link Author}s
-     */
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    /**
-     * @param authors the {@link List} of {@link Author}s to set
-     */
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
-    }
-
-    /**
-     * @return the document {@link Abstract}
-     */
-    public Abstract getDocumentAbstract() {
-        return documentAbstract;
-    }
-
-    /**
-     * @param documentAbstract the document {@link Abstract} to set
-     */
-    public void setDocumentAbstract(Abstract documentAbstract) {
-        this.documentAbstract = documentAbstract;
-    }
-
-    /**
-     * @return the issn
-     */
-    public List<TextElement> getIssns() {
-        return issns;
-    }
-
-    /**
-     * @param issn the issn to set
-     */
-    public void setIssns(List<TextElement> issns) {
-        this.issns = issns;
-    }
-
-    /**
-     * @return the language
-     */
-    public TextElement getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(TextElement language) {
-        this.language = language;
-    }
-
-    /**
-     * @return the {@link List} of {@link License}s
-     */
-    public List<License> getLicenses() {
-        return licenses;
-    }
-
-    /**
-     * @param licenses the {@link List} of {@link License}s to set
-     */
-    public void setLicenses(List<License> licenses) {
-        this.licenses = licenses;
-    }
-
-    /**
-     * @return the publication {@link Date}
-     */
-    public Date getPubDate() {
-        return pubDate;
-    }
-
-    /**
-     * @param pubDate the publication {@link Date} to set
-     */
-    public void setPubDate(Date pubDate) {
-        this.pubDate = pubDate;
-    }
-
-    /**
-     * @return the source
-     */
-    public TextElement getSource() {
-        return source;
-    }
-
-    public void setSource(TextElement source) {
-        this.source = source;
-
-    }
-
-    /**
-     * @return the {@link Title}
-     */
-    public Title getTitle() {
-        return this.title;
-    }
-
-    /**
-     * @param title the {@link Title} to set
-     */
-    public void setTitle(Title title) {
-        this.title = title;
-    }
-
-    /**
      * @param issn the issn to set
      */
     public void addIssn(TextElement issn) {
@@ -176,20 +71,6 @@ public class Bibliographic implements Serializable {
             this.issns = new ArrayList<TextElement>();
         }
         this.issns.add(issn);
-    }
-
-    /**
-     * @return the publicationTypes
-     */
-    public List<PublicationType> getPublicationTypes() {
-        return publicationTypes;
-    }
-
-    /**
-     * @param publicationTypes the publicationTypes to set
-     */
-    public void setPublicationTypes(List<PublicationType> publicationTypes) {
-        this.publicationTypes = publicationTypes;
     }
 
     /**

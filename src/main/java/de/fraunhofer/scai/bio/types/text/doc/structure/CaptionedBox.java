@@ -17,12 +17,14 @@ package de.fraunhofer.scai.bio.types.text.doc.structure;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
 /**
  * These boxes in documents contain usually pictures or tabular data and usually
  * have a numbering and a caption. Examples are figure, table, code or formular
  * (math).
  */
-public class CaptionedBox implements Serializable {
+@Data public class CaptionedBox implements Serializable {
 
     /**
      * serialVersionUID
@@ -31,71 +33,6 @@ public class CaptionedBox implements Serializable {
     private TextElement title;
     private int numbering;
     private TextElement caption;
-
-    /**
-     * getter for caption - gets All captioned boxes have captions describing the
-     * contents of the box with natural language. Example: Figure 1: caption text.
-     *
-     * @return caption of the {@link CaptionedBox}
-     */
-    public TextElement getCaption() {
-        return this.caption;
-    }
-
-    /**
-     * setter for caption - sets All captioned boxes have captions describing the
-     * contents of the box with natural langugage. Example: Figure 1: caption text.
-     *
-     * @param caption of the {@link CaptionedBox} to set
-     */
-    public void setCaption(TextElement caption) {
-        this.caption = caption;
-    }
-
-    /**
-     * getter for numbering - gets All captioned boxes are numbered. Example Figure
-     * 1: caption text.
-     *
-     * @return numbering of the {@link CaptionedBox}
-     */
-    public int getNumbering() {
-        return this.numbering;
-    }
-
-    /**
-     * setter for numbering - sets All captioned boxes are numbered. Example Figure
-     * 1: caption text.
-     *
-     * @param numbering value of the {@link CaptionedBox} to set
-     */
-    public void setNumbering(int numbering) {
-        this.numbering = numbering;
-    }
-
-    /**
-     * getter for titleText - Some captioned boxes have titles.
-     *
-     * @return the title of the {@link CaptionedBox}
-     */
-    public TextElement getTitle() {
-        return this.title;
-    }
-
-    /**
-     * setter for titleText - sets Some captioned boxes have titles.
-     *
-     * @param title of the {@link CaptionedBox}
-     */
-    public void setTitle(TextElement title) {
-        this.title = title;
-    }
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    public String toString() {
-        return String.format("%d\t%s\n%s", numbering, title.getText(), caption.getText());
-    }
 
 }
 

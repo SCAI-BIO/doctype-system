@@ -19,11 +19,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
 /**
  * This document elements only describe other elements or external ressources,
  * like the autor or references.
  */
-public class MetaElement implements Serializable {
+@Data public class MetaElement implements Serializable {
     /**
      * serialVersionUID
      */
@@ -35,12 +37,6 @@ public class MetaElement implements Serializable {
     private Concept concept;
 
     /**
-     * Default constructor.
-     */
-    public MetaElement() {
-    }
-
-    /**
      * @param keywords the keywords to set
      */
     public void addKeywords(Keywords keywordList) {
@@ -50,58 +46,4 @@ public class MetaElement implements Serializable {
         getKeywords().add(keywordList);
     }
 
-    /**
-     * getter methods
-     */
-    public Bibliographic getBibliographic() {
-        return this.bibliographic;
-    }
-
-    /**
-     * setter methods
-     */
-    public void setBibliographic(Bibliographic bib) {
-        this.bibliographic = bib;
-    }
-
-    public Bibliography getBibliography() {
-        return this.bibliography;
-    }
-
-    public void setBibliography(Bibliography bib) {
-        this.bibliography = bib;
-    }
-
-    /**
-     * @return the concept
-     */
-    public Concept getConcept() {
-        return concept;
-    }
-
-    /**
-     * @param concept the concept to set
-     */
-    public void setConcept(Concept concept) {
-        this.concept = concept;
-    }
-
-    /**
-     * @return the keywords
-     */
-    public List<Keywords> getKeywords() {
-        return keywords;
-    }
-
-    /**
-     * @param keywords the keywords to set
-     */
-    public void setKeywords(List<Keywords> keywords) {
-        this.keywords = keywords;
-    }
-
-    public void setDocumentConcept(Concept concept) {
-        this.concept = concept;
-
-    }
 }
