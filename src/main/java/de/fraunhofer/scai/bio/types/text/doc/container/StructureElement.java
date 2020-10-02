@@ -24,10 +24,22 @@ public class StructureElement implements Serializable {
     private ImageContent imageContent;
     private Outline outline;
     private Quotation quotation;
+    @Deprecated
     private Table table;
+    private PMCTable pmcTable;
     private TextElement textElement;
     private Sentence sentence;
     private List list;
+
+    /**
+     * @return the pmcTable
+     */
+    public PMCTable getPmcTable() { return pmcTable; }
+
+    /**
+     * @param pmcTable the {@link PMCTable} to set
+     */
+    public void setPmcTable(PMCTable pmcTable) { this.pmcTable = pmcTable; }
 
     /**
      * @return the captionedBox
