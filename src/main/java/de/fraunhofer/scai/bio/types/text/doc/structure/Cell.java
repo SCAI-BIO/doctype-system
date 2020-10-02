@@ -27,10 +27,10 @@ public class Cell implements Serializable {
 
     private static final long serialVersionUID = -2815310382355431825L;
 
-    int row;
-    int col;
-    int rowSpan;
-    int colSpan;
+    int rowStart;
+    int colStart;
+    int rowEnd;
+    int colEnd;
     TextElement content;
     CellType type;
 
