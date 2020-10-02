@@ -29,5 +29,6 @@ public class PMCTable implements Serializable {
     private static final long serialVersionUID = -7075934358639959834L;
 
     List<Cell> cells;
+    TextElement caption;
 
 }
