@@ -38,6 +38,7 @@ import de.fraunhofer.scai.bio.types.text.doc.meta.Keywords;
 import de.fraunhofer.scai.bio.types.text.doc.meta.License;
 import de.fraunhofer.scai.bio.types.text.doc.meta.MetaElement;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Person;
+import de.fraunhofer.scai.bio.types.text.doc.meta.PublicationType;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Reference;
 import de.fraunhofer.scai.bio.types.text.doc.meta.Title;
 import de.fraunhofer.scai.bio.types.text.doc.structure.Figure;
@@ -296,6 +297,8 @@ public class DocumentBuilder {
 
         if (text != null && !text.isEmpty()) {
             textElement.setText(text);
+        } else {
+        	textElement.setText("");
         }
         if (text != null && !text.isEmpty()) {
             textElement.setUuid(UUID.nameUUIDFromBytes(text.getBytes()));
@@ -718,7 +721,25 @@ public class DocumentBuilder {
         getBibliographic(document).addAuthor(author);
 
     }
+    
+    public void addOrganization(Document document, String name, String forename, String surname) {
+        Person person = new Person();
+        person.setForename(createTextElement(forename));
+        person.setSurname(createTextElement(surname));
 
+    	
+    	Affiliation organization = new Affiliation();
+        organization.setOrganization(createTextElement(name));
+
+        Author author = new Author();
+        author.setAuthor(person);
+        author.setOrganization(organization);
+
+        getBibliographic(document).addAuthor(author);
+
+    }
+
+    @Deprecated	// creates empty author!?!
     public void addOrganization(Document document, String name) {
         Affiliation organization = new Affiliation();
         organization.setOrganization(createTextElement(name));
@@ -749,5 +770,12 @@ public class DocumentBuilder {
     	pubDate.setDate(day, month, year);
     	getBibliographic(document).setPubDate(pubDate);
     }
+
+	public void addPublicationType(Document document, String id, String type) {
+        PublicationType publicationType = new PublicationType();
+        publicationType.setIdentifier(createTextElement(id));
+        publicationType.setPublicationType(createTextElement(type));
+        getBibliographic(document).addPublicationType(publicationType);		
+	}
 
 }
