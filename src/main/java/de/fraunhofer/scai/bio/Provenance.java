@@ -49,7 +49,8 @@ import lombok.NoArgsConstructor;
  * data set or sets.
  */
 @NoArgsConstructor
-@Data public class Provenance implements Serializable {
+@Data
+public class Provenance implements Serializable {
 
     /**
      * serialVersionUID
@@ -61,11 +62,11 @@ import lombok.NoArgsConstructor;
     private String source; // file, database, ...
     private Date date;
     private String collection; // eg. a collection of documents
-
+    private Long crc;
     private List<String> comments;
 
     /**
-     * @param comments the comments to set
+     * @param comment the comments to set
      */
     public void addComment(String comment) {
         if (this.comments == null) {
