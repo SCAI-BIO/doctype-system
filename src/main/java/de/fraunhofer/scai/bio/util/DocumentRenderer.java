@@ -99,21 +99,23 @@ public class DocumentRenderer {
      */
     public static String getDocumentAbstract(Document doc) {
         StringBuilder sb = new StringBuilder();
-        if (doc.getDocumentElement() != null && doc.getDocumentElement().getMetaElement() != null
-                && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
-            Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
-            if (bib.getDocumentAbstract() != null && bib.getDocumentAbstract().getAbstractSections() != null) {
-                List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
-                for (Section section : abstractSections) {
-                    if (section != null) {
-                        List<Paragraph> paragraphs = section.getParagraphs();
-                        for (Paragraph para : paragraphs) {
-                            if (para != null) {
-                                if (para.getStructureElements() != null) {
-                                    List<StructureElement> structureElements = para.getStructureElements();
-                                    for (StructureElement se : structureElements) {
-                                        sb.append(renderStructureElement(se));
-                                        sb.append(" ");
+        if (doc != null) {
+            if (doc.getDocumentElement() != null && doc.getDocumentElement().getMetaElement() != null
+                    && doc.getDocumentElement().getMetaElement().getBibliographic() != null) {
+                Bibliographic bib = doc.getDocumentElement().getMetaElement().getBibliographic();
+                if (bib.getDocumentAbstract() != null && bib.getDocumentAbstract().getAbstractSections() != null) {
+                    List<Section> abstractSections = bib.getDocumentAbstract().getAbstractSections();
+                    for (Section section : abstractSections) {
+                        if (section != null && section.getParagraphs() != null) {
+                            List<Paragraph> paragraphs = section.getParagraphs();
+                            for (Paragraph para : paragraphs) {
+                                if (para != null) {
+                                    if (para.getStructureElements() != null) {
+                                        List<StructureElement> structureElements = para.getStructureElements();
+                                        for (StructureElement se : structureElements) {
+                                            sb.append(renderStructureElement(se));
+                                            sb.append(" ");
+                                        }
                                     }
                                 }
                             }
@@ -121,8 +123,10 @@ public class DocumentRenderer {
                     }
                 }
             }
+            return sb.toString().trim();
+        } else {
+            return "NO ABSTRACT AVAILABLE";
         }
-        return sb.toString().trim();
     }
 
     /**
