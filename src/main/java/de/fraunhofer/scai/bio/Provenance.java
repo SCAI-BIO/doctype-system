@@ -62,7 +62,8 @@ public class Provenance implements Serializable {
     private String source; // file, database, ...
     private Date date;
     private String collection; // eg. a collection of documents
-    private Long crc;
+    private Long crc; //Checksum of source document
+    private String sourceLabel;
     private List<String> comments;
 
     /**
