@@ -13,6 +13,7 @@
  */
 package de.fraunhofer.scai.bio.util;
 
+import java.time.temporal.ChronoField;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -121,7 +122,7 @@ public class DocumentBuilder {
      *
      * @param text
      * @param rhetorical
-     * @param titleText
+     * @param title
      * @return
      */
     public Section createSimpleSection(String text, String rhetorical, String title) {
@@ -143,9 +144,8 @@ public class DocumentBuilder {
     }
 
     /**
-     * @param text
      * @param rhetorical
-     * @param titleText
+     * @param title
      * @return
      */
     public Section createSection(String rhetorical, String title) {
@@ -320,7 +320,6 @@ public class DocumentBuilder {
      *
      * @param rhetorical
      * @param caption
-     * @param titleText
      * @param content
      * @return <code>structure.Figure</code>
      */
@@ -352,8 +351,8 @@ public class DocumentBuilder {
     /**
      * creating a table annotation from begin to end
      *
-     * @param begin      <code>int</code>
-     * @param end        <code>int</code>
+     * @param caption      <code>String</code>
+     * @param title       <code>String</code>
      * @param rhetorical <code>String</code>
      * @return <code>structure.List</code>
      */
@@ -387,9 +386,7 @@ public class DocumentBuilder {
     }
 
     /**
-     * @param outline
      * @param text           <code>String</code>
-     * @param prefix         <code>String</code> eg a bullet
      * @param creatSentences <code>boolean</code>
      * @return
      */
@@ -596,9 +593,14 @@ public class DocumentBuilder {
         if (title != null) {
             reference.setTitle(createDocumentTitle(createTextElement(title), null));
         }
-        if (docDate != null) {
+        if (docDate != null && docDate.isSupported(ChronoField.YEAR_OF_ERA)
+            && docDate.isSupported(ChronoField.MONTH_OF_YEAR)) {
+            int dayOfMonth = 1;
+            if (docDate.isSupported(ChronoField.DAY_OF_MONTH)) {
+                dayOfMonth = docDate.getDayOfMonth();
+            }
             Date date = new Date();
-            date.setDate(docDate.getDayOfMonth(), docDate.getMonthValue(), docDate.getYear());
+            date.setDate(dayOfMonth, docDate.getMonthValue(), docDate.getYear());
             reference.setDate(date);
         }
 
