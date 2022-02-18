@@ -37,7 +37,7 @@ import lombok.Data;
     private List<TextElement> headers;
     private List<String> annotatedHeaders;
     private List<List<TextElement>> columns;
-    private List<Map<String, String>> rows;
+    private List<Map<String, TextElement>> rows;
     private String tableId;
     private TextElement documentId;
 

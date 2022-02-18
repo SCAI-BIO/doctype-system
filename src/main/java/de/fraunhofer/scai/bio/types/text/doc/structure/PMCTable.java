@@ -30,6 +30,6 @@ public class PMCTable implements Serializable {
 
     List<Cell> cells;
     TextElement caption;
-    String label;
+    TextElement label;
 
 }
