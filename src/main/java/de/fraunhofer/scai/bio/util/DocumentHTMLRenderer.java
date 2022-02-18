@@ -449,12 +449,12 @@ public class DocumentHTMLRenderer {
 				  
 				  boolean switchColor = true;
 				  if(structureElement.getTable().getRows() != null) {
-				  	for(Map<String, String> row : structureElement.getTable().getRows()) {
+				  	for(Map<String, TextElement> row : structureElement.getTable().getRows()) {
 					  	sb.append("<tr>");
 					  	for(int col=0; col<cols.size(); col++) {
 					  		if(switchColor) sb.append("<td class=\"tg-hmp3\">"); 
 					  		else 						sb.append("<td class=\"tg-0lax\">"); 
-					  		sb.append(row.get(cols.get(col)));
+					  		sb.append(row.get(cols.get(col)).getText());
 						  	sb.append("</td>");
 					  	}
 					  	switchColor = !switchColor;
