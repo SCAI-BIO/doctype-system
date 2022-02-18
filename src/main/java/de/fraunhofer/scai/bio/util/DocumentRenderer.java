@@ -419,14 +419,14 @@ public class DocumentRenderer {
                                 addTextElement(elements, header, "TableHeader");
                             }
                         }
-                    }/* else if (sel.getPmcTable() != null) {
+                    } else if (sel.getPmcTable() != null) {
                         addTextElement(elements, sel.getPmcTable().getCaption(), "PMCTableCaption");
                         if (sel.getPmcTable().getCells() != null) {
                             sel.getPmcTable().getCells().forEach(c -> {
                                 addTextElement(elements, c.getContent(), "PMCTableCellContent");
                             });
                         }
-                    }*/ else if (sel.getSentence() != null) {
+                    } else if (sel.getSentence() != null) {
                         addTextElement(elements, sel.getSentence().getText(), "Sentence");
 
                     } else if (sel.getTextElement() != null) {
