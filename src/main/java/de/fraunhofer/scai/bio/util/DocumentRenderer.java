@@ -420,7 +420,9 @@ public class DocumentRenderer {
                             }
                         }
                     } else if (sel.getPmcTable() != null) {
-                        addTextElement(elements, sel.getPmcTable().getCaption(), "PMCTableCaption");
+                        if (sel.getPmcTable().getCaption() != null) {
+                            addTextElement(elements, sel.getPmcTable().getCaption(), "PMCTableCaption");
+                        }
                         if (sel.getPmcTable() != null && sel.getPmcTable().getCells() != null) {
                             sel.getPmcTable().getCells().forEach(c -> {
                                 addTextElement(elements, c.getContent(), "PMCTableCellContent");
