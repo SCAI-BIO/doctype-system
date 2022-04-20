@@ -8,8 +8,8 @@
     <distributionManagement>
         <repository>
            <id>github</id>
-           <name>GitHub OWNER Apache Maven Packages</name>
-           <url>https://maven.pkg.github.com/OWNER/REPOSITORY</url>
+           <name>GitHub TimAdams84 Apache Maven Packages</name>
+           <url>https://maven.pkg.github.com/TimAdams84/doctype-system</url>
         </repository>
     </distributionManagement>
     <properties>
